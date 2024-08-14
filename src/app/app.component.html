@@ -9,6 +9,7 @@
                     mat-button>
                     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon> Menú
                 </button>
+                <img src="assets/images/logotipo_unicesmag.png" alt="logoUnicesmag" width="150">
                 <!-- modulo encargado de  -->
                 <toolbar-component style="width:inherit; display: flex;"></toolbar-component>
             </mat-toolbar-row>
@@ -17,7 +18,7 @@
 </header>
 <mat-sidenav-container class="sidenav-container">
     <!-- menu desplegable -->
-    <mat-sidenav style="background-color: #0a458b;" #drawer mode="side" class="sidenav" [opened]="sideNavOpened">
+    <mat-sidenav style="background-color: #0c3859;" #drawer mode="side" class="sidenav" [opened]="sideNavOpened">
         <main-navigation (toggleSidenav)="drawer.toggle()"></main-navigation>
     </mat-sidenav>
     <!-- contenido -->
