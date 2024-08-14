@@ -8,9 +8,15 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
+  },
+
+  
+  {
     path: '**',
     redirectTo: 'home'
-  }
+  },
 ];
 
 @NgModule({

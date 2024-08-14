@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HomeComponent } from './pages/home/home.component';
     ToolbarModule,
     MatSidenavModule,
     SharedModule,
-    MatListModule
+    MatListModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

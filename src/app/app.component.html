@@ -1,6 +1,6 @@
 <header style="position: sticky; top: 0; z-index: 1000;">
     <nav>
-        <mat-toolbar class="navBar">
+        <mat-toolbar class="white">
             <mat-toolbar-row>
                 <button 
                     type="button" 
@@ -17,7 +17,7 @@
 </header>
 <mat-sidenav-container class="sidenav-container">
     <!-- menu desplegable -->
-    <mat-sidenav style="background-color: #0d4688;" #drawer mode="side" class="sidenav" [opened]="sideNavOpened">
+    <mat-sidenav style="background-color: #0a458b;" #drawer mode="side" class="sidenav" [opened]="sideNavOpened">
         <main-navigation (toggleSidenav)="drawer.toggle()"></main-navigation>
     </mat-sidenav>
     <!-- contenido -->

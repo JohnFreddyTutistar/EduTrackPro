@@ -57,7 +57,7 @@ mat-sidenav-content {
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
-    background-color: #edf4f8;
+    background-color: #dfe9f0;
     &::before {
       background-size: cover;
       background-position: right;
@@ -91,4 +91,31 @@ mat-sidenav-content {
         0 0 0 1px rgba(10, 10, 10, 0.03);
     }
   }
+}
+
+.white {
+  background-color: #fff !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.line-separator {
+  width: 10%;
+  margin: 20px auto;
+  height: 3px;
+  border: none;
+  background-color: #fff;
+}
+
+.width-inputs {
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: stretch; /* More Modern. */
+}
+
+mat-card {
+  border-radius: 0.7rem !important;
+  padding: 25px !important;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+    0 0 0 1px rgba(10, 10, 10, 0.02) !important;
 }

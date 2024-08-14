@@ -1,0 +1,66 @@
+<div class="bigContainer">
+    <div class="image"></div>
+    <div class="section-float">
+        <section class="white" style="text-align: center;">
+            <div class="box main-card">
+                <form action="">
+                    <div class="col cardForm">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <img src="assets/images/LOGO2.png" alt="" width="280">
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="row center-xs">
+                                <div class="col-xs-12 col-md-11">
+                                    <mat-form-field appearance="fill" class="width-inputs">
+                                        <mat-label>Correo electronico</mat-label>
+                                        <input
+                                            name="email" 
+                                            matInput 
+                                            type="text" 
+                                            required 
+                                            placeholder="example@gmail.com">
+                                            <mat-icon matSuffix>mail</mat-icon>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xs-12 col-md-11">
+                                    <mat-form-field appearance="fill" class="width-inputs">
+                                        <mat-label>Contraseña</mat-label>
+                                        <input 
+                                            matInput 
+                                            type="password" 
+                                            name="password" 
+                                            [type]="hide ? 'password' : 'text'">
+                                            <a
+                                                mat-icon-button
+                                                matSuffix
+                                                (click)="hide = !hide"
+                                                [attr.aria-label]="'Hide password'"
+                                                [attr.aria-pressed]="hide">
+                                                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                                            </a>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button 
+                                mat-raised-button 
+                                type="submit" 
+                                style="background: #0c3859; color: white;">
+                                <mat-icon class="mat-18">login</mat-icon>
+                                &nbsp;&nbsp;Ingresar
+                            </button>
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-xs">
+                                    <a href="#">¿Olvidaste tu contraseña?</a>
+                                </div>
+                            </div>
+                        </mat-card-actions>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
