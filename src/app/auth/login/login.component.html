@@ -3,7 +3,7 @@
     <div class="section-float">
         <section class="white" style="text-align: center;">
             <div class="box main-card">
-                <form action="">
+                <form [formGroup]="LoginForm" autocomplete="off" (ngSubmit)="sendForm()">
                     <div class="col cardForm">
                         <mat-card-header>
                             <mat-card-title>
@@ -16,21 +16,26 @@
                                     <mat-form-field appearance="fill" class="width-inputs">
                                         <mat-label>Correo electronico</mat-label>
                                         <input
-                                            name="email" 
-                                            matInput 
-                                            type="text" 
-                                            required 
+                                            name="email"
+                                            matInput
+                                            formControlName="email"
+                                            type="email"
+                                            required
                                             placeholder="example@gmail.com">
                                             <mat-icon matSuffix>mail</mat-icon>
+                                            <mat-error *ngIf="LoginForm.controls['email'].touched && LoginForm.controls['email'].hasError('required')">
+                                              Este campo es obligatorio
+                                            </mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-xs-12 col-md-11">
                                     <mat-form-field appearance="fill" class="width-inputs">
                                         <mat-label>Contraseña</mat-label>
-                                        <input 
-                                            matInput 
-                                            type="password" 
-                                            name="password" 
+                                        <input
+                                            matInput
+                                            type="password"
+                                            formControlName="password"
+                                            name="password"
                                             [type]="hide ? 'password' : 'text'">
                                             <a
                                                 mat-icon-button
@@ -40,19 +45,25 @@
                                                 [attr.aria-pressed]="hide">
                                                 <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
                                             </a>
+                                            <mat-error *ngIf="LoginForm.controls['password'].touched && LoginForm.controls['password'].hasError('required')">
+                                              Este campo es obligatorio
+                                            </mat-error>
+                                            <mat-error *ngIf="LoginForm.controls['password'].hasError('minlength')">
+                                              La contraseña es demasiado corta
+                                            </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button 
-                                mat-raised-button 
-                                type="submit" 
-                                style="background: #0c3859; color: white;">
+                            <button
+                                mat-raised-button
+                                type="submit"
+                                style="background: #0c3859; color: white; margin-top: 15px;">
                                 <mat-icon class="mat-18">login</mat-icon>
                                 &nbsp;&nbsp;Ingresar
                             </button>
-                            <div class="row" style="margin-top: 15px;">
+                            <div *ngIf="hideForgotPass" class="row" style="margin-top: 15px;">
                                 <div class="col-xs">
                                     <a href="#">¿Olvidaste tu contraseña?</a>
                                 </div>
