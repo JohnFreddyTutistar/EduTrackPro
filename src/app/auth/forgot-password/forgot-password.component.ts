@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'auth-forgot-password',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  public LoginForm!: FormGroup;
+
+
+  constructor(public formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
+    this.buildLoginForm()
+  }
+
+  private buildLoginForm() {
+    this.LoginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+    })
+  }
+
+  sendForm(){
+    this.LoginForm.markAllAsTouched();
+    if(this.LoginForm.valid){
+      console.log("valores enviados del formulario a back", this.LoginForm.value);
+    }
   }
 
 }

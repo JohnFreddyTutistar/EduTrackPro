@@ -10,10 +10,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { SearchModule } from './search/search.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthModule } from './auth/auth.module';
     MatSidenavModule,
     SharedModule,
     MatListModule,
-    AuthModule
+    AuthModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

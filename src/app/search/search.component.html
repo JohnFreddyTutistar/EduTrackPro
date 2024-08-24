@@ -1,0 +1,66 @@
+<section
+    style="
+        background-image: url(../../assets/images/slider_cesmag.jpg);
+        background-size: cover;
+        background-position: center top;
+        text-align: center;
+        min-height: 370px;
+    ">
+
+</section>
+
+<div class="row spacer"></div>
+<div class="row spacer"></div>
+<div class="row spacer"></div>
+
+<div class="container">
+    <div class="row center-xs">
+        <div class="col-xs-12">
+            <h1 class="principal-title">Buscar candidato</h1>
+            <hr class="line-separator">
+            <p>Aqui puede consultar el estado de los <b style="color: #ba1828;">aspirantes</b></p>
+        </div>
+    </div>
+    <div class="row center-xs">
+        <div class="col-xs-12 col-md-8">
+            <mat-card class="card-container col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+                <mat-card-content>
+                    <form>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>¿Que tipo de identificación tiene?</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-5">
+                                <mat-form-field class="width-inputs" appearance="fill">
+                                    <mat-label>Tipo de identificación</mat-label>
+                                    <select matNativeControl>
+                                        <option value="" aria-disabled="true"></option>
+                                        <option value="cc">Cédula de ciudadanía</option>
+                                        <option value="ti">Tarjeta de identidad</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-xs-12 col-sm-5">
+                                <mat-form-field class="width-inputs" appearance="fill">
+                                    <mat-label>Numero de identificación</mat-label>
+                                    <input 
+                                        type="number" 
+                                        matInput 
+                                        placeholder="N° de identificación" 
+                                        required min="0"
+                                    />
+                                    <mat-hint>Solo digite <b>numeros</b></mat-hint>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <button type="submit" mat-fab class="search-button">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

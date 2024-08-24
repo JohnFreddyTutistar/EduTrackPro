@@ -1,42 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from '../app-routing.module';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-import { LoginComponent } from './login/login.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { AuthRoutes } from './auth-routing.module';
+import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
-import { AppRoutingModule } from '../app-routing.module';
-
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    ForgotPasswordComponent,
-    RegisterComponent
+    SearchComponent
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     MatCardModule,
-    RouterModule,
-    AuthRoutes,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule,
-    MatButtonModule,
     ReactiveFormsModule,
-    
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
-    LoginComponent,
-    ForgotPasswordComponent,
-    RegisterComponent
+    SearchComponent
   ]
 })
-export class AuthModule { }
+export class SearchModule { }
