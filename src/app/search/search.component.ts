@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -9,10 +9,29 @@ import { AuthService } from '../services/auth.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  public formSearch!: FormGroup;
+
+  constructor(private authService: AuthService, public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.authService.loginGuest()
+
+    this.builSearchForm();
+  }
+
+  builSearchForm() {
+    this.formSearch = this.formBuilder.group({
+      documentType: ['', [Validators.required]],
+      documentNumber: ['', [Validators.required]],
+    })
+  }
+
+  sendForm(){
+    this.formSearch.markAllAsTouched();
+    if(this.formSearch.valid){
+      console.log("Enviando data", this.formSearch.value);
+
+    }
   }
 
 }

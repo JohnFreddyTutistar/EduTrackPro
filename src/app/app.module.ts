@@ -15,11 +15,15 @@ import { SearchModule } from './search/search.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ActivitiesModule } from './activities/activities.module';
+import { HelpComponent } from './pages/help/help.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { HomeComponent } from './pages/home/home.component';
     SharedModule,
     MatListModule,
     AuthModule,
-    SearchModule
+    SearchModule,
+    ActivitiesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

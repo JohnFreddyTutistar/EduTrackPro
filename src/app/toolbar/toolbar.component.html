@@ -21,7 +21,7 @@
   <mat-icon
     style="color: #2c3967"
     matBadgeOverlap="false"
-    style="font-size: x-large"
+    style="font-size: 25px"
   >
     notifications
   </mat-icon>
@@ -36,7 +36,7 @@
   <mat-icon
     style="color: #2c3967"
     matBadgeOverlap="false"
-    style="font-size: x-large"
+    style="font-size: 25px"
   >
     person
   </mat-icon>
@@ -44,7 +44,7 @@
 
 <button
   mat-flat-button
-  class="login-button"
+  class="login-button hide-on-small"
   style="margin-left: 20px"
   [routerLink]="['auth/login']"
 >
@@ -54,15 +54,19 @@
 <!-- displayec notifications -->
 <mat-menu #notifications> </mat-menu>
 
-<mat-menu #persons>
+<mat-menu #persons xPosition="before">
   <div class="userMobile" style="text-align: center; padding: 0 20px">
     <h3 style="margin-bottom: 0; font-weight: 500">Hola</h3>
     <h3 style="margin-bottom: 10px; font-weight: 500">Usuario Invitado</h3>
     <!-- <h3 style="margin-bottom: 10px; font-weight:500;">{{ user.firstName }} {{ user.firstSurname }}</h3> -->
     <mat-divider></mat-divider>
   </div>
-  <button mat-menu-item
-    >
+  <button class="button-hover hide-on-med-and-up" mat-menu-item [routerLink]="['auth/login']">
+    <mat-icon>account_circle</mat-icon>
+    <span>Iniciar sesión</span>
+  </button>
+
+  <button routerLink="help" class="button-hover" mat-menu-item>
     <mat-icon>help_outline</mat-icon>
     <span>Ayuda</span>
   </button>
