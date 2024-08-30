@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'toolbar-component',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  isLoggedUser: boolean = false;
+
+  constructor(public authService : AuthService) { }
 
   ngOnInit(): void {
+    console.log("user: ", this.authService.user.forEach(e => e.userName));
   }
+
+
 
 }

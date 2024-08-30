@@ -12,7 +12,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthRoutes } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { AppRoutingModule } from '../app-routing.module';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    
+    MatSelectModule
   ],
   exports: [
     LoginComponent,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'auth-login',
@@ -14,7 +15,9 @@ export class LoginComponent implements OnInit {
 
   public hide = false
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(
+      public formBuilder: FormBuilder
+    ) { }
 
   ngOnInit(): void {
     this.buildLoginForm();

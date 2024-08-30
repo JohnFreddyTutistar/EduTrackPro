@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Users } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  // Usuario de prueba
+  user : Users[] = [
+    {
+      userName: 'john',
+      email: 'john@gmail.com',
+      password: 'Abc123**',
+      rol: 'administrador'
+    }
+  ]
 
   constructor() { }
 
@@ -30,6 +40,6 @@ export class AuthService {
   }
 
   clearUser() {
-    
+
   }
 }

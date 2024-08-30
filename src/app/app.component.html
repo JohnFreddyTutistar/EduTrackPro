@@ -2,10 +2,10 @@
     <nav>
         <mat-toolbar class="white">
             <mat-toolbar-row>
-                <button 
-                    type="button" 
-                    (click)="drawer.toggle()" 
-                    style="padding-left: 0; color: #0d4688; font-size: .9em;" 
+                <button
+                    type="button"
+                    (click)="drawer.toggle()"
+                    style="padding-left: 0; color: #0d4688; font-size: .9em;"
                     mat-button>
                     <mat-icon aria-label="Side nav toggle">menu</mat-icon><span class="hide-on-small">Menú</span>
                 </button>
@@ -22,7 +22,7 @@
         <main-navigation (toggleSidenav)="drawer.toggle()"></main-navigation>
     </mat-sidenav>
     <!-- contenido -->
-     <mat-sidenav-content>
+     <mat-sidenav-content style="background-color: #dfe9f0;">
         <section>
             <router-outlet></router-outlet>
         </section>
