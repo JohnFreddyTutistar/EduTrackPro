@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Users } from '../interfaces/users';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class AuthService {
       rol: 'administrador'
     }
   ]
+
+  private readonly baseUrl: string = environment.baseUrl;
 
   constructor() { }
 

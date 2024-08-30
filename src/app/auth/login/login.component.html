@@ -81,6 +81,7 @@
             <mat-card-actions>
               <button
                 mat-raised-button
+                [disabled]="LoginForm.invalid"
                 type="submit"
                 style="background: #0c3859; color: white; margin-top: 15px"
               >
