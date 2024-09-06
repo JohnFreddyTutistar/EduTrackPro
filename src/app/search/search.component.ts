@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  public formSearch!: FormGroup;
+  public formSearchApplicantByIdentification!: FormGroup;
 
   constructor(private authService: AuthService, public formBuilder: FormBuilder) { }
 
@@ -20,16 +20,16 @@ export class SearchComponent implements OnInit {
   }
 
   builSearchForm() {
-    this.formSearch = this.formBuilder.group({
+    this.formSearchApplicantByIdentification = this.formBuilder.group({
       documentType: ['', [Validators.required]],
       documentNumber: ['', [Validators.required]],
     })
   }
 
-  sendForm(){
-    this.formSearch.markAllAsTouched();
-    if(this.formSearch.valid){
-      console.log("Enviando data", this.formSearch.value);
+  searchApplicantByIdentification(){
+    this.formSearchApplicantByIdentification.markAllAsTouched();
+    if(this.formSearchApplicantByIdentification.valid){
+      console.log("Enviando data", this.formSearchApplicantByIdentification.value);
 
     }
   }

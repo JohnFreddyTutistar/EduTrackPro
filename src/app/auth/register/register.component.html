@@ -9,9 +9,16 @@
   <div class="row">
     <div class="col-xs-12 col-md-6">
       <mat-card class="table-with-header">
-        <mat-card-title class="principal-title"
-        style="padding: 10px; border-radius: 10px 10px 0 0; background-color: #006363;"
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff;">Información básica</h4></mat-card-title
+        <mat-card-title
+          class="principal-title"
+          style="
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            background-color: #006363;
+          "
+          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            Información básica
+          </h4></mat-card-title
         >
         <mat-card-content>
           <div class="row">
@@ -53,8 +60,30 @@
             </div>
             <div class="col-xs-12 col-md-6">
               <mat-form-field class="width-inputs">
-                <mat-label>Nacionalidad</mat-label>
-                <input matInput type="text" />
+                <mat-label>Correo electronico institucional</mat-label>
+                <input matInput type="email" />
+                <mat-icon matSuffix style="color: #006363;">mail</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <mat-form-field class="width-inputs">
+                <mat-label>Contraseña</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  [type]="hide ? 'password' : 'text'"
+                />
+                <a
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon style="font-size: 25px; color: #006363;">{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </a>
               </mat-form-field>
             </div>
           </div>
@@ -63,9 +92,16 @@
     </div>
     <div class="col-xs-12 col-md-6">
       <mat-card class="table-with-header">
-        <mat-card-title class="principal-title"
-        style="padding: 10px; border-radius: 10px 10px 0 0; background-color: #ba1828;"
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff;">Información profesional</h4></mat-card-title
+        <mat-card-title
+          class="principal-title"
+          style="
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            background-color: #ba1828;
+          "
+          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            Información profesional
+          </h4></mat-card-title
         >
         <mat-card-content>
           <div class="row">
@@ -114,28 +150,45 @@
   <div class="row">
     <div class="col-xs-12 col-md-6">
       <mat-card class="table-with-header">
-        <mat-card-title class="principal-title"
-        style="padding: 10px; border-radius: 10px 10px 0 0; background-color: #1f5ba3;"
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff;">Información de contacto</h4></mat-card-title
+        <mat-card-title
+          class="principal-title"
+          style="
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            background-color: #1f5ba3;
+          "
+          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            Información de contacto
+          </h4></mat-card-title
         >
         <mat-card-content>
           <div class="row">
             <div class="col-xs-12 col-md-6">
               <mat-form-field class="width-inputs">
-                <mat-label>Correo electronico institucional</mat-label>
+                <mat-label>Correo electronico personal</mat-label>
                 <input matInput type="email" />
+                <mat-icon matSuffix style="color: #1f5ba3;">email</mat-icon>
               </mat-form-field>
             </div>
             <div class="col-xs-12 col-md-6">
               <mat-form-field class="width-inputs">
-                <mat-label>Telefono de contacto</mat-label>
+                <mat-label>Celular</mat-label>
                 <input matInput type="number" />
+                <mat-icon matSuffix style="color: #1f5ba3;">smartphone</mat-icon>
               </mat-form-field>
             </div>
             <div class="col-xs-12 col-md-6">
               <mat-form-field class="width-inputs">
-                <mat-label>Dirección</mat-label>
+                <mat-label>Telefono fijo</mat-label>
+                <input matInput type="number" />
+                <mat-icon matSuffix style="color: #1f5ba3;">phone</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <mat-form-field class="width-inputs">
+                <mat-label>Dirección residencial</mat-label>
                 <input matInput type="text" />
+                <mat-icon matSuffix style="color: #1f5ba3;">home</mat-icon>
               </mat-form-field>
             </div>
           </div>
@@ -144,9 +197,16 @@
     </div>
     <div class="col-xs-12 col-md-6">
       <mat-card class="table-with-header">
-        <mat-card-title class="principal-title"
-        style="padding: 10px; border-radius: 10px 10px 0 0; background-color: #2c3967;"
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff;">Información laboral</h4></mat-card-title
+        <mat-card-title
+          class="principal-title"
+          style="
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            background-color: #2c3967;
+          "
+          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            Información laboral
+          </h4></mat-card-title
         >
         <mat-card-content>
           <div class="row">
@@ -184,9 +244,7 @@
   </div>
 
   <div class="row end-xs">
-    <div class="col-xs-12 rigth">
-
-    </div>
+    <div class="col-xs-12 rigth"></div>
     <button mat-raised-button class="register-button">
       <mat-icon>save</mat-icon>
       Crear usuario

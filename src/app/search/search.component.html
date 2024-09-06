@@ -10,8 +10,6 @@
 </section>
 
 <div class="row spacer"></div>
-<div class="row spacer"></div>
-<div class="row spacer"></div>
 
 <div class="container">
     <div class="row center-xs">
@@ -25,7 +23,7 @@
         <div class="col-xs-12 col-md-8">
             <mat-card class="card-container col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
                 <mat-card-content>
-                    <form [formGroup]="formSearch" autocomplete="off" (ngSubmit)="sendForm()">
+                    <form [formGroup]="formSearchApplicantByIdentification" autocomplete="off" (ngSubmit)="searchApplicantByIdentification()">
                         <div class="row">
                             <div class="col-xs-12">
                                 <p>¿Que tipo de identificación tiene?</p>
@@ -33,12 +31,12 @@
                             <div class="col-xs-12 col-sm-5">
                                 <mat-form-field class="width-inputs" appearance="fill">
                                     <mat-label>Tipo de identificación</mat-label>
-                                    <select matNativeControl formControlName="documentType">
-                                        <option value="" aria-disabled="true"></option>
-                                        <option value="cc">Cédula de ciudadanía</option>
-                                        <option value="ti">Tarjeta de identidad</option>
-                                    </select>
-                                    <mat-error *ngIf="formSearch.controls['documentType'].touched && formSearch.controls['documentType'].hasError('required')">
+                                    <mat-select matNativeControl formControlName="documentType">
+                                        <mat-option value="" aria-disabled="true"></mat-option>
+                                        <mat-option value="cc">Cédula de ciudadanía</mat-option>
+                                        <mat-option value="ti">Tarjeta de identidad</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="formSearchApplicantByIdentification.controls['documentType'].touched && formSearchApplicantByIdentification.controls['documentType'].hasError('required')">
                                         Este campo es obligatorio
                                     </mat-error>
                                 </mat-form-field>
@@ -54,7 +52,7 @@
                                         required min="0"
                                     />
                                     <mat-hint>Solo digite <b>numeros</b></mat-hint>
-                                    <mat-error *ngIf="formSearch.controls['documentNumber'].touched && formSearch.controls['documentNumber'].hasError('required')">
+                                    <mat-error *ngIf="formSearchApplicantByIdentification.controls['documentNumber'].touched && formSearchApplicantByIdentification.controls['documentNumber'].hasError('required')">
                                         Este campo es obligatorio
                                     </mat-error>
                                 </mat-form-field>

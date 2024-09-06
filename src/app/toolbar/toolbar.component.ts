@@ -13,7 +13,7 @@ export class ToolbarComponent implements OnInit {
   constructor(public authService : AuthService) { }
 
   ngOnInit(): void {
-    console.log("user: ", this.authService.user.forEach(e => e.userName));
+    
   }
 
 
