@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { dataUserStatus } from 'src/app/interfaces/users';
 
 const ELEMENT_DATA: dataUserStatus[] = [
-  {numberIdentification: 1085310787, fullName: 'John Freddy Tutistar Calvache', status: 'PENDIENTE', especification: 'ninguna'},
+  {numberIdentification: 1085310787, fullName: 'John Freddy Tutistar Calvache', status: 'PENDIENTE', especification: 'ninguna', inscriptionDate: '05/09/2024'},
 ];
 
 @Component({
@@ -15,6 +15,7 @@ export class StatusTableDialogComponent implements OnInit {
   displayedColumns: string[] = [
     'identificationNumber',
     'fullName',
+    'inscriptionDate',
     'status',
     'especification',
     'actions'

@@ -1,9 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-@import url(assets/styles/globalStyles.scss);
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* En styles.css o styles.scss */
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css'; /* Puedes elegir otro tema como deeppurple-amber.css, pink-bluegrey.css, etc. */
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/styles/globalStyles.scss';

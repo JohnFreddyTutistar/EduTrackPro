@@ -42,5 +42,6 @@ export interface dataUserStatus {
   numberIdentification: number,
   fullName: string,
   status: string,
-  especification: string
+  especification: string,
+  inscriptionDate: string
 }
