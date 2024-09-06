@@ -44,11 +44,11 @@
                             <div class="col-xs-12 col-sm-5">
                                 <mat-form-field class="width-inputs" appearance="fill">
                                     <mat-label>Numero de identificación</mat-label>
-                                    <input 
-                                        type="number" 
-                                        matInput 
+                                    <input
+                                        type="number"
+                                        matInput
                                         formControlName="documentNumber"
-                                        placeholder="N° de identificación" 
+                                        placeholder="N° de identificación"
                                         required min="0"
                                     />
                                     <mat-hint>Solo digite <b>numeros</b></mat-hint>
@@ -58,7 +58,11 @@
                                 </mat-form-field>
                             </div>
                             <div class="col-xs-12 col-sm-2">
-                                <button type="submit" mat-fab class="search-button">
+                              <!-- [disabled]="formSearchApplicantByIdentification.invalid" -->
+                                <button
+                                  type="submit"
+                                  mat-fab class="search-button"
+                                  (click)="dialogStatusTable()">
                                     <mat-icon>search</mat-icon>
                                 </button>
                             </div>

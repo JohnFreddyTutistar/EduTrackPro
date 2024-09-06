@@ -7,13 +7,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StatusTableDialogComponent } from './status-table-dialog/status-table-dialog.component';
 
 @NgModule({
   declarations: [
-    SearchComponent
+    SearchComponent,
+    StatusTableDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatTableModule
   ],
   exports: [
     SearchComponent

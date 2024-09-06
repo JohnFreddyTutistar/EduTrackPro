@@ -37,3 +37,10 @@ export interface LoggedUser {
 export interface IUser {
 
 }
+
+export interface dataUserStatus {
+  numberIdentification: number,
+  fullName: string,
+  status: string,
+  especification: string
+}
