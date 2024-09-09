@@ -12,12 +12,13 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { SearchModule } from './search/search.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActivitiesModule } from './activities/activities.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ActivitiesModule } from './activities/activities.module';
 import { HelpComponent } from './pages/help/help.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,11 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     SearchModule,
     ActivitiesModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule
+  ],
+  exports: [
+    // TimelineHComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

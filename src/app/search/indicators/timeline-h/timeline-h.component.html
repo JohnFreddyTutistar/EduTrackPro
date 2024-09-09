@@ -1,0 +1,19 @@
+<div class="timeline-container">
+  <div class="timeline">
+    <!-- etapas de la linea de tiempo -->
+    <div
+      class="timeline-stage"
+      *ngFor="let stage of stages; let i = index"
+      [style.width.%]="100 / stages.length">
+      <div class="stage-header" [matTooltip]="stage.date">
+        <div>
+          <h3 class="stage-title">{{ stage.title }}</h3>
+        </div>
+        <div>
+          <span class="stage-description">{{ stage.description }}</span>
+          <span class="stage-description">{{ stage.date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -64,9 +64,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   -moz-appearance:textfield;
-  appearance: none; 
+  appearance: none;
 }
 
 .button-hover:hover {
@@ -195,6 +195,51 @@ input[type=number] {
 .white {
   background-color: #fff !important;
   color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.table {
+  table {
+    tr:hover {
+      background: #eee !important;
+    }
+    th {
+      font-size: 16px !important;
+      font-weight: bold !important;
+      background: #d5d8dc !important;
+    }
+    td {
+      div {
+        justify-content: center !important;
+      }
+    }
+  }
+}
+
+table {
+  tbody {
+    tr {
+      td {
+        &.mat-cell {
+          padding: 2px 7px;
+        }
+      }
+    }
+  }
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: 24px;
+}
+.table-with-overflow {
+  overflow: auto;
+  scrollbar-color: #2c3967;
+}
+@media only screen and (max-width: 1200px) {
+  .table-with-overflow {
+    max-height: 95vh;
+  }
 }
 
 .line-separator {

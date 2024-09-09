@@ -10,15 +10,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { NgxGaugeModule } from 'ngx-gauge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StatusTableDialogComponent } from './status-table-dialog/status-table-dialog.component';
+import { TimelineHComponent } from './indicators/timeline-h/timeline-h.component';
 
 @NgModule({
   declarations: [
     SearchComponent,
-    StatusTableDialogComponent
+    StatusTableDialogComponent,
+    TimelineHComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,8 @@ import { StatusTableDialogComponent } from './status-table-dialog/status-table-d
     MatSelectModule,
     MatDialogModule,
     MatTableModule,
-    NgxGaugeModule
+    NgxGaugeModule,
+    MatTooltipModule
   ],
   exports: [
     SearchComponent
