@@ -39,9 +39,13 @@ export interface IUser {
 }
 
 export interface dataUserStatus {
-  numberIdentification: number,
+  identificationNumber: number,
   fullName: string,
+  inscriptionDate: string,
+  academicProgram: string,
   status: string,
-  especification: string,
-  inscriptionDate: string
+  pymentStatus?: string,
+  docsStatus?: string,
+  interviewStatus?: string,
+  testStatus?: string,
 }

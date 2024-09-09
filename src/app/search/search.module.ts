@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +32,8 @@ import { StatusTableDialogComponent } from './status-table-dialog/status-table-d
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    NgxGaugeModule
   ],
   exports: [
     SearchComponent
