@@ -29,15 +29,29 @@
                 <th style="width: 25%;">N° Identificación</th>
                 <th style="width: 25%;">Nombres y apellidos</th>
                 <th style="width: 25%;">Programa academico</th>
-                <th style="width: 25%;">Estado</th>
               </tr>
             </thead>
             <tr *ngFor="let user of ELEMENT_DATA">
               <td>{{ user.identificationNumber }}</td>
               <td>{{ user.fullName }}</td>
               <td>{{ user.academicProgram }}</td>
+            </tr>
+          </table>
+          <hr class="line-separator" style="width: 100%; background-color: lightgray; height: 1px;">
+          <table class="striped centered table-with-overflow">
+            <thead>
+              <tr>
+                <th>Fecha de solicitud</th>
+                <th>Estado actual</th>
+              </tr>
+            </thead>
+            <tr *ngFor="let user of ELEMENT_DATA">
+              <td>{{ user.inscriptionDate }}</td>
               <td style="display: flex; justify-content: center;">
-                <div class="box-color small center-xs" [ngClass]="{'statusPending': user.status.toUpperCase() === 'EN REVISIÓN'}">
+                <div class="box-color small center-xs" [ngClass]="{
+                  'statusPending': user.status.toUpperCase() === 'EN REVISIÓN',
+                  'statusOk': user.status.toUpperCase() === 'APROBADO',
+                  'statusRejected': user.status.toUpperCase() === 'RECHAZADO'}">
                   {{ user.status }}
                 </div>
               </td>
@@ -110,8 +124,49 @@
       </mat-card>
     </div>
   </div>
-</div>
 
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-6">
+      <mat-card class="table-with-header" style="padding: 0 !important;">
+        <mat-card-title
+          class="principal-title center-xs"
+          style="
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            background-color: #1f5ba3;
+          "
+          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            <b>Resultados</b>
+          </h4></mat-card-title
+        >
+        <mat-card-content>
+          <div class="row middle-xs" style="padding: 0 !important;">
+            <div class="col-xs-6 col-md-6">
+              <p style="margin: 0">Entrevista</p>
+            </div>
+            <div class="col-md-6 col-md-6">
+              <mat-icon style="color: #52be80;">check_circle</mat-icon>
+            </div>
+          </div>
+          <hr class="line-separator" style="width: 100%; background-color: lightgray; height: 1px; margin: 0;">
+          <div class="row middle-xs">
+            <div class="col-xs-6 col-md-6">
+              <p>Prueba de conocimientos</p>
+            </div>
+            <div class="col-md-6 col-md-6">
+              <mat-icon style="color: #ffa621;">error</mat-icon>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-xs-12 col-md-5">
+      <h4><b><mat-icon>info</mat-icon> INFORMACIÓN</b></h4>
+    </div>
+
+  </div>
+</div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1363.56 150.89" style="width: 100%" id="curvaSec">
   <defs>
     <style>
@@ -128,3 +183,4 @@
     </g>
   </g>
 </svg>
+
