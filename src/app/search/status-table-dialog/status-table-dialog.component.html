@@ -10,7 +10,7 @@
 
   <div class="row center-xs">
     <div class="col-xs-12 col-md-11">
-      <mat-card class="table-with-header" style="padding: 0 !important;">
+      <mat-card class="table-with-header" style="padding: 0 !important">
         <mat-card-title
           class="principal-title"
           style="
@@ -23,12 +23,15 @@
           </h4></mat-card-title
         >
         <mat-card-content class="hide-on-small-only">
-          <table class="striped centered table-with-overflow" style="width: 100%;">
+          <table
+            class="striped centered table-with-overflow"
+            style="width: 100%"
+          >
             <thead>
               <tr>
-                <th style="width: 25%;">N° Identificación</th>
-                <th style="width: 25%;">Nombres y apellidos</th>
-                <th style="width: 25%;">Programa academico</th>
+                <th style="width: 25%">N° Identificación</th>
+                <th style="width: 25%">Nombres y apellidos</th>
+                <th style="width: 25%">Programa academico</th>
               </tr>
             </thead>
             <tr *ngFor="let user of ELEMENT_DATA">
@@ -37,7 +40,10 @@
               <td>{{ user.academicProgram }}</td>
             </tr>
           </table>
-          <hr class="line-separator" style="width: 100%; background-color: lightgray; height: 1px;">
+          <hr
+            class="line-separator"
+            style="width: 100%; background-color: lightgray; height: 1px"
+          />
           <table class="striped centered table-with-overflow">
             <thead>
               <tr>
@@ -47,11 +53,15 @@
             </thead>
             <tr *ngFor="let user of ELEMENT_DATA">
               <td>{{ user.inscriptionDate }}</td>
-              <td style="display: flex; justify-content: center;">
-                <div class="box-color small center-xs" [ngClass]="{
-                  'statusPending': user.status.toUpperCase() === 'EN REVISIÓN',
-                  'statusOk': user.status.toUpperCase() === 'APROBADO',
-                  'statusRejected': user.status.toUpperCase() === 'RECHAZADO'}">
+              <td style="display: flex; justify-content: center">
+                <div
+                  class="box-color small center-xs"
+                  [ngClass]="{
+                    statusPending: user.status.toUpperCase() === 'EN REVISIÓN',
+                    statusOk: user.status.toUpperCase() === 'APROBADO',
+                    statusRejected: user.status.toUpperCase() === 'RECHAZADO'
+                  }"
+                >
                   {{ user.status }}
                 </div>
               </td>
@@ -62,11 +72,11 @@
     </div>
   </div>
 
-  <br><br>
+  <br>
 
   <div class="row center-xs">
     <div class="col-xs-12 col-md-11">
-      <mat-card class="table-with-header" style="padding: 0 !important;">
+      <mat-card class="table-with-header" style="padding: 0 !important">
         <mat-card-title
           class="principal-title"
           style="
@@ -90,11 +100,11 @@
                     cap="butt"
                     [append]="'%'"
                     [min]="0"
-                    [value]=80
+                    [value]="80"
                     [max]="100"
-                    [thick]=5
+                    [thick]="8"
                     [size]="130"
-                    >
+                  >
                   </ngx-gauge>
                 </div>
               </div>
@@ -113,9 +123,14 @@
             <div class="col-xs-12 col-md-6">
               <div class="row">
                 <div class="col-xs-12">
-                  <h4><b>Historial de estados</b><br> (timeline)</h4>
+                  <h4>
+                    <b>Historial de estados</b><br />
+                    (timeline)
+                  </h4>
                   <timeline-h [stages]="stagesTimeLine"></timeline-h>
-                  <p *ngIf="stagesTimeLine.length === 0" style="color: red;">Aún no tiene estados anteriores</p>
+                  <p *ngIf="stagesTimeLine.length === 0" style="color: red">
+                    Aún no tiene estados anteriores
+                  </p>
                 </div>
               </div>
             </div>
@@ -125,9 +140,80 @@
     </div>
   </div>
 
+  <br>
+
   <div class="row center-xs">
     <div class="col-xs-12 col-md-6">
-      <mat-card class="table-with-header" style="padding: 0 !important;">
+      <mat-card style="padding: 0 !important">
+        <mat-card-title
+          class="principal-title center-xs"
+          style="
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            background-color: #1f5ba3;
+          "
+          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            <b>Estado de documentos</b>
+          </h4>
+        </mat-card-title>
+        <mat-card-content>
+          <div class="row middle-xs" style="padding: 0 !important">
+            <div class="col-xs-4 col-md-4">
+              <mat-icon>description</mat-icon>
+            </div>
+            <div class="col-xs-4 col-md-4">
+              <p style="margin: 0">Cédula/TI</p>
+            </div>
+            <div class="col-md-4 col-md-4">
+              <mat-icon style="color: #52be80">check_circle</mat-icon>
+            </div>
+          </div>
+          <hr
+            class="line-separator"
+            style="
+              width: 100%;
+              background-color: lightgray;
+              height: 1px;
+              margin: 0;
+            "
+          />
+          <div class="row middle-xs" style="padding: 0 !important">
+            <div class="col-xs-4 col-md-4">
+              <mat-icon>description</mat-icon>
+            </div>
+            <div class="col-xs-4 col-md-4">
+              <p style="margin: 0">Diploma/Acta</p>
+            </div>
+            <div class="col-md-4 col-md-4">
+              <mat-icon style="color: #52be80">check_circle</mat-icon>
+            </div>
+          </div>
+          <hr
+            class="line-separator"
+            style="
+              width: 100%;
+              background-color: lightgray;
+              height: 1px;
+              margin: 0;
+            "
+          />
+          <div class="row middle-xs" style="padding: 0 !important">
+            <div class="col-xs-4 col-md-4">
+              <mat-icon>description</mat-icon>
+            </div>
+            <div class="col-xs-4 col-md-4">
+              <p style="margin: 0">Pruebas saber 11 (4 pag)</p>
+            </div>
+            <div class="col-md-4 col-md-4">
+              <mat-icon style="color: #52be80">check_circle</mat-icon>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-xs-12 col-md-5">
+      <mat-card class="table-with-header" style="padding: 0 !important">
         <mat-card-title
           class="principal-title center-xs"
           style="
@@ -137,37 +223,78 @@
           "
           ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
             <b>Resultados</b>
-          </h4></mat-card-title
-        >
+          </h4>
+        </mat-card-title>
         <mat-card-content>
-          <div class="row middle-xs" style="padding: 0 !important;">
+          <div class="row middle-xs" style="padding: 0 !important">
             <div class="col-xs-6 col-md-6">
               <p style="margin: 0">Entrevista</p>
             </div>
             <div class="col-md-6 col-md-6">
-              <mat-icon style="color: #52be80;">check_circle</mat-icon>
+              <mat-icon style="color: #52be80">check_circle</mat-icon>
             </div>
           </div>
-          <hr class="line-separator" style="width: 100%; background-color: lightgray; height: 1px; margin: 0;">
+          <hr
+            class="line-separator"
+            style="
+              width: 100%;
+              background-color: lightgray;
+              height: 1px;
+              margin: 0;
+            "
+          />
           <div class="row middle-xs">
             <div class="col-xs-6 col-md-6">
               <p>Prueba de conocimientos</p>
             </div>
             <div class="col-md-6 col-md-6">
-              <mat-icon style="color: #ffa621;">error</mat-icon>
+              <mat-icon style="color: #ffa621">error</mat-icon>
             </div>
           </div>
         </mat-card-content>
       </mat-card>
     </div>
 
-    <div class="col-xs-12 col-md-5">
-      <h4><b><mat-icon>info</mat-icon> INFORMACIÓN</b></h4>
-    </div>
-
+    <!-- <div class="col-xs-12 col-md-5">
+      <h4>
+        <b><mat-icon>info</mat-icon> ¿Tienes dudas? contáctanos</b>
+      </h4>
+      <div class="row spacer center-xs">
+        <div class="col-xs-10 col-sm-4 center-align" style="padding: 20px">
+          <p style="margin-bottom: 0px">316 527 0339</p>
+          <p style="display: inline-flex; margin-bottom: 0px">
+            <a
+              href="tel:3165270339"
+              style="min-width: 40px; padding: 0; margin: 2px"
+              aria-label="Llamar a celular"
+              matTooltip="Llamar a celular"
+            >
+              <mat-icon>call</mat-icon>
+            </a>
+            <a
+              href="//wa.me/573165270339&text=Hola%2C%20necesito%20informaci%C3%B3n%20de%20Tarjeta%20Pab%C3%B3n%20M%C3%A1s."
+              target="_blank"
+              style="min-width: 40px; padding: 0; margin: 2px"
+              aria-label="Enviar mensaje por WhatsApp"
+              matTooltip="Enviar mensaje por WhatsApp"
+            >
+              <img
+                style="opacity: 0.7"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+nhxg7wAAAARnQU1BAACxjwv8YQUAAAABc1JHQgCuzhzpAAABYlBMVEUAAAD0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0//+s8Tp/AAAAdXRSTlMA+dzZBP5TAtcDpfTxBm4F3WqLWAvTDu1RDKO/L20yAdQSdIf68qdXb9qkmNLkeylB7CppqBv1OO4sETd54uBEyFpJ/PgejT7M8KJSFxbvSoNVSyuETyifQMEtytihcDDbUHa2B5VFTtYcm4BzIQoJcrjmSPt5hKooAAABJUlEQVQoz52S1WLDMAxFFWrSNG1XZu6YmZmZmZl59/+XOnHXvVYPvrKOLduSiao176auuVyNdQH3//jlBWyrcVSE1QKQPduOBdtTLYDfWQYFCCl7pvoE+Hn8Xine/W3vEGBn80rw0OPtASc+iNYNonhwUgILHDhDqGfOKfJ0owBpThqgM80iSZk1dPZy0AWJaQQ5ojn0lI+PoZapgRWisKgEOAjDYCqh3xyTfYIn44573oiOoDGgY6Qk84s4vga+3imPJQYcGGPP3jss1UokWcMyA7KISSt5+vnz6ZU+cCJb8wlMVVT0u6hsWd7Q9Exwdly16/Pygx17iQOuUbMPbcOrufMrCcqGvYaazSMHWnmjtPVy0kRT96AqR+OaEQnt78pV/45fFNQ7I/RV3I0AAAAASUVORK5CYII="
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+    </div> -->
   </div>
 </div>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1363.56 150.89" style="width: 100%" id="curvaSec">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1363.56 150.89"
+  style="width: 100%"
+  id="curvaSec"
+>
   <defs>
     <style>
       .gs_gray_separator {
@@ -177,10 +304,10 @@
   </defs>
   <g id="Capa_2" data-name="Capa 2">
     <g id="Capa_1-2" data-name="Capa 1">
-      <path class="gs_gray_separator"
-        d="M0,150.89V23.78C234.18,6,452.51,1.55,414.33,74.52c-43.19,82.53,187.12,91.71,460.79-15.95s322.61-43.4,406.95,6.86c27.75,16.54,56,20.65,81.49,18.73v66.73">
-      </path>
+      <path
+        class="gs_gray_separator"
+        d="M0,150.89V23.78C234.18,6,452.51,1.55,414.33,74.52c-43.19,82.53,187.12,91.71,460.79-15.95s322.61-43.4,406.95,6.86c27.75,16.54,56,20.65,81.49,18.73v66.73"
+      ></path>
     </g>
   </g>
 </svg>
-

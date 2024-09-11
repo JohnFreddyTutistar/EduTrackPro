@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { dataUserStatus } from 'src/app/interfaces/users';
+import { Component, OnInit } from '@angular/core';
+import { IDataApplicantStatus } from 'src/app/interfaces/users';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { dataUserStatus } from 'src/app/interfaces/users';
 })
 export class StatusTableDialogComponent implements OnInit {
 
-  ELEMENT_DATA: dataUserStatus[] = [
+  ELEMENT_DATA: IDataApplicantStatus[] = [
     {
       identificationNumber: 1085310787,
       fullName: 'John Freddy Tutistar Calvache',

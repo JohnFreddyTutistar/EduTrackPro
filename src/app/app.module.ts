@@ -15,29 +15,43 @@ import { SearchModule } from './search/search.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivitiesModule } from './activities/activities.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HelpComponent } from './pages/help/help.component';
+import { ApplicantTableComponent } from './pages/applicant-table/applicant-table.component';
+import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HelpComponent,
+    ApplicantTableComponent,
+    ReviewTeamTableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
+    MatTableModule,
+    MatMenuModule,
     MatToolbarModule,
     MatIconModule,
     ToolbarModule,
     MatSidenavModule,
     SharedModule,
     MatListModule,
+    MatCardModule,
     AuthModule,
     SearchModule,
     ActivitiesModule,

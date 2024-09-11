@@ -1,3 +1,5 @@
+import { Moment } from "moment"
+
 export interface Users {
   id: number;
   identificationType: string;
@@ -38,7 +40,7 @@ export interface IUser {
 
 }
 
-export interface dataUserStatus {
+export interface IDataApplicantStatus {
   identificationNumber: number,
   fullName: string,
   inscriptionDate: string,
@@ -48,4 +50,16 @@ export interface dataUserStatus {
   docsStatus?: string,
   interviewStatus?: string,
   testStatus?: string,
+}
+
+export interface IApplicant {
+  index: number,
+  profilePhoto: string,
+  fullName: string,
+  identificationNumber: number,
+  birthdate: string,
+  status: string,
+  phone: number,
+  mobile: number,
+  email: string
 }

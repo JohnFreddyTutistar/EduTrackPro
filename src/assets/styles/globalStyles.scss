@@ -69,6 +69,29 @@ input[type=number] {
   appearance: none;
 }
 
+// contadores
+// Contadores
+.counter {
+  .salient {
+    font-size: 1.8em;
+  }
+  .description {
+    line-height: 0;
+  }
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin: auto;
+  padding: 1%;
+  width: 140px;
+  min-width: min-content;
+  height: 140px;
+  border-radius: 50%;
+  background-color: white;
+  vertical-align: middle;
+  text-align: center;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.02) !important;
+}
+
 .button-hover:hover {
   background-color: #2c3967 !important;
   color: #fff !important;
