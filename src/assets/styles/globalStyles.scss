@@ -32,7 +32,7 @@ mat-sidenav-container {
     min-height: calc(100vh - 65px);
   }
   mat-sidenav {
-    min-width: 350px;
+    min-width: 310px;
   }
 }
 mat-sidenav-content {
@@ -55,6 +55,7 @@ mat-list-option:hover {
   color: #000 !important;
   border-radius: 8px !important;
   transition: 0.3s !important;
+  width: 100%;
 }
 
 input[type=number]::-webkit-inner-spin-button,

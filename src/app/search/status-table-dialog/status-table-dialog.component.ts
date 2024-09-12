@@ -23,6 +23,12 @@ export class StatusTableDialogComponent implements OnInit {
     },
   ];
 
+  documentsData = [
+    {documentName: 'Diploma/Acta', status: 'Aprobado'},
+    {documentName: 'Cédula/TI', status: 'Aprobado'},
+    {documentName: 'Pruebas saber 11 (4 paginas)', status: 'Aprobado'},
+  ]
+
   stagesTimeLine: Array<any> = [
     {
       title: 'pago',
