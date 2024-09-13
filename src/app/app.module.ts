@@ -20,7 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatExpansionModule } from '@angular/material/expansion'; 
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -55,6 +56,7 @@ import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-
     MatCardModule,
     AuthModule,
     SearchModule,
+    MatStepperModule,
     ActivitiesModule,
     HttpClientModule,
     MatTooltipModule,

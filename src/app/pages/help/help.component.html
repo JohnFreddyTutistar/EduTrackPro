@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row" style="background-color: #f8f8f8; padding: 30px; color: #0c3859; border-radius: 10px;">
-    <div class="col-xs-12 right-align">
+  <div class="row middle-xs" style="background-color: #9a0805; padding: 30px; color: #fff; border-radius: 10px;">
+    <div class="col-xs-11 right-align">
       <h1 style="font-size: x-large">
         <b> Contenido de ayuda </b>
       </h1>
@@ -8,29 +8,217 @@
         Revisa nuestro contenido para ayudarte a resolver tus inquietudes
       </p>
     </div>
+    <div class="col-xs-12 col-md-1 hide-on-small">
+      <mat-icon style="font-size: 3em; width: 80px; height: 80px;">info</mat-icon>
+    </div>
   </div>
 
   <br>
 
-  <div class="row center-xs">
-    <div class="col-xs-12 col-md-8">
-      <h1 class="principal-title"><b>Preguntas frecuentes</b></h1>
-      <hr class="line-separator">
-    </div>
-  </div>
+  <!-- Preguntas frecuentes -->
+  <mat-card>
+    <mat-card-content>
 
-  <div class="row">
-    <div class="col-xs-12 col-md-4">
-      <mat-accordion class="example-headers-align">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            ¿Cómo puedo iniciar mi proceso de admisión?
-          </mat-panel-title>
-          <mat-panel-description>
-            <mat-icon>question_mark</mat-icon>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-      </mat-accordion>
-    </div>
-  </div>
+      <div class="row center-xs">
+        <div class="col-xs-12 col-md-8">
+          <h1 class="principal-title"><b>Preguntas frecuentes</b></h1>
+          <hr class="line-separator">
+        </div>
+      </div>
+
+      <div class="row center-xs example-action-buttons">
+        <div class="col-xs-5 col-md-2">
+          <button mat-button (click)="openAll()" style="background-color: #0c3859; color: #fff;"><mat-icon>visibility</mat-icon> Mostrar todo</button>
+        </div>
+        <div class="col-xs-5 col-md-2">
+          <button mat-button (click)="closeAll()" style="background-color: #0c3859; color: #fff;"><mat-icon>visibility_off</mat-icon> ocultar todo</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Cómo puedo iniciar mi proceso de admisión?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion1 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Cuales son los documentos requeridos para la admisión?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion2 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Cuando recibiré una respuesta sobre mi solicitud de admisión?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion3 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Cómo puedo verificar el estado de mi admisión?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion4 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Qué debo hacer si necesito ayuda durante el proceso de admisión?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion5 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Puedo modificar mi solicitud después de haberla enviado?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion6 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Hay algún costo para aplicar a los programas de la universidad?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+          <mat-accordion #accordion7 class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 style="color: #0c3859;"><b>¿Qué debo hacer si no cumplo con todos los requisitos?</b></h4>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon>question_mark</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates soluta exercitationem odio sunt repellendus ut omnis tempora, tempore voluptatibus deserunt voluptas eum veritatis, delectus suscipit, dolore dolor nemo ducimus explicabo.</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <br>
+
+  <!-- Canales digitales -->
+  <mat-card>
+    <mat-card-content>
+
+      <div class="row center-xs">
+        <div class="col-xs-12 col-md-8">
+          <h1 class="principal-title"><b>Canales digitales</b></h1>
+          <hr class="line-separator">
+        </div>
+      </div>
+
+      <form action="">
+        <mat-stepper linear #stepper>
+          <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>
+              <span><b>Ingresa tus datos</b></span>
+            </ng-template>
+            <div>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </mat-step>
+
+          <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>
+              <span><b>Selecciona fecha y franja horaria</b></span>
+            </ng-template>
+            <div>
+              <button mat-button matStepperPrevious>Volver</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </mat-step>
+
+          <mat-step [editable]="isEditable">
+            <ng-template matStepLabel>
+              <span><b>Confirma tus datos</b></span>
+            </ng-template>
+            <div>
+              <button mat-button matStepperPrevious>Volver</button>
+              <button mat-button (click)="stepper.reset()">Resetear</button>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+
 </div>

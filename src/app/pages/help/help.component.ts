@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-help',
@@ -8,7 +8,17 @@ import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 })
 export class HelpComponent implements OnInit {
 
-  @ViewChild(MatAccordion) accordion!: MatAccordion;
+  @ViewChildren(MatAccordion) accordion!: QueryList<MatAccordion>;
+
+  openAll(){
+    this.accordion.forEach(accordion => accordion.openAll())
+  }
+
+  closeAll(){
+    this.accordion.forEach(accordion => accordion.closeAll())
+  }
+
+  isEditable = false;
 
   constructor() { }
 
