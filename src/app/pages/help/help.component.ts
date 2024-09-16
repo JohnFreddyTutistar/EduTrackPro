@@ -35,7 +35,7 @@ export class HelpComponent implements OnInit {
       identificationNumber: ['', [Validators.required]],
       name: ['', [Validators.required]],
       lastname: ['', Validators.required],
-      email: ['', [Validators.email, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
       request: ['', [Validators.required]]
     })
