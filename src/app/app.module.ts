@@ -22,6 +22,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -48,6 +50,7 @@ import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-
     MatTableModule,
     MatMenuModule,
     MatToolbarModule,
+    MatSelectModule,
     MatIconModule,
     ToolbarModule,
     MatSidenavModule,
@@ -60,7 +63,8 @@ import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-
     ActivitiesModule,
     HttpClientModule,
     MatTooltipModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ReactiveFormsModule
   ],
   exports: [
     // TimelineHComponent

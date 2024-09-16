@@ -185,15 +185,67 @@
         </div>
       </div>
 
-      <form action="">
+      <form [formGroup]="digitalChanelForm" autocomplete="off" (ngSubmit)="sendForm()">
         <mat-stepper linear #stepper>
           <mat-step [editable]="isEditable">
             <ng-template matStepLabel>
               <span><b>Ingresa tus datos</b></span>
             </ng-template>
-            <div>
-              <button mat-button matStepperNext>Siguiente</button>
+            <div class="row center-xs">
+              <div class="col-xs-12 col-lg-4 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Tipo de identificación</mat-label>
+                  <mat-select>
+                    <mat-option>CC/ Cédula de ciudadanía</mat-option>
+                    <mat-option>TI/ Tarjeta de identidad</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col-xs-12 col-lg-4 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Numero de identificación</mat-label>
+                  <input type="number" matInput>
+                </mat-form-field>
+              </div>
+
+              <div class="col-xs-12 col-lg-4 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput>
+                </mat-form-field>
+              </div>
+
+              <div class="col-xs-12 col-lg-4 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-4 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-4 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput>
+                </mat-form-field>
+              </div>
+
+              <div class="col-xs-12 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Describe tu solicitud</mat-label>
+                  <textarea matInput></textarea>
+                </mat-form-field>
+              </div>
+
             </div>
+
+            
+            <button mat-button matStepperNext style="color: #0c3859;">Siguiente <mat-icon>arrow_forward_ios</mat-icon></button>
           </mat-step>
 
           <mat-step [editable]="isEditable">
