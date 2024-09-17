@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./applicant-table.component.scss'],
 })
 export class ApplicantTableComponent implements OnInit {
-  FormGroupFilter!: FormGroup;
+  FormGroupFilter!: FormGroup;;
 
   ELEMENT_DATA: IApplicant[] = [
     {
@@ -54,7 +54,7 @@ export class ApplicantTableComponent implements OnInit {
 
   dataSource = this.ELEMENT_DATA;
 
-  
+
   dialogStatusTable() {
     this.dialog.open(StatusTableDialogComponent, {
       maxWidth: '500vw',
@@ -63,11 +63,11 @@ export class ApplicantTableComponent implements OnInit {
       data: {},
     });
   }
-  
+
   constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {
     this.appplyFilter()
   }
-  
+
   appplyFilter() {
     this.FormGroupFilter = this.formBuilder.group({
       formControlFilterBy: [null],
@@ -81,26 +81,28 @@ export class ApplicantTableComponent implements OnInit {
   // Getter methods to easily access for controls
 
   get formControlFilterBy(){
-    return this.FormGroupFilter.get('formControlFilterBy');
+    return this.FormGroupFilter.controls["formControlFilterBy"];
   }
 
   get formControlFilterString(){
-    return this.FormGroupFilter.get('formControlFilterString');
+    return this.FormGroupFilter.controls["formControlFilterString"];
   }
 
   get formControlFilterFrom(){
-    return this.FormGroupFilter.get('formControlFilterFrom');
+    return this.FormGroupFilter.controls["formControlFilterFrom"];
   }
 
   get formControlFilterTo(){
-    return this.FormGroupFilter.get('formControlFilterTo');
+    return this.FormGroupFilter.controls["formControlFilterTo"];
   }
 
   get formControlFilterSelect(){
-    return this.FormGroupFilter.get('formControlFilterSelect');
+    return this.FormGroupFilter.controls["formControlFilterSelect"];
   }
 
-  resetFilter() {}
+  resetFilter(all: boolean) {
+
+  }
 
   ngOnInit(): void {}
 }

@@ -82,11 +82,21 @@
           <div class="col-xs">
             <mat-form-field class="width-inputs" appearance="fill">
               <mat-label>Filtrar por</mat-label>
-              <mat-select matNativeControl #filterBy formControlName="formControlFilterBy" required (change)="resetFilter()">
-                <mat-option selected disabled value="">Seleccione una opción</mat-option>
+              <mat-select
+                matNativeControl
+                #filterBy
+                formControlName="formControlFilterBy"
+                required
+                (change)="resetFilter(false)"
+              >
+                <mat-option selected disabled value=""
+                  >Seleccione una opción</mat-option
+                >
                 <mat-option value="name">Nombre</mat-option>
                 <mat-option value="lastname">Apellido</mat-option>
-                <mat-option value="identificationNumber">N° Identificación</mat-option>
+                <mat-option value="identificationNumber"
+                  >N° Identificación</mat-option
+                >
                 <mat-option value="datebirth">Fecha de nacimiento</mat-option>
                 <mat-option value="status">Estado</mat-option>
                 <mat-option value="phone">Celular</mat-option>
@@ -95,10 +105,63 @@
             </mat-form-field>
           </div>
           <div class="col-xs">
-            <!-- [class.cdk-visually-hidden]="formControlFilterBy.value !== 'identificationNumber'" -->
-            <div class="row">
-
+            <!-- Filtro string -->
+            <div
+              class="row"
+              [class.cdk-visually-hidden]="
+                formControlFilterBy.value !== 'name' &&
+                formControlFilterBy.value !== 'lastname' &&
+                formControlFilterBy.value !== 'identificationNumber' &&
+                formControlFilterBy.value !== 'status' &&
+                formControlFilterBy.value !== 'phone'
+              "
+            >
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Filtro</mat-label>
+                <input
+                  type="text"
+                  appUpperCase
+                  matInput
+                  placeholder="ej. nombre"
+                  [required]="
+                    !(
+                      formControlFilterBy.value !== 'name' &&
+                      formControlFilterBy.value !== 'lastname' &&
+                      formControlFilterBy.value !== 'identificationNumber' &&
+                      formControlFilterBy.value !== 'status' &&
+                      formControlFilterBy.value !== 'phone'
+                    )
+                  "
+                  [disabled]="
+                    formControlFilterBy.value !== 'name' &&
+                    formControlFilterBy.value !== 'lastname' &&
+                    formControlFilterBy.value !== 'identificationNumber' &&
+                    formControlFilterBy.value !== 'status' &&
+                    formControlFilterBy.value !== 'phone'
+                  "
+                />
+              </mat-form-field>
             </div>
+          </div>
+
+          <!-- controles para buscar y borrar filtro -->
+          <div class="col-xs-3 col-sm-2 bootom-xs">
+            <button
+              ype="submit"
+              mat-fab aria-label="filtrar"
+              color="primary">
+              <mat-icon>search</mat-icon>
+            </button>
+            <button
+              *ngIf="formControlFilterBy.value"
+              type="reset"
+              mat-icon-button
+              (click)="resetFilter(true)"
+              matTooltip="Borrar filtro"
+              aria-label="Borrar filtro"
+              style="color: #950b02;">
+              <mat-icon>clear</mat-icon>
+            </button>
           </div>
         </div>
       </form>
