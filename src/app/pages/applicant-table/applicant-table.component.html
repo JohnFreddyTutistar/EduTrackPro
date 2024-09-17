@@ -77,10 +77,34 @@
   <div class="row">
     <mat-card class="card-container col-xs-12">
       <!-- Formulario para aplicar filtros a la tabla -->
-      <form></form>
+      <form [formGroup]="FormGroupFilter" (ngSubmit)="appplyFilter()">
+        <div class="row middle-xs">
+          <div class="col-xs">
+            <mat-form-field class="width-inputs" appearance="fill">
+              <mat-label>Filtrar por</mat-label>
+              <mat-select matNativeControl #filterBy formControlName="formControlFilterBy" required (change)="resetFilter()">
+                <mat-option selected disabled value="">Seleccione una opción</mat-option>
+                <mat-option value="name">Nombre</mat-option>
+                <mat-option value="lastname">Apellido</mat-option>
+                <mat-option value="identificationNumber">N° Identificación</mat-option>
+                <mat-option value="datebirth">Fecha de nacimiento</mat-option>
+                <mat-option value="status">Estado</mat-option>
+                <mat-option value="phone">Celular</mat-option>
+                <mat-option value="email">Correo electrónico</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs">
+            <!-- [class.cdk-visually-hidden]="formControlFilterBy.value !== 'identificationNumber'" -->
+            <div class="row">
+
+            </div>
+          </div>
+        </div>
+      </form>
 
       <!-- Busqueda rapida por frontend -->
-      <mat-form-field class="width-inputs">
+      <mat-form-field class="width-inputs" appearance="fill">
         <mat-label>Busqueda rapida por</mat-label>
         <input matInput appUpperCase placeholder="" />
       </mat-form-field>
@@ -88,6 +112,7 @@
       <div class="row spacer">
         <hr class="blue-lilisoft line-separator" />
       </div>
+
       <mat-card-content class="table-with-overflow">
         <table mat-table [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="index">

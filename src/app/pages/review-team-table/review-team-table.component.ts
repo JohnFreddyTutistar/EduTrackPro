@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewTeamTableComponent implements OnInit {
 
+  displayedColumns: string[] = [
+    'index',
+    'profilePhoto',
+    'fullName',
+    'datebirth',
+    'email',
+    'phone',
+    'position',
+    'programName',
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
