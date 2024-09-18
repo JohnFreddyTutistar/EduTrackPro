@@ -280,6 +280,7 @@
             background-color: #1f5ba3;
           "
           ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            ¿Tienes dudas con tu proceso de admisión? <br>
             <b>Contactanos</b>
           </h4>
         </mat-card-title>
@@ -301,40 +302,44 @@
                   </div>
 
                   <div class="col-xs-12 start-xs">
-                    ¡Gracias por tu interes en hacer parte de la <b style="color: #0c3859;">Universidad CESMAG</b>! Estamos aquí para ayudarte con
-                    cualquier duda o pregunta que puedas tener sobre el <span style="color: #9a0805;">proceso de admisión</span>
-                    Antes de que envies tu consulta. por favor ten en cuenta la siguiente información:
+                    ¡Gracias por tu interes en hacer parte de la <b style="color: #0c3859;">Universidad CESMAG</b>!
+                    Estamos aquí para ayudarte concualquier duda o pregunta que puedas tener sobre el proceso de admisión. Antes
+                    de que envies tu consulta. por favor ten en cuenta la siguiente información:
                   </div><br>
 
                   <div class="col-xs-12 start-xs">
                     <ul>
                       <li>
                         <p>
-                          <b style="color: #1f5ba3;">Tiempo de respuesta: </b> Nuestro equipo se esfuerza por responder a todas las consultas
+                          <b>Tiempo de respuesta: </b> Nuestro equipo se esfuerza por responder a todas las consultas
                           dentro de un plazo de <b style="color: #9a0805;">5 días hábiles</b> si no resibes una respuesta
-                          dentro de este periodo, por favor revisa tu carpeta de <b>spam</b> o <b>correo no deseado</b>, ya que nuestra respuesta se
+                          dentro de este periodo, por favor revisa tu carpeta de <b style="color: #1f5ba3;">spam</b> o <b style="color: #1f5ba3;">correo no deseado</b>, ya que nuestra respuesta se
                           podría haberse dirigido allí por error
                         </p>
                       </li>
                       <li>
                         <p>
-                          <b style="color: #1f5ba3;">Información adicional: </b> Para asegurar una respuesta más rápida y precisa, te recomendamos
+                          <b>Información adicional: </b> Para asegurar una respuesta más rápida y precisa, te recomendamos
                           proporcionar toda la información relevante en tu consulta. Esto incluye detalles específicos sobre
-                          tu pregunta o problema, así como cualquier documento o referencia que pueda ser útil.
+                          tu pregunta o problema.
                         </p>
                       </li>
                       <li>
-                        <b style="color: #1f5ba3;">Horarios de Atención:</b>  Nuestro horario de atención es de [horario, por ejemplo, "9:00 a 17:00"] de lunes a viernes.
-                        Cualquier consulta enviada fuera de este horario será atendida el siguiente día hábil.
+                        <p>
+                          <b>Horarios de Atención:</b>  Nuestro horario de atención es de 7:00 a 12:00 y de 14:00 a 18:00 de lunes a viernes.
+                          Cualquier consulta enviada fuera de este horario será atendida el siguiente día hábil.
+                        </p>
                       </li>
                       <li>
-                        <b style="color: #1f5ba3;">Privacidad y Seguridad:</b> Tus datos serán tratados con la máxima confidencialidad y utilizados exclusivamente para responder
-                        a tu consulta. Consulta nuestra política de privacidad para más detalles.
+                        <p>
+                          <b>Privacidad y Seguridad:</b> Tus datos serán tratados con la máxima confidencialidad y utilizados exclusivamente para responder
+                          a tu consulta. Consulta nuestra <a href="https://www.unicesmag.edu.co/reglamentos/" target="_blank"> política de privacidad</a> para más detalles.
+                        </p>
                       </li>
                     </ul>
                   </div>
                   <div class="col-xs-12 start-xs">
-                    <p>Agradecemos tu paciencia y comprensión mientras trabajamos para ofrecerte el mejor soporte posible. Si tienes alguna pregunta urgente, considera visitar nuestra sección de <b>preguntas frecuentes (FAQ)</b> para ver si ya hemos abordado tu consulta.</p>
+                    <p>Agradecemos tu paciencia y comprensión mientras trabajamos para ofrecerte el mejor soporte posible. Si tienes alguna pregunta urgente, considera visitar nuestra sección de <b>preguntas frecuentes</b> para ver si ya hemos abordado tu consulta.</p>
                   </div>
                 </div>
 
@@ -351,7 +356,8 @@
                 </div>
               </mat-step>
 
-              <mat-step [editable]="isEditable">
+              <!-- formulario -->
+              <mat-step [editable]="isEditable" [stepControl]="digitalChanelForm">
                 <ng-template matStepLabel>
                   <span><b>Ingresa tus datos</b></span>
                 </ng-template>
@@ -360,8 +366,8 @@
                     <mat-form-field class="width-inputs" appearance="fill">
                       <mat-label>Tipo de identificación</mat-label>
                       <mat-select formControlName="identificationType">
-                        <mat-option>CC/ Cédula de ciudadanía</mat-option>
-                        <mat-option>TI/ Tarjeta de identidad</mat-option>
+                        <mat-option value="cc">CC/ Cédula de ciudadanía</mat-option>
+                        <mat-option value="ti">TI/ Tarjeta de identidad</mat-option>
                       </mat-select>
                       <mat-error
                         *ngIf="
@@ -485,7 +491,7 @@
                   </div>
                 </div>
                 <div class="row between-xs">
-                  <div class="col-xs">
+                  <div class="col-xs" style="text-align: start;">
                     <button
                       mat-stroked-button
                       matStepperPrevious
@@ -509,12 +515,53 @@
                 </div>
               </mat-step>
 
+              <!-- data confirmation -->
               <mat-step [editable]="isEditable">
                 <ng-template matStepLabel>
                   <span><b>Confirma tus datos</b></span>
                 </ng-template>
+
+                <div class="row center-xs">
+                  <div class="col-xs-12 col-md-4">
+                    <h3 class="principal-title"><b>Número de identificación</b></h3>
+                    <p>{{ digitalChanelForm.controls['identificationNumber'].value }}</p>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <h3 class="principal-title"><b>Nombre</b></h3>
+                    <p>{{ digitalChanelForm.controls['name'].value }}</p>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <h3 class="principal-title"><b>Apellido</b></h3>
+                    <p>{{ digitalChanelForm.controls['lastname'].value }}</p>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <h3 class="principal-title"><b>Email</b></h3>
+                    <p>{{ digitalChanelForm.controls['email'].value }}</p>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <h3 class="principal-title"><b>Telefono fijo o celular</b></h3>
+                    <p>{{ digitalChanelForm.controls['phone'].value }}</p>
+                  </div>
+                  <div class="col-xs-12 col-md-4">
+                    <h3 class="principal-title"><b>Solicitud</b></h3>
+                    <p>{{ digitalChanelForm.controls['request'].value }}</p>
+                  </div>
+                </div>
+
+                <div class="row center-xs">
+                  <div class="col-xs-12">
+                    <button
+                      mat-raised-button
+                      type="submit"
+                      style="background: #0c3859; color: white; margin-top: 15px">
+                      <mat-icon>send</mat-icon>
+                      Enviar solicitud
+                    </button>
+                  </div>
+                </div>
+
                 <div class="row between-xs">
-                  <div class="col-xs">
+                  <div class="col-xs" style="text-align: start;">
                     <button
                       mat-stroked-button
                       matStepperPrevious

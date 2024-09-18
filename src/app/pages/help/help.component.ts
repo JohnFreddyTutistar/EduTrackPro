@@ -1,5 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
@@ -19,7 +19,9 @@ export class HelpComponent implements OnInit {
     this.accordion.forEach(accordion => accordion.closeAll())
   }
 
-  digitalChanelForm!: FormGroup
+  digitalChanelForm!: FormGroup;
+
+  dataFormApplicants!: FormControl;
 
   isEditable = true;
 
@@ -42,7 +44,11 @@ export class HelpComponent implements OnInit {
   }
 
   sendForm(){
+    this.digitalChanelForm.markAllAsTouched();
 
+    if(this.digitalChanelForm.valid){
+      console.log("data", this.digitalChanelForm.value);
+    }
   }
 
 }
