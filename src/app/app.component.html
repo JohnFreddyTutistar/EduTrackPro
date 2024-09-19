@@ -1,30 +1,44 @@
-<header style="position: sticky; top: 0; z-index: 1000;">
-    <nav>
-        <mat-toolbar class="white">
-            <mat-toolbar-row>
-                <button
-                    type="button"
-                    (click)="drawer.toggle()"
-                    style="padding-left: 0; color: #0d4688; font-size: .9em;"
-                    mat-button>
-                    <mat-icon aria-label="Side nav toggle">menu</mat-icon><span class="hide-on-small">Menú</span>
-                </button>
-                <img class="hide-on-small logo-unicesmag" src="assets/images/logotipo_unicesmag.png" alt="logoUnicesmag">
-                <!-- modulo encargado de menu de usuario -->
-                <toolbar-component style="width:inherit; display: flex;"></toolbar-component>
-            </mat-toolbar-row>
-        </mat-toolbar>
-    </nav>
+<header style="position: sticky; top: 0; z-index: 1000">
+  <nav>
+    <mat-toolbar class="white">
+      <mat-toolbar-row>
+        <button
+          type="button"
+          (click)="drawer.toggle()"
+          style="padding-left: 0; color: #0d4688; font-size: 0.9em"
+          mat-button
+        >
+          <mat-icon aria-label="Side nav toggle">menu</mat-icon
+          ><span class="hide-on-small">Menú</span>
+        </button>
+        <img
+          class="hide-on-small logo-unicesmag"
+          src="assets/images/logotipo_unicesmag.png"
+          alt="logoUnicesmag"
+        />
+        <!-- modulo encargado de menu de usuario -->
+        <toolbar-component
+          style="width: inherit; display: flex"
+        ></toolbar-component>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </nav>
 </header>
 <mat-sidenav-container class="sidenav-container">
-    <!-- menu desplegable -->
-    <mat-sidenav style="background-color: #0c3859;" #drawer mode="side" class="sidenav" [opened]="sideNavOpened">
-        <main-navigation (toggleSidenav)="drawer.toggle()"></main-navigation>
-    </mat-sidenav>
-    <!-- contenido -->
-     <mat-sidenav-content style="background-color: #dfe9f0;">
-        <section>
-            <router-outlet></router-outlet>
-        </section>
-     </mat-sidenav-content>
+  <!-- menu desplegable -->
+  <mat-sidenav
+    style="background-color: #0c3859"
+    #drawer
+    mode="side"
+    class="sidenav"
+    [opened]="sideNavOpened"
+  >
+    <main-navigation (toggleSidenav)="drawer.toggle()"></main-navigation>
+  </mat-sidenav>
+  <!-- contenido -->
+  <mat-sidenav-content style="background-color: #dfe9f0">
+    <section>
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-content>
 </mat-sidenav-container>
