@@ -24,7 +24,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -49,6 +50,7 @@ import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatPaginatorModule,
     MatMenuModule,
     MatToolbarModule,
     MatSelectModule,

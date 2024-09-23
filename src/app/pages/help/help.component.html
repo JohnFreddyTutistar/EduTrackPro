@@ -401,6 +401,12 @@
                         "
                         >Este campo es requerido
                       </mat-error>
+                      <mat-error
+                        *ngIf="
+                          digitalChanelForm.controls['identificationNumber'].hasError('maxLength')
+                        ">
+                        Supero la cantidad de caracteres
+                      </mat-error>
                     </mat-form-field>
                   </div>
 
@@ -417,6 +423,12 @@
                           )
                         "
                         >Este campo es requerido
+                      </mat-error>
+                      <mat-error
+                        *ngIf="
+                          digitalChanelForm.controls['email'].hasError('email')
+                        ">
+                        Este correo no es valido
                       </mat-error>
                     </mat-form-field>
                   </div>

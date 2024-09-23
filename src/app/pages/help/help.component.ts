@@ -31,10 +31,11 @@ export class HelpComponent implements OnInit {
     this.digitaForm()
   }
 
+  // validar minimo de caracteres
   digitaForm(){
     this.digitalChanelForm = this.formBuilder.group({
       identificationType: ['', [Validators.required]],
-      identificationNumber: ['', [Validators.required]],
+      identificationNumber: ['', [Validators.required, Validators.maxLength(11)]],
       name: ['', [Validators.required]],
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

@@ -9,8 +9,8 @@
       </p>
     </div>
   </div>
-
-  <!-- Iconos circulares para filtrar -->
+  <!-- Gestiones realizadas columna -> historico de gestiones (modal) -->
+  <!-- Iconos circulares para filtrar  (estados pendientes: desisten)-->
   <div class="row center-xs">
     <div class="col-xs-12 col-md-2">
       <ng-container>
@@ -47,7 +47,7 @@
             <br />
             <span class="salient"> <b>1</b> </span>
             <span class="description"> aplicante(s) </span>
-            <b>En proceso</b>
+            <b>En revisión</b>
           </button>
         </div>
       </ng-container>
@@ -94,10 +94,8 @@
                 >
                 <mat-option value="name">Nombre</mat-option>
                 <mat-option value="lastname">Apellido</mat-option>
-                <mat-option value="identificationNumber"
-                  >N° Identificación</mat-option
-                >
-                <mat-option value="datebirth">Fecha de nacimiento</mat-option>
+                <mat-option value="identificationNumber">N° Identificación</mat-option>
+                <mat-option value="datebirth">Mes de nacimiento</mat-option>
                 <mat-option value="status">Estado</mat-option>
                 <mat-option value="phone">Celular</mat-option>
                 <mat-option value="email">Correo electrónico</mat-option>
@@ -112,7 +110,6 @@
                 formControlFilterBy.value !== 'name' &&
                 formControlFilterBy.value !== 'lastname' &&
                 formControlFilterBy.value !== 'identificationNumber' &&
-                formControlFilterBy.value !== 'status' &&
                 formControlFilterBy.value !== 'phone'
               "
             >
@@ -128,7 +125,6 @@
                       formControlFilterBy.value !== 'name' &&
                       formControlFilterBy.value !== 'lastname' &&
                       formControlFilterBy.value !== 'identificationNumber' &&
-                      formControlFilterBy.value !== 'status' &&
                       formControlFilterBy.value !== 'phone'
                     )
                   "
@@ -136,20 +132,67 @@
                     formControlFilterBy.value !== 'name' &&
                     formControlFilterBy.value !== 'lastname' &&
                     formControlFilterBy.value !== 'identificationNumber' &&
-                    formControlFilterBy.value !== 'status' &&
                     formControlFilterBy.value !== 'phone'
                   "
                 />
               </mat-form-field>
             </div>
+            <!-- Filtro por select -->
+            <div
+              class="row"
+              [class.cdk-visually-hidden]="
+                formControlFilterBy.value !== 'status'
+              "
+            >
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Filtro: </mat-label>
+                <mat-select
+                  matNativeControl
+                  formControlName="formControlFilterSelect"
+                  #filter
+                  [required]="!(formControlFilterBy.value !== 'status')"
+                  [disabled]="formControlFilterBy.value !== 'status'"
+                >
+                  <mat-option
+                    *ngIf="formControlFilterBy.value === 'status'"
+                    value="approved"
+                    >Aprobados</mat-option
+                  >
+                  <mat-option
+                    *ngIf="formControlFilterBy.value === 'status'"
+                    value="reviewed"
+                    >En revisión</mat-option
+                  >
+                  <mat-option
+                    *ngIf="formControlFilterBy.value === 'status'"
+                    value="desist"
+                    >Desistido</mat-option
+                  >
+                  <mat-option
+                    *ngIf="formControlFilterBy.value === 'status'"
+                    value="rejected"
+                    >Rechazado</mat-option
+                  >
+                </mat-select>
+                <mat-error
+                  *ngIf="
+                    formControlFilterSelect.touched &&
+                    (formControlFilterSelect.hasError('required') ||
+                      formControlFilterSelect.value === null)
+                  "
+                >
+                  Seleccione una opción
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row" [class.cds-visually-hidden]="formControlFilterBy.value !== ''">
+
+            </div>
           </div>
 
           <!-- controles para buscar y borrar filtro -->
           <div class="col-xs-3 col-sm-2 bootom-xs">
-            <button
-              ype="submit"
-              mat-fab aria-label="filtrar"
-              color="primary">
+            <button ype="submit" mat-fab aria-label="filtrar" color="primary">
               <mat-icon>search</mat-icon>
             </button>
             <button
@@ -159,7 +202,8 @@
               (click)="resetFilter(true)"
               matTooltip="Borrar filtro"
               aria-label="Borrar filtro"
-              style="color: #950b02;">
+              style="color: #950b02"
+            >
               <mat-icon>clear</mat-icon>
             </button>
           </div>
@@ -338,6 +382,11 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
       </mat-card-content>
     </mat-card>
   </div>

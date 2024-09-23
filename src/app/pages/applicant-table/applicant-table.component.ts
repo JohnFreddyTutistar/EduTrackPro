@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import 'moment/locale/es';
 import * as moment from 'moment';
@@ -6,6 +6,8 @@ import { IApplicant } from 'src/app/interfaces/users';
 import { StatusTableDialogComponent } from 'src/app/search/status-table-dialog/status-table-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-applicant-table',
@@ -13,6 +15,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./applicant-table.component.scss'],
 })
 export class ApplicantTableComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   FormGroupFilter!: FormGroup;;
 
   ELEMENT_DATA: IApplicant[] = [
@@ -65,6 +71,7 @@ export class ApplicantTableComponent implements OnInit {
   }
 
   constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {
+    // this.dataSource = new MatTableDataSource()
     this.appplyFilter()
   }
 
@@ -77,6 +84,14 @@ export class ApplicantTableComponent implements OnInit {
       formControlFilterSelect: [null]
     })
   }
+
+  // applyFilterFast(event: Event){
+  //   const filterValue = (event.target as HTMLInputElement).value
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  //   if(this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
 
   // Getter methods to easily access for controls
 

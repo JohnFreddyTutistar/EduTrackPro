@@ -61,5 +61,5 @@ export interface IApplicant {
   status: string,
   phone: number,
   mobile: number,
-  email: string
+  email: string,
 }
