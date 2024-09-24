@@ -181,9 +181,11 @@ input[type=number] {
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
-    background-color: #dfe9f0;
+    // background-color: #dfe9f0;
+    background-color: #003049;
     &::before {
       background-size: cover;
+      background-image: url("/assets/images/bannerCESMAG4.jpg");
       background-position: right;
       content: "";
       position: absolute;

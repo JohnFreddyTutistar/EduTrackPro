@@ -1,6 +1,6 @@
 <section
     style="
-        background-image: url(../../assets/images/slider_cesmag.jpg);
+        background-image: url(../../assets/images/sliderCESMAG.jpg);
         background-size: cover;
         background-position: center top;
         text-align: center;
@@ -62,6 +62,7 @@
                                 <button
                                   type="submit"
                                   mat-fab class="search-button"
+                                  [disabled]="formSearchApplicantByIdentification.invalid"
                                   (click)="dialogStatusTable()">
                                     <mat-icon>search</mat-icon>
                                 </button>
