@@ -25,7 +25,7 @@
             "
           >
             <br />
-            <span class="salient"><b>1</b></span>
+            <span class="salient"><b>6</b></span>
             <span class="description"> aplicante(s) </span>
             <b>Aprobados</b>
           </button>
@@ -45,7 +45,7 @@
             "
           >
             <br />
-            <span class="salient"> <b>1</b> </span>
+            <span class="salient"> <b>2</b> </span>
             <span class="description"> aplicante(s) </span>
             <b>En revisión</b>
           </button>
@@ -61,11 +61,11 @@
               border: 3px solid;
               padding: 10px;
               cursor: pointer;
-              color: #640c0c;
+              color: #008dd5;
             "
           >
             <br />
-            <span class="salient"> <b>0</b> </span>
+            <span class="salient"> <b>1</b> </span>
             <span class="description"> aplicante(s) </span>
             <b>Desistidos</b>
           </button>
@@ -85,7 +85,7 @@
             "
           >
             <br />
-            <span class="salient"> <b>0</b> </span>
+            <span class="salient"> <b>1</b> </span>
             <span class="description"> aplicante(s) </span>
             <b>Rechazados</b>
           </button>
@@ -291,6 +291,7 @@
                 [ngClass]="{
                   statusPending: element.status.toUpperCase() === 'EN REVISIÓN',
                   statusOk: element.status.toUpperCase() === 'APROBADO',
+                  statusNotPresented: element.status.toUpperCase() === 'DESISTIDO',
                   statusRejected: element.status.toUpperCase() === 'RECHAZADO'
                 }"
               >
