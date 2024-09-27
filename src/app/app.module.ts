@@ -30,8 +30,9 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HelpComponent } from './pages/help/help.component';
-import { ApplicantTableComponent } from './pages/applicant-table/applicant-table.component';
+import { ApplicantTableComponent } from './pages/applicants/applicant-table/applicant-table.component';
 import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-table.component';
+import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/dialog-applicant.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-
     HelpComponent,
     ApplicantTableComponent,
     ReviewTeamTableComponent,
+    DialogApplicantComponent,
   ],
   imports: [
     BrowserModule,

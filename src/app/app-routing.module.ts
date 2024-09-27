@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './search/search.component';
 import { HelpComponent } from './pages/help/help.component';
-import { ApplicantTableComponent } from './pages/applicant-table/applicant-table.component';
+import { ApplicantTableComponent } from './pages/applicants/applicant-table/applicant-table.component';
 import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-table.component';
+import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/dialog-applicant.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'help',
     component: HelpComponent
+  },
+  {
+    path: 'update',
+    component: DialogApplicantComponent
   },
 
   {

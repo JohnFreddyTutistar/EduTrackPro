@@ -97,7 +97,7 @@
   <div class="row">
     <mat-card class="card-container col-xs-12">
       <!-- Formulario para aplicar filtros a la tabla -->
-      <form [formGroup]="FormGroupFilter" (ngSubmit)="appplyFilter()">
+      <form [formGroup]="FormGroupFilter" (ngSubmit)="filterForm()">
         <div class="row middle-xs">
           <div class="col-xs">
             <mat-form-field class="width-inputs" appearance="fill">
@@ -209,7 +209,7 @@
 
           <!-- controles para buscar y borrar filtro -->
           <div class="col-xs-3 col-sm-2 bootom-xs">
-            <button ype="submit" mat-fab aria-label="filtrar" color="primary">
+            <button type="submit" mat-fab aria-label="filtrar" color="primary">
               <mat-icon>search</mat-icon>
             </button>
             <button

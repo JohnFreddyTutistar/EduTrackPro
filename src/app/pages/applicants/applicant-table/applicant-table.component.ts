@@ -160,10 +160,10 @@ export class ApplicantTableComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {
     // this.dataSource = new MatTableDataSource()
-    this.appplyFilter()
+    this.filterForm()
   }
 
-  appplyFilter() {
+  filterForm() {
     this.FormGroupFilter = this.formBuilder.group({
       formControlFilterBy: [null],
       formControlFilterString: [null],
@@ -207,5 +207,18 @@ export class ApplicantTableComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.FormGroupFilter.valueChanges.subscribe(form => {
+      this.applyFilters(form)
+    })
+  }
+
+  applyFilters(form: any){
+    let filteredData = this.ELEMENT_DATA;
+
+    // Aplicar filtros a los datos originales
+    if(form.fullname) {
+      filteredData = filteredData.filter(fullname => fullname.fullName.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
+    }
+  }
 }
