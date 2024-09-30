@@ -1,6 +1,7 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-help',
