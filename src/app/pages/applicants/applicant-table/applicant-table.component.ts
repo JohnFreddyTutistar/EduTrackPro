@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { DialogApplicantComponent } from '../dialog-applicant/dialog-applicant.component';
 
 @Component({
   selector: 'app-applicant-table',
@@ -151,6 +152,15 @@ export class ApplicantTableComponent implements OnInit {
 
   dialogStatusTable() {
     this.dialog.open(StatusTableDialogComponent, {
+      maxWidth: '500vw',
+      maxHeight: '90vh',
+      width: '70%',
+      data: {},
+    });
+  }
+
+  dialogUpdateUser() {
+    this.dialog.open(DialogApplicantComponent, {
       maxWidth: '500vw',
       maxHeight: '90vh',
       width: '70%',

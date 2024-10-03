@@ -209,7 +209,7 @@
 
           <!-- controles para buscar y borrar filtro -->
           <div class="col-xs-3 col-sm-2 bootom-xs">
-            <button type="submit" mat-fab aria-label="filtrar" color="primary">
+            <button type="submit" mat-fab aria-label="filtrar" style="background-color: #0c3859;">
               <mat-icon>search</mat-icon>
             </button>
             <button
@@ -389,7 +389,7 @@
                   <button mat-menu-item (click)="dialogStatusTable()">
                     <mat-icon>visibility</mat-icon> Ver proceso
                   </button>
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="dialogUpdateUser()">
                     <mat-icon>edit</mat-icon> Editar
                   </button>
                 </ng-container>
