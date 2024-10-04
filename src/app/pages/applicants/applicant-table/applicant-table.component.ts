@@ -168,6 +168,10 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
+  checkHistory(){
+
+  }
+
   constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {
     // this.dataSource = new MatTableDataSource()
     this.filterForm()

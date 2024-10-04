@@ -33,6 +33,7 @@ import { HelpComponent } from './pages/help/help.component';
 import { ApplicantTableComponent } from './pages/applicants/applicant-table/applicant-table.component';
 import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-table.component';
 import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/dialog-applicant.component';
+import { DialogCallHistoryComponent } from './pages/applicants/dialog-call-history/dialog-call-history.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/di
     ApplicantTableComponent,
     ReviewTeamTableComponent,
     DialogApplicantComponent,
+    DialogCallHistoryComponent,
   ],
   imports: [
     BrowserModule,
