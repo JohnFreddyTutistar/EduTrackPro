@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-review-team-table',
@@ -7,20 +9,91 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewTeamTableComponent implements OnInit {
 
+  ELEMENT_DATA = [
+    {
+      index: 1,
+      fullname: 'John Freddy Tutistar Calvache',
+      datebirth: moment().format('DD/MM/YYYY'),
+      email: 'johnfre.157@gmail.com',
+      phone: 3105124961,
+      faculty: 'Ingeniería',
+      programName: 'Ingeniería de Sistemas'
+    }
+  ];
+
+  dataSource = this.ELEMENT_DATA;
+
   displayedColumns: string[] = [
     'index',
-    'profilePhoto',
-    'fullName',
+    'fullname',
     'datebirth',
     'email',
     'phone',
-    'position',
+    'faculty',
     'programName',
+    'settings'
   ]
 
-  constructor() { }
+  FormGroupFilter! : FormGroup
+
+  resetFilter(all: boolean){
+
+  }
+
+  showCalendar(){};
+
+  editUser(){
+
+  }
+
+  constructor(public formBuilder: FormBuilder) {
+    this.filterForm();
+
+   }
+
+  filterForm() {
+    this.FormGroupFilter = this.formBuilder.group({
+      formControlFilterBy: [null],
+      formControlFilterString: [null],
+      formControlFilterFrom: [null],
+      formControlFilterTo: [null],
+      formControlFilterSelect: [null]
+    })
+  }
+
+  get formControlFilterBy(){
+    return this.FormGroupFilter.controls["formControlFilterBy"];
+  }
+
+  get formControlFilterString(){
+    return this.FormGroupFilter.controls["formControlFilterString"];
+  }
+
+  get formControlFilterFrom(){
+    return this.FormGroupFilter.controls["formControlFilterFrom"];
+  }
+
+  get formControlFilterTo(){
+    return this.FormGroupFilter.controls["formControlFilterTo"];
+  }
+
+  get formControlFilterSelect(){
+    return this.FormGroupFilter.controls["formControlFilterSelect"];
+  }
 
   ngOnInit(): void {
+    this.FormGroupFilter.valueChanges.subscribe(form => {
+      this.applyFilters(form)
+    })
+  }
+
+  applyFilters(form: any){
+    let filteredData = this.ELEMENT_DATA;
+
+    // Aplicar filtros a los datos originales
+    if(form.fullname) {
+      filteredData = filteredData.filter(fullname => fullname.fullname.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
+    }
   }
 
 }

@@ -7,6 +7,7 @@ import { ApplicantTableComponent } from './pages/applicants/applicant-table/appl
 import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-table.component';
 import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/dialog-applicant.component';
 import { DialogCallHistoryComponent } from './pages/applicants/dialog-call-history/dialog-call-history.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -35,12 +36,16 @@ const routes: Routes = [
     component: HelpComponent
   },
   {
-    path: 'update',
+    path: 'update-applicant',
     component: DialogApplicantComponent
   },
   {
     path: 'history',
     component: DialogCallHistoryComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   },
 
   {

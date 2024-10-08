@@ -1,8 +1,193 @@
 <div class="container">
-    <div class="row center-xs">
-        <div class="col-xs-12 col-md-8">
-            <h1 class="principal-title"><b>Equipo de revisión</b></h1>
-            <hr class="line-separator">
-        </div>
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-8">
+      <h1 class="principal-title"><b>Equipo de revisión</b></h1>
+      <hr class="line-separator" />
+      <p style="max-width: 800px; margin: auto">
+        A continuación encuentra al equipo de revisión de la
+        <b style="color: #910e04">Unicesmag</b> registrados por el administrador
+      </p>
+      <br />
+      <button mat-raised-button style="background-color: #0c3859; color: #fff" [routerLink]="['/auth/register']">
+        <mat-icon>add_circle</mat-icon> Agregar empleado al equipo de revisión
+      </button>
     </div>
+  </div>
+  <div class="row">
+    <mat-card class="card-container col-xs-12">
+      <!-- Formulario para aplicar filtros a la tabla -->
+      <form [formGroup]="FormGroupFilter" (ngSubmit)="filterForm()">
+        <div class="row middle-xs">
+          <div class="col-xs">
+            <mat-form-field class="width-inputs" appearance="fill">
+              <mat-label>Filtrar por</mat-label>
+              <mat-select
+                matNativeControl
+                #filter
+                required
+                (change)="resetFilter(false)"
+              >
+                <mat-option selected disabled value=""
+                  >Seleccione una opción</mat-option
+                >
+                <mat-option value="name">Nombre</mat-option>
+                <mat-option value="lastname">Apellido</mat-option>
+                <mat-option value="datebirth">Mes de nacimiento</mat-option>
+                <mat-option value="email">Email</mat-option>
+                <mat-option value="faculty">Teléfono</mat-option>
+                <mat-option value="programName">Teléfono</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs">
+            <!-- Filtro por string -->
+            <div
+              class="row"
+              [class.cdk-visually-hidden]="
+                formControlFilterBy.value !== 'name' &&
+                formControlFilterBy.value !== 'lastname' &&
+                formControlFilterBy.value !== 'identificationNumber' &&
+                formControlFilterBy.value !== 'phone'
+              "
+            >
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Filtro</mat-label>
+                <input
+                  type="text"
+                  appUpperCase
+                  matInput
+                  placeholder="ej. nombre"
+                  [required]="
+                    !(
+                      formControlFilterBy.value !== 'name' &&
+                      formControlFilterBy.value !== 'lastname' &&
+                      formControlFilterBy.value !== 'identificationNumber' &&
+                      formControlFilterBy.value !== 'phone'
+                    )
+                  "
+                  [disabled]="
+                    formControlFilterBy.value !== 'name' &&
+                    formControlFilterBy.value !== 'lastname' &&
+                    formControlFilterBy.value !== 'identificationNumber' &&
+                    formControlFilterBy.value !== 'phone'
+                  "
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- controles para buscar y borrar filtro -->
+          <div class="col-xs-3 col-sm-2 bootom-xs">
+            <button
+              type="submit"
+              mat-fab
+              aria-label="filtrar"
+              style="background-color: #0c3859"
+            >
+              <mat-icon>search</mat-icon>
+            </button>
+            <button
+              *ngIf="formControlFilterBy.value"
+              type="reset"
+              mat-icon-button
+              (click)="resetFilter(true)"
+              matTooltip="Borrar filtro"
+              aria-label="Borrar filtro"
+              style="color: #950b02"
+            >
+              <mat-icon>clear</mat-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Busqueda rapida por frontend -->
+      <mat-form-field class="width-inputs" appearance="fill">
+        <mat-label>Busqueda rapida por</mat-label>
+        <input matInput appUpperCase placeholder="" />
+      </mat-form-field>
+
+      <div class="row spacer">
+        <hr class="blue-lilisoft line-separator" />
+      </div>
+
+      <mat-card-content class="table-with-overflow">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="fullname">
+            <th mat-header-cell *matHeaderCellDef>Nombres y apellidos</th>
+            <td mat-cell *matCellDef="let element">{{ element.fullname }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="datebirth">
+            <th mat-header-cell *matHeaderCellDef>Fecha de nacimiento</th>
+            <td mat-cell *matCellDef="let element">{{ element.datebirth }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+            <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="faculty">
+            <th mat-header-cell *matHeaderCellDef>Facultad</th>
+            <td mat-cell *matCellDef="let element">{{ element.faculty }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="programName">
+            <th mat-header-cell *matHeaderCellDef>Nombre del programa</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.programName }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="settings">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-icon>settings</mat-icon>
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                matTooltip="Menú de acciones"
+                matTooltipShowDelay="100"
+                [matMenuTriggerFor]="agreementsMenu"
+                aria-label="Menú de acciones"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #agreementsMenu="matMenu" xPosition="before">
+                <ng-container>
+                  <button mat-menu-item (click)="showCalendar()">
+                    <mat-icon>calendar_month</mat-icon>
+                    Calendario
+                  </button>
+                  <button mat-menu-item (click)="editUser()">
+                    <mat-icon>edit</mat-icon>
+                    Editar usuario
+                  </button>
+                </ng-container>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+        ></mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
