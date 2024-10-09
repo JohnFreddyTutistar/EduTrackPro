@@ -59,6 +59,7 @@ export interface IApplicant {
   identificationNumber: number,
   birthdate: string,
   status: string,
+  result: string,
   phone: number,
   mobile: number,
   email: string,

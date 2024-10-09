@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogApplicantComponent } from '../dialog-applicant/dialog-applicant.component';
+import { RegisterCallComponent } from '../register-call/register-call.component';
+import { DialogCallHistoryComponent } from '../dialog-call-history/dialog-call-history.component';
 
 @Component({
   selector: 'app-applicant-table',
@@ -29,6 +31,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'John Freddy Tutistar Calvache',
       identificationNumber: 1085310787,
       birthdate: moment().format('DD/MM/YYYY'),
+      result: 'No contactado',
       status: 'EN REVISIÓN',
       phone: 3105124961,
       mobile: 3105124961,
@@ -40,6 +43,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Eliana Moncayo Pistala',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -51,6 +55,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Esteban Enriquez Mora',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -62,6 +67,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Karen Cuasapud Pantoja',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -73,6 +79,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Camilo Andres Parra',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'DESISTIDO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -84,6 +91,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'William Geovanny Imbacuan Tutistar',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -95,6 +103,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Emanuel Alejandro Moncayo',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'EN REVISIÓN',
       phone: 3105124961,
       mobile: 3105124961,
@@ -106,6 +115,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Juan Javier Casanova Quiroz',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -117,6 +127,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Yeimy Carolina Guevara',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'RECHAZADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -128,6 +139,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'Eliana Moncayo Pistala',
       identificationNumber: 1085308393,
       birthdate: moment().format('DD/MM/yyyy'),
+      result: 'No contactado',
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
@@ -140,7 +152,8 @@ export class ApplicantTableComponent implements OnInit {
     'profilePhoto',
     'fullName',
     'identificationNumber',
-    'birthdate',
+    // 'birthdate',
+    'result',
     'status',
     'phone',
     'email',
@@ -168,8 +181,22 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  checkHistory(){
+  registerCall(){
+    this.dialog.open(RegisterCallComponent, {
+      maxWidth: '500vw',
+      maxHeight: '90vh',
+      width: '50%',
+      data: {},
+    })
+  }
 
+  checkHistory(){
+    this.dialog.open(DialogCallHistoryComponent, {
+      maxWidth: '500vw',
+      maxHeight: '90vh',
+      width: '70%',
+      data: {},
+    })
   }
 
   constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {

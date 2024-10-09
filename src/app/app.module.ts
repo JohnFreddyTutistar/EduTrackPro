@@ -35,6 +35,7 @@ import { ReviewTeamTableComponent } from './pages/review-team-table/review-team-
 import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/dialog-applicant.component';
 import { DialogCallHistoryComponent } from './pages/applicants/dialog-call-history/dialog-call-history.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { RegisterCallComponent } from './pages/applicants/register-call/register-call.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     DialogApplicantComponent,
     DialogCallHistoryComponent,
     DashboardComponent,
+    RegisterCallComponent,
   ],
   imports: [
     BrowserModule,

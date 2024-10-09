@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row center-xs">
+    <div class="col-xs-12">
+      <h1 class="principal-title">Registro de llamada</h1>
+      <hr class="line-separator" />
+    </div>
+  </div>
+  <form [formGroup]="formGroupSend" autocomplete="off" (ngSubmit)="sendData()">
+    <div class="row center-xs">
+      <div class="col-xs-12 col-md-6">
+        <div class="row center-xs">
+          <div class="col-xs-11">
+            <mat-form-field class="width-inputs" appearance="fill">
+              <mat-label>Resultado</mat-label>
+              <mat-select formControlName="result">
+                <mat-option value="contact">Contactado</mat-option>
+                <mat-option value="notcontact">No se pudo contactar</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-11">
+            <mat-form-field class="width-inputs" appearance="fill">
+              <mat-label>Requiere seguimiento</mat-label>
+              <mat-select formControlName="tracing">
+                <mat-option value="si">Si</mat-option>
+                <mat-option value="no">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-11">
+            <mat-form-field class="width-inputs" appearance="fill">
+              <mat-label>Observación</mat-label>
+              <input type="text" matInput formControlName="observation" placeholder="opcional"/>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-11">
+            <mat-form-field class="width-inputs" appearance="fill">
+              <mat-label>Duración</mat-label>
+              <input type="number" matInput formControlName="duration"/>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6 center-xs">
+        <img src="assets/images/logo-call.png" alt="" width="280" />
+      </div>
+      <div class="col-xs-12">
+        <button mat-raised-button color="primary">
+          <mat-icon>save</mat-icon> Guardar registro
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
