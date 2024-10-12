@@ -31,7 +31,7 @@ export class ApplicantTableComponent implements OnInit {
       fullName: 'John Freddy Tutistar Calvache',
       identificationNumber: 1085310787,
       birthdate: moment().format('DD/MM/YYYY'),
-      result: 'No contactado',
+      result: 'Contactado',
       status: 'EN REVISIÓN',
       phone: 3105124961,
       mobile: 3105124961,

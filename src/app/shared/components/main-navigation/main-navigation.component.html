@@ -1,38 +1,9 @@
 <mat-selection-list [multiple]="false" style="width: 300px">
 
-  <mat-list-option style="color: #fff;">
-    <a routerLink="applicants" class="navItem">
-        <mat-icon>groups</mat-icon>
-        <span style="margin-left: 10px;">Lista de aspirantes</span>
-    </a>
-  </mat-list-option>
-
-  <mat-list-option style="color: white;">
-    <a routerLink="reviewerTeam" class="navItem">
-        <mat-icon>support_agent</mat-icon>
-        <span style="margin-left: 10px;">Equipo de revisión</span>
-    </a>
-  </mat-list-option>
-
-  <mat-list-option style="color: white;">
-    <a routerLink="dashboard" class="navItem">
-        <mat-icon>bar_chart</mat-icon>
-        <span style="margin-left: 10px;">Dashboard</span>
-    </a>
-  </mat-list-option>
-
-  <mat-list-option style="color: white;">
-    <a routerLink="search" class="navItem">
-        <mat-icon>content_paste_search</mat-icon>
-        <span style="margin-left: 10px;">Estado del aspirante</span>
-    </a>
-  </mat-list-option>
-
-  <mat-list-option style="color: white;">
-    <a routerLink="help" class="navItem">
-        <mat-icon>help</mat-icon>
-        <span style="margin-left: 10px;">Ayuda</span>
-
+  <mat-list-option style="color: #fff;" *ngFor="let item of reactiveMenu">
+    <a [routerLink]="[ item.route ]" class="navItem">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span style="margin-left: 10px;">{{ item.title }}</span>
     </a>
   </mat-list-option>
 

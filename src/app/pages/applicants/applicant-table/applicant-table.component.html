@@ -279,7 +279,7 @@
           <ng-container matColumnDef="result">
             <th mat-header-cell *matHeaderCellDef>Resultado</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.result }}
+              {{ element.result }} <mat-icon *ngIf="element.result === 'Contactado'" style="color: #52be80;">check_small</mat-icon>
             </td>
           </ng-container>
 
