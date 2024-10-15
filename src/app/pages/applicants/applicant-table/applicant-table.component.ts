@@ -59,7 +59,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'esteban@gmail.com',
     },
     {
       index: 4,
@@ -71,7 +71,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'karen@gmail.com',
     },
     {
       index: 5,
@@ -83,7 +83,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'DESISTIDO',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'camilo@gmail.com',
     },
     {
       index: 6,
@@ -95,7 +95,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'william@gmail.com',
     },
     {
       index: 7,
@@ -107,7 +107,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'EN REVISIÓN',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'emanuel12@gmail.com',
     },
     {
       index: 8,
@@ -119,7 +119,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'APROBADO',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'juan@gmail.com',
     },
     {
       index: 9,
@@ -131,7 +131,7 @@ export class ApplicantTableComponent implements OnInit {
       status: 'RECHAZADO',
       phone: 3105124961,
       mobile: 3105124961,
-      email: 'eliana@gmail.com',
+      email: 'yeimy@gmail.com',
     },
     {
       index: 10,

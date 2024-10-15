@@ -57,7 +57,7 @@ export interface IApplicant {
   profilePhoto: string,
   fullName: string,
   identificationNumber: number,
-  birthdate: string,
+  birthdate?: string,
   status: string,
   result: string,
   phone: number,

@@ -13,13 +13,15 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthRoutes } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { ReviewTeamTableComponent } from '../pages/review-team-table/review-team-table.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    // ReviewTeamTableComponent
   ],
   imports: [
     CommonModule,

@@ -82,6 +82,7 @@ import { CalendarComponent } from './pages/review-team-table/calendar/calendar.c
   ],
   exports: [
     // TimelineHComponent
+    ReviewTeamTableComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

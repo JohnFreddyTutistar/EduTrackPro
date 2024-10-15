@@ -1,1 +1,77 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-6">
+      <h1 class="principal-title">Analiticas</h1>
+      <hr class="line-separator" />
+      <p class="center-align" style="max-width: 800px; margin: auto">
+        Aquí encontrará algunas cifras de
+        <b style="color: #2c3967"
+          >EduTrack<span style="color: #900e02">PRO</span></b
+        >.
+      </p>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <ng-container>
+      <mat-card
+        class="card-container col-xs-12 col-md-8 col-lg-6 col-md-offset-2"
+        style="transform: scale(0.97)"
+      >
+        <mat-card-title>
+          <h2 class="center-align">Aspirantes por tipo de estado</h2>
+          <hr class="line-separator" />
+        </mat-card-title>
+        <mat-card-content>
+          <div class="row center-xs">
+            <div class="col-xs-12 col-md-10 col-lg-10 center-align">
+              <div
+                class="container"
+                style="
+                  border: 1px solid rgba(0, 0, 0, 0.1);
+                  border-radius: 5px;
+                  width: 100%;
+                  padding: 0;
+                "
+              >
+                <div
+                  class="row"
+                  style="padding: 0 !important; margin: 0 !important"
+                >
+                  <div
+                    *ngFor="let item of reactiveAnalitycs"
+                    class="col-xs"
+                    style="padding: 0; border: 1px solid rgb(224, 224, 224)"
+                    >
+                    <div
+                      style="
+                        background-color: rgba(224, 224, 224, 0.7);
+                        padding: 10px 3px;
+                      "
+                    >
+                      {{ item.title }}
+                    </div>
+                    <div
+                      style="
+                        padding: 10px 0;
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                      "
+                    >
+                      {{ item.amount }}
+                    </div>
+                  </div>
+                  
+                </div>
+            </div>
+            <div class="row spacer">
+                <canvas id="Mychart">
+                    {{ chart }}
+                </canvas>
+            </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
