@@ -114,7 +114,9 @@
                 >
                 <mat-option value="name">Nombre</mat-option>
                 <mat-option value="lastname">Apellido</mat-option>
-                <mat-option value="identificationNumber">N° Identificación</mat-option>
+                <mat-option value="identificationNumber"
+                  >N° Identificación</mat-option
+                >
                 <mat-option value="datebirth">Mes de nacimiento</mat-option>
                 <mat-option value="status">Estado</mat-option>
                 <mat-option value="phone">Celular</mat-option>
@@ -209,7 +211,12 @@
 
           <!-- controles para buscar y borrar filtro -->
           <div class="col-xs-3 col-sm-2 bootom-xs">
-            <button type="submit" mat-fab aria-label="filtrar" style="background-color: #0c3859;">
+            <button
+              type="submit"
+              mat-fab
+              aria-label="filtrar"
+              style="background-color: #0c3859"
+            >
               <mat-icon>search</mat-icon>
             </button>
             <button
@@ -276,19 +283,6 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="result">
-            <th mat-header-cell *matHeaderCellDef>Resultado</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.result }} 
-              <mat-icon *ngIf="element.result === 'Contactado'" style="color: #52be80;">
-                check_small
-              </mat-icon>
-              <mat-icon *ngIf="element.result === 'No contactado'" style="color: #ffa621;">
-                warning
-              </mat-icon>
-            </td>
-          </ng-container>
-
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef>Estado</th>
             <td mat-cell *matCellDef="let element">
@@ -297,7 +291,8 @@
                 [ngClass]="{
                   statusPending: element.status.toUpperCase() === 'EN REVISIÓN',
                   statusOk: element.status.toUpperCase() === 'APROBADO',
-                  statusNotPresented: element.status.toUpperCase() === 'DESISTIDO',
+                  statusNotPresented:
+                    element.status.toUpperCase() === 'DESISTIDO',
                   statusRejected: element.status.toUpperCase() === 'RECHAZADO'
                 }"
               >
@@ -371,6 +366,60 @@
                   </a>
                 </p>
               </ng-container>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="result">
+            <th mat-header-cell *matHeaderCellDef>Resultado</th>
+            <td mat-cell *matCellDef="let element">
+              <!-- {{ element.result }} 
+              <mat-icon *ngIf="element.result === 'Contactado'" style="color: #0990d6;">
+                done_all
+              </mat-icon>
+              <mat-icon *ngIf="element.result === 'No contactado'" style="color: #ec9719;">
+                lock
+              </mat-icon> -->
+              <span
+                *ngIf="element.result === 'Contactado'"
+                style="
+                  border-radius: 50%;
+                  margin: 5px;
+                  width: 30px;
+                  height: 30px;
+                  display: flex;
+                  opacity: 0.8;
+                  align-items: center;
+                  background-color: #008dd5;
+                "
+              >
+                <mat-icon
+                  matBadge="3" matBadgeSize="small" matBadgeColor="accent"
+                  style="color: #fff; margin: auto"
+                  matTooltip="contactado"
+                >
+                  done_all</mat-icon
+                >
+              </span>
+              <span
+                *ngIf="element.result === 'No contactado'"
+                style="
+                  border-radius: 50%;
+                  margin: 5px;
+                  width: 30px;
+                  height: 30px;
+                  display: flex;
+                  opacity: 0.8;
+                  align-items: center;
+                  background-color: #d90000;
+                "
+              >
+                <mat-icon
+                  style="color: #fff; margin: auto"
+                  matTooltip="no contactado"
+                >
+                  lock</mat-icon
+                >
+              </span>
             </td>
           </ng-container>
 

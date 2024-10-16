@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -60,6 +61,7 @@ import { CalendarComponent } from './pages/review-team-table/calendar/calendar.c
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatBadgeModule,
     MatPaginatorModule,
     MatMenuModule,
     MatToolbarModule,

@@ -153,10 +153,10 @@ export class ApplicantTableComponent implements OnInit {
     'fullName',
     'identificationNumber',
     // 'birthdate',
-    'result',
     'status',
     'phone',
     'email',
+    'result',
     'settings',
   ];
 

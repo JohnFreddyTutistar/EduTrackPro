@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="row center-xs">
-    <div class="col-xs-11">
+    <div class="col-xs-12">
       <table class="table table-bordered center-xs">
         <thead>
           <tr class="table-secondary">
@@ -21,15 +21,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>John Freddy Tutistar Calvache</td>
-            <td>9/10/2024 10:25</td>
-            <td>5 min</td>
-            <td>Contactado</td>
-            <td>Llamar de nuevo</td>
-            <td>Jorge Rivera</td>
-            <td>No</td>
+          <tr *ngFor="let item of data">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.duration }}</td>
+            <td>
+              {{ item.result }} 
+              <mat-icon *ngIf="item.result === 'contactado'" style="color: #008dd5;">done_all</mat-icon> 
+              <mat-icon *ngIf="item.result === 'no contestó'" style="color: #d90000;">close</mat-icon> 
+            </td>
+            <td>{{ item.observation }}</td>
+            <td>{{ item.review }}</td>
+            <td>{{ item.tracing }}</td>
           </tr>
         </tbody>
       </table>

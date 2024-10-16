@@ -1,49 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, ChartType, registerables } from 'chart.js';
 
-Chart.register(...registerables)
-
 interface analitycs {
   title: string;
-  amount: number
+  amount: number;
 }
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
   public reactiveAnalitycs: analitycs[] = [
     {
       title: 'Total',
-      amount: 10
+      amount: 10,
     },
     {
       title: 'Aprobados',
-      amount: 6
+      amount: 6,
     },
     {
       title: 'En revisión',
-      amount: 1
+      amount: 1,
     },
     {
       title: 'Desistidos',
-      amount: 1
-    }
-    
-  ]
-  public titleLabels = ['Total', 'Aprobados', 'En revisión', 'Desistidos']
+      amount: 1,
+    },
+  ];
+  public titleLabels = ['Total', 'Aprobados', 'En revisión', 'Desistidos'];
 
   public config: any = {
     type: 'bar' as ChartType,
     data: {
-      labels: this.titleLabels,
+      labels: ['Total', 'Aprobados', 'En revisión', 'Desistidos'],
       dataSet: [
         {
-          data: [10, 6, 1, 1],
           label: 'aspirantes',
+          data: [10, 6, 1, 1],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
@@ -56,15 +52,15 @@ export class DashboardComponent implements OnInit {
             'rgb(255, 205, 86)',
             'rgb(75, 192, 192)',
           ],
-          borderWidth: 1
-        }
-      ]
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
-      aspectRatio: 1
-    }
-  }
-  
+      aspectRatio: 1,
+    },
+  };
+
   // charts = [
   //   {
   //     title: '',
@@ -98,15 +94,11 @@ export class DashboardComponent implements OnInit {
   //   }
   // ]
 
-  constructor() {
+  constructor() {}
 
-  }
+  chart: any;
 
-  public chart!: Chart;
-
-  
   ngOnInit(): void {
-    this.chart = new Chart("Mychart", this.config)
+    this.chart = new Chart('Mychart', this.config);
   }
-
 }
