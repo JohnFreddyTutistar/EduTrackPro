@@ -7,12 +7,14 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { ToolbarComponent } from './toolbar.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     ToolbarComponent
   ],
   imports: [
+    CommonModule,
     MatButtonModule,
     RouterModule,
     MatIconModule,

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from 'src/app/auth/login/login.component';
+import { SharedService } from 'src/app/services/shared.service';
 
 interface MenuItem {
   title: string;
   icon: string;
   route: string;
+  rol: string[];
 }
 
 @Component({
@@ -13,37 +16,61 @@ interface MenuItem {
 })
 export class MainNavigationComponent implements OnInit {
 
+  userLoginOn: boolean = false;
+  userData?: any; 
+
   public reactiveMenu: MenuItem[] = [
     {
       title: 'Lista de aspirantes',
       icon: 'groups',
-      route: 'applicants'
+      route: 'applicants',
+      rol: ['reviwer', 'guest']
     },
     {
       title: 'Equipo de revisión',
       icon: 'support_agent',
-      route: 'reviewerTeam'
+      route: 'reviewerTeam',
+      rol: ['reviwer', 'guest']
     },
     {
       title: 'Dashboard',
       icon: 'bar_chart',
-      route: 'dashboard'
+      route: 'dashboard',
+      rol: ['reviwer', 'guest']
     },
     {
       title: 'Estado del aspirante',
       icon: 'content_paste_search',
-      route: 'search'
+      route: 'search',
+      rol: ['guest']
     },
     {
       title: 'Ayuda',
       icon: 'help',
-      route: 'help'
+      route: 'help',
+      rol: ['guest']
     },
   ]
 
-  constructor() { }
+  constructor(public sharedService: SharedService) { }
 
   ngOnInit(): void {
+    this.sharedService.currentUserLoginOn.subscribe(
+      {
+        next:(userLoginOn) => {
+          this.userLoginOn = userLoginOn;
+        }
+      }
+    )
+
+    this.sharedService.currentUserData.subscribe(
+      {
+        next:(userData) => {
+          console.log("rol de usuario: ", userData[0].rol);
+          this.userData = userData
+        }
+      }
+    )
   }
 
 }

@@ -6,7 +6,7 @@
         <form
           [formGroup]="LoginForm"
           autocomplete="off"
-          (ngSubmit)="sendForm()"
+          (ngSubmit)="sendForm(LoginForm)"
         >
           <div class="col cardForm">
             <mat-card-header>
@@ -34,7 +34,10 @@
                         LoginForm.controls['email'].hasError('required')
                       "
                     >
-                      Este campo es obligatorio
+                    <mat-error *ngIf="LoginForm.get('email')?.hasError('email')">
+                      Debe ser un correo valido
+                    </mat-error>
+                      Debes ingresar un email valido
                     </mat-error>
                   </mat-form-field>
                 </div>

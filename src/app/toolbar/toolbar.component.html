@@ -28,6 +28,7 @@
 </button>
 
 <button
+  *ngIf="!userLoginOn"
   mat-button
   matTooltip="notificaciones"
   style="color: #2c3967"
@@ -43,6 +44,7 @@
 </button>
 
 <button
+  *ngIf="!userLoginOn"
   mat-flat-button
   class="login-button hide-on-small"
   style="margin-top: 0;"
@@ -51,16 +53,26 @@
   Iniciar sesión
 </button>
 
+<button
+  *ngIf="userLoginOn"
+  mat-button
+  [matMenuTriggerFor]="persons">
+  <mat-icon class="profile-photo-40r-default"></mat-icon>
+  <span style="margin-top: 8px;">{{ userData[0].firstName.toUpperCase() }} {{ userData[0].firstLastName.toUpperCase() }} </span>
+</button>
+
 <!-- displayec notifications -->
 <mat-menu #notifications> </mat-menu>
 
 <mat-menu #persons xPosition="before">
+
   <div class="userMobile" style="text-align: center; padding: 0 20px">
     <h3 style="margin-bottom: 0; font-weight: 500">Hola</h3>
-    <h3 style="margin-bottom: 10px; font-weight: 500">Usuario Invitado</h3>
-    <!-- <h3 style="margin-bottom: 10px; font-weight:500;">{{ user.firstName }} {{ user.firstSurname }}</h3> -->
+    <h3 *ngIf="!userLoginOn" style="margin-bottom: 10px; font-weight: 500">Usuario Invitado</h3>
+    <h3 *ngIf="userLoginOn" style="margin-bottom: 10px; font-weight:500;">{{ userData[0].firstName }} {{ userData[0].firstLastName }}</h3>
     <mat-divider></mat-divider>
   </div>
+
   <button class="button-hover hide-on-med-and-up" mat-menu-item [routerLink]="['auth/login']">
     <mat-icon>account_circle</mat-icon>
     <span>Iniciar sesión</span>
@@ -69,5 +81,10 @@
   <button routerLink="help" class="button-hover" mat-menu-item>
     <mat-icon>help_outline</mat-icon>
     <span>Ayuda</span>
+  </button>
+
+  <button *ngIf="userData" class="button-hover" mat-menu-item (click)="onLogout()">
+    <mat-icon>logout</mat-icon>
+    Salir
   </button>
 </mat-menu>

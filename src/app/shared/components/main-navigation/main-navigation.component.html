@@ -1,5 +1,12 @@
-<mat-selection-list [multiple]="false" style="width: 300px">
+<div *ngIf="userLoginOn" class="center-xs" style="margin-top: 10px;">
+  <p style="color: #fff;">¡Nos encanta que estes aqui!</p>
+  <span style="font-weight: bold; font-size: 1.5em; text-transform: capitalize; color: #fff;">{{ userData[0].firstName }} {{ userData[0].firstLastName }}</span>
+  <hr style="color: #fff; margin: 10px !important;">
+</div>
 
+<mat-selection-list *ngIf="userLoginOn" [multiple]="false" style="width: 300px">
+
+  <!-- *ngIf="userData[0].rol === 'reviwer'" -->
   <mat-list-option style="color: #fff;" *ngFor="let item of reactiveMenu">
     <a [routerLink]="[ item.route ]" class="navItem">
         <mat-icon>{{ item.icon }}</mat-icon>
@@ -7,4 +14,19 @@
     </a>
   </mat-list-option>
 
+</mat-selection-list>
+
+<mat-selection-list *ngIf="!userLoginOn" [multiple]="false" style="width: 300px">
+  <mat-list-option style="color: #fff;">
+    <a class="navItem" routerLink="search">
+      <mat-icon>content_paste_search</mat-icon>
+      <span style="margin-left: 10px;">Estado del aspirante</span>
+    </a>
+  </mat-list-option>
+  <mat-list-option style="color: #fff;">
+    <a class="navItem" routerLink="help">
+      <mat-icon>help</mat-icon>
+      <span style="margin-left: 10px;">Ayuda</span>
+    </a>
+  </mat-list-option>
 </mat-selection-list>

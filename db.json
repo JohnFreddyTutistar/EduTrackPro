@@ -1,0 +1,49 @@
+{
+    "signup": [
+        {
+            "id": 1,
+            "firstName": "John",
+            "secondName": "Freddy",
+            "firstLastName": "Tutistar",
+            "secondLastName": "Calvache",
+            "dateBirth": "02/03/1994",
+            "email": "john@gmail.com",
+            "password": "Abc123**",
+            "phone": 3105124961,
+            "mobile": 3105124961,
+            "address": "calle 12 # 4-51",
+            "position": "docente",
+            "rol": "reviwer"
+        },
+        {
+            "id": 2,
+            "firstName": "Eliana",
+            "secondName": "",
+            "firstLastName": "Moncayo",
+            "secondLastName": "Pistala",
+            "dateBirth": "05/11/1993",
+            "email": "eliana@gmail.com",
+            "password": "eliana123",
+            "phone": 3166177918,
+            "mobile": 3166177918,
+            "address": "calle 12 # 4-51",
+            "position": "docente",
+            "rol": "reviwer"
+        }
+    ],
+    "applicant": [
+        {
+            "id": 1,
+            "firstName": "John",
+            "secondName": "Freddy",
+            "firstLastName": "Tutistar",
+            "secondLastName": "Calvache",
+            "identificationType": "CC",
+            "identificationNumber": "1085310787",
+            "status": "EN REVISIÓN",
+            "phone": "3105124961",
+            "email": "john@gmail.com",
+            "resultado": true
+        }
+    ]
+}

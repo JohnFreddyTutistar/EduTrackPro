@@ -36,8 +36,9 @@ export interface LoggedUser {
   role: string,
 }
 
-export interface IUser {
-
+export interface ILogginUser {
+  email: string,
+  password: string
 }
 
 export interface IDataApplicantStatus {

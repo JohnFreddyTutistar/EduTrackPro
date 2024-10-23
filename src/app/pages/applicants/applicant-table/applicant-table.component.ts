@@ -11,6 +11,7 @@ import { MatSort } from '@angular/material/sort';
 import { DialogApplicantComponent } from '../dialog-applicant/dialog-applicant.component';
 import { RegisterCallComponent } from '../register-call/register-call.component';
 import { DialogCallHistoryComponent } from '../dialog-call-history/dialog-call-history.component';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-applicant-table',
@@ -199,7 +200,7 @@ export class ApplicantTableComponent implements OnInit {
     })
   }
 
-  constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {
+  constructor(public dialog: MatDialog, public formBuilder: FormBuilder, public sharedService: SharedService) {
     // this.dataSource = new MatTableDataSource()
     this.filterForm()
   }

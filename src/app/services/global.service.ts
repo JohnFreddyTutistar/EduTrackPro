@@ -18,7 +18,7 @@ export class GlobalService {
    * @memberof GlobalService
    */
 
-  getData(url: string, api: string): Observable<any>{
+  getData(url: string, api?: string): Observable<any>{
     return this.http.get(url + api);
   }
 
