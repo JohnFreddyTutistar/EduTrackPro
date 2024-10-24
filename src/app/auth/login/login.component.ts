@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { BehaviorSubject, tap } from 'rxjs';
 import Swal from 'sweetalert2';
 import { SharedService } from 'src/app/services/shared.service';
 import { Router } from '@angular/router';
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   sendForm(login: any) {
-    this.sharedService.getData()
+    this.authService.login()
     .subscribe((res) => {
       const user = res.find((a: any) => {
         this.name = a.firstName;

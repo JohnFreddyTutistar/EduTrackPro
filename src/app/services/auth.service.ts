@@ -8,9 +8,41 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+
+  greetings = [
+    '¡Hi!',
+    '¡Hola!',
+    '¡Heey!',
+    '¡Hello!',
+    '¡Comencemos!',
+    '¡Bienvenida/o!',
+    '¡Bienvenida/o de nuevo!',
+    '¡Bienvenida/o a EduTrackPro!',
+    '¡Bienvenida/o a bordo!',
+    '¡Bienvenido! Espero que disfrutes aquí',
+    '¡Nos encanta que estes aquí!',
+    '¡Estamos listos!',
+    '¿Qué haremos hoy?',
+    '¿En qué puedo ayudarte hoy?',
+    'Saludos',
+    'Afectuoso saludo',
+    'Cordial saludo',
+    'Un placer saludarte',
+    'Me complace que estés aquí',
+    'Espero todo vaya bien',
+    'Un placer trabajar contigo',
+    'Estoy feliz de ayudarte',
+    'Estamos para servirte!',
+    'Es un placer servirte!',
+    '¡Gracias por conectarte!',
+    '¡Gracias por visitarnos!',
+    '¿En qué puedo ayudarte?',
+    'Buen día',
+    'Buen día, vamos a trabajar',
+  ]
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
@@ -22,19 +54,33 @@ export class AuthService {
 
   private readonly baseUrl: string = environment.baseUrl;
 
-  private url = 'http://localhost:3000/signup';
+  private url = 'http://localhost:3000';
 
-  constructor(public router: Router, public globalService: GlobalService, public http: HttpClient) { }
+  constructor(
+    public router: Router,
+    public globalService: GlobalService,
+    public http: HttpClient
+  ) {
+    const storedUserData = localStorage.getItem('currentUserData')
+    if(storedUserData){
+      this.currentUserData.next(JSON.parse(storedUserData));
+      this.currentUserLoginOn.next(true);
+    }
+
+    localStorage.setItem('greetings', JSON.stringify(this.greetings));
+  }
 
   /***
    * Metodo encargado de cerrar la sesión del usuario actual
-   * 
+   *
    * @memberof AuthService
    */
   logout(): void {
-    localStorage.clear();
-    this.router.navigate(['/']);
-    window.location.href= './';
+    localStorage.removeItem('currentUserData');
+    this.currentUserData.next({ id: 0, email: '', password: '' });
+    this.currentUserLoginOn.next(false);
+    this.router.navigate(['home']);
+    window.location.href = '.home';
   }
 
   /***
@@ -45,20 +91,40 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  login(userId: number): Observable<any>{
-    return this.http.get<ILogginUser>(`${this.url}/signup/${userId}`)
+  login(): Observable<any> {
+    return this.http.get<any>(`${this.url}/signup`)
       .pipe(
-        tap((userData: ILogginUser) => {
+        tap((userData: any) => {
           if(userData){
-            console.log("usuario autenticado", userData);
-            this.currentUserData.next(userData)
-            this.currentUserLoginOn.next(true)
+            this.currentUserData.next(userData);
+            this.currentUserLoginOn.next(true);
+            console.log("Estado de loggeado: ", this.currentUserLoginOn);
+            this.saveUserDataToLocalStorage(userData);
+
           } else {
-            console.log("usuario no encontrado");
             this.currentUserLoginOn.next(false)
           }
         })
-      )
+    );
+  }
+
+  private saveUserDataToLocalStorage(userData: any): void{
+    localStorage.setItem('currentUserData', JSON.stringify(userData));  
+  }
+
+  get userdata(): Observable<any>{
+    return this.currentUserData.asObservable()
+  }
+
+  get userLoginOn(): Observable<boolean>{
+    return this.currentUserLoginOn.asObservable()
+  }
+
+  getGreetings(): string{
+    const greeting = JSON.parse(localStorage.getItem('greetings') || '[]')
+    const randomIndex = Math.floor(Math.random() * (this.greetings.length -1 -0 +1)+ 0)
+
+    return greeting[randomIndex]
   }
 
   /**
@@ -80,7 +146,7 @@ export class AuthService {
       email: 'edutrackpro.com+invitado@gmail.com',
       password: 'Invitado123',
       type: 'employee',
-      rememberMe: true
-    }
+      rememberMe: true,
+    };
   }
 }

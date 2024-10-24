@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { LoginComponent } from '../auth/login/login.component';
-import { SharedService } from '../services/shared.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -12,9 +10,10 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
 
+  
+
   constructor(
     public authService : AuthService,
-    public sharedService: SharedService,
     public router: Router
   ) { }
 
@@ -22,7 +21,7 @@ export class ToolbarComponent implements OnInit {
   userData?: any; 
 
   ngOnInit(): void {
-    this.sharedService.currentUserLoginOn.subscribe(
+    this.authService.currentUserLoginOn.subscribe(
       {
         next:(userLoginOn) => {
           this.userLoginOn = userLoginOn;
@@ -30,7 +29,7 @@ export class ToolbarComponent implements OnInit {
       }
     )
 
-    this.sharedService.currentUserData.subscribe(
+    this.authService.currentUserData.subscribe(
       {
         next:(userData) => {
           this.userData = userData
@@ -51,9 +50,7 @@ export class ToolbarComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.sharedService.clearUserData();
-        window.location.reload();
-        this.router.navigate(['home'])
+        this.authService.logout();
       }
     });
   }

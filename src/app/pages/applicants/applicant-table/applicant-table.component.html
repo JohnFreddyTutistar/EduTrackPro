@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row center-xs">
     <div class="col-xs-12 col-md-8">
-      <h1 class="principal-title"><b>Lista de Aspirantes (10)</b></h1>
+      <h1 class="principal-title"><b>Lista de Aspirantes ({{ dataTable.length }})</b></h1>
       <hr class="line-separator" />
       <p style="max-width: 800px; margin: auto">
         A continuación encuentra el listado de todos los aspirantes y su
@@ -132,7 +132,8 @@
                 formControlFilterBy.value !== 'name' &&
                 formControlFilterBy.value !== 'lastname' &&
                 formControlFilterBy.value !== 'identificationNumber' &&
-                formControlFilterBy.value !== 'phone'
+                formControlFilterBy.value !== 'phone' &&
+                formControlFilterBy.value !== 'email'
               "
             >
               <mat-form-field class="width-inputs" appearance="fill">
@@ -147,14 +148,16 @@
                       formControlFilterBy.value !== 'name' &&
                       formControlFilterBy.value !== 'lastname' &&
                       formControlFilterBy.value !== 'identificationNumber' &&
-                      formControlFilterBy.value !== 'phone'
+                      formControlFilterBy.value !== 'phone' &&
+                      formControlFilterBy.value !== 'email'
                     )
                   "
                   [disabled]="
                     formControlFilterBy.value !== 'name' &&
                     formControlFilterBy.value !== 'lastname' &&
                     formControlFilterBy.value !== 'identificationNumber' &&
-                    formControlFilterBy.value !== 'phone'
+                    formControlFilterBy.value !== 'phone' &&
+                    formControlFilterBy.value !== 'email'
                   "
                 />
               </mat-form-field>
@@ -245,10 +248,10 @@
       </div>
 
       <mat-card-content class="table-with-overflow">
-        <table mat-table [dataSource]="dataSource" matSort>
+        <table mat-table [dataSource]="dataTable" matSort>
           <ng-container matColumnDef="index">
             <th mat-header-cell *matHeaderCellDef>#</th>
-            <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
           </ng-container>
 
           <ng-container matColumnDef="profilePhoto">
@@ -273,7 +276,12 @@
 
           <ng-container matColumnDef="fullName">
             <th mat-header-cell *matHeaderCellDef>Nombres y apellidos</th>
-            <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.firstName }}
+              {{ element.secondName }}
+              {{ element.firstLastName }}
+              {{ element.secondLastName }}
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="identificationNumber">
@@ -389,12 +397,12 @@
                   display: flex;
                   opacity: 0.8;
                   align-items: center;
-                  background-color: #008dd5;
+                  background-color: #fff;
                 "
               >
                 <mat-icon
                   matBadge="3" matBadgeSize="small" matBadgeColor="accent"
-                  style="color: #fff; margin: auto"
+                  style="color: #008dd5; margin: auto"
                   matTooltip="contactado"
                 >
                   done_all</mat-icon
@@ -410,11 +418,11 @@
                   display: flex;
                   opacity: 0.8;
                   align-items: center;
-                  background-color: #d90000;
+                  background-color: #fff;
                 "
               >
                 <mat-icon
-                  style="color: #fff; margin: auto"
+                  style="color: #d90000; margin: auto"
                   matTooltip="no contactado"
                 >
                   lock</mat-icon
@@ -460,6 +468,15 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="12">
+              <div class="center-xs" style="padding: 30px;">
+                <h3>No encontramos resultados</h3>
+                <img src="assets/images/NoData.svg" alt="Imagen sin resultado" style="max-width: 60%; max-height: 40vh">
+              </div>
+            </td>
+          </tr>
         </table>
 
         <mat-paginator

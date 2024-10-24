@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
+import { IReviwer } from 'src/app/interfaces/users';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-review-team-table',
@@ -8,6 +10,8 @@ import * as moment from 'moment';
   styleUrls: ['./review-team-table.component.scss']
 })
 export class ReviewTeamTableComponent implements OnInit {
+
+  dataTable: IReviwer[] = [];
 
   ELEMENT_DATA = [
     {
@@ -46,7 +50,7 @@ export class ReviewTeamTableComponent implements OnInit {
 
   }
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder, public sharedService: SharedService) {
     this.filterForm();
 
    }
@@ -85,6 +89,8 @@ export class ReviewTeamTableComponent implements OnInit {
     this.FormGroupFilter.valueChanges.subscribe(form => {
       this.applyFilters(form)
     })
+
+    this.getDataReviwer();
   }
 
   applyFilters(form: any){
@@ -94,6 +100,12 @@ export class ReviewTeamTableComponent implements OnInit {
     if(form.fullname) {
       filteredData = filteredData.filter(fullname => fullname.fullname.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
     }
+  }
+
+  getDataReviwer(){
+    this.sharedService.getDataReviwers().subscribe((data) => {
+      this.dataTable = data
+    })
   }
 
 }

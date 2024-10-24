@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ApplicationInitStatus, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import 'moment/locale/es';
 import * as moment from 'moment';
@@ -12,6 +12,7 @@ import { DialogApplicantComponent } from '../dialog-applicant/dialog-applicant.c
 import { RegisterCallComponent } from '../register-call/register-call.component';
 import { DialogCallHistoryComponent } from '../dialog-call-history/dialog-call-history.component';
 import { SharedService } from 'src/app/services/shared.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-applicant-table',
@@ -19,150 +20,26 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./applicant-table.component.scss'],
 })
 export class ApplicantTableComponent implements OnInit {
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  FormGroupFilter!: FormGroup;;
+  FormGroupFilter!: FormGroup;
 
-  ELEMENT_DATA: IApplicant[] = [
-    {
-      index: 1,
-      profilePhoto: '',
-      fullName: 'John Freddy Tutistar Calvache',
-      identificationNumber: 1085310787,
-      birthdate: moment().format('DD/MM/YYYY'),
-      result: 'Contactado',
-      status: 'EN REVISIÓN',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'johnfre.157@gmail.com',
-    },
-    {
-      index: 2,
-      profilePhoto: '',
-      fullName: 'Eliana Moncayo Pistala',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'APROBADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'eliana@gmail.com',
-    },
-    {
-      index: 3,
-      profilePhoto: '',
-      fullName: 'Esteban Enriquez Mora',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'APROBADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'esteban@gmail.com',
-    },
-    {
-      index: 4,
-      profilePhoto: '',
-      fullName: 'Karen Cuasapud Pantoja',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'APROBADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'karen@gmail.com',
-    },
-    {
-      index: 5,
-      profilePhoto: '',
-      fullName: 'Camilo Andres Parra',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'DESISTIDO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'camilo@gmail.com',
-    },
-    {
-      index: 6,
-      profilePhoto: '',
-      fullName: 'William Geovanny Imbacuan Tutistar',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'APROBADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'william@gmail.com',
-    },
-    {
-      index: 7,
-      profilePhoto: '',
-      fullName: 'Emanuel Alejandro Moncayo',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'EN REVISIÓN',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'emanuel12@gmail.com',
-    },
-    {
-      index: 8,
-      profilePhoto: '',
-      fullName: 'Juan Javier Casanova Quiroz',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'APROBADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'juan@gmail.com',
-    },
-    {
-      index: 9,
-      profilePhoto: '',
-      fullName: 'Yeimy Carolina Guevara',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'RECHAZADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'yeimy@gmail.com',
-    },
-    {
-      index: 10,
-      profilePhoto: '',
-      fullName: 'Eliana Moncayo Pistala',
-      identificationNumber: 1085308393,
-      birthdate: moment().format('DD/MM/yyyy'),
-      result: 'No contactado',
-      status: 'APROBADO',
-      phone: 3105124961,
-      mobile: 3105124961,
-      email: 'eliana@gmail.com',
-    },
-  ];
+  dataTable: IApplicant[] = [];
+
+  filteredApplicants: any[] = [];
 
   displayedColumns: string[] = [
     'index',
     'profilePhoto',
     'fullName',
     'identificationNumber',
-    // 'birthdate',
     'status',
     'phone',
     'email',
     'result',
     'settings',
   ];
-
-  dataSource = this.ELEMENT_DATA;
-
 
   dialogStatusTable() {
     this.dialog.open(StatusTableDialogComponent, {
@@ -182,27 +59,31 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  registerCall(){
+  registerCall() {
     this.dialog.open(RegisterCallComponent, {
       maxWidth: '500vw',
       maxHeight: '90vh',
       width: '50%',
       data: {},
-    })
+    });
   }
 
-  checkHistory(){
+  checkHistory() {
     this.dialog.open(DialogCallHistoryComponent, {
       maxWidth: '500vw',
       maxHeight: '90vh',
       width: '70%',
       data: {},
-    })
+    });
   }
 
-  constructor(public dialog: MatDialog, public formBuilder: FormBuilder, public sharedService: SharedService) {
+  constructor(
+    public dialog: MatDialog,
+    public formBuilder: FormBuilder,
+    public sharedService: SharedService
+  ) {
     // this.dataSource = new MatTableDataSource()
-    this.filterForm()
+    this.filterForm();
   }
 
   filterForm() {
@@ -211,8 +92,8 @@ export class ApplicantTableComponent implements OnInit {
       formControlFilterString: [null],
       formControlFilterFrom: [null],
       formControlFilterTo: [null],
-      formControlFilterSelect: [null]
-    })
+      formControlFilterSelect: [null],
+    });
   }
 
   // applyFilterFast(event: Event){
@@ -225,42 +106,50 @@ export class ApplicantTableComponent implements OnInit {
 
   // Getter methods to easily access for controls
 
-  get formControlFilterBy(){
-    return this.FormGroupFilter.controls["formControlFilterBy"];
+  get formControlFilterBy() {
+    return this.FormGroupFilter.controls['formControlFilterBy'];
   }
 
-  get formControlFilterString(){
-    return this.FormGroupFilter.controls["formControlFilterString"];
+  get formControlFilterString() {
+    return this.FormGroupFilter.controls['formControlFilterString'];
   }
 
-  get formControlFilterFrom(){
-    return this.FormGroupFilter.controls["formControlFilterFrom"];
+  get formControlFilterFrom() {
+    return this.FormGroupFilter.controls['formControlFilterFrom'];
   }
 
-  get formControlFilterTo(){
-    return this.FormGroupFilter.controls["formControlFilterTo"];
+  get formControlFilterTo() {
+    return this.FormGroupFilter.controls['formControlFilterTo'];
   }
 
-  get formControlFilterSelect(){
-    return this.FormGroupFilter.controls["formControlFilterSelect"];
+  get formControlFilterSelect() {
+    return this.FormGroupFilter.controls['formControlFilterSelect'];
   }
 
-  resetFilter(all: boolean) {
-
-  }
+  resetFilter(all: boolean) {}
 
   ngOnInit() {
-    this.FormGroupFilter.valueChanges.subscribe(form => {
-      this.applyFilters(form)
+    this.FormGroupFilter.valueChanges.subscribe((form) => {
+      this.applyFilters(form);
+    });
+    this.getDataApplicants()
+
+    this.FormGroupFilter.valueChanges.subscribe((filters) => {
+      this.applyFilters(filters)
     })
   }
 
-  applyFilters(form: any){
-    let filteredData = this.ELEMENT_DATA;
+  applyFilters(filters: any): void {
+    this.filteredApplicants = this.dataTable.filter(applicants => {
+      return (
+        (filters.formControlFilterString ? applicants.email.includes(filters.email): true)
+      )
+    })
+  }
 
-    // Aplicar filtros a los datos originales
-    if(form.fullname) {
-      filteredData = filteredData.filter(fullname => fullname.fullName.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
-    }
+  getDataApplicants(){
+    this.sharedService.getDataApplicants().subscribe((data) => {
+      this.dataTable = data;
+    })
   }
 }

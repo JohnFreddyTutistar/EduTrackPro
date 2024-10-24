@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from 'src/app/auth/login/login.component';
+import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
 
 interface MenuItem {
@@ -15,6 +16,8 @@ interface MenuItem {
   styleUrls: ['./main-navigation.component.scss']
 })
 export class MainNavigationComponent implements OnInit {
+
+  greetings!: string;
 
   userLoginOn: boolean = false;
   userData?: any; 
@@ -52,10 +55,10 @@ export class MainNavigationComponent implements OnInit {
     },
   ]
 
-  constructor(public sharedService: SharedService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.sharedService.currentUserLoginOn.subscribe(
+    this.authService.currentUserLoginOn.subscribe(
       {
         next:(userLoginOn) => {
           this.userLoginOn = userLoginOn;
@@ -63,7 +66,7 @@ export class MainNavigationComponent implements OnInit {
       }
     )
 
-    this.sharedService.currentUserData.subscribe(
+    this.authService.currentUserData.subscribe(
       {
         next:(userData) => {
           console.log("rol de usuario: ", userData[0].rol);
@@ -71,6 +74,8 @@ export class MainNavigationComponent implements OnInit {
         }
       }
     )
+
+    this.greetings = this.authService.getGreetings();
   }
 
 }

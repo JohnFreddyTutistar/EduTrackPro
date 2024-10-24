@@ -65,3 +65,16 @@ export interface IApplicant {
   mobile: number,
   email: string,
 }
+
+export interface IReviwer {
+  id: number,
+  firstName: string,
+  secondName: string,
+  firstLastName: string,
+  secondLastName: string,
+  email: string,
+  dateBirth: string,
+  phone: number,
+  faculty: string,
+  programName: string
+}

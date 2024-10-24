@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusTableDialogComponent } from './status-table-dialog/status-table-dialog.component';
-import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-search',
@@ -21,17 +20,15 @@ export class SearchComponent implements OnInit {
     private authService: AuthService,
     public formBuilder: FormBuilder,
     public dialog : MatDialog,
-    public sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
-    if(this.userLoginOn = false){
-      this.authService.loginGuest()
-    }
+
+    this.authService.loginGuest()
 
     this.builSearchForm();
 
-    this.sharedService.currentUserLoginOn.subscribe(
+    this.authService.currentUserLoginOn.subscribe(
       {
         next:(userLoginOn) => {
           this.userLoginOn = userLoginOn;
@@ -39,7 +36,7 @@ export class SearchComponent implements OnInit {
       }
     )
 
-    this.sharedService.currentUserData.subscribe(
+    this.authService.currentUserData.subscribe(
       {
         next:(userData) => {
           this.userData = userData
