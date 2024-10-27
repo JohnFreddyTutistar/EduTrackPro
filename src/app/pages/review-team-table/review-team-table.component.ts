@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { IReviwer } from 'src/app/interfaces/users';
+import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-review-team-table',
@@ -13,28 +15,16 @@ export class ReviewTeamTableComponent implements OnInit {
 
   dataTable: IReviwer[] = [];
 
-  ELEMENT_DATA = [
-    {
-      index: 1,
-      fullname: 'John Freddy Tutistar Calvache',
-      datebirth: moment().format('DD/MM/YYYY'),
-      email: 'johnfre.157@gmail.com',
-      phone: 3105124961,
-      faculty: 'Ingeniería',
-      programName: 'Ingeniería de Sistemas'
-    }
-  ];
-
-  dataSource = this.ELEMENT_DATA;
-
   displayedColumns: string[] = [
     'index',
+    'profilePhoto',
     'fullname',
-    'datebirth',
+    'birthday',
     'email',
     'phone',
     'faculty',
-    'programName',
+    'position',
+    'rol',
     'settings'
   ]
 
@@ -50,7 +40,10 @@ export class ReviewTeamTableComponent implements OnInit {
 
   }
 
-  constructor(public formBuilder: FormBuilder, public sharedService: SharedService) {
+  constructor(
+    public formBuilder: FormBuilder, 
+    public sharedService: SharedService,
+    public authService: AuthService) {
     this.filterForm();
 
    }
@@ -94,11 +87,11 @@ export class ReviewTeamTableComponent implements OnInit {
   }
 
   applyFilters(form: any){
-    let filteredData = this.ELEMENT_DATA;
+    let filteredData = this.dataTable;
 
     // Aplicar filtros a los datos originales
     if(form.fullname) {
-      filteredData = filteredData.filter(fullname => fullname.fullname.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
+      // filteredData = filteredData.filter(fullname => fullname.fullname.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
     }
   }
 
@@ -106,6 +99,68 @@ export class ReviewTeamTableComponent implements OnInit {
     this.sharedService.getDataReviwers().subscribe((data) => {
       this.dataTable = data
     })
+  }
+
+  deleteUser(id: string): void{
+
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás recuperar este usuario después de eliminarlo!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.deleteUser(id).subscribe({
+          next: response => {
+            console.log("Usuario eliminado:", response);
+            Swal.fire({
+              title: 'Eliminado', 
+              html: 'El usuario ha sido eliminado.', 
+              icon: 'success',
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              timer: 3000,
+              timerProgressBar: true,
+              willClose: () => {
+                window.location.reload();
+              },
+            });
+          },
+          error: err => {
+            console.error("Error al eliminar el usuario:", err);
+            Swal.fire('Error', 'No se pudo eliminar el usuario.', 'error');
+          }
+        });
+      }
+    });
+
+
+    // this.authService.deleteUser(id).subscribe({
+    //   next: res => {
+    //     console.log("Usuario eliminado ", res);
+    //     Swal.fire({
+    //       title: 'Borrar',
+    //       text: `¿Está seguro/a de eliminar este usuario?.`,
+    //       icon: 'warning',
+    //       showCancelButton: true,
+    //       confirmButtonColor: '#3085d6',
+    //       cancelButtonColor: '#d33',
+    //       confirmButtonText: 'Si, salir!',
+    //       cancelButtonText: 'Cancelar',
+    //     }).then((result) => {
+    //       if (result.isConfirmed) {
+    //         window.location.reload();
+    //       }
+    //     });
+    //   },
+    //   error: err => {
+    //     console.log("Error al eliminar usuario ", err);
+    //   }
+    // })
   }
 
 }

@@ -1,207 +1,192 @@
 {
-    "signup": [
-        {
-            "id": 1,
-            "firstName": "John",
-            "secondName": "Freddy",
-            "firstLastName": "Tutistar",
-            "secondLastName": "Calvache",
-            "dateBirth": "02/03/1994",
-            "email": "john@gmail.com",
-            "password": "Abc123**",
-            "phone": 3105124961,
-            "mobile": 3105124961,
-            "address": "calle 12 # 4-51",
-            "position": "docente",
-            "rol": "reviwer"
-        },
-        {
-            "id": 2,
-            "firstName": "Eliana",
-            "secondName": "",
-            "firstLastName": "Moncayo",
-            "secondLastName": "Pistala",
-            "dateBirth": "05/11/1993",
-            "email": "eliana@gmail.com",
-            "password": "eliana123",
-            "phone": 3166177918,
-            "mobile": 3166177918,
-            "address": "calle 12 # 4-51",
-            "position": "docente",
-            "rol": "reviwer"
-        }
-    ],
-    "applicants": [
-        {
-            "id": 1,
-            "firstName": "John",
-            "secondName": "Freddy",
-            "firstLastName": "Tutistar",
-            "secondLastName": "Calvache",
-            "identificationType": "CC",
-            "identificationNumber": "1085310787",
-            "status": "EN REVISIÓN",
-            "phone": "3105124961",
-            "email": "john@gmail.com",
-            "result": "Contactado"
-        },
-        {
-            "id": 2,
-            "firstName": "Eliana",
-            "secondName": "",
-            "firstLastName": "Moncayo",
-            "secondLastName": "Pistala",
-            "identificationType": "CC",
-            "identificationNumber": "100587946",
-            "status": "APROBADO",
-            "phone": "3145896478",
-            "email": "eliana@gmail.com",
-            "result": "No contactado"
-        },
-        {
-            "id": 3,
-            "firstName": "Esteban",
-            "secondName": "",
-            "firstLastName": "Enrriquez",
-            "secondLastName": "Mora",
-            "identificationType": "CC",
-            "identificationNumber": "106598752",
-            "status": "APROBADO",
-            "phone": "301478968",
-            "email": "esteban@gmail.com",
-            "result": "No contactado"
-        },
-        {
-            "id": 4,
-            "firstName": "Karen",
-            "secondName": "",
-            "firstLastName": "Kuasapud",
-            "secondLastName": "Pantoja",
-            "identificationType": "CC",
-            "identificationNumber": "1085498789",
-            "status": "APROBADO",
-            "phone": "311568942",
-            "email": "karen@gmail.com",
-            "result": "Contactado"
-        },
-        {
-            "id": 5,
-            "firstName": "Camilo",
-            "secondName": "Andres",
-            "firstLastName": "Parra",
-            "secondLastName": "",
-            "identificationType": "CC",
-            "identificationNumber": "1085987468",
-            "status": "DESISTIDO",
-            "phone": "324598678",
-            "email": "camilo@gmail.com",
-            "result": "No contactado"
-        },
-        {
-            "id": 6,
-            "firstName": "William",
-            "secondName": "Geovany",
-            "firstLastName": "Imbacuan",
-            "secondLastName": "Tutistar",
-            "identificationType": "CC",
-            "identificationNumber": "1085645987",
-            "status": "APROBADO",
-            "phone": "3105124961",
-            "email": "william@gmail.com",
-            "result": "No contactado"
-        },
-        {
-            "id": 7,
-            "firstName": "Emanuel",
-            "secondName": "Alejandro",
-            "firstLastName": "Tutistar",
-            "secondLastName": "Moncayo",
-            "identificationType": "CC",
-            "identificationNumber": "1025468978",
-            "status": "EN REVISIÓN",
-            "phone": "321658921",
-            "email": "emanuel@gmail.com",
-            "result": "Contactado"
-        },
-        {
-            "id": 8,
-            "firstName": "Juan",
-            "secondName": "Javier",
-            "firstLastName": "Casanova",
-            "secondLastName": "Quiroz",
-            "identificationType": "CC",
-            "identificationNumber": "1085978481",
-            "status": "APROBADO",
-            "phone": "322196842",
-            "email": "juan@gmail.com",
-            "result": "No contactado"
-        },
-        {
-            "id": 9,
-            "firstName": "Yeimy",
-            "secondName": "Carolina",
-            "firstLastName": "Guevara",
-            "secondLastName": "",
-            "identificationType": "CC",
-            "identificationNumber": "1084987548",
-            "status": "RECHAZADO",
-            "phone": "3105124961",
-            "email": "yeimy@gmail.com",
-            "result": "Contactado"
-        },
-        {
-            "id": 10,
-            "firstName": "Carlos",
-            "secondName": "Fernando",
-            "firstLastName": "Muñoz",
-            "secondLastName": "Gomez",
-            "identificationType": "CC",
-            "identificationNumber": "1085948712",
-            "status": "APROBADO",
-            "phone": "300548698",
-            "email": "carlos@gmail.com",
-            "result": "No contactado"
-        }
-        
-    ],
-    "reviwers": [
-        {
-            "id": 1,
-            "firstName": "Jorge",
-            "secondName": "Albeiro",
-            "firstLastName": "Rivera",
-            "secondLastName": "",
-            "email": "jorge@gmail.com",
-            "datebirth": "10/08/1994",
-            "phone": 3145487961,
-            "faculty": "Ingeniería",
-            "programName": "Ingeniería de sistemas"
-        },
-        {
-            "id": 2,
-            "firstName": "Jairo",
-            "secondName": "Andres",
-            "firstLastName": "Muñoz",
-            "secondLastName": "Cabrera",
-            "email": "jairo@gmail.com",
-            "datebirth": "15/12/1985",
-            "phone": 3105849215,
-            "faculty": "Ingeniería",
-            "programName": "Ingeniería de sistemas"
-        }
-    ],
-    "history": [
-        {
-            "id":  1,
-            "firstName": "John",
-            "secondName": "Freddy",
-            "firstLastName": "Tutistar",
-            "secondLastName": "Calvache",
-            "date": "09/10/2024 14:25",
-            "duration": 5,
-            "result": "Llamar de nuevo",
-            "madeBy": "Jorge Rivera",
-            "tracing": "No"
-        }
-    ]
+  "signup": [
+    {
+      "id": "311e",
+      "firstName": "john",
+      "secondName": "",
+      "firstLastName": "tutistar",
+      "secondLastName": "",
+      "birthday": "1994-02-03",
+      "phone": 3105124961,
+      "faculty": "ingenieria",
+      "position": "docente",
+      "rol": "administrador",
+      "email": "john@gmail.com",
+      "password": "Abc123**"
+    }
+  ],
+  "applicants": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "secondName": "Freddy",
+      "firstLastName": "Tutistar",
+      "secondLastName": "Calvache",
+      "identificationType": "CC",
+      "identificationNumber": "1085310787",
+      "status": "EN REVISIÓN",
+      "phone": "3105124961",
+      "email": "john@gmail.com",
+      "result": "Contactado"
+    },
+    {
+      "id": 2,
+      "firstName": "Eliana",
+      "secondName": "",
+      "firstLastName": "Moncayo",
+      "secondLastName": "Pistala",
+      "identificationType": "CC",
+      "identificationNumber": "100587946",
+      "status": "APROBADO",
+      "phone": "3145896478",
+      "email": "eliana@gmail.com",
+      "result": "No contactado"
+    },
+    {
+      "id": 3,
+      "firstName": "Esteban",
+      "secondName": "",
+      "firstLastName": "Enrriquez",
+      "secondLastName": "Mora",
+      "identificationType": "CC",
+      "identificationNumber": "106598752",
+      "status": "APROBADO",
+      "phone": "301478968",
+      "email": "esteban@gmail.com",
+      "result": "No contactado"
+    },
+    {
+      "id": 4,
+      "firstName": "Karen",
+      "secondName": "",
+      "firstLastName": "Kuasapud",
+      "secondLastName": "Pantoja",
+      "identificationType": "CC",
+      "identificationNumber": "1085498789",
+      "status": "APROBADO",
+      "phone": "311568942",
+      "email": "karen@gmail.com",
+      "result": "Contactado"
+    },
+    {
+      "id": 5,
+      "firstName": "Camilo",
+      "secondName": "Andres",
+      "firstLastName": "Parra",
+      "secondLastName": "",
+      "identificationType": "CC",
+      "identificationNumber": "1085987468",
+      "status": "DESISTIDO",
+      "phone": "324598678",
+      "email": "camilo@gmail.com",
+      "result": "No contactado"
+    },
+    {
+      "id": 6,
+      "firstName": "William",
+      "secondName": "Geovany",
+      "firstLastName": "Imbacuan",
+      "secondLastName": "Tutistar",
+      "identificationType": "CC",
+      "identificationNumber": "1085645987",
+      "status": "APROBADO",
+      "phone": "3105124961",
+      "email": "william@gmail.com",
+      "result": "No contactado"
+    },
+    {
+      "id": 7,
+      "firstName": "Emanuel",
+      "secondName": "Alejandro",
+      "firstLastName": "Tutistar",
+      "secondLastName": "Moncayo",
+      "identificationType": "CC",
+      "identificationNumber": "1025468978",
+      "status": "EN REVISIÓN",
+      "phone": "321658921",
+      "email": "emanuel@gmail.com",
+      "result": "Contactado"
+    },
+    {
+      "id": 8,
+      "firstName": "Juan",
+      "secondName": "Javier",
+      "firstLastName": "Casanova",
+      "secondLastName": "Quiroz",
+      "identificationType": "CC",
+      "identificationNumber": "1085978481",
+      "status": "APROBADO",
+      "phone": "322196842",
+      "email": "juan@gmail.com",
+      "result": "No contactado"
+    },
+    {
+      "id": 9,
+      "firstName": "Yeimy",
+      "secondName": "Carolina",
+      "firstLastName": "Guevara",
+      "secondLastName": "",
+      "identificationType": "CC",
+      "identificationNumber": "1084987548",
+      "status": "RECHAZADO",
+      "phone": "3105124961",
+      "email": "yeimy@gmail.com",
+      "result": "Contactado"
+    },
+    {
+      "id": 10,
+      "firstName": "Carlos",
+      "secondName": "Fernando",
+      "firstLastName": "Muñoz",
+      "secondLastName": "Gomez",
+      "identificationType": "CC",
+      "identificationNumber": "1085948712",
+      "status": "APROBADO",
+      "phone": "300548698",
+      "email": "carlos@gmail.com",
+      "result": "No contactado"
+    }
+  ],
+  "reviwers": [
+    {
+      "id": 1,
+      "firstName": "Jorge",
+      "secondName": "Albeiro",
+      "firstLastName": "Rivera",
+      "secondLastName": "",
+      "email": "jorge@gmail.com",
+      "datebirth": "10/08/1994",
+      "phone": 3145487961,
+      "faculty": "Ingeniería",
+      "position": "Docente",
+      "rol": "Administrador"
+    },
+    {
+      "id": 2,
+      "firstName": "Jairo",
+      "secondName": "Andres",
+      "firstLastName": "Muñoz",
+      "secondLastName": "Cabrera",
+      "email": "jairo@gmail.com",
+      "datebirth": "15/12/1985",
+      "phone": 3105849215,
+      "faculty": "Ingeniería",
+      "position": "Docente",
+      "rol": "revisor"
+    }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "secondName": "Freddy",
+      "firstLastName": "Tutistar",
+      "secondLastName": "Calvache",
+      "date": "09/10/2024 14:25",
+      "duration": 5,
+      "result": "Llamar de nuevo",
+      "madeBy": "Jorge Rivera",
+      "tracing": "No"
+    }
+  ]
 }

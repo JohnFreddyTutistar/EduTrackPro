@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ILogginUser, LoggedUser } from '../interfaces/users';
+import { ILogginUser, IReviwer, LoggedUser } from '../interfaces/users';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
@@ -91,15 +91,21 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  login(): Observable<any> {
-    return this.http.get<any>(`${this.url}/signup`)
+  login(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/signup`)
       .pipe(
         tap((userData: any) => {
-          if(userData){
-            this.currentUserData.next(userData);
-            this.currentUserLoginOn.next(true);
-            console.log("Estado de loggeado: ", this.currentUserLoginOn);
-            this.saveUserDataToLocalStorage(userData);
+          console.log("datos de usuario: ", userData);
+          if(userData && userData.length > 0){
+            const validUser = userData[0];
+            if(validUser.id && validUser.email){
+              this.currentUserData.next(userData);
+              this.currentUserLoginOn.next(true);
+              console.log("Estado de loggeado: ", this.currentUserLoginOn);
+              this.saveUserDataToLocalStorage(userData);
+            } else {
+              this.currentUserLoginOn.next(false)
+            }
 
           } else {
             this.currentUserLoginOn.next(false)
@@ -148,5 +154,13 @@ export class AuthService {
       type: 'employee',
       rememberMe: true,
     };
+  }
+
+  signUpData(data: any): Observable<IReviwer[]>{
+    return this.http.post<IReviwer[]>(`${this.url}/signup`, data)
+  }
+
+  deleteUser(id: string): Observable<any>{
+    return this.http.delete(`${this.url}/signup/${id}`);
   }
 }

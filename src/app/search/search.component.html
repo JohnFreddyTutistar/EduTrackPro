@@ -1,76 +1,105 @@
 <section
-    style="
-        background-image: url(../../assets/images/sliderCESMAG.jpg);
-        background-size: cover;
-        background-position: center top;
-        text-align: center;
-        min-height: 370px;
-    ">
-
-</section>
+  style="
+    background-image: url(../../assets/images/sliderCESMAG.jpg);
+    background-size: cover;
+    background-position: center top;
+    text-align: center;
+    min-height: 370px;
+  "
+></section>
 
 <div class="row spacer"></div>
 
 <div class="container">
-    <div class="row center-xs">
-        <div class="col-xs-12">
-            <h1 class="principal-title">Consulta de Proceso de Admisión</h1>
-            <hr class="line-separator">
-            <p>Ingrese su tipo y numero de documento para verificar el <b style="color: #ba1828;">estado</b> de su solicitud de admisión</p>
-        </div>
+  <div class="row center-xs">
+    <div class="col-xs-12">
+      <h1 class="principal-title">Consulta de Proceso de Admisión</h1>
+      <hr class="line-separator" />
+      <p>
+        Ingrese su tipo y numero de documento para verificar el
+        <b style="color: #ba1828">estado</b> de su solicitud de admisión
+      </p>
     </div>
-    <div class="row center-xs">
-        <div class="col-xs-12 col-md-10">
-            <mat-card class="card-container col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
-                <mat-card-content>
-                    <form [formGroup]="formSearchApplicantByIdentification" autocomplete="off" (ngSubmit)="searchApplicantByIdentification()">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p>¿Que tipo de identificación tiene?</p>
-                            </div>
-                            <div class="col-xs-12 col-sm-5">
-                                <mat-form-field class="width-inputs" appearance="fill">
-                                    <mat-label>Tipo de identificación</mat-label>
-                                    <mat-select matNativeControl formControlName="documentType">
-                                        <mat-option value="" aria-disabled="true"></mat-option>
-                                        <mat-option value="cc">Cédula de ciudadanía</mat-option>
-                                        <mat-option value="ti">Tarjeta de identidad</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="formSearchApplicantByIdentification.controls['documentType'].touched && formSearchApplicantByIdentification.controls['documentType'].hasError('required')">
-                                        Este campo es obligatorio
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-xs-12 col-sm-5">
-                                <mat-form-field class="width-inputs" appearance="fill">
-                                    <mat-label>Numero de identificación</mat-label>
-                                    <input
-                                        type="number"
-                                        matInput
-                                        formControlName="documentNumber"
-                                        placeholder="N° de identificación"
-                                        required min="0"
-                                    />
-                                    <mat-hint>Solo digite <b>numeros</b></mat-hint>
-                                    <mat-error *ngIf="formSearchApplicantByIdentification.controls['documentNumber'].touched && formSearchApplicantByIdentification.controls['documentNumber'].hasError('required')">
-                                        Este campo es obligatorio
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-xs-12 col-sm-2">
-                              <!-- [disabled]="formSearchApplicantByIdentification.invalid" -->
-                                <button
-                                  type="submit"
-                                  mat-fab class="search-button"
-                                  [disabled]="formSearchApplicantByIdentification.invalid"
-                                  (click)="dialogStatusTable()">
-                                    <mat-icon>search</mat-icon>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </mat-card-content>
-            </mat-card>
-        </div>
+  </div>
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-10">
+      <mat-card
+        class="card-container col-xs-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"
+      >
+        <mat-card-content>
+          <form
+            [formGroup]="formSearchApplicantByIdentification"
+            autocomplete="off"
+            (ngSubmit)="searchApplicantByIdentification()"
+          >
+            <div class="row">
+              <div class="col-xs-12">
+                <p>¿Que tipo de identificación tiene?</p>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Tipo de identificación</mat-label>
+                  <mat-select matNativeControl formControlName="documentType">
+                    <mat-option value="" aria-disabled="true"></mat-option>
+                    <mat-option value="cc">Cédula de ciudadanía</mat-option>
+                    <mat-option value="ti">Tarjeta de identidad</mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="
+                      formSearchApplicantByIdentification.controls[
+                        'documentType'
+                      ].touched &&
+                      formSearchApplicantByIdentification.controls[
+                        'documentType'
+                      ].hasError('required')
+                    "
+                  >
+                    Este campo es obligatorio
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Numero de identificación</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    formControlName="documentNumber"
+                    placeholder="N° de identificación"
+                    required
+                    min="0"
+                  />
+                  <mat-hint>Solo digite <b>numeros</b></mat-hint>
+                  <mat-error
+                    *ngIf="
+                      formSearchApplicantByIdentification.controls[
+                        'documentNumber'
+                      ].touched &&
+                      formSearchApplicantByIdentification.controls[
+                        'documentNumber'
+                      ].hasError('required')
+                    "
+                  >
+                    Este campo es obligatorio
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-sm-2">
+                <!-- [disabled]="formSearchApplicantByIdentification.invalid" -->
+                <button
+                  type="submit"
+                  mat-fab
+                  class="search-button"
+                  [disabled]="formSearchApplicantByIdentification.invalid"
+                  (click)="dialogStatusTable()"
+                >
+                  <mat-icon>search</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
     </div>
+  </div>
 </div>

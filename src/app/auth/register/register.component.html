@@ -1,76 +1,153 @@
 <div class="container">
   <div class="row center-xs">
-    <div class="col-xs-12 col-md-8">
-      <h1 class="principal-title"><b>REGISTRO DE USUARIO</b></h1>
-      <hr class="line-separator" />
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <mat-card class="table-with-header">
+    <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="sendForm()">
+      <mat-card class="table-with-header card-container col-xs-12">
         <mat-card-title
           class="principal-title"
           style="
             padding: 10px;
             border-radius: 10px 10px 0 0;
-            background-color: #006363;
+            background-color: #006364;
           "
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
-            Información básica
-          </h4></mat-card-title
+          ><h1 class="principal-title" style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+            <b>REGISTRO DE USUARIO</b>
+          </h1></mat-card-title
         >
+        <mat-card-subtitle>
+          <div class="row center-xs">
+            <div class="col-xs-11 col-md-8">
+              <p style="margin-top: 10px;">
+                <b>A continuación, encontrarás un formulario de registro donde podrás crear
+                un nuevo usuario. Completa los campos requeridos marcados con un (*),
+                elige una contraseña segura y selecciona el rol que desempeñará dentro
+                del sitio.</b>
+              </p>
+              <hr class="line-separator">
+            </div>
+          </div>
+        </mat-card-subtitle>
+
         <mat-card-content>
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
+          <div class="row center-xs">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Primer nombre</mat-label>
-                <input matInput type="text" />
+                <input matInput type="text" required formControlName="firstName"/>
+                <mat-error *ngIf="
+                  registerForm.controls['firstName'].touched &&
+                  registerForm.controls['firstName'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Segundo nombre</mat-label>
-                <input matInput type="text" />
+                <input matInput type="text" formControlName="secondName"/>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Primer apellido</mat-label>
-                <input matInput type="text" />
+                <input matInput type="text" required formControlName="firstLastName"/>
+                <mat-error *ngIf="
+                  registerForm.controls['firstLastName'].touched &&
+                  registerForm.controls['firstLastName'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Segundo apellido</mat-label>
-                <input matInput type="text" />
+                <input matInput type="text" formControlName="secondLastName"/>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
+            <div class="col-xs-12 col-md-4 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Fecha de nacimiento</mat-label>
-                <input matInput type="date" />
+                <input matInput type="date" required formControlName="birthday"/>
+                <mat-error *ngIf="
+                  registerForm.controls['birthday'].touched &&
+                  registerForm.controls['birthday'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Genero</mat-label>
-                <input matInput type="text" />
+  
+            <div class="col-xs-12 col-md-4 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Teléfono o Celular</mat-label>
+                <input matInput type="number" required formControlName="phone"/>
+                <mat-error *ngIf="
+                  registerForm.controls['phone'].touched &&
+                  registerForm.controls['phone'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Correo electronico institucional</mat-label>
-                <input matInput type="email" />
-                <mat-icon matSuffix style="color: #006363;">mail</mat-icon>
+            <div class="col-xs-12 col-md-4 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Departamento o facultad</mat-label>
+                <input matInput type="text" required formControlName="faculty"/>
+                <mat-error *ngIf="
+                  registerForm.controls['faculty'].touched &&
+                  registerForm.controls['faculty'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
               </mat-form-field>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
+            <div class="col-xs-12 col-md-4 col-lg-3">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Cargo o posición</mat-label>
+                <input matInput type="text" required formControlName="position"/>
+                <mat-error *ngIf="
+                  registerForm.controls['position'].touched &&
+                  registerForm.controls['position'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <div class="col-xs-12 col-md-4 col-lg-4">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Rol</mat-label>
+                <mat-select required formControlName="rol">
+                  <mat-option value="administrador">Administrador(a)</mat-option>
+                  <mat-option value="revisor">Revisor(a)</mat-option>
+                </mat-select>
+                <mat-icon matSuffix style="color: #006363"
+                  >manage_accounts</mat-icon
+                >
+                <mat-error *ngIf="
+                  registerForm.controls['rol'].touched &&
+                  registerForm.controls['rol'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <div class="col-xs-12 col-md-4 col-lg-4">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Correo electronico</mat-label>
+                <input matInput type="email" required formControlName="email"/>
+                <mat-icon matSuffix style="color: #006363">mail</mat-icon>
+                <mat-error *ngIf="
+                  registerForm.controls['email'].touched &&
+                  registerForm.controls['email'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            <div class="col-xs-12 col-md-4 col-lg-4">
+              <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Contraseña</mat-label>
                 <input
                   matInput
                   type="password"
+                  formControlName="password"
+                  required
                   [type]="hide ? 'password' : 'text'"
                 />
                 <a
@@ -80,174 +157,32 @@
                   [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide"
                 >
-                  <mat-icon style="font-size: 25px; color: #006363;">{{
+                  <mat-icon style="font-size: 25px; color: #006363">{{
                     hide ? "visibility_off" : "visibility"
                   }}</mat-icon>
                 </a>
+                <mat-error *ngIf="
+                  registerForm.controls['password'].touched &&
+                  registerForm.controls['password'].hasError('required')">
+                  Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf="
+                  registerForm.controls['password'].hasError('minlength')">
+                  La contraseña es demasiado corta
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <mat-card class="table-with-header">
-        <mat-card-title
-          class="principal-title"
-          style="
-            padding: 10px;
-            border-radius: 10px 10px 0 0;
-            background-color: #ba1828;
-          "
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
-            Información profesional
-          </h4></mat-card-title
-        >
-        <mat-card-content>
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Titulo academico</mat-label>
-                <input matInput type="text" />
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Área de especialización</mat-label>
-                <input matInput type="number" />
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Departamento o facultad</mat-label>
-                <input matInput type="text" />
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Cargo o posición</mat-label>
-                <input matInput type="text" />
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Años de experiencia</mat-label>
-                <input matInput type="text" />
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Fecha de contratación</mat-label>
-                <input matInput type="date" />
-              </mat-form-field>
-            </div>
+          <div class="row center-xs">
+            <div class="col-xs-12 col-md-12"></div>
+            <button type="submit" mat-raised-button class="register-button">
+              <mat-icon>save</mat-icon>
+              Crear usuario
+            </button>
           </div>
         </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <mat-card class="table-with-header">
-        <mat-card-title
-          class="principal-title"
-          style="
-            padding: 10px;
-            border-radius: 10px 10px 0 0;
-            background-color: #1f5ba3;
-          "
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
-            Información de contacto
-          </h4></mat-card-title
-        >
-        <mat-card-content>
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Correo electronico personal</mat-label>
-                <input matInput type="email" />
-                <mat-icon matSuffix style="color: #1f5ba3;">email</mat-icon>
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Celular</mat-label>
-                <input matInput type="number" />
-                <mat-icon matSuffix style="color: #1f5ba3;">smartphone</mat-icon>
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Telefono fijo</mat-label>
-                <input matInput type="number" />
-                <mat-icon matSuffix style="color: #1f5ba3;">phone</mat-icon>
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Dirección residencial</mat-label>
-                <input matInput type="text" />
-                <mat-icon matSuffix style="color: #1f5ba3;">home</mat-icon>
-              </mat-form-field>
-            </div>
-          </div>
-        </mat-card-content>
       </mat-card>
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <mat-card class="table-with-header">
-        <mat-card-title
-          class="principal-title"
-          style="
-            padding: 10px;
-            border-radius: 10px 10px 0 0;
-            background-color: #2c3967;
-          "
-          ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
-            Información laboral
-          </h4></mat-card-title
-        >
-        <mat-card-content>
-          <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Tipo de contrato</mat-label>
-                <mat-select matNativeControl>
-                  <mat-option value="" aria-disabled="true"></mat-option>
-                  <mat-option value="">Tiempo completo</mat-option>
-                  <mat-option value="">Medio tiempo</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Horario de trabajo</mat-label>
-                <mat-select matNativeControl>
-                  <mat-option value="" aria-disabled="true"></mat-option>
-                  <mat-option value="">Jornada diurna</mat-option>
-                  <mat-option value="">Jornada nocturna</mat-option>
-                  <mat-option value="">Fines de semana</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <mat-form-field class="width-inputs">
-                <mat-label>Fecha de finalización de contrato</mat-label>
-                <input matInput type="date" />
-              </mat-form-field>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-
-  <div class="row end-xs">
-    <div class="col-xs-12 col-md-2 rigth"></div>
-    <button mat-raised-button class="register-button">
-      <mat-icon>save</mat-icon>
-      Crear usuario
-    </button>
+    </form>
   </div>
 </div>

@@ -42,43 +42,54 @@ export class LoginComponent implements OnInit {
   }
 
   sendForm(login: any) {
-    this.authService.login()
-    .subscribe((res) => {
-      const user = res.find((a: any) => {
-        this.name = a.firstName;
-        this.lastName = a.firstLastName;
-        return (
-          a.email === login.value.email && a.password === login.value.password
-        );
-      });
+    this.LoginForm.markAllAsTouched();
 
-      if (user) {
-        Swal.fire({
-          title: `Bienvenido a EduTrack<span style="color: #d90000">PRO</span> usuario <b>${this.name} ${this.lastName}!</b>`,
-          icon: 'success',
-          confirmButtonColor: '#085092',
-          html: `<p>
-                        Tén un productivo día, si llegas a tener problemas en nuestro sistema ve a la sección de ayuda o haz <a href="/help" alt="Ayuda en EduTrackPro">clic aquí</a>
-                      </p>
-                      <h4>* Si crees que se deben activar más funcionalidades o permisos a tu cuenta, escríbenos al correo <a href="mailto:dev@edutrackpro.com" target="_blank">edutrackpro@gmail.com</a></h4>`,
-          width: 700,
-          background: 'rgba(255,255,255,0.98)',
-          backdrop: `
-                  rgba(0,48,73,0.5)
-                  left top
-                  no-repeat
-                `,
-          willClose: () => {
-            this.router.navigate(['home'])
-          },
-        });
-      } else {
-        Swal.fire({
-          title: 'Error',
-          text: 'Nombre de usuario o contraseña incorrectos',
-          icon: 'error',
-        });
-      }
-    });
+    if(this.LoginForm.valid){
+      this.authService.login()
+      .subscribe({
+        next: res => {
+          if(res.length > 0){
+            const user = res.find((a: any) => {
+              this.name = a.firstName;
+              this.lastName = a.firstLastName;
+              return (
+                a.email === login.value.email && a.password === login.value.password
+              );
+            });
+      
+            if (user) {
+              Swal.fire({
+                title: `Bienvenido a EduTrack<span style="color: #d90000">PRO</span> usuario <b>${this.name} ${this.lastName}!</b>`,
+                icon: 'success',
+                confirmButtonColor: '#085092',
+                html: `<p>
+                              Tén un productivo día, si llegas a tener problemas en nuestro sistema ve a la sección de ayuda o haz <a href="/help" alt="Ayuda en EduTrackPro">clic aquí</a>
+                            </p>
+                            <h4>* Si crees que se deben activar más funcionalidades o permisos a tu cuenta, escríbenos al correo <a href="mailto:dev@edutrackpro.com" target="_blank">edutrackpro@gmail.com</a></h4>`,
+                width: 700,
+                background: 'rgba(255,255,255,0.98)',
+                backdrop: `
+                        rgba(0,48,73,0.5)
+                        left top
+                        no-repeat
+                      `,
+                willClose: () => {
+                  this.router.navigate(['home'])
+                },
+              });
+            } else {
+              Swal.fire({
+                title: 'Error',
+                text: 'Nombre de usuario o contraseña incorrectos',
+                icon: 'error',
+              });
+            }
+          }
+        }
+        
+  
+      });
+    }
+
   }
 }

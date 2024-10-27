@@ -21,6 +21,6 @@ export class SharedService {
   }
 
   getDataReviwers(): Observable<IReviwer[]>{
-    return this.http.get<IReviwer[]>(`${this.url}/reviwers`)
+    return this.http.get<IReviwer[]>(`${this.url}/signup`)
   }
 }

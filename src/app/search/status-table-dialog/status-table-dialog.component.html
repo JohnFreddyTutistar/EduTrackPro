@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <br>
+  <br />
 
   <div class="row center-xs">
     <div class="col-xs-12 col-md-11">
@@ -140,7 +140,7 @@
     </div>
   </div>
 
-  <br>
+  <br />
 
   <div class="row center-xs">
     <div class="col-xs-12 col-md-6">
@@ -168,13 +168,16 @@
               </tr>
             </thead>
             <tr *ngFor="let document of documentsData">
-              <td> {{ document.documentName }} </td>
+              <td>{{ document.documentName }}</td>
               <td>
-                <span [ngClass]="{
-                  'aproved': document.status === 'Aprobado',
-                  'pending': document.status === 'Pendiente',
-                  'rejected': document.status === 'Rechazado'}">
-                  {{document.status}}
+                <span
+                  [ngClass]="{
+                    aproved: document.status === 'Aprobado',
+                    pending: document.status === 'Pendiente',
+                    rejected: document.status === 'Rechazado'
+                  }"
+                >
+                  {{ document.status }}
                 </span>
               </td>
             </tr>

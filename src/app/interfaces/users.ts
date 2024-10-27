@@ -69,12 +69,13 @@ export interface IApplicant {
 export interface IReviwer {
   id: number,
   firstName: string,
-  secondName: string,
+  secondName?: string,
   firstLastName: string,
-  secondLastName: string,
+  secondLastName?: string,
   email: string,
   dateBirth: string,
   phone: number,
   faculty: string,
-  programName: string
+  position: string,
+  rol: string
 }

@@ -33,7 +33,7 @@ import { ReviewTeamTableComponent } from '../pages/review-team-table/review-team
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports: [
     LoginComponent,
