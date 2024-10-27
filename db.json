@@ -13,6 +13,20 @@
       "rol": "administrador",
       "email": "john@gmail.com",
       "password": "Abc123**"
+    },
+    {
+      "id": "76bf",
+      "firstName": "eliana",
+      "secondName": "moncayo",
+      "firstLastName": "pistala",
+      "secondLastName": "",
+      "birthday": "2024-10-08",
+      "phone": 55512345,
+      "faculty": "ingenieria",
+      "position": "docente",
+      "rol": "administrador",
+      "email": "eliana@gmail.com",
+      "password": "eliana0123"
     }
   ],
   "applicants": [
