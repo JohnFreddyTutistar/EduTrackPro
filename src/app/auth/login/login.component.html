@@ -34,11 +34,14 @@
                         LoginForm.controls['email'].hasError('required')
                       "
                     >
-                    <mat-error *ngIf="LoginForm.get('email')?.hasError('email')">
-                      Debe ser un correo valido
+                      Este campo es requerido
                     </mat-error>
-                      Debes ingresar un email valido
-                    </mat-error>
+                    <mat-error
+                        *ngIf="
+                          LoginForm.controls['email'].hasError('email')
+                        ">
+                        Este correo no es valido
+                      </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-xs-12 col-md-11">

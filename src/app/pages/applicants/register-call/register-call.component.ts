@@ -18,7 +18,7 @@ export class RegisterCallComponent implements OnInit {
     this.formGroupSend = this.fb.group({
       result: ['', [Validators.required]],
       observation: [''],
-      tracing: ['', Validators.required],
+      tracing: [''],
       duration: ['']
     })
   }

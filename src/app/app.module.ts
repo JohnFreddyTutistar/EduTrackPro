@@ -80,7 +80,7 @@ import { CalendarComponent } from './pages/review-team-table/calendar/calendar.c
     HttpClientModule,
     MatTooltipModule,
     MatExpansionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     // TimelineHComponent

@@ -50,6 +50,16 @@ export class HelpComponent implements OnInit {
 
     if(this.digitalChanelForm.valid){
       console.log("data", this.digitalChanelForm.value);
+
+      Swal.fire({
+        title: 'Enviando ...',
+        icon: 'info',
+        html: 'Registro diligenciado correctamente',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+      });
+
+      Swal.showLoading();
     }
   }
 

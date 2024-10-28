@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, ChartType, registerables } from 'chart.js';
+import { BarController, BarElement, CategoryScale, Chart, ChartType, LinearScale } from 'chart.js';
+
+// Registrar las escalas y elementos necesarios
+Chart.register(LinearScale, BarElement, CategoryScale, BarController);
 
 interface analitycs {
   title: string;
@@ -12,6 +15,37 @@ interface analitycs {
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+
+
+  public chart: Chart | undefined;
+  createChart() {
+    this.chart = new Chart('barChart', {
+      type: 'bar',
+      data: {
+        labels: ['Total', 'Aprobados', 'En revisión', 'Desistidos'],
+        datasets: [{
+          label: 'Total',
+          data: [10, 6, 1, 1],
+          backgroundColor: [
+            '#009da8',
+            '#001ca8',
+            '#1295d7',
+            '#009da8',
+          ],
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+
+
   public reactiveAnalitycs: analitycs[] = [
     {
       title: 'Total',
@@ -96,9 +130,10 @@ export class DashboardComponent implements OnInit {
 
   constructor() {}
 
-  chart: any;
+  // chart: any;
 
   ngOnInit(): void {
-    this.chart = new Chart('Mychart', this.config);
+    // this.chart = new Chart('Mychart', this.config);
+    this.createChart()
   }
 }
