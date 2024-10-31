@@ -28,8 +28,8 @@
             <td>{{ item.duration }}</td>
             <td>
               {{ item.result }} 
-              <mat-icon *ngIf="item.result === 'contactado'" style="color: #008dd5;">done_all</mat-icon> 
-              <mat-icon *ngIf="item.result === 'no contestó'" style="color: #d90000;">close</mat-icon> 
+              <mat-icon *ngIf="item.result === 'contactado'" style="color: #008dd5;">call_made</mat-icon> 
+              <mat-icon *ngIf="item.result === 'no contestó'" style="color: #d90000;">call_missed</mat-icon> 
             </td>
             <td>{{ item.observation }}</td>
             <td>{{ item.review }}</td>

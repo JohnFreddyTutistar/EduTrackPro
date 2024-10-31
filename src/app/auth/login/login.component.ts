@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       
             if (user) {
               Swal.fire({
-                title: `Bienvenido a EduTrack<span style="color: #d90000">PRO</span> usuario <b>${this.name} ${this.lastName}!</b>`,
+                title: `Bienvenido a <b>EduTrack<span style="color: #980909">PRO</span></b> usuario <b>${this.name} ${this.lastName}!</b>`,
                 icon: 'success',
                 confirmButtonColor: '#085092',
                 html: `<p>

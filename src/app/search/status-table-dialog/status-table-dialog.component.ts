@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDataApplicantStatus } from 'src/app/interfaces/users';
+import { SharedService } from 'src/app/services/shared.service';
 
 
 @Component({
@@ -9,10 +10,13 @@ import { IDataApplicantStatus } from 'src/app/interfaces/users';
 })
 export class StatusTableDialogComponent implements OnInit {
 
+  id: string = ''
+  data: any[] = [];
+
   ELEMENT_DATA: IDataApplicantStatus[] = [
     {
       identificationNumber: 1085310787,
-      fullName: 'John Freddy Tutistar Calvache',
+      fullName: 'Ivan Dario Delgado Calvache',
       inscriptionDate: '05/09/2024',
       academicProgram: 'Ingeniería de Sistemas',
       status: 'EN REVISIÓN',
@@ -53,9 +57,21 @@ export class StatusTableDialogComponent implements OnInit {
 
   ]
 
-  constructor() { }
+  constructor(public sharedService: SharedService) { }
 
   ngOnInit(): void {
+
+    this.dataApplicant(this.id)
+  }
+
+  dataApplicant(id: string){
+    this.sharedService.getDataStatusApplicant(id).subscribe({
+      next: res => {
+        console.log("respuesta status applicant: ", res);
+        this.data = res;
+        console.log(this.data);
+      }
+    })
   }
 
 }

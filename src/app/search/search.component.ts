@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusTableDialogComponent } from './status-table-dialog/status-table-dialog.component';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-search',
@@ -14,12 +15,15 @@ export class SearchComponent implements OnInit {
   userLoginOn: boolean = false;
   userData?: any; 
 
+  id: string = ''
+
   public formSearchApplicantByIdentification!: FormGroup;
 
   constructor(
     private authService: AuthService,
     public formBuilder: FormBuilder,
     public dialog : MatDialog,
+    public sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +47,8 @@ export class SearchComponent implements OnInit {
         }
       }
     )
+
+    this.dataApplicant(this.id)
   }
 
   dialogStatusTable(){
@@ -67,6 +73,14 @@ export class SearchComponent implements OnInit {
       console.log("Enviando data", this.formSearchApplicantByIdentification.value);
 
     }
+  }
+
+  dataApplicant(id: string){
+    this.sharedService.getDataStatusApplicant(id).subscribe({
+      next: res => {
+        console.log("respuesta status applicant: ", res);
+      }
+    })
   }
 
 }

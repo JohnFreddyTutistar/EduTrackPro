@@ -26,6 +26,7 @@ export class ApplicantTableComponent implements OnInit {
   FormGroupFilter!: FormGroup;
 
   dataSource: IApplicant[] = [];
+  // dataSource: MatTableDataSource<any>
 
   filteredApplicants: any[] = [];
 
@@ -96,13 +97,15 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  // applyFilterFast(event: Event){
-  //   const filterValue = (event.target as HTMLInputElement).value
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  //   if(this.dataSource.paginator) {
-  //     this.dataSource.paginator.firstPage();
-  //   }
-  // }
+  applyFilterFast(event: Event){
+    // const filterValue = (event.target as HTMLInputElement).value
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
+    // if(this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    //}
+  }
 
   // Getter methods to easily access for controls
 
@@ -129,26 +132,26 @@ export class ApplicantTableComponent implements OnInit {
   resetFilter(all: boolean) {}
 
   ngOnInit() {
-    this.FormGroupFilter.valueChanges.subscribe((form) => {
-      this.applyFilters(form);
-    });
+    // this.FormGroupFilter.valueChanges.subscribe((form) => {
+    //   this.applyFilters(form);
+    // });
     this.getDataApplicants()
 
-    this.FormGroupFilter.valueChanges.subscribe((filters) => {
-      this.applyFilters(filters)
-    })
+    // this.FormGroupFilter.valueChanges.subscribe((filters) => {
+    //   this.applyFilters(filters)
+    // })
   }
 
-  applyFilters(filters: any): void {
-    this.filteredApplicants = this.dataSource.filter(applicants => {
-      return (
-        (filters.formControlFilterString ? applicants.email.includes(filters.email): true)
-      )
-    })
-  }
+  // applyFilters(filters: any): void {
+  //   this.filteredApplicants = this.dataSource.filter(applicants => {
+  //     return (
+  //       (filters.formControlFilterString ? applicants.email.includes(filters.email): true)
+  //     )
+  //   })
+  // }
 
   getDataApplicants(){
-    this.sharedService.getDataApplicants().subscribe((data: IApplicant[]) => {
+    this.sharedService.getDataApplicants().subscribe((data) => {
       this.dataSource = data;
     });
   }

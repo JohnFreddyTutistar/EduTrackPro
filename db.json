@@ -1,40 +1,40 @@
 {
   "signup": [
     {
-      "id": "311e",
-      "firstName": "john",
-      "secondName": "",
-      "firstLastName": "tutistar",
-      "secondLastName": "",
+      "id": "c28b",
+      "firstName": "John",
+      "secondName": "Freddy",
+      "firstLastName": "Tutistar",
+      "secondLastName": "Calvache",
       "birthday": "1994-02-03",
       "phone": 3105124961,
-      "faculty": "ingenieria",
-      "position": "docente",
+      "faculty": "Ingeniería",
+      "position": "Docente",
       "rol": "administrador",
       "email": "john@gmail.com",
       "password": "Abc123**"
     },
     {
-      "id": "76bf",
-      "firstName": "eliana",
-      "secondName": "moncayo",
-      "firstLastName": "pistala",
+      "id": "984e",
+      "firstName": "Eliana",
+      "secondName": "Moncayo",
+      "firstLastName": "Pistala",
       "secondLastName": "",
-      "birthday": "2024-10-08",
-      "phone": 55512345,
-      "faculty": "ingenieria",
-      "position": "docente",
+      "birthday": "1993-11-05",
+      "phone": 322487985,
+      "faculty": "Ingeniería",
+      "position": "Docente",
       "rol": "administrador",
       "email": "eliana@gmail.com",
-      "password": "eliana0123"
+      "password": "Abc123**"
     }
   ],
   "applicants": [
     {
       "id": 1,
-      "firstName": "John",
-      "secondName": "Freddy",
-      "firstLastName": "Tutistar",
+      "firstName": "Ivan",
+      "secondName": "Dario",
+      "firstLastName": "Delgado",
       "secondLastName": "Calvache",
       "identificationType": "CC",
       "identificationNumber": "1085310787",
@@ -201,6 +201,25 @@
       "result": "Llamar de nuevo",
       "madeBy": "Jorge Rivera",
       "tracing": "No"
+    }
+  ],
+  "statusApplicant": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "secondName": "Freddy",
+      "firstLastName": "Tutistar",
+      "secondLastName": "Calvache",
+      "identificationType": "CC",
+      "identificationNumber": 1085310787,
+      "academicProgram": "Ingeniería de Sistemas",
+      "inscriptionDate": "05/09/2024",
+      "status": "EN REVISIÓN",
+      "interview": true,
+      "test": false,
+      "doc1": true,
+      "doc2": true,
+      "doc3": true
     }
   ]
 }

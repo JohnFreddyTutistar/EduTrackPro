@@ -1,6 +1,7 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,7 +27,7 @@ export class HelpComponent implements OnInit {
 
   isEditable = true;
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
     this.digitaForm()
@@ -51,6 +52,22 @@ export class HelpComponent implements OnInit {
     if(this.digitalChanelForm.valid){
       console.log("data", this.digitalChanelForm.value);
 
+      setTimeout((): void => {
+        Swal.fire({
+          title: 'Gracias por usar EduTrackPro',
+          icon: 'success',
+          html: ` <p>Mensaje enviado correctamente</p>`,
+          showConfirmButton: false,
+          allowOutsideClick: false,
+          timer: 3000,
+          timerProgressBar: true,
+          willClose: () => {
+            window.location.reload();
+          },
+        });
+      }, 3000);
+      
+      
       Swal.fire({
         title: 'Enviando ...',
         icon: 'info',
@@ -60,6 +77,7 @@ export class HelpComponent implements OnInit {
       });
 
       Swal.showLoading();
+
     }
   }
 

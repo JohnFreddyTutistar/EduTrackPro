@@ -35,9 +35,14 @@
               </tr>
             </thead>
             <tr *ngFor="let user of ELEMENT_DATA">
-              <td>{{ user.identificationNumber }}</td>
-              <td>{{ user.fullName }}</td>
-              <td>{{ user.academicProgram }}</td>
+              <td>{{ data[0].identificationNumber }}</td>
+              <td>
+                {{ data[0].firstName }}
+                {{ data[0].secondName }}
+                {{ data[0].firstLastName }}
+                {{ data[0].secondLastName }}
+              </td>
+              <td>{{ data[0].academicProgram }}</td>
             </tr>
           </table>
           <hr
@@ -52,7 +57,7 @@
               </tr>
             </thead>
             <tr *ngFor="let user of ELEMENT_DATA">
-              <td>{{ user.inscriptionDate }}</td>
+              <td>{{ data[0].inscriptionDate }}</td>
               <td style="display: flex; justify-content: center">
                 <div
                   class="box-color small center-xs"
@@ -62,7 +67,7 @@
                     statusRejected: user.status.toUpperCase() === 'RECHAZADO'
                   }"
                 >
-                  {{ user.status }}
+                  {{ data[0].status }}
                 </div>
               </td>
             </tr>
@@ -109,17 +114,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-xs-12 col-md-4">
-              <div class="row middle-xs">
-                <div class="col-xs-12">
-                  <h4><b>Estado actual</b></h4>
-                  <div class="box-color" [ngClass]="{'statusPending': data.status.toUpperCase() === 'EN REVISIÓN'}">
-                    {{ data.status }}
-                  </div>
-                  <p>Solicitud en revisión</p>
-                </div>
-              </div>
-            </div> -->
             <div class="col-xs-12 col-md-6">
               <div class="row">
                 <div class="col-xs-12">
@@ -279,39 +273,6 @@
         </mat-card-content>
       </mat-card>
     </div>
-
-    <!-- <div class="col-xs-12 col-md-5">
-      <h4>
-        <b><mat-icon>info</mat-icon> ¿Tienes dudas? contáctanos</b>
-      </h4>
-      <div class="row spacer center-xs">
-        <div class="col-xs-10 col-sm-4 center-align" style="padding: 20px">
-          <p style="margin-bottom: 0px">316 527 0339</p>
-          <p style="display: inline-flex; margin-bottom: 0px">
-            <a
-              href="tel:3165270339"
-              style="min-width: 40px; padding: 0; margin: 2px"
-              aria-label="Llamar a celular"
-              matTooltip="Llamar a celular"
-            >
-              <mat-icon>call</mat-icon>
-            </a>
-            <a
-              href="//wa.me/573165270339&text=Hola%2C%20necesito%20informaci%C3%B3n%20de%20Tarjeta%20Pab%C3%B3n%20M%C3%A1s."
-              target="_blank"
-              style="min-width: 40px; padding: 0; margin: 2px"
-              aria-label="Enviar mensaje por WhatsApp"
-              matTooltip="Enviar mensaje por WhatsApp"
-            >
-              <img
-                style="opacity: 0.7"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+nhxg7wAAAARnQU1BAACxjwv8YQUAAAABc1JHQgCuzhzpAAABYlBMVEUAAAD0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0///0//+s8Tp/AAAAdXRSTlMA+dzZBP5TAtcDpfTxBm4F3WqLWAvTDu1RDKO/L20yAdQSdIf68qdXb9qkmNLkeylB7CppqBv1OO4sETd54uBEyFpJ/PgejT7M8KJSFxbvSoNVSyuETyifQMEtytihcDDbUHa2B5VFTtYcm4BzIQoJcrjmSPt5hKooAAABJUlEQVQoz52S1WLDMAxFFWrSNG1XZu6YmZmZmZl59/+XOnHXvVYPvrKOLduSiao176auuVyNdQH3//jlBWyrcVSE1QKQPduOBdtTLYDfWQYFCCl7pvoE+Hn8Xine/W3vEGBn80rw0OPtASc+iNYNonhwUgILHDhDqGfOKfJ0owBpThqgM80iSZk1dPZy0AWJaQQ5ojn0lI+PoZapgRWisKgEOAjDYCqh3xyTfYIn44573oiOoDGgY6Qk84s4vga+3imPJQYcGGPP3jss1UokWcMyA7KISSt5+vnz6ZU+cCJb8wlMVVT0u6hsWd7Q9Exwdly16/Pygx17iQOuUbMPbcOrufMrCcqGvYaazSMHWnmjtPVy0kRT96AqR+OaEQnt78pV/45fFNQ7I/RV3I0AAAAASUVORK5CYII="
-              />
-            </a>
-          </p>
-        </div>
-      </div>
-    </div> -->
   </div>
 </div>
 <svg

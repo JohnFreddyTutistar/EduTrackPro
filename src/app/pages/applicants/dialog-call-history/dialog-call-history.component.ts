@@ -21,32 +21,32 @@ export class DialogCallHistoryComponent implements OnInit {
   data: dataCall[] = [
     {
       id: 1,
-      name: "John Freddy Tutistar Calvache",
+      name: "Ivan Dario Delgado Calvache",
       date: "09/10/2024 14:25",
       duration: "5 min",
       result: "contactado",
       observation: "llamar de nuevo",
-      review: "Jorge Rivera",
+      review: "John Tutistar",
       tracing: "no"
     },
     {
       id: 2,
-      name: "John Freddy Tutistar Calvache",
+      name: "Ivan Dario Delgado Calvache",
       date: "10/10/2024 14:25",
       duration: "2 min",
       result: "contactado",
       observation: "llamar de nuevo",
-      review: "Jorge Rivera",
+      review: "John Tutistar",
       tracing: "no"
     },
     {
       id: 3,
-      name: "John Freddy Tutistar Calvache",
+      name: "Ivan Dario Delgado Calvache",
       date: "15/10/2024 14:25",
       duration: "-----",
       result: "no contestó",
       observation: "-----",
-      review: "Jorge Rivera",
+      review: "John Tutistar",
       tracing: "-----"
     }
   ]

@@ -14,12 +14,16 @@
               <mat-label>Resultado</mat-label>
               <mat-select formControlName="result" required>
                 <mat-option value="contact">
-                  Contactado <mat-icon style="color: #52be80">check_small</mat-icon>
+                  Contactado <mat-icon style="color: #008dd5">call_made</mat-icon>
                 </mat-option>
                 <mat-option value="notcontact"> 
-                  No contestó <mat-icon style="color: #d90000">close</mat-icon>
+                  No contestó <mat-icon style="color: #d90000">call_missed</mat-icon>
                 </mat-option>
               </mat-select>
+              <mat-error 
+                *ngIf="formGroupSend.controls['result'].touched && formGroupSend.controls['result'].hasError('required')">
+                Este campo es obligatorio
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="col-xs-11">
@@ -45,7 +49,8 @@
           <div class="col-xs-11">
             <mat-form-field class="width-inputs" appearance="fill">
               <mat-label>Duración</mat-label>
-              <input type="number" matInput formControlName="duration" />
+              <input type="number" matInput formControlName="duration" placeholder="tiempo en minutos"/>
+              <mat-hint>Digite solo <b>numeros</b></mat-hint>
             </mat-form-field>
           </div>
         </div>

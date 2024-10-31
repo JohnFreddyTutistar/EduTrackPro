@@ -18,9 +18,9 @@ export class DialogApplicantComponent implements OnInit {
 
   dataofUsertoUpdte(){
     this.updateUser = this.fb.group({
-      firstName: ['John', [Validators.required]],
-      secondName: ['Freddy'],
-      firstSurname: ['Tutistar', [Validators.required]],
+      firstName: ['Ivan', [Validators.required]],
+      secondName: ['Dario'],
+      firstSurname: ['Delgado', [Validators.required]],
       secondSurname: ['Calvache'],
       gender: ['Masculino'],
       email: ['johnfre.157@gmail.com', [Validators.required, Validators.email]],
