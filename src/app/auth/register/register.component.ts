@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
         next: (res) => {
           console.log('usuario registrado correctamente', res);
           Swal.fire({
-            title: 'Gracias por usar EduTrackPro',
+            title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
             icon: 'success',
             html: ` <p>Usuario registrado exitosamente</p>`,
             showConfirmButton: false,

@@ -35,22 +35,22 @@ export class StatusTableDialogComponent implements OnInit {
 
   stagesTimeLine: Array<any> = [
     {
-      title: 'pago',
+      title: 'Pago',
       date: '08/09/24',
       Description: 'aprobado'
     },
     {
-      title: 'docs',
+      title: 'Docs',
       date: '11/09/24',
       Description: 'aprobado'
     },
     {
-      title: 'entrevista',
+      title: 'Entrevista',
       date: '15/09/24',
       Description: 'pendiente'
     },
     {
-      title: 'prueba',
+      title: 'Prueba',
       date: 'pendiente',
       Description: 'pendiente'
     },

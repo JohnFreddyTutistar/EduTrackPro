@@ -41,7 +41,7 @@ export class ToolbarComponent implements OnInit {
   onLogout(){
     Swal.fire({
       title: 'SALIR',
-      text: 'Está a punto de salir de EduTrackPRO, ¿Está seguro/a?.',
+      text: `Está a punto de salir de EduTrackPRO, ¿Está seguro/a?.`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

@@ -54,7 +54,7 @@ export class HelpComponent implements OnInit {
 
       setTimeout((): void => {
         Swal.fire({
-          title: 'Gracias por usar EduTrackPro',
+          title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
           icon: 'success',
           html: ` <p>Mensaje enviado correctamente</p>`,
           showConfirmButton: false,

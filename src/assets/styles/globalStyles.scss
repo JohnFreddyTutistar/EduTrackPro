@@ -171,20 +171,32 @@ input[type=number] {
 // status
 
 .statusOk {
-  background-color: #52be80;
-  color: #fff;
+  // background-color: #52be80;
+  // color: #fff;
+  background-color: #b3dbb0;
+  color: #378659;
+  font-weight: bold;
 }
 .statusPending {
-  background-color: #ffa621;
-  color: #000
+  // background-color: #ffa621;
+  // color: #000;
+  background-color: #f7ed97;
+  color: #c38529;
+  font-weight: bold;
 }
 .statusRejected {
-  background-color: #d90000;
-  color: #fff;
+  // background-color: #d90000;
+  // color: #fff;
+  background-color: #eca69d;
+  color: #d90000;
+  font-weight: bold;
 }
 .statusNotPresented {
-  background-color: #009da8;
-  color: #fff
+  // background-color: #009da8;
+  // color: #fff;
+  background-color: #c0e2e8;
+  color: #009da8;
+  font-weight: 900;
 }
 .statusRecheduled {
   background-color: #ff8408;
