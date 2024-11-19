@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthRoutes } from './auth-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { ReviewTeamTableComponent } from '../pages/review-team-table/review-team-table.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ReviewTeamTableComponent } from '../pages/review-team-table/review-team
     LoginComponent,
     ForgotPasswordComponent,
     RegisterComponent,
+    MyAccountComponent,
     // ReviewTeamTableComponent
   ],
   imports: [
@@ -38,7 +40,8 @@ import { ReviewTeamTableComponent } from '../pages/review-team-table/review-team
   exports: [
     LoginComponent,
     ForgotPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    MyAccountComponent
   ]
 })
 export class AuthModule { }
