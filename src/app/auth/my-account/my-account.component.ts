@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-my-account',
@@ -8,16 +10,38 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MyAccountComponent implements OnInit {
 
-  updatePrifileUser!: FormGroup
+  updateProfileUser!: FormGroup
+  userId!: number;
 
-  constructor(private formBiulder: FormBuilder) { }
+  constructor(
+    private formBiulder: FormBuilder,
+    private sharedService: SharedService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.formEditUser()
+    this.formEditUser();
+
+    // Obtener el usuario id de la url
+    this.userId = +this.route.snapshot.paramMap.get('id')!;
+
+    console.log("id: ", this.userId);
+
+    // Cargar al usuario para editarlo
+    this.sharedService.getDataReviwersById(this.userId).subscribe(user => {
+      console.log("Datos usuario: ", user);
+      this.updateProfileUser.patchValue({
+        firstName: user.firstName,
+        secondName: user.secondName,
+        firstLastName: user.firstLastName,
+        secondLastName: user.secondLastName,
+      })
+    })
   }
 
   formEditUser(){
-    this.updatePrifileUser = this.formBiulder.group({
+    this.updateProfileUser = this.formBiulder.group({
       firstName: ['', [Validators.required]],
       secondName: [''],
       firstLastName: ['', [Validators.required]],
@@ -29,6 +53,7 @@ export class MyAccountComponent implements OnInit {
     })
   }
 
+  // Metodo para actualizar los datos del usuario
   updateForm(){
 
   }

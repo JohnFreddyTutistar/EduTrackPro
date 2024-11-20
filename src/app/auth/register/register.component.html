@@ -19,7 +19,7 @@
               <p style="margin-top: 10px;">
                 <b>A continuación, encontrarás un formulario de registro donde podrás crear
                 un nuevo usuario. Completa los campos requeridos marcados con un (*),
-                elige una contraseña segura y selecciona el rol que desempeñará dentro
+                elige una contraseña segura y selecciona el <b>rol</b> que desempeñará dentro
                 del sitio.</b>
               </p>
               <hr class="line-separator">
@@ -103,7 +103,13 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Departamento o facultad</mat-label>
-                <input matInput type="text" required formControlName="faculty"/>
+                <mat-select formControlName="faculty">
+                  <mat-option value="ingeniería">Ingeniería</mat-option>
+                  <mat-option value="arquitectura">Arquitectura y Bellas Artes</mat-option>
+                  <mat-option value="administrativa">Administrativas y Contables</mat-option>
+                  <mat-option value="sociales">Sociales y Humanas</mat-option>
+                  <mat-option value="educación">Educación</mat-option>
+                </mat-select>
                 <mat-error *ngIf="
                   registerForm.controls['faculty'].touched &&
                   registerForm.controls['faculty'].hasError('required')">

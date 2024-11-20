@@ -159,7 +159,46 @@
 
           <ng-container matColumnDef="phone">
             <th mat-header-cell *matHeaderCellDef>Teléfono</th>
-            <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+            <td mat-cell *matCellDef="let element">
+              <ng-container *ngIf="element.phone">
+                <p style="margin-bottom: 0px">{{ element.phone }}</p>
+                <p style="display: inline-flex">
+                  <a
+                    *ngIf="element.phone"
+                    [href]="'tel:' + element.phone"
+                    mat-stroked-button
+                    color="primary"
+                    style="line-height: 1.7em; padding: 0px"
+                    aria-label="llamar"
+                    matTooltip="llamar"
+                    ><mat-icon>call</mat-icon>
+                  </a>
+                  <a
+                    *ngIf="element.phone"
+                    [href]="
+                      '//wa.me/57' +
+                      element.mobile +
+                      '?text=Hola!%20Gracias%20por%20tu%20interes%20en%20el%20programa...'
+                    "
+                    mat-stroked-button
+                    target="_blank"
+                    style="
+                      border-color: #005c4b33;
+                      color: #005c4bdd;
+                      line-height: 1.7em;
+                      padding: 0;
+                      margin: 2px;
+                    "
+                    aria-label="Enviar mensaje por WhatsApp"
+                    matTooltip="Enviar mensaje por WhatsApp"
+                  >
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACY0lEQVR4nN1VO2tUQRT+1KioQdBCC0Ww80nERitRUPABvhYx+A8M+EBFEIvRe84lQkhhIRgsxF33nuGWFsFusROxUnGNriAiVr5WFHzhhjl3WDdm9t7VMgNTzMw35zuPb84AM3uMjc2F5SOwVIWlOix9ySY/h5DAxoNIzbz/M26jgxB6Acut/EkvYbnUu2FjZsPycIeRJ7B8Gkm0HqnpR3lkESRaC0snIPyoAzeCNJ3Tg+feuPB3NZJ3KXNmKMN6ktyRRPsh9BuWfiCJd/UctY13dJCUcgpKEwpK+KTuVcxKCF2D0PZiEh7yBI1w4RM+5AFP22mxXPPpelhI4O4IPc7wdHQ6QOiWPzyn6/Gr87N0tYu4uZBEolNeWdVQiE4tLdhoQNet1iwIf/Sk75DyiuIo4nWeYCLAzu/1MDVLO0hHvfe20LgSmH7v0OdQBM2swPHy9l7FLNaiaariwUKCDO8cagYIvIIsb526Hw1A+KvK0KnLpc6pRKii6ztm4Z8Ioo0+RfUQQdUTXAicbYPQJ6+oB7A03tEq3iIdXaA4J5BsvxxKUckfvgq+3mq8BsL3Av2ooec105c1ROdEdHg6gQK4kQHiY12yDJWr0CUI3YXQDaS02nt/xkf4TG11uXzfg/bgX0ZCu7W9ODEkvC8Mqg4vgdAvCH3TjpleWQVLO7WhdRvaXuKzEP7p68HdvWjXQD+U11P6vfBFJJe3oGyW6TtJeRMsnW8rz3kuTLnOQPj6Xx/JBwi96eHDqcNGe4vz6Bqb8G0IHYeNN6g3NdOnTdBpPlNIU1+8NjW6CeED3Qs6U8Yk7S+4xYzDg70AAAAASUVORK5CYII="
+                    />
+                  </a>
+                </p>
+              </ng-container>
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="faculty">

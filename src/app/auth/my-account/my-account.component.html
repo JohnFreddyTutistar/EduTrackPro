@@ -21,7 +21,7 @@
     </div>
 
     <form
-      [formGroup]="updatePrifileUser"
+      [formGroup]="updateProfileUser"
       autocomplete="off"
       (ngSubmit)="updateForm()"
     >
@@ -32,8 +32,8 @@
             <input matInput type="text" required formControlName="firstName" />
             <mat-error
               *ngIf="
-                updatePrifileUser.controls['firstName'].touched &&
-                updatePrifileUser.controls['firstName'].hasError('required')
+                updateProfileUser.controls['firstName'].touched &&
+                updateProfileUser.controls['firstName'].hasError('required')
               "
             >
               Este campo es requerido
@@ -57,8 +57,8 @@
             />
             <mat-error
               *ngIf="
-                updatePrifileUser.controls['firstLastName'].touched &&
-                updatePrifileUser.controls['firstLastName'].hasError('required')
+                updateProfileUser.controls['firstLastName'].touched &&
+                updateProfileUser.controls['firstLastName'].hasError('required')
               "
             >
               Este campo es requerido
@@ -80,8 +80,8 @@
             <input matInput type="date" required formControlName="birthday" />
             <mat-error
               *ngIf="
-                updatePrifileUser.controls['birthday'].touched &&
-                updatePrifileUser.controls['birthday'].hasError('required')
+                updateProfileUser.controls['birthday'].touched &&
+                updateProfileUser.controls['birthday'].hasError('required')
               "
             >
               Este campo es requerido
@@ -95,8 +95,8 @@
             <mat-hint>digite solo <b>numeros</b></mat-hint>
             <mat-error
               *ngIf="
-                updatePrifileUser.controls['phone'].touched &&
-                updatePrifileUser.controls['phone'].hasError('required')
+                updateProfileUser.controls['phone'].touched &&
+                updateProfileUser.controls['phone'].hasError('required')
               "
             >
               Este campo es requerido
@@ -109,8 +109,8 @@
             <input matInput type="text" required formControlName="faculty" />
             <mat-error
               *ngIf="
-                updatePrifileUser.controls['faculty'].touched &&
-                updatePrifileUser.controls['faculty'].hasError('required')
+                updateProfileUser.controls['faculty'].touched &&
+                updateProfileUser.controls['faculty'].hasError('required')
               "
             >
               Este campo es requerido
@@ -123,8 +123,8 @@
             <input matInput type="text" formControlName="position" />
             <mat-error
               *ngIf="
-                updatePrifileUser.controls['position'].touched &&
-                updatePrifileUser.controls['position'].hasError('required')
+                updateProfileUser.controls['position'].touched &&
+                updateProfileUser.controls['position'].hasError('required')
               "
             >
               Este campo es requerido

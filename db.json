@@ -1,7 +1,7 @@
 {
   "signup": [
     {
-      "id": "c28b",
+      "id": 0,
       "firstName": "John",
       "secondName": "Freddy",
       "firstLastName": "Tutistar",
@@ -15,7 +15,7 @@
       "password": "Abc123**"
     },
     {
-      "id": "984e",
+      "id": 1,
       "firstName": "Eliana",
       "secondName": "Moncayo",
       "firstLastName": "Pistala",
@@ -29,7 +29,7 @@
       "password": "Abc123**"
     },
     {
-      "id": "03cf",
+      "id": 2,
       "firstName": "Carlos",
       "secondName": "",
       "firstLastName": "Herrera",
@@ -41,6 +41,20 @@
       "rol": "revisor",
       "email": "carlos@gmail.com",
       "password": "Abc123**"
+    },
+    {
+      "id": "097e",
+      "firstName": "Emanuel",
+      "secondName": "",
+      "firstLastName": "Tutistar",
+      "secondLastName": "",
+      "birthday": "1996-12-27",
+      "phone": 3214756438,
+      "faculty": "ingenieria",
+      "position": "docente",
+      "rol": "administrador",
+      "email": "emanuel@gmail.com",
+      "password": "emanuel123"
     }
   ],
   "applicants": [

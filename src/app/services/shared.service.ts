@@ -27,4 +27,14 @@ export class SharedService {
   getDataStatusApplicant(id: string): Observable<any>{
     return this.http.get<any>(`${this.url}/statusApplicant/${id}`)
   }
+
+  // Método para obtener un revisor por id
+  getDataReviwersById(id: number): Observable<any>{
+    return this.http.get<any>(`${this.url}/signup/${id}`);
+  }
+
+  // metodo para actualizar usuario revisor
+  updateUser(id: number, user: any): Observable<any>{
+    return this.http.put<any>(`${this.url}/signup/${id}`, user)
+  }
 }
