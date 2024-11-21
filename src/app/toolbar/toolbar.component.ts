@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
 
-  
+  userId! : number;
 
   constructor(
     public authService : AuthService,
@@ -33,6 +33,7 @@ export class ToolbarComponent implements OnInit {
       {
         next:(userData) => {
           this.userData = userData
+          this.userId = userData.id;
         }
       }
     )

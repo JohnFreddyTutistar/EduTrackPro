@@ -88,7 +88,7 @@
     <span>Iniciar sesión</span>
   </button>
 
-  <button *ngIf="userLoginOn" mat-menu-item>
+  <button *ngIf="userLoginOn" mat-menu-item [routerLink]="['auth/account/:id']">
     <mat-icon class="icons">account_circle</mat-icon>
     <span>Mi perfil</span>
   </button>
