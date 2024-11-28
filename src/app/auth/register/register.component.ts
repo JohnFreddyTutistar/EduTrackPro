@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth.service';
+import { EnumsService } from 'src/app/services/enums.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,14 +16,19 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
+  public facultyType!: any[];
+
   constructor(
     public formBuilder: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    public enumService: EnumsService
   ) {}
 
   ngOnInit(): void {
     this.dataUserForm();
+
+    this.facultyType = this.enumService.getFacultyType()
 
     // Escuchar cambios en el campo de fecha
     this.registerForm.get('birthday')?.valueChanges.subscribe(value => {
@@ -72,11 +78,9 @@ export class RegisterComponent implements OnInit {
       Swal.showLoading();
 
       const dataUser = this.registerForm.value;
-      console.log(this.registerForm.value);
 
       this.authService.signUpData(dataUser).subscribe({
         next: (res) => {
-          console.log('usuario registrado correctamente', res);
           Swal.fire({
             title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
             icon: 'success',

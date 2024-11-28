@@ -30,7 +30,7 @@
           <form
             [formGroup]="formSearchApplicantByIdentification"
             autocomplete="off"
-            (ngSubmit)="searchApplicantByIdentification()"
+            (ngSubmit)="searchApplicantByIdentification(formSearchApplicantByIdentification)"
           >
             <div class="row">
               <div class="col-xs-12">
@@ -40,9 +40,9 @@
                 <mat-form-field class="width-inputs" appearance="fill">
                   <mat-label>Tipo de identificación</mat-label>
                   <mat-select matNativeControl formControlName="documentType">
-                    <mat-option value="" aria-disabled="true"></mat-option>
-                    <mat-option value="cc">Cédula de ciudadanía</mat-option>
-                    <mat-option value="ti">Tarjeta de identidad</mat-option>
+                    <mat-option *ngFor="let idType of identificationTypes" [value]="idType.value">
+                      {{ idType.viewValue }}
+                    </mat-option>
                   </mat-select>
                   <mat-error
                     *ngIf="
@@ -81,6 +81,9 @@
                     "
                   >
                     Este campo es obligatorio
+                  </mat-error>
+                  <mat-error *ngIf="formSearchApplicantByIdentification.controls['documentNumber'].hasError('min')">
+                    Debe contener minimo 8 caracteres
                   </mat-error>
                 </mat-form-field>
               </div>

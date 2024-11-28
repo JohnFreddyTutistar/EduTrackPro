@@ -13,12 +13,19 @@
             <mat-form-field class="width-inputs" appearance="fill">
               <mat-label>Resultado</mat-label>
               <mat-select formControlName="result" required>
-                <mat-option value="contact">
+                <mat-option *ngFor="let idType of results" [value]="idType.value">
+                  {{ idType.viewValue }} <mat-icon 
+                  [ngClass]="{
+                    statusOkCall: idType.value === 'CONTACTADO',
+                    statusMissedCall: idType.value === 'NO CONTACTADO'
+                  }">{{ idType.icon }}</mat-icon>
+                </mat-option>
+                <!-- <mat-option value="contact">
                   Contactado <mat-icon style="color: #008dd5">call_made</mat-icon>
                 </mat-option>
                 <mat-option value="notcontact"> 
                   No contestó <mat-icon style="color: #d90000">call_missed</mat-icon>
-                </mat-option>
+                </mat-option> -->
               </mat-select>
               <mat-error 
                 *ngIf="formGroupSend.controls['result'].touched && formGroupSend.controls['result'].hasError('required')">

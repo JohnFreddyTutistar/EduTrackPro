@@ -38,6 +38,7 @@ import { DialogCallHistoryComponent } from './pages/applicants/dialog-call-histo
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterCallComponent } from './pages/applicants/register-call/register-call.component';
 import { CalendarComponent } from './pages/review-team-table/calendar/calendar.component';
+import { ContactFormComponent } from './pages/help/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CalendarComponent } from './pages/review-team-table/calendar/calendar.c
     DashboardComponent,
     RegisterCallComponent,
     CalendarComponent,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,

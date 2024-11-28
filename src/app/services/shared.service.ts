@@ -37,4 +37,5 @@ export class SharedService {
   updateUser(id: number, user: any): Observable<any>{
     return this.http.put<any>(`${this.url}/signup/${id}`, user)
   }
+
 }

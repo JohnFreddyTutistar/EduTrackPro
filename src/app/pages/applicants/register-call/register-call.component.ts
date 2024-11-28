@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EnumsService } from 'src/app/services/enums.service';
 
 @Component({
   selector: 'app-register-call',
@@ -10,12 +11,17 @@ export class RegisterCallComponent implements OnInit {
 
   formGroupSend! : FormGroup
 
-  constructor(public fb: FormBuilder) {
+  public results!: any[];
+
+  constructor(
+    public formBuilder: FormBuilder,
+    public enumService: EnumsService
+  ) {
     this.formData()
   }
 
   formData(){
-    this.formGroupSend = this.fb.group({
+    this.formGroupSend = this.formBuilder.group({
       result: ['', [Validators.required]],
       observation: [''],
       tracing: [''],
@@ -24,6 +30,8 @@ export class RegisterCallComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.results = this.enumService.getResults()
   }
 
   sendData(){

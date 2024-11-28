@@ -104,11 +104,9 @@
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Departamento o facultad</mat-label>
                 <mat-select formControlName="faculty">
-                  <mat-option value="ingeniería">Ingeniería</mat-option>
-                  <mat-option value="arquitectura">Arquitectura y Bellas Artes</mat-option>
-                  <mat-option value="administrativa">Administrativas y Contables</mat-option>
-                  <mat-option value="sociales">Sociales y Humanas</mat-option>
-                  <mat-option value="educación">Educación</mat-option>
+                  <mat-option *ngFor="let idType of facultyType" [value]="idType.value">
+                    {{ idType.viewValue }}
+                  </mat-option>
                 </mat-select>
                 <mat-error *ngIf="
                   registerForm.controls['faculty'].touched &&
