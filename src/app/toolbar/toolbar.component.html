@@ -56,7 +56,7 @@
 <!-- Usuario loggeado -->
 <button *ngIf="userLoginOn" mat-button [matMenuTriggerFor]="persons">
   <mat-icon class="profile-photo-40r-default"></mat-icon>
-  <span style="margin-top: 8px; color: #0c478c"
+  <span style="margin-top: 8px; color: #0c478c" class="hide-on-small"
     ><b
       >{{ userData[0].firstName.toUpperCase() }}
       {{ userData[0].firstLastName.toUpperCase() }}</b
@@ -64,7 +64,7 @@
   >
 </button>
 
-<!-- displayec notifications -->
+<!-- displayed notifications -->
 <mat-menu #notifications> </mat-menu>
 
 <mat-menu #persons xPosition="before">
@@ -80,6 +80,7 @@
   </div>
 
   <button
+    *ngIf="!userLoginOn"
     class="hide-on-med-and-up"
     mat-menu-item
     [routerLink]="['auth/login']"

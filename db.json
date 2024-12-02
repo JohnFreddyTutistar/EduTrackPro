@@ -1,7 +1,7 @@
 {
   "signup": [
     {
-      "id": 0,
+      "id": "0",
       "firstName": "John",
       "secondName": "Freddy",
       "firstLastName": "Tutistar",
@@ -15,7 +15,7 @@
       "password": "Abc123**"
     },
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Eliana",
       "secondName": "Moncayo",
       "firstLastName": "Pistala",
@@ -29,7 +29,7 @@
       "password": "Abc123**"
     },
     {
-      "id": 2,
+      "id": "2",
       "firstName": "Carlos",
       "secondName": "",
       "firstLastName": "Herrera",
@@ -55,6 +55,20 @@
       "rol": "administrador",
       "email": "emanuel@gmail.com",
       "password": "emanuel123"
+    },
+    {
+      "id": "7eb5",
+      "firstName": "Estefania",
+      "secondName": "",
+      "firstLastName": "Betancour",
+      "secondLastName": "",
+      "birthday": "1985-11-05",
+      "phone": 555123456,
+      "faculty": "ARQUITECTURA Y BELLAS ARTES",
+      "position": "docente",
+      "rol": "revisor",
+      "email": "estefania@gmail.com",
+      "password": "estefania123"
     }
   ],
   "applicants": [
