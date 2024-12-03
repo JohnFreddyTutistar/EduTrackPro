@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
 
+  public userRol!: any[];
+
   public facultyType!: any[];
 
   constructor(
@@ -29,6 +31,8 @@ export class RegisterComponent implements OnInit {
     this.dataUserForm();
 
     this.facultyType = this.enumService.getFacultyType()
+
+    this.userRol = this.enumService.getUserRol();
 
     // Escuchar cambios en el campo de fecha
     this.registerForm.get('birthday')?.valueChanges.subscribe(value => {

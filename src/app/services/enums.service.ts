@@ -55,4 +55,17 @@ export class EnumsService {
       }
     ]
   }
+
+  public getUserRol() {
+    return [
+      {
+        value: 'ADMINISTRADOR(A)',
+        viewValue: 'ADMINISTRADOR(A)'
+      },
+      {
+        value: 'REVISOR(A)',
+        viewValue: 'REVISOR(A)'
+      }
+    ]
+  }
 }

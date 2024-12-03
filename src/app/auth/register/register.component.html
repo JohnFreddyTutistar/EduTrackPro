@@ -88,7 +88,7 @@
                 <h3 style="line-height: 0.5em; color: #009da8;"><b>{{ edad }}</b></h3>
               </div>
             </div>
-  
+
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Teléfono o Celular</mat-label>
@@ -127,13 +127,12 @@
                 </mat-error>
               </mat-form-field>
             </div>
-  
+
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Rol</mat-label>
                 <mat-select required formControlName="rol">
-                  <mat-option value="administrador">Administrador(a)</mat-option>
-                  <mat-option value="revisor">Revisor(a)</mat-option>
+                  <mat-option *ngFor="let rol of userRol" [value]="rol.value">{{ rol.viewValue }}</mat-option>
                 </mat-select>
                 <mat-icon matSuffix style="color: #006363"
                   >manage_accounts</mat-icon
@@ -145,7 +144,7 @@
                 </mat-error>
               </mat-form-field>
             </div>
-  
+
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Correo electrónico</mat-label>
@@ -158,7 +157,7 @@
                 </mat-error>
               </mat-form-field>
             </div>
-  
+
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Contraseña</mat-label>
