@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ILogginUser, IReviwer, LoggedUser } from '../interfaces/users';
+import { IReviwer } from '../interfaces/users';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { GlobalService } from './global.service';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,16 @@ export class AuthService {
     '¿En qué puedo ayudarte?',
     'Buen día',
     'Buen día, vamos a trabajar',
+    '¿Que haremos este ' + moment().format('dddd') + '?',
+    'Feliz ' + moment().format('dddd'),
+    '¡Feliz ' +
+      moment().format('dddd') +
+      '! Espero que tengas un día maravilloso',
+      'Excelente ' + moment().format('dddd'),
+    'Bonito ' + moment().format('dddd'),
+    'Lindo ' + moment().format('dddd'),
+    'Ten un gran ' + moment().format('dddd'),
+    'Buen ' + moment().format('dddd'),
   ]
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
