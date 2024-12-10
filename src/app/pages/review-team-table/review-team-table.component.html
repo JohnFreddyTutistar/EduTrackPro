@@ -103,7 +103,7 @@
       <!-- Busqueda rapida por frontend -->
       <mat-form-field class="width-inputs" appearance="fill">
         <mat-label>Busqueda rapida por</mat-label>
-        <input matInput appUpperCase placeholder="" />
+        <input matInput appUpperCase placeholder="" (keyup)="applyFilters($event)"/>
       </mat-form-field>
 
       <div class="row spacer">

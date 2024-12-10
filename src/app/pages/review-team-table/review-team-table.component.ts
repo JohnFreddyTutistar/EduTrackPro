@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { IReviwer } from 'src/app/interfaces/users';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class ReviewTeamTableComponent implements OnInit {
 
-  dataTable: IReviwer[] = [];
+  dataTable: any = [];
 
   displayedColumns: string[] = [
     'index',
@@ -86,18 +87,21 @@ export class ReviewTeamTableComponent implements OnInit {
     this.getDataReviwer();
   }
 
-  applyFilters(form: any){
-    let filteredData = this.dataTable;
+  applyFilters(form: Event){
+    // let filteredData = this.dataTable;
+
+    const filterValue = (form.target as HTMLInputElement).value
+    this.dataTable.filter = filterValue.trim().toLowerCase();
 
     // Aplicar filtros a los datos originales
-    if(form.fullname) {
-      // filteredData = filteredData.filter(fullname => fullname.fullname.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
-    }
+    // if(form.fullname) {
+    //   filteredData = filteredData.filter(fullname => fullname.fullname.toLocaleLowerCase().includes(form.fullname.toLocaleLowerCase()))
+    // }
   }
 
   getDataReviwer(){
     this.sharedService.getDataReviwers().subscribe((data) => {
-      this.dataTable = data
+      this.dataTable = new MatTableDataSource(data) 
     })
   }
 

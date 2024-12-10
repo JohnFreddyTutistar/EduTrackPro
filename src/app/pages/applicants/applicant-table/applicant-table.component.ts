@@ -25,7 +25,7 @@ export class ApplicantTableComponent implements OnInit {
 
   FormGroupFilter!: FormGroup;
 
-  dataSource: IApplicant[] = [];
+  dataSource: any = [];
   // dataSource: MatTableDataSource<any>
 
   filteredApplicants: any[] = [];
@@ -98,8 +98,8 @@ export class ApplicantTableComponent implements OnInit {
   }
 
   applyFilterFast(event: Event){
-    // const filterValue = (event.target as HTMLInputElement).value
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
     // this.dataSource.filter = filterValue.trim().toLowerCase();
     // if(this.dataSource.paginator) {
@@ -152,7 +152,7 @@ export class ApplicantTableComponent implements OnInit {
 
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource(data);
     });
   }
 }
