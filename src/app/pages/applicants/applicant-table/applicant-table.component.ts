@@ -20,8 +20,8 @@ import { filter } from 'rxjs';
   styleUrls: ['./applicant-table.component.scss'],
 })
 export class ApplicantTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator | undefined;
+  @ViewChild(MatSort) sort!: MatSort | undefined;
 
   FormGroupFilter!: FormGroup;
 
@@ -145,9 +145,11 @@ export class ApplicantTableComponent implements OnInit {
 
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource = new MatTableDataSource<IApplicant>(data);
       this.dataApplicants = data;
-      console.log("data ", data);
+
+      this.dataSource.paginator = this.paginator!;
+      this.dataSource.sort = this.sort!
     });
   }
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { IReviwer } from 'src/app/interfaces/users';
@@ -15,6 +17,9 @@ import Swal from 'sweetalert2';
 export class ReviewTeamTableComponent implements OnInit {
 
   dataTable: any = [];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator | undefined;
+  @ViewChild(MatSort) sort!: MatSort | undefined;
 
   displayedColumns: string[] = [
     'index',
@@ -42,7 +47,7 @@ export class ReviewTeamTableComponent implements OnInit {
   }
 
   constructor(
-    public formBuilder: FormBuilder, 
+    public formBuilder: FormBuilder,
     public sharedService: SharedService,
     public authService: AuthService) {
     this.filterForm();
@@ -101,7 +106,10 @@ export class ReviewTeamTableComponent implements OnInit {
 
   getDataReviwer(){
     this.sharedService.getDataReviwers().subscribe((data) => {
-      this.dataTable = new MatTableDataSource(data) 
+      this.dataTable = new MatTableDataSource(data)
+
+      this.dataTable.paginator = this.paginator!;
+      this.dataTable.sort = this.sort!
     })
   }
 
@@ -122,8 +130,8 @@ export class ReviewTeamTableComponent implements OnInit {
           next: response => {
             console.log("Usuario eliminado:", response);
             Swal.fire({
-              title: 'Eliminado', 
-              html: 'El usuario ha sido eliminado.', 
+              title: 'Eliminado',
+              html: 'El usuario ha sido eliminado.',
               icon: 'success',
               showConfirmButton: false,
               allowOutsideClick: false,
