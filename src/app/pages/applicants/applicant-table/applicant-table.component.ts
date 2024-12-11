@@ -26,6 +26,7 @@ export class ApplicantTableComponent implements OnInit {
   FormGroupFilter!: FormGroup;
 
   dataSource: any = [];
+  dataApplicants: IApplicant[] = []
   // dataSource: MatTableDataSource<any>
 
   filteredApplicants: any[] = [];
@@ -142,17 +143,11 @@ export class ApplicantTableComponent implements OnInit {
     // })
   }
 
-  // applyFilters(filters: any): void {
-  //   this.filteredApplicants = this.dataSource.filter(applicants => {
-  //     return (
-  //       (filters.formControlFilterString ? applicants.email.includes(filters.email): true)
-  //     )
-  //   })
-  // }
-
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataApplicants = data;
+      console.log("data ", data);
     });
   }
 }
