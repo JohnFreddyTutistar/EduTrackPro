@@ -11,6 +11,29 @@ export class SharedService {
 
   url = 'http://localhost:3000';
 
+  statusApplicant = [
+    {
+      name: 'Aprovados',
+      amount: null,
+      class: 'approved'
+    },
+    {
+      name: 'En revisión',
+      amount: null,
+      class: 'revision'
+    },
+    {
+      name: 'Desistidos',
+      amount: null,
+      class: 'givenUp'
+    },
+    {
+      name: 'Rechazados',
+      amount: null,
+      class: 'rejected'
+    }
+  ]
+
   constructor(
       public http: HttpClient,
       public router: Router

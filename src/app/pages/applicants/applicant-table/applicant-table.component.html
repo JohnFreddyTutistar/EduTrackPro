@@ -9,8 +9,10 @@
       </p>
     </div>
   </div>
+
+  <!-- Contadores circulares por estado -->
   <div class="row center-xs">
-    <div class="col-xs-12 col-md-2">
+    <!-- <div class="col-xs-12 col-md-2">
       <ng-container>
         <div style="padding: 10px">
           <button
@@ -54,7 +56,7 @@
       <ng-container>
         <div style="padding: 10px">
           <button
-            class="counter giveUp"
+            class="counter givenUp"
             style="
               border: 3px solid;
               padding: 10px;
@@ -86,6 +88,27 @@
             <span class="salient"> <b>1</b> </span>
             <span class="description"> aplicante(s) </span>
             <b>Rechazados</b>
+          </button>
+        </div>
+      </ng-container>
+    </div> -->
+
+    <div class="col-xs-12 col-md-2" *ngFor="let count of counterByApplicantStatus; let i = index">
+      <ng-container>
+        <div style="padding: 10px" >
+          <button
+            class="counter"
+            [ngClass]="count.class"
+            style="
+              border: 3px solid;
+              padding: 10px;
+              cursor: pointer;
+            "
+          >
+            <br />
+            <span class="salient" [id]="count.name"> <b>{{ count.amount }}</b> </span>
+            <span class="description"> Aplicante(s) </span>
+            <b>{{ count.name }}</b>
           </button>
         </div>
       </ng-container>

@@ -41,6 +41,20 @@
       "rol": "REVISOR(A)",
       "email": "johnfre.751@gmail.com",
       "password": "john123456789"
+    },
+    {
+      "id": "6a1e",
+      "firstName": "Melanie",
+      "secondName": "Sofi",
+      "firstLastName": "Gomez",
+      "secondLastName": "Cadena",
+      "birthday": "2006-07-27",
+      "phone": 3105124961,
+      "faculty": "SOCIALES Y HUMANAS",
+      "position": "docente",
+      "rol": "ADMINISTRADOR(A)",
+      "email": "melanie@gmail.com",
+      "password": "melanie1234"
     }
   ],
   "applicants": [
@@ -354,7 +368,7 @@
       "secondName": "Dario",
       "firstLastName": "Delgado",
       "secondLastName": "Calvache",
-      "identificationType": "CC",
+      "identificationType": "CC / CÉDULA DE CIUDADANÍA",
       "identificationNumber": 1085310787,
       "academicProgram": "Ingeniería de Sistemas",
       "inscriptionDate": "05/09/2024",

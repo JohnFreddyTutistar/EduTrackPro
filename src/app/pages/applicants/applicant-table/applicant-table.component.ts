@@ -31,6 +31,8 @@ export class ApplicantTableComponent implements OnInit {
 
   filteredApplicants: any[] = [];
 
+  counterByApplicantStatus: any = [];
+
   displayedColumns: string[] = [
     'index',
     'profilePhoto',
@@ -146,8 +148,13 @@ export class ApplicantTableComponent implements OnInit {
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
       this.dataSource = new MatTableDataSource<IApplicant>(data);
+      data.forEach(count => {
+        count.status
+      })
+
       this.dataApplicants = data;
 
+      this.counterByApplicantStatus = JSON.parse(JSON.stringify(this.sharedService.statusApplicant));
       this.dataSource.paginator = this.paginator!;
       this.dataSource.sort = this.sort!
     });

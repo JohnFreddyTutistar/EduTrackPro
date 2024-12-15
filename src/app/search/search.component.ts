@@ -80,46 +80,38 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  searchApplicantByIdentification(login: any){
+  dataApplicant(id: string){
     this.formSearchApplicantByIdentification.markAllAsTouched();
+    
     if(this.formSearchApplicantByIdentification.valid){
 
-      this.authService.login()
-        .subscribe({
-          next: res => {
-            if(res.length > 0){
-              const user = res.find((a: any) => {
-                this.documentType = a.documentType
-                this.documentNumber = a.documentNumber
+      const dataApplicant = this.formSearchApplicantByIdentification.value;
 
-                return (
-                  a.documentType === login.value.documentType && a.documentNumber === login.value.documentNumber
-                )
-              });
+      console.log(dataApplicant.documentType);
+      console.log(dataApplicant.documentNumber);
 
-              if(user){
-                console.log("datos corrector");
-                
-              } else {
-                Swal.fire({
-                  title: 'Error de consulta en la base de datos',
-                  text: 'Verifique los datos e intente nuevamente',
-                  icon: 'error',
-                });
-              }
+
+      this.sharedService.getDataStatusApplicant(id).subscribe({
+        next: res => {
+          if(res.length > 0){
+            const data = res.find((a: any) => {
+              console.log("tipo de documento: ", a.documentType);
+              console.log("numero de coumento: ", a.documentNumber);
+              return (
+                a.documentType === dataApplicant.documentType && 
+                a.documentNumber === dataApplicant.documentNumber
+              )
+            });
+
+            if(data){
+              console.log("datos insertados correctamente");
+            } else {
+              console.log("dastos incorrectos");
             }
           }
-        })
-
+        }
+      })
     }
-  }
-
-  dataApplicant(id: string){
-    this.sharedService.getDataStatusApplicant(id).subscribe({
-      next: res => {
-        console.log("respuesta status applicant: ", res);
-      }
-    })
   }
 
 }
