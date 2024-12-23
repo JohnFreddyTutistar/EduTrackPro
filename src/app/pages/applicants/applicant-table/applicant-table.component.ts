@@ -145,12 +145,30 @@ export class ApplicantTableComponent implements OnInit {
     // })
   }
 
+  statusCount: any = 0;
+
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
       this.dataSource = new MatTableDataSource<IApplicant>(data);
+
+      const statusCount: { [key: string]: number } = {
+        'APROBADOS': 0,
+        'EN REVISIÓN': 0,
+        'DESISTIDOS': 0,
+        'RECHAZADOS': 0
+      };
+
       data.forEach(count => {
-        count.status
-      })
+        
+        if (statusCount.hasOwnProperty(count.status)) {
+          statusCount[count.status]++;
+        }
+        
+      });
+
+      this.statusCount = statusCount;
+
+      console.log("contadores: ", statusCount);
 
       this.dataApplicants = data;
 

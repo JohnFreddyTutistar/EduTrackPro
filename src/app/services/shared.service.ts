@@ -14,22 +14,22 @@ export class SharedService {
   statusApplicant = [
     {
       name: 'Aprovados',
-      amount: null,
+      statusCount: null,
       class: 'approved'
     },
     {
       name: 'En revisión',
-      amount: null,
+      statusCount: null,
       class: 'revision'
     },
     {
       name: 'Desistidos',
-      amount: null,
+      statusCount: null,
       class: 'givenUp'
     },
     {
       name: 'Rechazados',
-      amount: null,
+      statusCount: null,
       class: 'rejected'
     }
   ]
