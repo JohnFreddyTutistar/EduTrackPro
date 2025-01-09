@@ -12,107 +12,25 @@
 
   <!-- Contadores circulares por estado -->
   <div class="row center-xs">
-    <div class="col-xs-12 col-md-2">
-      <ng-container>
-        <div style="padding: 10px">
-          <button
-            class="counter approved"
-            style="
-              border: 3px solid;
-              padding: 10px;
-              cursor: pointer;
-              color: #52be80;
-            "
-          >
-            <br />
-            <span class="salient"><b> {{ statusCount['APROBADO'] }} </b></span>
-            <span class="description"> aplicante(s) </span>
-            <b>Aprobados</b>
-          </button>
-        </div>
-      </ng-container>
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <ng-container>
-        <div style="padding: 10px">
-          <button
-            class="counter revision"
-            style="
-              border: 3px solid;
-              padding: 10px;
-              cursor: pointer;
-              color: #ffa621;
-            "
-          >
-            <br />
-            <span class="salient"> <b> {{ statusCount['EN REVISIÓN'] }} </b> </span>
-            <span class="description"> aplicante(s) </span>
-            <b>En revisión</b>
-          </button>
-        </div>
-      </ng-container>
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <ng-container>
-        <div style="padding: 10px">
-          <button
-            class="counter givenUp"
-            style="
-              border: 3px solid;
-              padding: 10px;
-              cursor: pointer;
-              color: #009da8;
-            "
-          >
-            <br />
-            <span class="salient"> <b> {{ statusCount['DESISTIDO'] }} </b> </span>
-            <span class="description"> aplicante(s) </span>
-            <b>Desistidos</b>
-          </button>
-        </div>
-      </ng-container>
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <ng-container>
-        <div style="padding: 10px">
-          <button
-            class="counter rejected"
-            style="
-              border: 3px solid;
-              padding: 10px;
-              cursor: pointer;
-              color: #d90000;
-            "
-          >
-            <br />
-            <span class="salient"> <b>{{ statusCount['RECHAZADO'] }}</b> </span>
-            <span class="description"> aplicante(s) </span>
-            <b>Rechazados</b>
-          </button>
-        </div>
-      </ng-container>
-    </div>
-
-    <!-- <div class="col-xs-12 col-md-2" *ngFor="let count of counterByApplicantStatus; let i = index">
+    <div class="col-xs-12 col-md-2" *ngFor="let count of statusCounts">
       <ng-container>
         <div style="padding: 10px" >
           <button
             class="counter"
             [ngClass]="count.class"
-            style="
-              border: 3px solid;
-              padding: 10px;
-              cursor: pointer;
-            "
+            [style.border]="'3px solid'"
+            [style.padding]="'10px'"
+            [style.cursor]="'pointer'"
+            [style.color]="count.color"
           >
             <br />
-            <span class="salient" [id]="count.name"> <b>{{ count.amount }}</b> </span>
+            <span class="salient"> <b>{{ count.amount }}</b> </span>
             <span class="description"> Aplicante(s) </span>
             <b>{{ count.name }}</b>
           </button>
         </div>
       </ng-container>
-    </div> -->
+    </div>
   </div>
 
   <div class="row">
@@ -150,7 +68,7 @@
               "
             >
               <mat-form-field class="width-inputs" appearance="fill">
-                <mat-label>Filtro</mat-label>
+                <mat-label>Filtrar</mat-label>
                 <input
                   type="text"
                   appUpperCase

@@ -42,7 +42,9 @@
                 formControlFilterBy.value !== 'name' &&
                 formControlFilterBy.value !== 'lastname' &&
                 formControlFilterBy.value !== 'identificationNumber' &&
-                formControlFilterBy.value !== 'phone'
+                formControlFilterBy.value !== 'phone' &&
+                formControlFilterBy.value !== 'faculty' &&
+                formControlFilterBy.value !== 'position'
               "
             >
               <mat-form-field class="width-inputs" appearance="fill">
@@ -57,14 +59,18 @@
                       formControlFilterBy.value !== 'name' &&
                       formControlFilterBy.value !== 'lastname' &&
                       formControlFilterBy.value !== 'identificationNumber' &&
-                      formControlFilterBy.value !== 'phone'
+                      formControlFilterBy.value !== 'phone' &&
+                      formControlFilterBy.value !== 'faculty' &&
+                      formControlFilterBy.value !== 'position'
                     )
                   "
                   [disabled]="
                     formControlFilterBy.value !== 'name' &&
                     formControlFilterBy.value !== 'lastname' &&
                     formControlFilterBy.value !== 'identificationNumber' &&
-                    formControlFilterBy.value !== 'phone'
+                    formControlFilterBy.value !== 'phone' &&
+                    formControlFilterBy.value !== 'faculty' &&
+                    formControlFilterBy.value !== 'position'
                   "
                 />
               </mat-form-field>

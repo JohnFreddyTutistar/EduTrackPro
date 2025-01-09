@@ -178,6 +178,8 @@ export class ApplicantTableComponent implements OnInit {
 
   statusCount: any = 0;
 
+  statusCounts: { name: string, amount: number, color: string, class: string}[] = [];
+
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
       this.dataSource = new MatTableDataSource<IApplicant>(data);
@@ -197,7 +199,14 @@ export class ApplicantTableComponent implements OnInit {
         
       });
 
-      this.statusCount = statusCount;
+      // this.statusCount = statusCount;
+
+      this.statusCounts = [
+        { name: 'Aprobados', amount: statusCount['APROBADO'], color: '#52be80', class: 'approved' },
+        { name: 'En revisión', amount: statusCount['EN REVISIÓN'], color: '#ffa621', class: 'revision' },
+        { name: 'Desistidos', amount: statusCount['DESISTIDO'], color: '#009da8', class: 'givenUp' },
+        { name: 'Rechazados', amount: statusCount['RECHAZADO'], color: '#d90000', class: 'rejected' },
+      ]
 
       console.log("contadores: ", statusCount);
 
