@@ -152,10 +152,10 @@ export class ApplicantTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource<IApplicant>(data);
 
       const statusCount: { [key: string]: number } = {
-        'APROBADOS': 0,
+        'APROBADO': 0,
         'EN REVISIÓN': 0,
-        'DESISTIDOS': 0,
-        'RECHAZADOS': 0
+        'DESISTIDO': 0,
+        'RECHAZADO': 0
       };
 
       data.forEach(count => {
