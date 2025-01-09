@@ -18,6 +18,37 @@ export class ReviewTeamTableComponent implements OnInit {
 
   dataTable: any = [];
 
+  filterOptions = [
+    {
+      filterValue: 'name',
+      filterName: 'Nombre'
+    },
+    {
+      filterValue: 'lastname',
+      filterName: 'Apellido'
+    },
+    {
+      filterValue: 'faculty',
+      filterName: 'Facultad'
+    },
+    {
+      filterValue: 'position',
+      filterName: 'Cargo'
+    },
+    {
+      filterValue: 'datebirth',
+      filterName: 'Fecha de nacimiento'
+    },
+    {
+      filterValue: 'phone',
+      filterName: 'Celular'
+    },
+    {
+      filterValue: 'email',
+      filterName: 'Email'
+    },
+  ]
+
   @ViewChild(MatPaginator) paginator!: MatPaginator | undefined;
   @ViewChild(MatSort) sort!: MatSort | undefined;
 

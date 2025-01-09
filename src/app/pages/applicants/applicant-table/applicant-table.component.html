@@ -133,15 +133,7 @@
                 <mat-option selected disabled value=""
                   >Seleccione una opción</mat-option
                 >
-                <mat-option value="name">Nombre</mat-option>
-                <mat-option value="lastname">Apellido</mat-option>
-                <mat-option value="identificationNumber"
-                  >N° Identificación</mat-option
-                >
-                <mat-option value="datebirth">Mes de nacimiento</mat-option>
-                <mat-option value="status">Estado</mat-option>
-                <mat-option value="phone">Celular</mat-option>
-                <mat-option value="email">Correo electrónico</mat-option>
+                <mat-option *ngFor="let filter of filterOptions" [value]="filter.filterValue">{{ filter.filterName }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>

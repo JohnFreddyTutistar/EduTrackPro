@@ -30,12 +30,7 @@
                 <mat-option selected disabled value=""
                   >Seleccione una opción</mat-option
                 >
-                <mat-option value="name">Nombre</mat-option>
-                <mat-option value="lastname">Apellido</mat-option>
-                <mat-option value="datebirth">Mes de nacimiento</mat-option>
-                <mat-option value="email">Email</mat-option>
-                <mat-option value="faculty">Teléfono</mat-option>
-                <mat-option value="programName">Teléfono</mat-option>
+                <mat-option *ngFor="let filter of filterOptions" [value]="filter.filterValue">{{ filter.filterName }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -207,7 +202,7 @@
           </ng-container>
 
           <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef>Nombre del programa</th>
+            <th mat-header-cell *matHeaderCellDef>Cargo</th>
             <td mat-cell *matCellDef="let element">
               {{ element.position }}
             </td>

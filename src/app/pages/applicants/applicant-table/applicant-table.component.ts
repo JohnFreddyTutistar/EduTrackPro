@@ -25,6 +25,37 @@ export class ApplicantTableComponent implements OnInit {
 
   FormGroupFilter!: FormGroup;
 
+  filterOptions = [
+    {
+      filterValue: 'name',
+      filterName: 'Nombre'
+    },
+    {
+      filterValue: 'lastname',
+      filterName: 'Apellido'
+    },
+    {
+      filterValue: 'identificationNumber',
+      filterName: 'Numero de identificación'
+    },
+    {
+      filterValue: 'datebirth',
+      filterName: 'Fecha de nacimiento'
+    },
+    {
+      filterValue: 'status',
+      filterName: 'Estado'
+    },
+    {
+      filterValue: 'phone',
+      filterName: 'Celular'
+    },
+    {
+      filterValue: 'email',
+      filterName: 'Email'
+    },
+  ]
+
   dataSource: any = [];
   dataApplicants: IApplicant[] = []
   // dataSource: MatTableDataSource<any>
