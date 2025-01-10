@@ -117,7 +117,6 @@ export class ApplicantTableComponent implements OnInit {
     public formBuilder: FormBuilder,
     public sharedService: SharedService
   ) {
-    // this.dataSource = new MatTableDataSource()
     this.filterForm();
   }
 
@@ -135,10 +134,6 @@ export class ApplicantTableComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
-    // if(this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    //}
   }
 
   // Getter methods to easily access for controls
@@ -169,7 +164,9 @@ export class ApplicantTableComponent implements OnInit {
     // this.FormGroupFilter.valueChanges.subscribe((form) => {
     //   this.applyFilters(form);
     // });
-    this.getDataApplicants()
+    this.getDataApplicants();
+
+    this.filterDataSource = this.dataSource;
 
     // this.FormGroupFilter.valueChanges.subscribe((filters) => {
     //   this.applyFilters(filters)
@@ -179,6 +176,8 @@ export class ApplicantTableComponent implements OnInit {
   statusCount: any = 0;
 
   statusCounts: { name: string, amount: number, color: string, class: string}[] = [];
+
+  filterDataSource : MatTableDataSource<IApplicant> = new MatTableDataSource<IApplicant>()
 
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
@@ -216,5 +215,11 @@ export class ApplicantTableComponent implements OnInit {
       this.dataSource.paginator = this.paginator!;
       this.dataSource.sort = this.sort!
     });
+  }
+
+  filterByStatus(status: string):void{
+    this.filterDataSource = new MatTableDataSource<IApplicant>(
+      this.dataSource.filter((applicant: any) => applicant.status === status)
+    )
   }
 }
