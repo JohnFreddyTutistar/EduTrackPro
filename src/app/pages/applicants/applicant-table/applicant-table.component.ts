@@ -166,14 +166,7 @@ export class ApplicantTableComponent implements OnInit {
   resetFilter(all: boolean) {}
 
   ngOnInit() {
-    // this.FormGroupFilter.valueChanges.subscribe((form) => {
-    //   this.applyFilters(form);
-    // });
     this.getDataApplicants()
-
-    // this.FormGroupFilter.valueChanges.subscribe((filters) => {
-    //   this.applyFilters(filters)
-    // })
   }
 
   statusCount: any = 0;

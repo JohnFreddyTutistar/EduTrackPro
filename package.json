@@ -22,6 +22,7 @@
     "@angular/router": "^14.1.0",
     "chart.js": "^4.4.5",
     "flexboxgrid": "^6.3.1",
+    "json-server": "^1.0.0-beta.3",
     "moment": "^2.30.1",
     "ngx-gauge": "^6.0.0",
     "rxjs": "~7.5.0",
