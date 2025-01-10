@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BarController, BarElement, CategoryScale, Chart, ChartType, LinearScale } from 'chart.js';
+import { BarController, BarElement, CategoryScale, Chart, LinearScale } from 'chart.js';
 import { SharedService } from 'src/app/services/shared.service';
 
 // Registrar las escalas y elementos necesarios
@@ -17,7 +17,7 @@ interface analitycs {
 })
 export class DashboardComponent implements OnInit {
 
-  counterByApplicantStatus: any = [];
+  dataTable: { name: string, amount: number }[] = [];
 
 
   public chart: Chart | undefined;
@@ -49,59 +49,8 @@ export class DashboardComponent implements OnInit {
   }
 
 
-
-  public reactiveAnalitycs: analitycs[] = [
-    {
-      title: 'Total',
-      amount: 21,
-    },
-    {
-      title: 'Aprobados',
-      amount: 11,
-    },
-    {
-      title: 'En revisión',
-      amount: 4,
-    },
-    {
-      title: 'Desistidos',
-      amount: 2,
-    },
-    {
-      title: 'Rechazados',
-      amount: 4,
-    },
-  ];
   public titleLabels = ['Total', 'Aprobados', 'En revisión', 'Desistidos'];
 
-  public config: any = {
-    type: 'bar' as ChartType,
-    data: {
-      labels: ['Total', 'Aprobados', 'En revisión', 'Desistidos'],
-      dataSet: [
-        {
-          label: 'aspirantes',
-          data: [10, 6, 1, 1],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-          ],
-          borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-          ],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      aspectRatio: 1,
-    },
-  };
 
   constructor(private sharedService: SharedService) {}
 
@@ -130,7 +79,19 @@ export class DashboardComponent implements OnInit {
         
       });
 
-      this.statusCount = statusCount;
+      this.dataTable = [
+        { 
+          name: 'Total', 
+          amount: (statusCount['APROBADO'] +
+                   statusCount['EN REVISIÓN'] + 
+                   statusCount['DESISTIDO'] + 
+                   statusCount['RECHAZADO'])
+        },
+        { name: 'Aprobados', amount: statusCount['APROBADO'] },
+        { name: 'En revisión', amount: statusCount['EN REVISIÓN'] },
+        { name: 'Desistidos', amount: statusCount['DESISTIDO'] },
+        { name: 'Rechazados', amount: statusCount['RECHAZADO'] },
+      ]
 
       console.log("contadores: ", statusCount);
       
