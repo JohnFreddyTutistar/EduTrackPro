@@ -201,10 +201,10 @@ export class ApplicantTableComponent implements OnInit {
       // this.statusCount = statusCount;
 
       this.statusCounts = [
-        { name: 'Aprobados', amount: statusCount['APROBADO'], color: '#52be80', class: 'approved' },
-        { name: 'En revisión', amount: statusCount['EN REVISIÓN'], color: '#ffa621', class: 'revision' },
-        { name: 'Desistidos', amount: statusCount['DESISTIDO'], color: '#009da8', class: 'givenUp' },
-        { name: 'Rechazados', amount: statusCount['RECHAZADO'], color: '#d90000', class: 'rejected' },
+        { name: 'APROBADO', amount: statusCount['APROBADO'], color: '#52be80', class: 'approved' },
+        { name: 'EN REVISIÓN', amount: statusCount['EN REVISIÓN'], color: '#ffa621', class: 'revision' },
+        { name: 'DESISTIDO', amount: statusCount['DESISTIDO'], color: '#009da8', class: 'givenUp' },
+        { name: 'RECHAZADO', amount: statusCount['RECHAZADO'], color: '#d90000', class: 'rejected' },
       ]
 
       console.log("contadores: ", statusCount);
@@ -217,9 +217,12 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  filterByStatus(status: string):void{
+  filterByStatus(status: string): void {
+    // console.log("information data: ", this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status))
+    console.log("filter: ", this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status))
     this.filterDataSource = new MatTableDataSource<IApplicant>(
-      this.dataSource.filter((applicant: any) => applicant.status === status)
-    )
+      this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status)
+    );
   }
+  
 }
