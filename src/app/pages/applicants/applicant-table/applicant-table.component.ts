@@ -58,7 +58,6 @@ export class ApplicantTableComponent implements OnInit {
 
   dataSource: any = [];
   dataApplicants: IApplicant[] = []
-  // dataSource: MatTableDataSource<any>
 
   filteredApplicants: any[] = [];
 
@@ -158,7 +157,13 @@ export class ApplicantTableComponent implements OnInit {
     return this.FormGroupFilter.controls['formControlFilterSelect'];
   }
 
-  resetFilter(all: boolean) {}
+  resetFilter(all: boolean) {
+    
+  }
+
+  reset(){
+    this.dataSource.data = [...this.dataApplicants]
+  }
 
   ngOnInit() {
     // this.FormGroupFilter.valueChanges.subscribe((form) => {
@@ -218,11 +223,9 @@ export class ApplicantTableComponent implements OnInit {
   }
 
   filterByStatus(status: string): void {
-    // console.log("information data: ", this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status))
-    console.log("filter: ", this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status))
-    this.filterDataSource = new MatTableDataSource<IApplicant>(
-      this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status)
-    );
+
+    const filterData = this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status);
+    this.dataSource.data = filterData
   }
   
 }

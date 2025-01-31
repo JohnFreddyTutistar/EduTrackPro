@@ -32,6 +32,19 @@
         </div>
       </ng-container>
     </div>
+    <!-- Boton para resetear los filtros -->
+    <div class="col-xs-12">
+      <a
+        (click)="reset()"     
+        mat-stroked-button
+        color="primary"
+        style="line-height: 1.7em; padding: 0;"
+        aria-label="Resetear filtro"
+        matTooltip="Resetear filtro"
+        >
+        <mat-icon>restart_alt</mat-icon>
+        </a>
+    </div>
   </div>
 
   <div class="row">
