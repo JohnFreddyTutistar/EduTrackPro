@@ -69,7 +69,17 @@
       "status": "EN REVISIÓN",
       "phone": "3105124961",
       "email": "ivan@gmail.com",
-      "result": "Contactado"
+      "result": "Contactado",
+      "history": [
+        {
+          "date": "asd",
+          "duration": 0,
+          "Results": "",
+          "notes": "asd",
+          "performerBy": "asd",
+          "tracing": false
+        }
+      ]
     },
     {
       "id": "2",

@@ -186,6 +186,7 @@ export class ApplicantTableComponent implements OnInit {
 
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
+      console.log("data de los aplicantes: ", data);
       this.dataSource = new MatTableDataSource<IApplicant>(data);
 
       const statusCount: { [key: string]: number } = {
