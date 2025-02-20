@@ -172,10 +172,6 @@ export class ApplicantTableComponent implements OnInit {
     this.getDataApplicants();
 
     this.filterDataSource = this.dataSource;
-
-    // this.FormGroupFilter.valueChanges.subscribe((filters) => {
-    //   this.applyFilters(filters)
-    // })
   }
 
   statusCount: any = 0;
@@ -184,10 +180,28 @@ export class ApplicantTableComponent implements OnInit {
 
   filterDataSource : MatTableDataSource<IApplicant> = new MatTableDataSource<IApplicant>()
 
+  actions: any[] = []
+
   getDataApplicants(){
     this.sharedService.getDataApplicants().subscribe((data) => {
       console.log("data de los aplicantes: ", data);
       this.dataSource = new MatTableDataSource<IApplicant>(data);
+
+      data.forEach(a => {
+        console.log("data for each: ", a);
+        this.actions = [
+          {
+            label: 'Ver proceso',
+            permissions: '',
+            optionClick: a,
+            icon: 'view',
+            class: ''
+          }
+        ]
+
+      })
+
+      
 
       const statusCount: { [key: string]: number } = {
         'APROBADO': 0,
