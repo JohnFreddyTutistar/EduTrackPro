@@ -10,6 +10,11 @@
     </div>
   </div>
 
+  <div *ngFor="let action of actions">
+    <mat-icon>{{ action.icon }}</mat-icon><button mat-button (click)="clickButton(action.optionClick, action.dataClick)">  {{ action.label }}</button>
+  </div>
+
+
   <!-- Contadores circulares por estado -->
   <div class="row center-xs">
     <div class="col-xs-12 col-md-2" *ngFor="let count of statusCounts">

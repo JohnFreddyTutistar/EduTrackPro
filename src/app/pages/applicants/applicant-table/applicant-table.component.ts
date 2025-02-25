@@ -188,15 +188,39 @@ export class ApplicantTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource<IApplicant>(data);
 
       data.forEach(a => {
-        console.log("data for each: ", a);
         this.actions = [
           {
             label: 'Ver proceso',
             permissions: '',
-            optionClick: a,
-            icon: 'view',
+            optionClick: 0,
+            dataClick: a.id,
+            icon: 'visibility',
             class: ''
-          }
+          },
+          {
+            label: 'Editar',
+            permissions: '',
+            optionClick: 1,
+            dataClick: a.id,
+            icon: 'edit',
+            class: ''
+          },
+          {
+            label: 'Registrar llamada',
+            permissions: '',
+            optionClick: 2,
+            dataClick: a.id,
+            icon: 'edit_note',
+            class: ''
+          },
+          {
+            label: 'Historial',
+            permissions: '',
+            optionClick: 3,
+            dataClick: a.id,
+            icon: 'history',
+            class: ''
+          },
         ]
 
       })
@@ -241,6 +265,45 @@ export class ApplicantTableComponent implements OnInit {
 
     const filterData = this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status);
     this.dataSource.data = filterData
+  }
+
+  clickButton(option: any, data: any){
+    console.log("aqui esta la data: ", data);
+    switch(option){
+      case 0:
+        const statusTable = this.dialog.open(StatusTableDialogComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '70%',
+          data: {},
+        });
+        break
+      case 1:
+        const dialogApplicant = this.dialog.open(DialogApplicantComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '70%',
+          data: {},
+        });
+        break
+      case 2:
+        const registerCall = this.dialog.open(RegisterCallComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '50%',
+          data: {},
+        });
+        break
+      case 3: 
+        const callHistory = this.dialog.open(DialogCallHistoryComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '70%',
+          data: {},
+        });
+        break
+        
+    }
   }
   
 }

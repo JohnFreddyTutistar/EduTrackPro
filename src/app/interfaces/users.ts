@@ -54,7 +54,7 @@ export interface IDataApplicantStatus {
 }
 
 export interface IApplicant {
-  index: number,
+  id: number,
   profilePhoto: string,
   fullName: string,
   identificationNumber: number,
