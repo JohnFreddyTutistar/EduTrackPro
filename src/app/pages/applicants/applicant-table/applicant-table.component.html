@@ -10,11 +10,6 @@
     </div>
   </div>
 
-  <div *ngFor="let action of actions">
-    <mat-icon>{{ action.icon }}</mat-icon><button mat-button (click)="clickButton(action.optionClick, action.dataClick)">  {{ action.label }}</button>
-  </div>
-
-
   <!-- Contadores circulares por estado -->
   <div class="row center-xs">
     <div class="col-xs-12 col-md-2" *ngFor="let count of statusCounts">
@@ -371,12 +366,6 @@
                   align-items: center;
                 "
               >
-                <!-- <mat-icon
-                  style="color: #d90000; margin: auto"
-                  matTooltip="no contactado"
-                >
-                lock</mat-icon
-                > -->
                 <img src="assets/images/456112.png" alt="" width="23" matTooltip="No contactado">
               </span>
             </td>
@@ -399,18 +388,10 @@
               </button>
               <!-- displayed user menu -->
               <mat-menu #agreementsMenu="matMenu" xPosition="before">
-                <ng-container>
-                  <button mat-menu-item (click)="dialogStatusTable()">
-                    <mat-icon>visibility</mat-icon> Ver proceso
-                  </button>
-                  <button mat-menu-item (click)="dialogUpdateUser()">
-                    <mat-icon>edit</mat-icon> Editar
-                  </button>
-                  <button mat-menu-item (click)="registerCall()">
-                    <mat-icon>edit_note</mat-icon> Registrar llamada
-                  </button>
-                  <button mat-menu-item (click)="checkHistory()">
-                    <mat-icon>history</mat-icon> Historial
+                <ng-container *ngFor="let action of actions">
+                  <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick)">
+                    <mat-icon>{{action.icon}}</mat-icon>
+                    {{ action.label }}
                   </button>
                 </ng-container>
               </mat-menu>
