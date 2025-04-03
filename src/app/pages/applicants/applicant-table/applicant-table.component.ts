@@ -165,6 +165,8 @@ export class ApplicantTableComponent implements OnInit {
     this.dataSource.data = [...this.dataApplicants]
   }
 
+  applicantsData: any[] = [];
+
   ngOnInit() {
     // this.FormGroupFilter.valueChanges.subscribe((form) => {
     //   this.applyFilters(form);
@@ -172,6 +174,16 @@ export class ApplicantTableComponent implements OnInit {
     this.getDataApplicants();
 
     this.filterDataSource = this.dataSource;
+
+    this.sharedService.getDataApplicantsNew().subscribe(
+      (data) => {
+        this.applicantsData = data;
+        console.log("data de los aspirantes: ", this.applicantsData)
+      },
+      (error) => {
+        console.error("error al obtener los aspirantes: ", error)
+      }
+    );
   }
 
   statusCount: any = 0;

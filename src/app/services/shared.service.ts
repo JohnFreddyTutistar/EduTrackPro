@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IApplicant, IReviwer } from '../interfaces/users';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root',
@@ -34,10 +35,19 @@ export class SharedService {
     }
   ]
 
+  apiDataApplicant = 'http://localhost:3000/api/v1/applicant';
+
   constructor(
       public http: HttpClient,
-      public router: Router
+      public router: Router,
+      public globalService: GlobalService
     ) {}
+
+    applicants: any[] = [];
+
+  getDataApplicantsNew(){
+    return this.http.get<any>(this.apiDataApplicant)
+  }
 
   getDataApplicants(): Observable<IApplicant[]>{
     return this.http.get<IApplicant[]>(`${this.url}/applicants`)

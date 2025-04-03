@@ -63,7 +63,7 @@ export class AuthService {
     email: '',
   });
 
-  private readonly baseUrl: string = environment.baseUrl;
+  // private readonly baseUrl: string = environment.baseUrl;
 
   private url = 'http://localhost:3000';
 
