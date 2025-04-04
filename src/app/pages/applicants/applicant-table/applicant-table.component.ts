@@ -25,6 +25,8 @@ export class ApplicantTableComponent implements OnInit {
 
   FormGroupFilter!: FormGroup;
 
+  applicants: any
+
   filterOptions = [
     {
       filterValue: 'name',
@@ -69,9 +71,9 @@ export class ApplicantTableComponent implements OnInit {
     'fullName',
     'identificationNumber',
     'status',
-    'phone',
+    'phoneNumber',
     'email',
-    'result',
+    'callHistory',
     'settings',
   ];
 
@@ -102,14 +104,18 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  checkHistory() {
-    this.dialog.open(DialogCallHistoryComponent, {
-      maxWidth: '500vw',
-      maxHeight: '90vh',
-      width: '70%',
-      data: {},
-    });
-  }
+  // checkHistory(aspirante: any) {
+  //   this.dialog.open(DialogCallHistoryComponent, {
+  //     maxWidth: '500vw',
+  //     maxHeight: '90vh',
+  //     width: '70%',
+  //     data: {
+  //       id: aspirante.id,
+  //       aspirante: aspirante,
+  //     },
+  //   });
+  //   console.log("id aspirante: ", aspirante.id)
+  // }
 
   constructor(
     public dialog: MatDialog,
@@ -174,16 +180,6 @@ export class ApplicantTableComponent implements OnInit {
     this.getDataApplicants();
 
     this.filterDataSource = this.dataSource;
-
-    this.sharedService.getDataApplicantsNew().subscribe(
-      (data) => {
-        this.applicantsData = data;
-        console.log("data de los aspirantes: ", this.applicantsData)
-      },
-      (error) => {
-        console.error("error al obtener los aspirantes: ", error)
-      }
-    );
   }
 
   statusCount: any = 0;
@@ -195,11 +191,13 @@ export class ApplicantTableComponent implements OnInit {
   actions: any[] = []
 
   getDataApplicants(){
-    this.sharedService.getDataApplicants().subscribe((data) => {
+    this.sharedService.getDataApplicantsNew().subscribe((data) => {
       console.log("data de los aplicantes: ", data);
+      this.applicants = data;
       this.dataSource = new MatTableDataSource<IApplicant>(data);
 
-      data.forEach(a => {
+      data.forEach((a: any) => {
+        console.log("a: ", a);
         this.actions = [
           {
             label: 'Ver proceso',
@@ -246,7 +244,7 @@ export class ApplicantTableComponent implements OnInit {
         'RECHAZADO': 0
       };
 
-      data.forEach(count => {
+      data.forEach((count: any) => {
         
         if (statusCount.hasOwnProperty(count.status)) {
           statusCount[count.status]++;
@@ -263,8 +261,6 @@ export class ApplicantTableComponent implements OnInit {
         { name: 'RECHAZADO', amount: statusCount['RECHAZADO'], color: '#d90000', class: 'rejected' },
       ]
 
-      console.log("contadores: ", statusCount);
-
       this.dataApplicants = data;
 
       this.counterByApplicantStatus = JSON.parse(JSON.stringify(this.sharedService.statusApplicant));
@@ -279,8 +275,7 @@ export class ApplicantTableComponent implements OnInit {
     this.dataSource.data = filterData
   }
 
-  clickButton(option: any, data: any){
-    console.log("aqui esta la data: ", data);
+  clickButton(option: any, data: any, applicants: any){
     switch(option){
       case 0:
         const statusTable = this.dialog.open(StatusTableDialogComponent, {
@@ -311,7 +306,10 @@ export class ApplicantTableComponent implements OnInit {
           maxWidth: '500vw',
           maxHeight: '90vh',
           width: '70%',
-          data: {},
+          data: {
+            id: data,
+            applicant: applicants
+          },
         });
         break
         

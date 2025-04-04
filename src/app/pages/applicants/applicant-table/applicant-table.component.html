@@ -255,15 +255,15 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="phone">
+          <ng-container matColumnDef="phoneNumber">
             <th mat-header-cell *matHeaderCellDef>Teléfono</th>
             <td mat-cell *matCellDef="let element">
-              <ng-container *ngIf="element.phone">
-                <p style="margin-bottom: 0px">{{ element.phone }}</p>
+              <ng-container *ngIf="element.phoneNumber">
+                <p style="margin-bottom: 0px">{{ element.phoneNumber }}</p>
                 <p style="display: inline-flex">
                   <a
-                    *ngIf="element.phone"
-                    [href]="'tel:' + element.phone"
+                    *ngIf="element.phoneNumber"
+                    [href]="'tel:' + element.phoneNumber"
                     mat-stroked-button
                     color="primary"
                     style="line-height: 1.7em; padding: 0px"
@@ -272,10 +272,10 @@
                     ><mat-icon>call</mat-icon>
                   </a>
                   <a
-                    *ngIf="element.phone"
+                    *ngIf="element.phoneNumber"
                     [href]="
                       '//wa.me/57' +
-                      element.mobile +
+                      element.phoneNumber +
                       '?text=Hola!%20Gracias%20por%20tu%20interes%20en%20el%20programa...'
                     "
                     mat-stroked-button
@@ -323,7 +323,7 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="result">
+          <ng-container matColumnDef="callHistory">
             <th mat-header-cell *matHeaderCellDef>Resultado</th>
             <td mat-cell *matCellDef="let element">
               <!-- {{ element.result }}
@@ -334,7 +334,7 @@
                 lock
               </mat-icon> -->
               <span
-                *ngIf="element.result === 'Contactado'"
+                *ngIf="element.callHistory.length >= 1"
                 style="
                   border-radius: 50%;
                   margin: 5px;
@@ -347,7 +347,8 @@
                 "
               >
                 <mat-icon
-                  matBadge="3" matBadgeSize="small" matBadgeColor="accent"
+
+                  matBadge="{{element.callHistory.length}}" matBadgeSize="small" matBadgeColor="accent"
                   style="color: #008dd5; margin: auto"
                   matTooltip="Contactado"
                 >
@@ -355,7 +356,7 @@
                 >
               </span>
               <span
-                *ngIf="element.result === 'No contactado'"
+                *ngIf="element.callHistory.length === 0"
                 style="
                   border-radius: 50%;
                   margin: 5px;
@@ -389,7 +390,7 @@
               <!-- displayed user menu -->
               <mat-menu #agreementsMenu="matMenu" xPosition="before">
                 <ng-container *ngFor="let action of actions">
-                  <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick)">
+                  <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick, applicants)">
                     <mat-icon>{{action.icon}}</mat-icon>
                     {{ action.label }}
                   </button>
