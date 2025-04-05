@@ -35,7 +35,7 @@ export class SharedService {
     }
   ]
 
-  apiDataApplicant = 'http://localhost:3000/api/v1/applicant';
+  // url = 'http://localhost:3000/';
 
   constructor(
       public http: HttpClient,
@@ -45,16 +45,24 @@ export class SharedService {
 
     applicants: any[] = [];
 
-  getDataApplicantsNew(){
-    return this.http.get<any>(this.apiDataApplicant)
-  }
+  // getDataApplicantsNew(){
+  //   return this.globalService.getData(this.url + '/api/v1/applicant');
+  // }
 
+
+    // cambbiar en el dashboar
   getDataApplicants(): Observable<IApplicant[]>{
-    return this.http.get<IApplicant[]>(`${this.url}/applicants`)
+      return this.http.get<IApplicant[]>(`${this.url}/applicants`)
   }
+  
 
+
+  getDataApplicantsNew(): Observable<IApplicant[]>{ 
+    return this.http.get<IApplicant[]>(this.url + '/api/v1/applicant');
+  }
+    
   getDataReviwers(): Observable<IReviwer[]>{
-    return this.http.get<IReviwer[]>(`${this.url}/signup`)
+    return this.http.get<IReviwer[]>(this.url + '/api/v1/users')
   }
 
   getDataStatusApplicant(id: string): Observable<any>{

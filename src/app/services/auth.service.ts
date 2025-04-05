@@ -167,11 +167,11 @@ export class AuthService {
     };
   }
 
-  signUpData(data: any): Observable<IReviwer[]>{
-    return this.http.post<IReviwer[]>(`${this.url}/signup`, data)
+  signUpData(data: any): Observable<any>{
+    return this.http.post<any>(`${this.url}/api/v1/users/register`, data)
   }
 
-  deleteUser(id: string): Observable<any>{
-    return this.http.delete(`${this.url}/signup/${id}`);
+  deleteUser(id: number): Observable<any>{
+    return this.http.delete(`${this.url}/api/v1/users/${id}`);
   }
 }

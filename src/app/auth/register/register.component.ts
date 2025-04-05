@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     this.userRol = this.enumService.getUserRol();
 
     // Escuchar cambios en el campo de fecha
-    this.registerForm.get('birthday')?.valueChanges.subscribe(value => {
+    this.registerForm.get('birthDate')?.valueChanges.subscribe(value => {
       this.calcularEdad(value);
     });
   }
@@ -46,24 +46,24 @@ export class RegisterComponent implements OnInit {
       secondName: [''],
       firstLastName: ['', [Validators.required]],
       secondLastName: [''],
-      birthday: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
       faculty: ['', [Validators.required]],
-      position: ['', [Validators.required]],
+      possition: ['', [Validators.required]],
       rol: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  edad: string = '';
+  age: string = '';
 
-  calcularEdad(fechaNacimiento: string){
-    if(fechaNacimiento){
-      const years = moment().diff(moment(fechaNacimiento), 'years');
-      this.edad = `${years} año/s`
+  calcularEdad(birthDate: string){
+    if(birthDate){
+      const years = moment().diff(moment(birthDate), 'years');
+      this.age = `${years} año/s`
     } else {
-      this.edad = '';
+      this.age = '';
     }
   }
 

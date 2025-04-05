@@ -56,9 +56,9 @@ export class ReviewTeamTableComponent implements OnInit {
     'index',
     'profilePhoto',
     'fullname',
-    'birthday',
+    'birthDate',
     'email',
-    'phone',
+    'phoneNumber',
     'faculty',
     'position',
     'rol',
@@ -137,14 +137,22 @@ export class ReviewTeamTableComponent implements OnInit {
 
   getDataReviwer(){
     this.sharedService.getDataReviwers().subscribe((data) => {
-      this.dataTable = new MatTableDataSource(data)
+
+      const formattedData = data.map((item: any) => {
+        return {
+          ...item,
+          birthDate: moment(item.birthDate).format('DD/MM/YYYY'),
+        }
+      })
+
+      this.dataTable = new MatTableDataSource(formattedData)
 
       this.dataTable.paginator = this.paginator!;
       this.dataTable.sort = this.sort!
     })
   }
 
-  deleteUser(id: string): void{
+  deleteUser(id: number): void{
 
     Swal.fire({
       title: '¿Estás seguro?',

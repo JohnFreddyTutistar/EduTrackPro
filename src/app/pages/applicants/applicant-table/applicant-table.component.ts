@@ -179,6 +179,7 @@ export class ApplicantTableComponent implements OnInit {
     // });
     this.getDataApplicants();
 
+
     this.filterDataSource = this.dataSource;
   }
 

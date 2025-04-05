@@ -23,19 +23,19 @@ export class EnumsService {
   public getFacultyType(){
     return [
       {
-        value: 'INGENIERÍA',
+        value: 'Ingeniería',
         viewValue: 'INGENIERÍA'
       },
       {
-        value: 'ARQUITECTURA Y BELLAS ARTES',
+        value: 'Arquitectura y Bellas Artes',
         viewValue: 'ARQUITECTURA Y BELLAS ARTES'
       },
       {
-        value: 'ADMINISTRATIVAS Y CONTABLES',
+        value: 'Administrativas y Contables',
         viewValue: 'ADMINISTRATIVAS Y CONTABLES'
       },
       {
-        value: 'SOCIALES Y HUMANAS',
+        value: 'Sociales y Humanas',
         viewValue: 'SOCIALES Y HUMANAS'
       }
     ]
@@ -59,11 +59,11 @@ export class EnumsService {
   public getUserRol() {
     return [
       {
-        value: 'ADMINISTRADOR(A)',
+        value: 'Administrador',
         viewValue: 'ADMINISTRADOR(A)'
       },
       {
-        value: 'REVISOR(A)',
+        value: 'Revisor',
         viewValue: 'REVISOR(A)'
       }
     ]
