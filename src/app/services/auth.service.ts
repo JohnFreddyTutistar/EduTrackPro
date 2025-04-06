@@ -66,6 +66,7 @@ export class AuthService {
   // private readonly baseUrl: string = environment.baseUrl;
 
   private url = 'http://localhost:3000';
+  private fakeApiUrl = 'http://localhost:4000';
 
   constructor(
     public router: Router,
@@ -103,7 +104,7 @@ export class AuthService {
   }
 
   login(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/signup`)
+    return this.http.get<any[]>(`${this.fakeApiUrl}/signup`)
       .pipe(
         tap((userData: any) => {
           console.log("datos de usuario: ", userData);

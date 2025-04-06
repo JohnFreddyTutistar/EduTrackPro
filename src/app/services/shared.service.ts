@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IApplicant, IReviwer } from '../interfaces/users';
 import { GlobalService } from './global.service';
+import { ICallHistory } from '../interfaces/call-history.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ import { GlobalService } from './global.service';
 export class SharedService {
 
   url = 'http://localhost:3000';
+  fakeApiUrl = 'http://localhost:4000';
 
   statusApplicant = [
     {
@@ -35,8 +37,6 @@ export class SharedService {
     }
   ]
 
-  // url = 'http://localhost:3000/';
-
   constructor(
       public http: HttpClient,
       public router: Router,
@@ -54,6 +54,10 @@ export class SharedService {
   getDataApplicants(): Observable<IApplicant[]>{
       return this.http.get<IApplicant[]>(`${this.url}/applicants`)
   }
+
+  postApplicantsCallHistory(id: number, data: ICallHistory): Observable<ICallHistory[]>{
+    return this.http.post<ICallHistory[]>(this.url + `/api/v1/history/${id}`, data)
+  }
   
 
 
@@ -66,7 +70,7 @@ export class SharedService {
   }
 
   getDataStatusApplicant(id: string): Observable<any>{
-    return this.http.get<any>(`${this.url}/statusApplicant/${id}`)
+    return this.http.get<any>(`${this.fakeApiUrl}/statusApplicant/${id}`)
   }
 
   // Método para obtener un revisor por id

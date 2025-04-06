@@ -95,14 +95,14 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  registerCall() {
-    this.dialog.open(RegisterCallComponent, {
-      maxWidth: '500vw',
-      maxHeight: '90vh',
-      width: '50%',
-      data: {},
-    });
-  }
+  // registerCall() {
+  //   this.dialog.open(RegisterCallComponent, {
+  //     maxWidth: '500vw',
+  //     maxHeight: '90vh',
+  //     width: '50%',
+  //     data: {},
+  //   });
+  // }
 
   // checkHistory(aspirante: any) {
   //   this.dialog.open(DialogCallHistoryComponent, {
@@ -299,7 +299,10 @@ export class ApplicantTableComponent implements OnInit {
           maxWidth: '500vw',
           maxHeight: '90vh',
           width: '50%',
-          data: {},
+          data: {
+            id: data,
+            applicant: applicants
+          },
         });
         break
       case 3: 

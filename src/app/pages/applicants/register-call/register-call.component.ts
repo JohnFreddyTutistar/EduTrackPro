@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { EnumsService } from 'src/app/services/enums.service';
+import { SharedService } from 'src/app/services/shared.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-call',
@@ -12,17 +17,21 @@ export class RegisterCallComponent implements OnInit {
   formGroupSend! : FormGroup
 
   public results!: any[];
+  public id!: number;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public registerCallData: any,
     public formBuilder: FormBuilder,
-    public enumService: EnumsService
+    public enumService: EnumsService,
+    public sharedService: SharedService,
+    public router: Router
   ) {
     this.formData()
   }
 
   formData(){
     this.formGroupSend = this.formBuilder.group({
-      result: ['', [Validators.required]],
+      results: ['', [Validators.required]],
       observation: [''],
       tracing: [''],
       duration: ['']
@@ -30,7 +39,8 @@ export class RegisterCallComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log("regiter data: ", this.registerCallData)
+    this.id = this.registerCallData.id
     this.results = this.enumService.getResults()
   }
 
@@ -38,8 +48,32 @@ export class RegisterCallComponent implements OnInit {
     this.formGroupSend.markAllAsTouched();
 
     if(this,this.formGroupSend.valid){
-      console.log(this,this.formGroupSend.value);
+
+      const dataHistoryApplicant = this.formGroupSend.value
+
+      dataHistoryApplicant.date = moment().format('YYYY-MM-DD HH:mm')
+
+      this.sharedService.postApplicantsCallHistory(this.id, dataHistoryApplicant).subscribe({
+        next: (res) => {
+          Swal.fire({
+            title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
+            icon: 'success',
+            html: ` <p>Registro guardado con éxito</p>`,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            timer: 3000,
+            timerProgressBar: true,
+            willClose: () => {
+              this.router.navigate(['applicants']);
+            },
+          });
+          },
+          error: (err) => {
+            console.log('Error al registrar usuario', err);
+          },
+      })
     }
+
   }
 
 }
