@@ -52,12 +52,21 @@ export class DialogCallHistoryComponent implements OnInit {
     }
   ]
 
+  dataApplicant: any;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataHistory: any
   ) { }
 
   ngOnInit(): void {
-    console.log("historial de llamadas", this.dataHistory);
+    console.log(this.dataHistory.id);
+    // console.log(this.dataHistory.applicant)
+
+    // this.dataApplicant = this.dataHistory.applicant.forEach((item: any) => {
+    //   if ( this.dataHistory.id === item.id) {
+    //     console.log("item: ", item)
+    //   }
+    // })
   }
 
 }

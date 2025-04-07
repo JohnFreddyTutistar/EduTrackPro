@@ -135,8 +135,15 @@ export class ReviewTeamTableComponent implements OnInit {
     // }
   }
 
+  countItems: number = 0;
+
   getDataReviwer(){
     this.sharedService.getDataReviwers().subscribe((data) => {
+
+      data.forEach((item: any) => {
+        this.countItems++;
+        item.index = this.countItems;
+      })
 
       const formattedData = data.map((item: any) => {
         return {

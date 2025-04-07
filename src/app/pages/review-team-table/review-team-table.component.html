@@ -113,9 +113,10 @@
 
       <mat-card-content class="table-with-overflow">
         <table mat-table [dataSource]="dataTable" matSort>
+          
           <ng-container matColumnDef="index">
             <th mat-header-cell *matHeaderCellDef>#</th>
-            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.index }}</td>
           </ng-container>
 
           <ng-container matColumnDef="profilePhoto">

@@ -12,7 +12,7 @@ import { DialogApplicantComponent } from '../dialog-applicant/dialog-applicant.c
 import { RegisterCallComponent } from '../register-call/register-call.component';
 import { DialogCallHistoryComponent } from '../dialog-call-history/dialog-call-history.component';
 import { SharedService } from 'src/app/services/shared.service';
-import { filter } from 'rxjs';
+import { count, filter } from 'rxjs';
 
 @Component({
   selector: 'app-applicant-table',
@@ -66,7 +66,7 @@ export class ApplicantTableComponent implements OnInit {
   counterByApplicantStatus: any = [];
 
   displayedColumns: string[] = [
-    'index',
+    'position',
     'profilePhoto',
     'fullName',
     'identificationNumber',
@@ -74,7 +74,7 @@ export class ApplicantTableComponent implements OnInit {
     'phoneNumber',
     'email',
     'callHistory',
-    'settings',
+    'actions',
   ];
 
   dialogStatusTable() {
@@ -191,15 +191,21 @@ export class ApplicantTableComponent implements OnInit {
 
   actions: any[] = []
 
+  countItems: number = 0;
+
   getDataApplicants(){
     this.sharedService.getDataApplicantsNew().subscribe((data) => {
       console.log("data de los aplicantes: ", data);
       this.applicants = data;
-      this.dataSource = new MatTableDataSource<IApplicant>(data);
+      console.log("sin actions: ", this.applicants)
+      this.dataSource = new MatTableDataSource<IApplicant>(this.applicants);
 
-      data.forEach((a: any) => {
-        console.log("a: ", a);
-        this.actions = [
+      this.applicants.forEach((a: any) => {
+
+        this.countItems++;
+        a.position = this.countItems;
+        // console.log(a)
+        a.actions = [
           {
             label: 'Ver proceso',
             permissions: '',
@@ -234,6 +240,9 @@ export class ApplicantTableComponent implements OnInit {
           },
         ]
 
+        console.log("accion de cada aspirante: ", a.actions)
+        this.actions = a.actions
+
       })
 
       
@@ -252,8 +261,6 @@ export class ApplicantTableComponent implements OnInit {
         }
         
       });
-
-      // this.statusCount = statusCount;
 
       this.statusCounts = [
         { name: 'APROBADO', amount: statusCount['APROBADO'], color: '#52be80', class: 'approved' },

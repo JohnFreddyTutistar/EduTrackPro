@@ -34,12 +34,12 @@ export class RegisterCallComponent implements OnInit {
       results: ['', [Validators.required]],
       observation: [''],
       tracing: [''],
-      duration: ['']
+      duration: [0]
     })
   }
 
   ngOnInit(): void {
-    console.log("regiter data: ", this.registerCallData)
+    console.log("id del register data: ", this.registerCallData.id)
     this.id = this.registerCallData.id
     this.results = this.enumService.getResults()
   }
