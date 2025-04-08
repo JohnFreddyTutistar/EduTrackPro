@@ -390,7 +390,7 @@
               </button>
               <!-- displayed user menu -->
               <mat-menu #agreementsMenu="matMenu" xPosition="before">
-                <ng-container *ngFor="let action of actions">
+                <ng-container *ngFor="let action of element.actions">
                   <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick, applicants)">
                     <mat-icon>{{action.icon}}</mat-icon>
                     {{ action.label }}

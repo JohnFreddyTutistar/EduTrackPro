@@ -10,11 +10,10 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register-call',
   templateUrl: './register-call.component.html',
-  styleUrls: ['./register-call.component.scss']
+  styleUrls: ['./register-call.component.scss'],
 })
 export class RegisterCallComponent implements OnInit {
-
-  formGroupSend! : FormGroup
+  formGroupSend!: FormGroup;
 
   public results!: any[];
   public id!: number;
@@ -26,54 +25,59 @@ export class RegisterCallComponent implements OnInit {
     public sharedService: SharedService,
     public router: Router
   ) {
-    this.formData()
+    this.formData();
   }
 
-  formData(){
+  formData() {
     this.formGroupSend = this.formBuilder.group({
       results: ['', [Validators.required]],
       observation: [''],
       tracing: [''],
-      duration: [0]
-    })
+      duration: [0],
+    });
   }
 
   ngOnInit(): void {
-    console.log("id del register data: ", this.registerCallData.id)
-    this.id = this.registerCallData.id
-    this.results = this.enumService.getResults()
+    console.log('id del register data: ', this.registerCallData.id);
+    this.id = this.registerCallData.id;
+    this.results = this.enumService.getResults();
   }
 
-  sendData(){
+  sendNewFormatDate: string = '';
+
+  sendData() {
     this.formGroupSend.markAllAsTouched();
 
-    if(this,this.formGroupSend.valid){
+    if ((this, this.formGroupSend.valid)) {
+      const dataHistoryApplicant = this.formGroupSend.value;
 
-      const dataHistoryApplicant = this.formGroupSend.value
+      // this.sendNewFormatDate = moment(dataHistoryApplicant.date).format(
+      //   'DD/MMMM/YYYY HH:mm'
+      // );
 
-      dataHistoryApplicant.date = moment().format('YYYY-MM-DD HH:mm')
+      dataHistoryApplicant.date = moment().format('DD-MM-YYYY HH:mm');
 
-      this.sharedService.postApplicantsCallHistory(this.id, dataHistoryApplicant).subscribe({
-        next: (res) => {
-          Swal.fire({
-            title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
-            icon: 'success',
-            html: ` <p>Registro guardado con éxito</p>`,
-            showConfirmButton: false,
-            allowOutsideClick: false,
-            timer: 3000,
-            timerProgressBar: true,
-            willClose: () => {
-              this.router.navigate(['applicants']);
-            },
-          });
+      this.sharedService
+        .postApplicantsCallHistory(this.id, dataHistoryApplicant)
+        .subscribe({
+          next: (res) => {
+            Swal.fire({
+              title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
+              icon: 'success',
+              html: ` <p>Registro guardado con éxito</p>`,
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              timer: 3000,
+              timerProgressBar: true,
+              willClose: () => {
+                window.location.reload();
+              },
+            });
           },
           error: (err) => {
             console.log('Error al registrar usuario', err);
           },
-      })
+        });
     }
-
   }
-
 }

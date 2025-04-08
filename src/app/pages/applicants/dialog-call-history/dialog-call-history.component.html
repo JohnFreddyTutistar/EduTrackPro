@@ -16,23 +16,23 @@
             <th>Duración</th>
             <th>Resultado</th>
             <th>Notas</th>
-            <th>Realizado por</th>
+            <!-- <th>Realizado por</th> -->
             <th>Seguimiento requerido</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of data">
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.date }}</td>
+          <tr *ngFor="let item of dataCallHistory">
+            <td>{{ item.index }}</td>
+            <td>{{ name }}</td>
+            <td>{{ item.formattedDate }}</td>
             <td>{{ item.duration }}</td>
             <td>
-              {{ item.result }} 
-              <mat-icon *ngIf="item.result === 'contactado'" style="color: #008dd5;">call_made</mat-icon> 
-              <mat-icon *ngIf="item.result === 'no contestó'" style="color: #d90000;">call_missed</mat-icon> 
+              {{ item.results }} 
+              <mat-icon *ngIf="item.results === 'contactado'" style="color: #008dd5;">call_made</mat-icon> 
+              <mat-icon *ngIf="item.results === 'no contestó'" style="color: #d90000;">call_missed</mat-icon> 
             </td>
             <td>{{ item.observation }}</td>
-            <td>{{ item.review }}</td>
+            <!-- <td>{{ item.review }}</td> -->
             <td>{{ item.tracing }}</td>
           </tr>
         </tbody>

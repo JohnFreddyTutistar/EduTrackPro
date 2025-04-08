@@ -189,15 +189,11 @@ export class ApplicantTableComponent implements OnInit {
 
   filterDataSource : MatTableDataSource<IApplicant> = new MatTableDataSource<IApplicant>()
 
-  actions: any[] = []
-
   countItems: number = 0;
 
   getDataApplicants(){
     this.sharedService.getDataApplicantsNew().subscribe((data) => {
-      console.log("data de los aplicantes: ", data);
       this.applicants = data;
-      console.log("sin actions: ", this.applicants)
       this.dataSource = new MatTableDataSource<IApplicant>(this.applicants);
 
       this.applicants.forEach((a: any) => {
@@ -239,9 +235,6 @@ export class ApplicantTableComponent implements OnInit {
             class: ''
           },
         ]
-
-        console.log("accion de cada aspirante: ", a.actions)
-        this.actions = a.actions
 
       })
 
