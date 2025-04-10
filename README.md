@@ -1,8 +1,11 @@
 # EduTrackPro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+<p align="center">
+  <a href="http://angular.dev/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" width="120" alt="Angular Logo" /></a>
+</p>
 
 # json-server
+
 this is a facke api, run: json-server --watch db.json port `http://localhost:3000/`
 
 ## Development server
