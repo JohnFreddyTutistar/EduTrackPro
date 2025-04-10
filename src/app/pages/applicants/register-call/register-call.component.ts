@@ -54,8 +54,7 @@ export class RegisterCallComponent implements OnInit {
       // this.sendNewFormatDate = moment(dataHistoryApplicant.date).format(
       //   'DD/MMMM/YYYY HH:mm'
       // );
-
-      dataHistoryApplicant.date = moment().format('DD-MM-YYYY HH:mm');
+      dataHistoryApplicant.date = new Date();
 
       this.sharedService
         .postApplicantsCallHistory(this.id, dataHistoryApplicant)
@@ -69,9 +68,9 @@ export class RegisterCallComponent implements OnInit {
               allowOutsideClick: false,
               timer: 3000,
               timerProgressBar: true,
-              willClose: () => {
-                window.location.reload();
-              },
+              // willClose: () => {
+              //   window.location.reload();
+              // },
             });
           },
           error: (err) => {

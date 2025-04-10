@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IDataApplicantStatus } from 'src/app/interfaces/users';
 import { SharedService } from 'src/app/services/shared.service';
-
 
 @Component({
   selector: 'app-status-table-dialog',
@@ -9,8 +9,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./status-table-dialog.component.scss'],
 })
 export class StatusTableDialogComponent implements OnInit {
-
-  id: string = ''
+  id: string = '';
   data: any[] = [];
 
   ELEMENT_DATA: IDataApplicantStatus[] = [
@@ -28,50 +27,59 @@ export class StatusTableDialogComponent implements OnInit {
   ];
 
   documentsData = [
-    {documentName: 'Diploma/Acta', status: 'Aprobado'},
-    {documentName: 'Cédula/TI', status: 'Aprobado'},
-    {documentName: 'Pruebas saber 11 (4 paginas)', status: 'Aprobado'},
-  ]
+    { documentName: 'Diploma/Acta', status: 'Aprobado' },
+    { documentName: 'Cédula/TI', status: 'Aprobado' },
+    { documentName: 'Pruebas saber 11 (4 paginas)', status: 'Aprobado' },
+  ];
 
   stagesTimeLine: Array<any> = [
     {
       title: 'Pago',
       date: '08/09/24',
-      Description: 'aprobado'
+      Description: 'aprobado',
     },
     {
       title: 'Docs',
       date: '11/09/24',
-      Description: 'aprobado'
+      Description: 'aprobado',
     },
     {
       title: 'Entrevista',
       date: '15/09/24',
-      Description: 'pendiente'
+      Description: 'pendiente',
     },
     {
       title: 'Prueba',
       date: 'pendiente',
-      Description: 'pendiente'
+      Description: 'pendiente',
     },
+  ];
 
-  ]
+  constructor(
+    public sharedService: SharedService,
+    @Inject(MAT_DIALOG_DATA) public dataApplicantDialog: any
+  ) {}
 
-  constructor(public sharedService: SharedService) { }
+  dataApplicants: any[] = [];
 
   ngOnInit(): void {
+    this.dataApplicantDialog.applicant.filter((item: any) => {
+      if (item.id === this.dataApplicantDialog.id) {
+        this.dataApplicants = item;
+        console.log('dialog data: ', this.dataApplicants);
+      }
+    });
 
-    this.dataApplicant(this.id)
+    this.dataApplicant(this.id);
   }
 
-  dataApplicant(id: string){
+  dataApplicant(id: string) {
     this.sharedService.getDataStatusApplicant(id).subscribe({
-      next: res => {
-        console.log("respuesta status applicant: ", res);
+      next: (res) => {
+        console.log('respuesta status applicant: ', res);
         this.data = res;
         console.log(this.data);
-      }
-    })
+      },
+    });
   }
-
 }

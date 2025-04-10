@@ -34,8 +34,8 @@
                 <th style="width: 25%">Programa académico</th>
               </tr>
             </thead>
-            <tr *ngFor="let user of ELEMENT_DATA">
-              <td>{{ data[0].identificationNumber }}</td>
+            <tr *ngFor="let user of data">
+              <td>{{ user[0].identificationNumber }}</td>
               <td>
                 {{ data[0].firstName }}
                 {{ data[0].secondName }}
@@ -49,14 +49,14 @@
             class="line-separator"
             style="width: 100%; background-color: lightgray; height: 1px"
           />
-          <table class="striped centered table-with-overflow">
+          <!-- <table class="striped centered table-with-overflow">
             <thead>
               <tr>
                 <th>Fecha de solicitud</th>
                 <th>Estado</th>
               </tr>
             </thead>
-            <tr *ngFor="let user of ELEMENT_DATA">
+            <tr *ngFor="let user of dataApplicants">
               <td>{{ data[0].inscriptionDate }}</td>
               <td style="display: flex; justify-content: center">
                 <div
@@ -71,7 +71,7 @@
                 </div>
               </td>
             </tr>
-          </table>
+          </table> -->
         </mat-card-content>
       </mat-card>
     </div>

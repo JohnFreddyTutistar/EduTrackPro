@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row center-xs">
     <div class="col-xs-12">
-      <h1 class="principal-title">Historial</h1>
+      <h1 class="principal-title"><b>Historial</b></h1>
       <hr class="line-separator" />
+      <p>A continuación, se presenta el historial de llamadas del aspirante <b style="color: #009da8">{{ fullName }}</b></p>
     </div>
   </div>
   <div class="row center-xs">
@@ -11,7 +12,6 @@
         <thead>
           <tr class="table-secondary">
             <th>#</th>
-            <th>Nombre</th>
             <th>Fecha y hora</th>
             <th>Duración</th>
             <th>Resultado</th>
@@ -23,9 +23,8 @@
         <tbody>
           <tr *ngFor="let item of dataCallHistory">
             <td>{{ item.index }}</td>
-            <td>{{ name }}</td>
             <td>{{ item.formattedDate }}</td>
-            <td>{{ item.duration }}</td>
+            <td>{{ item.duration }} min</td>
             <td>
               {{ item.results }} 
               <mat-icon *ngIf="item.results === 'contactado'" style="color: #008dd5;">call_made</mat-icon> 
@@ -37,6 +36,11 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="col-xs-12" *ngIf="dataCallHistory.length === 0">
+      <div class="alert alert-info" role="alert">
+        <strong>¡Atención!</strong> No se encontraron registros de llamadas para este aspirante.
+      </div>
     </div>
   </div>
 </div>

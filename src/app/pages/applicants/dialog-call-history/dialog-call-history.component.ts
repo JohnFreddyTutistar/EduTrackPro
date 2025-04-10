@@ -30,16 +30,26 @@ export class DialogCallHistoryComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public dataHistory: any) {}
 
-  ngOnInit(): void {
-    console.log(this.dataHistory.id);
-    console.log(this.dataHistory.applicant);
+  fullName: string = '';
 
+  ngOnInit(): void {
     this.dataApplicant = this.dataHistory.applicant.filter((item: any) => {
       if (item.id === this.dataHistory.id) {
+        this.fullName =
+          item.firstName +
+          ' ' +
+          item.secondName +
+          ' ' +
+          item.firstLastName +
+          ' ' +
+          item.secondLastName;
+
         item.callHistory.forEach((item: any) => {
           this.countItems++;
           item.index = this.countItems;
-          item.formattedDate = moment(item.date).format('DD/MMMM/YYYY HH:mm');
+          item.formattedDate = moment
+            .utc(item.date)
+            .format('DD/MMMM/YYYY HH:mm');
         });
 
         this.name = item.firstName + ' ' + item.firstLastName;

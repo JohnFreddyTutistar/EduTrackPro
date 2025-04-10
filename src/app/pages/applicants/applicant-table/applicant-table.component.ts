@@ -1,4 +1,9 @@
-import { ApplicationInitStatus, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ApplicationInitStatus,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import 'moment/locale/es';
 import * as moment from 'moment';
@@ -25,41 +30,41 @@ export class ApplicantTableComponent implements OnInit {
 
   FormGroupFilter!: FormGroup;
 
-  applicants: any
+  applicants: any;
 
   filterOptions = [
     {
       filterValue: 'name',
-      filterName: 'Nombre'
+      filterName: 'Nombre',
     },
     {
       filterValue: 'lastname',
-      filterName: 'Apellido'
+      filterName: 'Apellido',
     },
     {
       filterValue: 'identificationNumber',
-      filterName: 'Numero de identificación'
+      filterName: 'Numero de identificación',
     },
     {
       filterValue: 'datebirth',
-      filterName: 'Fecha de nacimiento'
+      filterName: 'Fecha de nacimiento',
     },
     {
       filterValue: 'status',
-      filterName: 'Estado'
+      filterName: 'Estado',
     },
     {
       filterValue: 'phone',
-      filterName: 'Celular'
+      filterName: 'Celular',
     },
     {
       filterValue: 'email',
-      filterName: 'Email'
+      filterName: 'Email',
     },
-  ]
+  ];
 
   dataSource: any = [];
-  dataApplicants: IApplicant[] = []
+  dataApplicants: IApplicant[] = [];
 
   filteredApplicants: any[] = [];
 
@@ -135,10 +140,9 @@ export class ApplicantTableComponent implements OnInit {
     });
   }
 
-  applyFilterFast(event: Event){
-    const filterValue = (event.target as HTMLInputElement).value
+  applyFilterFast(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
   }
 
   // Getter methods to easily access for controls
@@ -163,12 +167,10 @@ export class ApplicantTableComponent implements OnInit {
     return this.FormGroupFilter.controls['formControlFilterSelect'];
   }
 
-  resetFilter(all: boolean) {
-    
-  }
+  resetFilter(all: boolean) {}
 
-  reset(){
-    this.dataSource.data = [...this.dataApplicants]
+  reset() {
+    this.dataSource.data = [...this.dataApplicants];
   }
 
   applicantsData: any[] = [];
@@ -179,26 +181,34 @@ export class ApplicantTableComponent implements OnInit {
     // });
     this.getDataApplicants();
 
-
     this.filterDataSource = this.dataSource;
   }
 
   statusCount: any = 0;
 
-  statusCounts: { name: string, amount: number, color: string, class: string}[] = [];
+  statusCounts: {
+    name: string;
+    amount: number;
+    color: string;
+    class: string;
+  }[] = [];
 
-  filterDataSource : MatTableDataSource<IApplicant> = new MatTableDataSource<IApplicant>()
+  filterDataSource: MatTableDataSource<IApplicant> =
+    new MatTableDataSource<IApplicant>();
 
   countItems: number = 0;
+  // status: string = '';
 
-  getDataApplicants(){
+  getDataApplicants() {
     this.sharedService.getDataApplicantsNew().subscribe((data) => {
       this.applicants = data;
+      console.log('api applicants: ', this.applicants);
       this.dataSource = new MatTableDataSource<IApplicant>(this.applicants);
 
       this.applicants.forEach((a: any) => {
-
+        console.log('inscripciones: ', a.inscriptions[0].status);
         this.countItems++;
+        a.status = a.inscriptions[0].status;
         a.position = this.countItems;
         // console.log(a)
         a.actions = [
@@ -208,7 +218,7 @@ export class ApplicantTableComponent implements OnInit {
             optionClick: 0,
             dataClick: a.id,
             icon: 'visibility',
-            class: ''
+            class: '',
           },
           {
             label: 'Editar',
@@ -216,7 +226,7 @@ export class ApplicantTableComponent implements OnInit {
             optionClick: 1,
             dataClick: a.id,
             icon: 'edit',
-            class: ''
+            class: '',
           },
           {
             label: 'Registrar llamada',
@@ -224,7 +234,7 @@ export class ApplicantTableComponent implements OnInit {
             optionClick: 2,
             dataClick: a.id,
             icon: 'edit_note',
-            class: ''
+            class: '',
           },
           {
             label: 'Historial',
@@ -232,60 +242,81 @@ export class ApplicantTableComponent implements OnInit {
             optionClick: 3,
             dataClick: a.id,
             icon: 'history',
-            class: ''
+            class: '',
           },
-        ]
-
-      })
-
-      
+        ];
+      });
 
       const statusCount: { [key: string]: number } = {
-        'APROBADO': 0,
+        APROBADO: 0,
         'EN REVISIÓN': 0,
-        'DESISTIDO': 0,
-        'RECHAZADO': 0
+        DESISTIDO: 0,
+        RECHAZADO: 0,
       };
 
       data.forEach((count: any) => {
-        
         if (statusCount.hasOwnProperty(count.status)) {
           statusCount[count.status]++;
         }
-        
       });
 
       this.statusCounts = [
-        { name: 'APROBADO', amount: statusCount['APROBADO'], color: '#52be80', class: 'approved' },
-        { name: 'EN REVISIÓN', amount: statusCount['EN REVISIÓN'], color: '#ffa621', class: 'revision' },
-        { name: 'DESISTIDO', amount: statusCount['DESISTIDO'], color: '#009da8', class: 'givenUp' },
-        { name: 'RECHAZADO', amount: statusCount['RECHAZADO'], color: '#d90000', class: 'rejected' },
-      ]
+        {
+          name: 'APROBADO',
+          amount: statusCount['APROBADO'],
+          color: '#52be80',
+          class: 'approved',
+        },
+        {
+          name: 'EN REVISIÓN',
+          amount: statusCount['EN REVISIÓN'],
+          color: '#ffa621',
+          class: 'revision',
+        },
+        {
+          name: 'DESISTIDO',
+          amount: statusCount['DESISTIDO'],
+          color: '#009da8',
+          class: 'givenUp',
+        },
+        {
+          name: 'RECHAZADO',
+          amount: statusCount['RECHAZADO'],
+          color: '#d90000',
+          class: 'rejected',
+        },
+      ];
 
       this.dataApplicants = data;
 
-      this.counterByApplicantStatus = JSON.parse(JSON.stringify(this.sharedService.statusApplicant));
+      this.counterByApplicantStatus = JSON.parse(
+        JSON.stringify(this.sharedService.statusApplicant)
+      );
       this.dataSource.paginator = this.paginator!;
-      this.dataSource.sort = this.sort!
+      this.dataSource.sort = this.sort!;
     });
   }
 
   filterByStatus(status: string): void {
-
-    const filterData = this.dataSource.data.filter((applicant: IApplicant) => applicant.status === status);
-    this.dataSource.data = filterData
+    const filterData = this.dataSource.data.filter(
+      (applicant: IApplicant) => applicant.status === status
+    );
+    this.dataSource.data = filterData;
   }
 
-  clickButton(option: any, data: any, applicants: any){
-    switch(option){
+  clickButton(option: any, data: any, applicants: any) {
+    switch (option) {
       case 0:
         const statusTable = this.dialog.open(StatusTableDialogComponent, {
           maxWidth: '500vw',
           maxHeight: '90vh',
           width: '70%',
-          data: {},
+          data: {
+            id: data,
+            applicant: applicants,
+          },
         });
-        break
+        break;
       case 1:
         const dialogApplicant = this.dialog.open(DialogApplicantComponent, {
           maxWidth: '500vw',
@@ -293,7 +324,7 @@ export class ApplicantTableComponent implements OnInit {
           width: '70%',
           data: {},
         });
-        break
+        break;
       case 2:
         const registerCall = this.dialog.open(RegisterCallComponent, {
           maxWidth: '500vw',
@@ -301,23 +332,21 @@ export class ApplicantTableComponent implements OnInit {
           width: '50%',
           data: {
             id: data,
-            applicant: applicants
+            applicant: applicants,
           },
         });
-        break
-      case 3: 
+        break;
+      case 3:
         const callHistory = this.dialog.open(DialogCallHistoryComponent, {
           maxWidth: '500vw',
           maxHeight: '90vh',
           width: '70%',
           data: {
             id: data,
-            applicant: applicants
+            applicant: applicants,
           },
         });
-        break
-        
+        break;
     }
   }
-  
 }
