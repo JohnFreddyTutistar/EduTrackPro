@@ -1,8 +1,10 @@
 # EduTrackPro
 
 <p align="center">
-  <a href="http://angular.dev/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" width="120" alt="Angular Logo" /></a>
+  <a href="http://angular.dev/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" width="150" alt="Angular Logo" /></a>
 </p>
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
 # json-server
 
