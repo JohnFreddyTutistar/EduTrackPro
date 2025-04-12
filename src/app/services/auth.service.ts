@@ -12,7 +12,6 @@ import * as moment from 'moment';
   providedIn: 'root',
 })
 export class AuthService {
-
   greetings = [
     '¡Hi!',
     '¡Hola!',
@@ -48,12 +47,12 @@ export class AuthService {
     '¡Feliz ' +
       moment().format('dddd') +
       '! Espero que tengas un día maravilloso',
-      'Excelente ' + moment().format('dddd'),
+    'Excelente ' + moment().format('dddd'),
     'Bonito ' + moment().format('dddd'),
     'Lindo ' + moment().format('dddd'),
     'Ten un gran ' + moment().format('dddd'),
     'Buen ' + moment().format('dddd'),
-  ]
+  ];
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
@@ -73,8 +72,8 @@ export class AuthService {
     public globalService: GlobalService,
     public http: HttpClient
   ) {
-    const storedUserData = localStorage.getItem('currentUserData')
-    if(storedUserData){
+    const storedUserData = localStorage.getItem('currentUserData');
+    if (storedUserData) {
       this.currentUserData.next(JSON.parse(storedUserData));
       this.currentUserLoginOn.next(true);
     }
@@ -104,45 +103,45 @@ export class AuthService {
   }
 
   login(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.fakeApiUrl}/signup`)
-      .pipe(
-        tap((userData: any) => {
-          console.log("datos de usuario: ", userData);
-          if(userData && userData.length > 0){
-            const validUser = userData[0];
-            if(validUser.id && validUser.email){
-              this.currentUserData.next(userData);
-              this.currentUserLoginOn.next(true);
-              console.log("Estado de loggeado: ", this.currentUserLoginOn);
-              this.saveUserDataToLocalStorage(userData);
-            } else {
-              this.currentUserLoginOn.next(false)
-            }
-
+    return this.http.get<any[]>(`${this.fakeApiUrl}/signup`).pipe(
+      tap((userData: any) => {
+        console.log('datos de usuario: ', userData);
+        if (userData && userData.length > 0) {
+          const validUser = userData[0];
+          if (validUser.id && validUser.email) {
+            this.currentUserData.next(userData);
+            this.currentUserLoginOn.next(true);
+            console.log('Estado de loggeado: ', this.currentUserLoginOn);
+            this.saveUserDataToLocalStorage(userData);
           } else {
-            this.currentUserLoginOn.next(false)
+            this.currentUserLoginOn.next(false);
           }
-        })
+        } else {
+          this.currentUserLoginOn.next(false);
+        }
+      })
     );
   }
 
-  private saveUserDataToLocalStorage(userData: any): void{
-    localStorage.setItem('currentUserData', JSON.stringify(userData));  
+  private saveUserDataToLocalStorage(userData: any): void {
+    localStorage.setItem('currentUserData', JSON.stringify(userData));
   }
 
-  get userdata(): Observable<any>{
-    return this.currentUserData.asObservable()
+  get userdata(): Observable<any> {
+    return this.currentUserData.asObservable();
   }
 
-  get userLoginOn(): Observable<boolean>{
-    return this.currentUserLoginOn.asObservable()
+  get userLoginOn(): Observable<boolean> {
+    return this.currentUserLoginOn.asObservable();
   }
 
-  getGreetings(): string{
-    const greeting = JSON.parse(localStorage.getItem('greetings') || '[]')
-    const randomIndex = Math.floor(Math.random() * (this.greetings.length -1 -0 +1)+ 0)
+  getGreetings(): string {
+    const greeting = JSON.parse(localStorage.getItem('greetings') || '[]');
+    const randomIndex = Math.floor(
+      Math.random() * (this.greetings.length - 1 - 0 + 1) + 0
+    );
 
-    return greeting[randomIndex]
+    return greeting[randomIndex];
   }
 
   /**
@@ -168,11 +167,11 @@ export class AuthService {
     };
   }
 
-  signUpData(data: any): Observable<any>{
-    return this.http.post<any>(`${this.url}/api/v1/users/register`, data)
+  signUpData(data: any): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/v1/auth/register`, data);
   }
 
-  deleteUser(id: number): Observable<any>{
+  deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.url}/api/v1/users/${id}`);
   }
 }
