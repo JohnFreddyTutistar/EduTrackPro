@@ -18,9 +18,6 @@ interface MenuItem {
 export class MainNavigationComponent implements OnInit {
   greetings!: string;
 
-  userLoginOn: boolean = false;
-  // userData?: any;
-
   user: any;
 
   public reactiveMenu: MenuItem[] = [
@@ -63,27 +60,10 @@ export class MainNavigationComponent implements OnInit {
 
   constructor(public authService: AuthService) {
     this.user = this.authService.getUser();
+    console.log('data user: ', this.user);
   }
 
   ngOnInit(): void {
-    this.userLoginOn = this.authService.isLoggedIn();
-    // this.authService.currentUserLoginOn.subscribe(
-    //   {
-    //     next:(userLoginOn) => {
-    //       this.userLoginOn = userLoginOn;
-    //     }
-    //   }
-    // )
-
-    // this.authService.currentUserData.subscribe(
-    //   {
-    //     next:(userData) => {
-    //       console.log("rol de usuario: ", userData[0].rol);
-    //       this.userData = userData
-    //     }
-    //   }
-    // )
-
     this.greetings = this.authService.getGreetings();
   }
 }

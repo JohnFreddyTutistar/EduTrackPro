@@ -20,23 +20,7 @@ export class ToolbarComponent implements OnInit {
   userLoginOn: boolean = false;
   // userData?: any;
 
-  ngOnInit(): void {
-    // this.authService.currentUserLoginOn.subscribe(
-    //   {
-    //     next:(userLoginOn) => {
-    //       this.userLoginOn = userLoginOn;
-    //     }
-    //   }
-    // )
-    // this.authService.currentUserData.subscribe(
-    //   {
-    //     next:(userData) => {
-    //       this.userData = userData
-    //       this.userId = userData.id;
-    //     }
-    //   }
-    // )
-  }
+  ngOnInit(): void {}
 
   onLogout() {
     Swal.fire({

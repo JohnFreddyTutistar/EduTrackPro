@@ -1,10 +1,10 @@
 <div *ngIf="user" class="center-xs" style="margin-top: 10px;">
   <p style="color: #fff;">{{ greetings }}</p>
-  <!-- <span style="font-weight: bold; font-size: 1.5em; text-transform: capitalize; color: #fff;">{{ userData[0].firstName }} {{ userData[0].firstLastName }}</span> -->
+  <span style="font-weight: bold; font-size: 1.5em; text-transform: capitalize; color: #fff;">{{ user.firstName }} {{ user.firstLastName }}</span>
   <hr style="color: #fff; margin: 10px !important;">
 </div>
 
-<mat-selection-list *ngIf="!user" [multiple]="false" style="width: 300px">
+<mat-selection-list *ngIf="user" [multiple]="false" style="width: 300px">
 
   <!-- *ngIf="userData[0].rol === 'reviwer'" -->
   <mat-list-option style="color: #fff;" *ngFor="let item of reactiveMenu">

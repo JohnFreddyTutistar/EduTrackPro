@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
       this.authService.login(credential).subscribe({
         next: (res) => {
           if (res.access_token) {
+            console.log('res: ', res);
             Swal.fire({
-              title: `Bienvenido a <b>EduTrack<span style="color: #980909">PRO</span></b> usuario <b>${this.name} ${this.lastName}!</b>`,
+              title: `Bienvenido a <b>EduTrack<span style="color: #980909">PRO</span></b> usuario <b>${res.user.firstName.toUpperCase()} ${res.user.firstLastName.toUpperCase()}!</b>`,
               icon: 'success',
               confirmButtonColor: '#085092',
               html: `<p>
@@ -64,9 +65,8 @@ export class LoginComponent implements OnInit {
                       left top
                       no-repeat
                     `,
-              willClose: () => {
-                this.router.navigate(['home']);
-              },
+            }).finally(() => {
+              window.location.href = 'home';
             });
           } else {
             Swal.fire({
@@ -75,6 +75,13 @@ export class LoginComponent implements OnInit {
               icon: 'error',
             });
           }
+        },
+        error: (error) => {
+          Swal.fire({
+            title: 'Error',
+            text: 'Nombre de usuario o contraseña incorrectos',
+            icon: 'error',
+          });
         },
       });
     }

@@ -43,22 +43,6 @@ export class SearchComponent implements OnInit {
 
     this.builSearchForm();
 
-    // this.authService.currentUserLoginOn.subscribe(
-    //   {
-    //     next:(userLoginOn) => {
-    //       this.userLoginOn = userLoginOn;
-    //     }
-    //   }
-    // )
-
-    // this.authService.currentUserData.subscribe(
-    //   {
-    //     next:(userData) => {
-    //       this.userData = userData
-    //     }
-    //   }
-    // )
-
     this.dataApplicant(this.id);
   }
 

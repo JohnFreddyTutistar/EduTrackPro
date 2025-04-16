@@ -54,16 +54,6 @@ export class AuthService {
     'Buen ' + moment().format('dddd'),
   ];
 
-  // currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-  //   false
-  // );
-  // currentUserData: BehaviorSubject<any> = new BehaviorSubject<any>({
-  //   id: 0,
-  //   email: '',
-  // });
-
-  // private readonly baseUrl: string = environment.baseUrl;
-
   private url = 'http://localhost:3000';
   private fakeApiUrl = 'http://localhost:4000';
 
@@ -80,13 +70,8 @@ export class AuthService {
     if (storedUser) {
       this.currentUserSubject.next(JSON.parse(storedUser));
     }
-    // const storedUserData = localStorage.getItem('currentUserData');
-    // if (storedUserData) {
-    //   this.currentUserData.next(JSON.parse(storedUserData));
-    //   this.currentUserLoginOn.next(true);
-    // }
 
-    // localStorage.setItem('greetings', JSON.stringify(this.greetings));
+    localStorage.setItem('greetings', JSON.stringify(this.greetings));
   }
 
   /***
@@ -95,9 +80,6 @@ export class AuthService {
    * @memberof AuthService
    */
   logout(): void {
-    // localStorage.removeItem('currentUserData');
-    // this.currentUserData.next({ id: 0, email: '', password: '' });
-    // this.currentUserLoginOn.next(false);
     localStorage.removeItem('access_token');
     localStorage.removeItem('greetings');
     localStorage.removeItem('user');
@@ -113,27 +95,6 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  // login(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.fakeApiUrl}/signup`).pipe(
-  //     tap((userData: any) => {
-  //       console.log('datos de usuario: ', userData);
-  //       if (userData && userData.length > 0) {
-  //         const validUser = userData[0];
-  //         if (validUser.id && validUser.email) {
-  //           this.currentUserData.next(userData);
-  //           this.currentUserLoginOn.next(true);
-  //           console.log('Estado de loggeado: ', this.currentUserLoginOn);
-  //           this.saveUserDataToLocalStorage(userData);
-  //         } else {
-  //           this.currentUserLoginOn.next(false);
-  //         }
-  //       } else {
-  //         this.currentUserLoginOn.next(false);
-  //       }
-  //     })
-  //   );
-  // }
-
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http
       .post<any>(`${this.url}/api/v1/auth/login`, credentials)
@@ -142,9 +103,6 @@ export class AuthService {
           localStorage.setItem('token', response.access_token);
           localStorage.setItem('user', JSON.stringify(response.user));
           this.currentUserSubject.next(response.user);
-          // this.setToken(response.acces_token);
-          // const user = this.decodeToken(response.acces_token);
-          // this.currentUserSubject.next(user);
         })
       );
   }
@@ -161,27 +119,6 @@ export class AuthService {
     const token = this.getToken();
     return !!token;
   }
-
-  // private setToken(token: string): any {
-  //   localStorage.setItem('acces_token', token);
-  // }
-
-  // private decodeToken(token: string): any {
-  //   const payload = token.split('.')[1];
-  //   return JSON.parse(atob(payload));
-  // }
-
-  // private saveUserDataToLocalStorage(userData: any): void {
-  //   localStorage.setItem('currentUserData', JSON.stringify(userData));
-  // }
-
-  // get userdata(): Observable<any> {
-  //   return this.currentUserData.asObservable();
-  // }
-
-  // get userLoginOn(): Observable<boolean> {
-  //   return this.currentUserLoginOn.asObservable();
-  // }
 
   getGreetings(): string {
     const greeting = JSON.parse(localStorage.getItem('greetings') || '[]');

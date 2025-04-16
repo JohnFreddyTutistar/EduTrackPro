@@ -28,7 +28,7 @@
 </button>
 
 <button
-  *ngIf="!userLoginOn"
+  *ngIf="!user"
   mat-button
   matTooltip="notificaciones"
   style="color: #2c3967"
@@ -70,8 +70,8 @@
 <mat-menu #persons xPosition="before">
   <div class="userMobile" style="text-align: center; padding: 0 20px">
     <h3 style="margin-bottom: 0; font-weight: 500">Hola</h3>
-    <h3 *ngIf="!user" style="margin-bottom: 10px; font-weight: 500">
-      Usuario Invitado
+    <h3 *ngIf="user" style="margin-bottom: 10px; font-weight: 500">
+      <b>{{ user.firstName.toUpperCase() }} {{ user.firstLastName.toUpperCase() }}</b>
     </h3>
     <h3 *ngIf="user" style="margin-bottom: 10px; font-weight: 500">
       <!-- {{ userData[0].firstName }} {{ userData[0].firstLastName }} -->
