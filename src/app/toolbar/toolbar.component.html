@@ -44,7 +44,7 @@
 </button>
 
 <button
-  *ngIf="!userLoginOn"
+  *ngIf="!user"
   mat-flat-button
   class="login-button hide-on-small"
   style="margin-top: 0"
@@ -54,12 +54,12 @@
 </button>
 
 <!-- Usuario loggeado -->
-<button *ngIf="userLoginOn" mat-button [matMenuTriggerFor]="persons">
+<button *ngIf="user" mat-button [matMenuTriggerFor]="persons">
   <mat-icon class="profile-photo-40r-default"></mat-icon>
   <span style="margin-top: 8px; color: #0c478c" class="hide-on-small"
     ><b
-      >{{ userData[0].firstName.toUpperCase() }}
-      {{ userData[0].firstLastName.toUpperCase() }}</b
+      >{{ user.firstName.toUpperCase() }}
+      {{ user.firstLastName.toUpperCase() }}</b
     ></span
   >
 </button>
@@ -70,17 +70,17 @@
 <mat-menu #persons xPosition="before">
   <div class="userMobile" style="text-align: center; padding: 0 20px">
     <h3 style="margin-bottom: 0; font-weight: 500">Hola</h3>
-    <h3 *ngIf="!userLoginOn" style="margin-bottom: 10px; font-weight: 500">
+    <h3 *ngIf="!user" style="margin-bottom: 10px; font-weight: 500">
       Usuario Invitado
     </h3>
-    <h3 *ngIf="userLoginOn" style="margin-bottom: 10px; font-weight: 500">
-      {{ userData[0].firstName }} {{ userData[0].firstLastName }}
+    <h3 *ngIf="user" style="margin-bottom: 10px; font-weight: 500">
+      <!-- {{ userData[0].firstName }} {{ userData[0].firstLastName }} -->
     </h3>
     <mat-divider></mat-divider>
   </div>
 
   <button
-    *ngIf="!userLoginOn"
+    *ngIf="!user"
     class="hide-on-med-and-up"
     mat-menu-item
     [routerLink]="['auth/login']"
@@ -89,7 +89,7 @@
     <span>Iniciar sesión</span>
   </button>
 
-  <button *ngIf="userLoginOn" mat-menu-item [routerLink]="['auth/account/:id']">
+  <button *ngIf="user" mat-menu-item [routerLink]="['auth/account/:id']">
     <mat-icon class="icons">account_circle</mat-icon>
     <span>Mi perfil</span>
   </button>
@@ -99,7 +99,7 @@
     <span>Ayuda</span>
   </button>
 
-  <button *ngIf="userLoginOn" mat-menu-item (click)="onLogout()">
+  <button *ngIf="user" mat-menu-item (click)="onLogout()">
     <mat-icon class="icons">logout</mat-icon>
     Salir
   </button>

@@ -6,40 +6,39 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'toolbar-component',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
+  userId!: number;
 
-  userId! : number;
+  user: any;
 
-  constructor(
-    public authService : AuthService,
-    public router: Router
-  ) { }
-
-  userLoginOn: boolean = false;
-  userData?: any; 
-
-  ngOnInit(): void {
-    this.authService.currentUserLoginOn.subscribe(
-      {
-        next:(userLoginOn) => {
-          this.userLoginOn = userLoginOn;
-        }
-      }
-    )
-
-    this.authService.currentUserData.subscribe(
-      {
-        next:(userData) => {
-          this.userData = userData
-          this.userId = userData.id;
-        }
-      }
-    )
+  constructor(public authService: AuthService, public router: Router) {
+    this.user = this.authService.getUser();
   }
 
-  onLogout(){
+  userLoginOn: boolean = false;
+  // userData?: any;
+
+  ngOnInit(): void {
+    // this.authService.currentUserLoginOn.subscribe(
+    //   {
+    //     next:(userLoginOn) => {
+    //       this.userLoginOn = userLoginOn;
+    //     }
+    //   }
+    // )
+    // this.authService.currentUserData.subscribe(
+    //   {
+    //     next:(userData) => {
+    //       this.userData = userData
+    //       this.userId = userData.id;
+    //     }
+    //   }
+    // )
+  }
+
+  onLogout() {
     Swal.fire({
       title: 'SALIR',
       text: `Está a punto de salir de EduTrackPRO, ¿Está seguro/a?.`,

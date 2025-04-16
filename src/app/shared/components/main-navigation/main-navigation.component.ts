@@ -7,75 +7,83 @@ interface MenuItem {
   title: string;
   icon: string;
   route: string;
-  rol: string[];
+  rol: string;
 }
 
 @Component({
   selector: 'main-navigation',
   templateUrl: './main-navigation.component.html',
-  styleUrls: ['./main-navigation.component.scss']
+  styleUrls: ['./main-navigation.component.scss'],
 })
 export class MainNavigationComponent implements OnInit {
-
   greetings!: string;
 
   userLoginOn: boolean = false;
-  userData?: any; 
+  // userData?: any;
+
+  user: any;
 
   public reactiveMenu: MenuItem[] = [
     {
       title: 'Lista de aspirantes',
       icon: 'groups',
       route: 'applicants',
-      rol: ['reviwer', 'guest']
+      // rol: ['reviwer', 'guest'],
+      rol: 'Administrador',
     },
     {
       title: 'Equipo de revisión',
       icon: 'support_agent',
       route: 'reviewerTeam',
-      rol: ['reviwer', 'guest']
+      // rol: ['reviwer', 'guest'],
+      rol: 'Administrador',
     },
     {
       title: 'Dashboard',
       icon: 'bar_chart',
       route: 'dashboard',
-      rol: ['reviwer', 'guest']
+      // rol: ['reviwer', 'guest'],
+      rol: 'Administrador',
     },
     {
       title: 'Estado del aspirante',
       icon: 'content_paste_search',
       route: 'search',
-      rol: ['guest']
+      // rol: ['guest'],
+      rol: 'Administrador',
     },
     {
       title: 'Ayuda',
       icon: 'help',
       route: 'help',
-      rol: ['guest']
+      // rol: ['guest'],
+      rol: 'Administrador',
     },
-  ]
+  ];
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+    this.user = this.authService.getUser();
+  }
 
   ngOnInit(): void {
-    this.authService.currentUserLoginOn.subscribe(
-      {
-        next:(userLoginOn) => {
-          this.userLoginOn = userLoginOn;
-        }
-      }
-    )
+    this.userLoginOn = this.authService.isLoggedIn();
+    // this.authService.currentUserLoginOn.subscribe(
+    //   {
+    //     next:(userLoginOn) => {
+    //       this.userLoginOn = userLoginOn;
+    //     }
+    //   }
+    // )
 
-    this.authService.currentUserData.subscribe(
-      {
-        next:(userData) => {
-          console.log("rol de usuario: ", userData[0].rol);
-          this.userData = userData
-        }
-      }
-    )
+    // this.authService.currentUserData.subscribe(
+    //   {
+    //     next:(userData) => {
+    //       console.log("rol de usuario: ", userData[0].rol);
+    //       this.userData = userData
+    //     }
+    //   }
+    // )
 
     this.greetings = this.authService.getGreetings();
   }
-
 }

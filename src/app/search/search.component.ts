@@ -10,18 +10,17 @@ import { EnumsService } from '../services/enums.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-
   userLoginOn: boolean = false;
-  userData?: any; 
+  userData?: any;
 
   //enums
   public identificationTypes!: any[];
   public membershipStatus!: any[];
 
-  id: string = ''
+  id: string = '';
 
   public documentType = '';
   public documentNumber = 0;
@@ -31,87 +30,53 @@ export class SearchComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public formBuilder: FormBuilder,
-    public dialog : MatDialog,
+    public dialog: MatDialog,
     public sharedService: SharedService,
     public enumService: EnumsService
   ) {}
 
   ngOnInit(): void {
+    this.identificationTypes = this.enumService.getIdentificationType();
+    console.log('tipos de identificación: ', this.identificationTypes);
 
-    this.identificationTypes = this.enumService.getIdentificationType()
-    console.log("tipos de identificación: ", this.identificationTypes);
-
-    this.authService.loginGuest()
+    this.authService.loginGuest();
 
     this.builSearchForm();
 
-    this.authService.currentUserLoginOn.subscribe(
-      {
-        next:(userLoginOn) => {
-          this.userLoginOn = userLoginOn;
-        }
-      }
-    )
+    // this.authService.currentUserLoginOn.subscribe(
+    //   {
+    //     next:(userLoginOn) => {
+    //       this.userLoginOn = userLoginOn;
+    //     }
+    //   }
+    // )
 
-    this.authService.currentUserData.subscribe(
-      {
-        next:(userData) => {
-          this.userData = userData
-        }
-      }
-    )
+    // this.authService.currentUserData.subscribe(
+    //   {
+    //     next:(userData) => {
+    //       this.userData = userData
+    //     }
+    //   }
+    // )
 
-    this.dataApplicant(this.id)
+    this.dataApplicant(this.id);
   }
 
-  dialogStatusTable(){
+  dialogStatusTable() {
     this.dialog.open(StatusTableDialogComponent, {
       maxWidth: '500vw',
       maxHeight: '90vh',
       width: '70%',
       data: {},
-    })
+    });
   }
 
   builSearchForm() {
     this.formSearchApplicantByIdentification = this.formBuilder.group({
       documentType: ['', [Validators.required]],
       documentNumber: ['', [Validators.required, Validators.min(99999999)]],
-    })
+    });
   }
 
-  dataApplicant(id: string){
-    this.formSearchApplicantByIdentification.markAllAsTouched();
-    
-    if(this.formSearchApplicantByIdentification.valid){
-
-      const dataApplicant = this.formSearchApplicantByIdentification.value;
-
-      console.log(dataApplicant.documentType);
-      console.log(dataApplicant.documentNumber);
-
-
-      this.sharedService.getDataStatusApplicant(id).subscribe({
-        next: res => {
-          if(res.length > 0){
-            const data = res.find((a: any) => {
-              console.log("tipo de documento: ", a.documentType);
-              console.log("numero de coumento: ", a.documentNumber);
-              return (
-                a.documentType === dataApplicant.documentType && 
-                a.documentNumber === dataApplicant.documentNumber
-              )
-            });
-
-            if(data){
-              console.log("datos insertados correctamente");
-            } else {
-              console.log("dastos incorrectos");
-            }
-          }
-        }
-      })
-    }
-  }
-
+  dataApplicant(id: string) {}
 }
