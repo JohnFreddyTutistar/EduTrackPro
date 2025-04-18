@@ -82,23 +82,23 @@ export class ApplicantTableComponent implements OnInit {
     'actions',
   ];
 
-  dialogStatusTable() {
-    this.dialog.open(StatusTableDialogComponent, {
-      maxWidth: '500vw',
-      maxHeight: '90vh',
-      width: '70%',
-      data: {},
-    });
-  }
+  // dialogStatusTable() {
+  //   this.dialog.open(StatusTableDialogComponent, {
+  //     maxWidth: '500vw',
+  //     maxHeight: '90vh',
+  //     width: '70%',
+  //     data: {},
+  //   });
+  // }
 
-  dialogUpdateUser() {
-    this.dialog.open(DialogApplicantComponent, {
-      maxWidth: '500vw',
-      maxHeight: '90vh',
-      width: '70%',
-      data: {},
-    });
-  }
+  // dialogUpdateUser() {
+  //   this.dialog.open(DialogApplicantComponent, {
+  //     maxWidth: '500vw',
+  //     maxHeight: '90vh',
+  //     width: '70%',
+  //     data: {},
+  //   });
+  // }
 
   // registerCall() {
   //   this.dialog.open(RegisterCallComponent, {
@@ -199,6 +199,8 @@ export class ApplicantTableComponent implements OnInit {
   countItems: number = 0;
   // status: string = '';
 
+  permissions: any;
+
   getDataApplicants() {
     this.sharedService.getDataApplicantsNew().subscribe((data) => {
       this.applicants = data;
@@ -208,6 +210,7 @@ export class ApplicantTableComponent implements OnInit {
       this.applicants.forEach((a: any) => {
         console.log('inscripciones: ', a.inscriptions[0].status);
         this.countItems++;
+        a.rol = this.permissions;
         a.status = a.inscriptions[0].status;
         a.position = this.countItems;
         // console.log(a)

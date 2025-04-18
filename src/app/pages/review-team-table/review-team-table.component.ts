@@ -12,42 +12,43 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-review-team-table',
   templateUrl: './review-team-table.component.html',
-  styleUrls: ['./review-team-table.component.scss']
+  styleUrls: ['./review-team-table.component.scss'],
 })
 export class ReviewTeamTableComponent implements OnInit {
-
   dataTable: any = [];
+
+  user: any;
 
   filterOptions = [
     {
       filterValue: 'name',
-      filterName: 'Nombre'
+      filterName: 'Nombre',
     },
     {
       filterValue: 'lastname',
-      filterName: 'Apellido'
+      filterName: 'Apellido',
     },
     {
       filterValue: 'faculty',
-      filterName: 'Facultad'
+      filterName: 'Facultad',
     },
     {
       filterValue: 'position',
-      filterName: 'Cargo'
+      filterName: 'Cargo',
     },
     {
       filterValue: 'datebirth',
-      filterName: 'Fecha de nacimiento'
+      filterName: 'Fecha de nacimiento',
     },
     {
       filterValue: 'phone',
-      filterName: 'Celular'
+      filterName: 'Celular',
     },
     {
       filterValue: 'email',
-      filterName: 'Email'
+      filterName: 'Email',
     },
-  ]
+  ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator | undefined;
   @ViewChild(MatSort) sort!: MatSort | undefined;
@@ -62,28 +63,24 @@ export class ReviewTeamTableComponent implements OnInit {
     'faculty',
     'position',
     'rol',
-    'settings'
-  ]
+    'settings',
+  ];
 
-  FormGroupFilter! : FormGroup
+  FormGroupFilter!: FormGroup;
 
-  resetFilter(all: boolean){
+  resetFilter(all: boolean) {}
 
-  }
+  showCalendar() {}
 
-  showCalendar(){};
-
-  editUser(){
-
-  }
+  editUser() {}
 
   constructor(
     public formBuilder: FormBuilder,
     public sharedService: SharedService,
-    public authService: AuthService) {
+    public authService: AuthService
+  ) {
     this.filterForm();
-
-   }
+  }
 
   filterForm() {
     this.FormGroupFilter = this.formBuilder.group({
@@ -91,42 +88,45 @@ export class ReviewTeamTableComponent implements OnInit {
       formControlFilterString: [null],
       formControlFilterFrom: [null],
       formControlFilterTo: [null],
-      formControlFilterSelect: [null]
-    })
+      formControlFilterSelect: [null],
+    });
   }
 
-  get formControlFilterBy(){
-    return this.FormGroupFilter.controls["formControlFilterBy"];
+  get formControlFilterBy() {
+    return this.FormGroupFilter.controls['formControlFilterBy'];
   }
 
-  get formControlFilterString(){
-    return this.FormGroupFilter.controls["formControlFilterString"];
+  get formControlFilterString() {
+    return this.FormGroupFilter.controls['formControlFilterString'];
   }
 
-  get formControlFilterFrom(){
-    return this.FormGroupFilter.controls["formControlFilterFrom"];
+  get formControlFilterFrom() {
+    return this.FormGroupFilter.controls['formControlFilterFrom'];
   }
 
-  get formControlFilterTo(){
-    return this.FormGroupFilter.controls["formControlFilterTo"];
+  get formControlFilterTo() {
+    return this.FormGroupFilter.controls['formControlFilterTo'];
   }
 
-  get formControlFilterSelect(){
-    return this.FormGroupFilter.controls["formControlFilterSelect"];
+  get formControlFilterSelect() {
+    return this.FormGroupFilter.controls['formControlFilterSelect'];
   }
 
   ngOnInit(): void {
-    this.FormGroupFilter.valueChanges.subscribe(form => {
-      this.applyFilters(form)
-    })
+    this.FormGroupFilter.valueChanges.subscribe((form) => {
+      this.applyFilters(form);
+    });
 
     this.getDataReviwer();
+
+    this.user = this.authService.getUser();
+    console.log('usuario para validar permisos: ', this.user);
   }
 
-  applyFilters(form: Event){
+  applyFilters(form: Event) {
     // let filteredData = this.dataTable;
 
-    const filterValue = (form.target as HTMLInputElement).value
+    const filterValue = (form.target as HTMLInputElement).value;
     this.dataTable.filter = filterValue.trim().toLowerCase();
 
     // Aplicar filtros a los datos originales
@@ -137,30 +137,28 @@ export class ReviewTeamTableComponent implements OnInit {
 
   countItems: number = 0;
 
-  getDataReviwer(){
+  getDataReviwer() {
     this.sharedService.getDataReviwers().subscribe((data) => {
-
       data.forEach((item: any) => {
         this.countItems++;
         item.index = this.countItems;
-      })
+      });
 
       const formattedData = data.map((item: any) => {
         return {
           ...item,
           birthDate: moment(item.birthDate).format('DD/MM/YYYY'),
-        }
-      })
+        };
+      });
 
-      this.dataTable = new MatTableDataSource(formattedData)
+      this.dataTable = new MatTableDataSource(formattedData);
 
       this.dataTable.paginator = this.paginator!;
-      this.dataTable.sort = this.sort!
-    })
+      this.dataTable.sort = this.sort!;
+    });
   }
 
-  deleteUser(id: number): void{
-
+  deleteUser(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: '¡No podrás recuperar este usuario después de eliminarlo!',
@@ -169,12 +167,12 @@ export class ReviewTeamTableComponent implements OnInit {
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
         this.authService.deleteUser(id).subscribe({
-          next: response => {
-            console.log("Usuario eliminado:", response);
+          next: (response) => {
+            console.log('Usuario eliminado:', response);
             Swal.fire({
               title: 'Eliminado',
               html: 'El usuario ha sido eliminado.',
@@ -188,37 +186,12 @@ export class ReviewTeamTableComponent implements OnInit {
               },
             });
           },
-          error: err => {
-            console.error("Error al eliminar el usuario:", err);
+          error: (err) => {
+            console.error('Error al eliminar el usuario:', err);
             Swal.fire('Error', 'No se pudo eliminar el usuario.', 'error');
-          }
+          },
         });
       }
     });
-
-
-    // this.authService.deleteUser(id).subscribe({
-    //   next: res => {
-    //     console.log("Usuario eliminado ", res);
-    //     Swal.fire({
-    //       title: 'Borrar',
-    //       text: `¿Está seguro/a de eliminar este usuario?.`,
-    //       icon: 'warning',
-    //       showCancelButton: true,
-    //       confirmButtonColor: '#3085d6',
-    //       cancelButtonColor: '#d33',
-    //       confirmButtonText: 'Si, salir!',
-    //       cancelButtonText: 'Cancelar',
-    //     }).then((result) => {
-    //       if (result.isConfirmed) {
-    //         window.location.reload();
-    //       }
-    //     });
-    //   },
-    //   error: err => {
-    //     console.log("Error al eliminar usuario ", err);
-    //   }
-    // })
   }
-
 }

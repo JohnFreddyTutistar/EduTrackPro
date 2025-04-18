@@ -56,6 +56,11 @@ export class RegisterCallComponent implements OnInit {
       // );
       dataHistoryApplicant.date = new Date();
 
+      dataHistoryApplicant.observation =
+        dataHistoryApplicant.observation?.trim() || 'N/A';
+      dataHistoryApplicant.tracing =
+        dataHistoryApplicant.tracing?.trim() || 'N/A';
+
       this.sharedService
         .postApplicantsCallHistory(this.id, dataHistoryApplicant)
         .subscribe({
@@ -68,9 +73,9 @@ export class RegisterCallComponent implements OnInit {
               allowOutsideClick: false,
               timer: 3000,
               timerProgressBar: true,
-              // willClose: () => {
-              //   window.location.reload();
-              // },
+              willClose: () => {
+                window.location.reload();
+              },
             });
           },
           error: (err) => {

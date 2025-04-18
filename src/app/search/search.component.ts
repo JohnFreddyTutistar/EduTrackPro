@@ -39,7 +39,11 @@ export class SearchComponent implements OnInit {
     this.identificationTypes = this.enumService.getIdentificationType();
     console.log('tipos de identificación: ', this.identificationTypes);
 
-    this.authService.loginGuest();
+    this.userData = this.authService.getUser();
+
+    if (!this.userData) {
+      this.authService.loginGuest();
+    }
 
     this.builSearchForm();
 

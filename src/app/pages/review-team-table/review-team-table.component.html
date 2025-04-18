@@ -8,7 +8,7 @@
         <b style="color: #910e04">Unicesmag</b> registrados por el administrador
       </p>
       <br />
-      <button mat-raised-button style="background-color: #0c3859; color: #fff" [routerLink]="['/auth/register']">
+      <button *ngIf="user.rol === 'Administrador'" mat-raised-button style="background-color: #0c3859; color: #fff" [routerLink]="['/auth/register']">
         <mat-icon>add_circle</mat-icon> Agregar empleado al equipo de revisión
       </button>
     </div>
@@ -243,11 +243,11 @@
                     <mat-icon>calendar_month</mat-icon>
                     Calendario
                   </button>
-                  <button mat-menu-item (click)="editUser()">
+                  <button *ngIf="user.rol === 'Administrador'" mat-menu-item (click)="editUser()">
                     <mat-icon>edit</mat-icon>
                     Editar usuario
                   </button>
-                  <button mat-menu-item (click)="deleteUser(element.id)" style="color: #d90000;">
+                  <button *ngIf="user.rol === 'Administrador'" mat-menu-item (click)="deleteUser(element.id)" style="color: #d90000;">
                     <mat-icon style="color: #d90000;">delete</mat-icon>
                     Borrar usuario
                   </button>
