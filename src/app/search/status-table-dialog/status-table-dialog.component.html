@@ -34,44 +34,45 @@
                 <th style="width: 25%">Programa académico</th>
               </tr>
             </thead>
-            <tr *ngFor="let user of data">
-              <td>{{ user[0].identificationNumber }}</td>
+            <tr>
+              <td>{{ dataApplicants.identificationNumber }}</td>
               <td>
-                {{ data[0].firstName }}
-                {{ data[0].secondName }}
-                {{ data[0].firstLastName }}
-                {{ data[0].secondLastName }}
+                {{ dataApplicants.firstName }}
+                {{ dataApplicants.secondName }}
+                {{ dataApplicants.firstLastName }}
+                {{ dataApplicants.secondLastName }}
               </td>
-              <td>{{ data[0].academicProgram }}</td>
+              <td>{{ academicProgram }}</td>
             </tr>
           </table>
           <hr
             class="line-separator"
             style="width: 100%; background-color: lightgray; height: 1px"
           />
-          <!-- <table class="striped centered table-with-overflow">
+          <table class="striped centered table-with-overflow">
             <thead>
               <tr>
                 <th>Fecha de solicitud</th>
                 <th>Estado</th>
               </tr>
             </thead>
-            <tr *ngFor="let user of dataApplicants">
-              <td>{{ data[0].inscriptionDate }}</td>
+            <tr>
+              <td>00/00/00</td>
               <td style="display: flex; justify-content: center">
                 <div
                   class="box-color small center-xs"
                   [ngClass]="{
-                    statusPending: user.status.toUpperCase() === 'EN REVISIÓN',
-                    statusOk: user.status.toUpperCase() === 'APROBADO',
-                    statusRejected: user.status.toUpperCase() === 'RECHAZADO'
+                    statusPending: statusInscription.toUpperCase() === 'EN REVISIÓN',
+                    statusOk: statusInscription.toUpperCase() === 'APROBADO',
+                    statusRejected: statusInscription.toUpperCase() === 'RECHAZADO',
+                    statusNotPresented: statusInscription.toUpperCase() === 'DESISTIDO'
                   }"
                 >
-                  {{ data[0].status }}
+                  {{ statusInscription }}
                 </div>
               </td>
             </tr>
-          </table> -->
+          </table>
         </mat-card-content>
       </mat-card>
     </div>

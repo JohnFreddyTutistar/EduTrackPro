@@ -12,6 +12,10 @@ export class StatusTableDialogComponent implements OnInit {
   id: string = '';
   data: any[] = [];
 
+  academicProgram: any;
+
+  statusInscription: any;
+
   ELEMENT_DATA: IDataApplicantStatus[] = [
     {
       identificationNumber: 1085310787,
@@ -60,26 +64,28 @@ export class StatusTableDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dataApplicantDialog: any
   ) {}
 
-  dataApplicants: any[] = [];
+  dataApplicants: any;
 
   ngOnInit(): void {
     this.dataApplicantDialog.applicant.filter((item: any) => {
       if (item.id === this.dataApplicantDialog.id) {
         this.dataApplicants = item;
+        this.academicProgram = item.inscriptions[0].program.faculty;
+        this.statusInscription = item.inscriptions[0].status;
         console.log('dialog data: ', this.dataApplicants);
       }
     });
 
-    this.dataApplicant(this.id);
+    // this.dataApplicant(this.id);
   }
 
-  dataApplicant(id: string) {
-    this.sharedService.getDataStatusApplicant(id).subscribe({
-      next: (res) => {
-        console.log('respuesta status applicant: ', res);
-        this.data = res;
-        console.log(this.data);
-      },
-    });
-  }
+  // dataApplicant(id: string) {
+  //   this.sharedService.getDataStatusApplicant(id).subscribe({
+  //     next: (res) => {
+  //       console.log('respuesta status applicant: ', res);
+  //       this.data = res;
+  //       console.log(this.data);
+  //     },
+  //   });
+  // }
 }

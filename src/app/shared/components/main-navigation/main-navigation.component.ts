@@ -60,7 +60,6 @@ export class MainNavigationComponent implements OnInit {
 
   constructor(public authService: AuthService) {
     this.user = this.authService.getUser();
-    console.log('data user: ', this.user);
   }
 
   ngOnInit(): void {

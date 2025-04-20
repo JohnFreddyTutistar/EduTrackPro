@@ -204,11 +204,9 @@ export class ApplicantTableComponent implements OnInit {
   getDataApplicants() {
     this.sharedService.getDataApplicantsNew().subscribe((data) => {
       this.applicants = data;
-      console.log('api applicants: ', this.applicants);
       this.dataSource = new MatTableDataSource<IApplicant>(this.applicants);
 
       this.applicants.forEach((a: any) => {
-        console.log('inscripciones: ', a.inscriptions[0].status);
         this.countItems++;
         a.rol = this.permissions;
         a.status = a.inscriptions[0].status;
