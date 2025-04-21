@@ -4,10 +4,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
-import { IReviwer } from 'src/app/interfaces/users';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
 import Swal from 'sweetalert2';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-review-team-table',
@@ -77,7 +78,8 @@ export class ReviewTeamTableComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public sharedService: SharedService,
-    public authService: AuthService
+    public authService: AuthService,
+    public dialog: MatDialog
   ) {
     this.filterForm();
   }
@@ -142,6 +144,33 @@ export class ReviewTeamTableComponent implements OnInit {
       data.forEach((item: any) => {
         this.countItems++;
         item.index = this.countItems;
+
+        item.actions = [
+          {
+            label: 'Calendario',
+            permissions: '',
+            optionClick: 0,
+            dataClick: item.id,
+            icon: 'calendar_month',
+            class: 'givenUp',
+          },
+          {
+            label: 'Editar',
+            permissions: '',
+            optionClick: 1,
+            dataClick: item.id,
+            icon: 'edit',
+            class: 'primaryColor',
+          },
+          {
+            label: 'Borrar usuario',
+            permissions: '',
+            optionClick: 2,
+            dataClick: item.id,
+            icon: 'delete',
+            class: 'rejected',
+          },
+        ];
       });
 
       const formattedData = data.map((item: any) => {
@@ -158,40 +187,56 @@ export class ReviewTeamTableComponent implements OnInit {
     });
   }
 
-  deleteUser(id: number): void {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: '¡No podrás recuperar este usuario después de eliminarlo!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.authService.deleteUser(id).subscribe({
-          next: (response) => {
-            console.log('Usuario eliminado:', response);
-            Swal.fire({
-              title: 'Eliminado',
-              html: 'El usuario ha sido eliminado.',
-              icon: 'success',
-              showConfirmButton: false,
-              allowOutsideClick: false,
-              timer: 3000,
-              timerProgressBar: true,
-              willClose: () => {
-                window.location.reload();
+  clickButton(option: any, data: any, user: any) {
+    switch (option) {
+      case 0:
+        break;
+      case 1:
+        const upateUser = this.dialog.open(UpdateUserComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '70%',
+          data: {},
+        });
+        break;
+      case 2:
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: '¡No podrás recuperar este usuario después de eliminarlo!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.authService.deleteUser(data).subscribe({
+              next: (response) => {
+                console.log('Usuario eliminado:', response);
+                Swal.fire({
+                  title: 'Eliminado',
+                  html: 'El usuario ha sido eliminado.',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  allowOutsideClick: false,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  willClose: () => {
+                    window.location.reload();
+                  },
+                });
+              },
+              error: (err) => {
+                console.error('Error al eliminar el usuario:', err);
+                Swal.fire('Error', 'No se pudo eliminar el usuario.', 'error');
               },
             });
-          },
-          error: (err) => {
-            console.error('Error al eliminar el usuario:', err);
-            Swal.fire('Error', 'No se pudo eliminar el usuario.', 'error');
-          },
+          }
         });
-      }
-    });
+        break;
+    }
   }
+
+  deleteUser(id: number): void {}
 }

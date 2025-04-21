@@ -39,6 +39,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterCallComponent } from './pages/applicants/register-call/register-call.component';
 import { CalendarComponent } from './pages/review-team-table/calendar/calendar.component';
 import { ContactFormComponent } from './pages/help/contact-form/contact-form.component';
+import { UpdateUserComponent } from './pages/review-team-table/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ContactFormComponent } from './pages/help/contact-form/contact-form.com
     RegisterCallComponent,
     CalendarComponent,
     ContactFormComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

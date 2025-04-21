@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { IDataApplicantStatus } from 'src/app/interfaces/users';
 import { SharedService } from 'src/app/services/shared.service';
 
@@ -15,6 +16,8 @@ export class StatusTableDialogComponent implements OnInit {
   academicProgram: any;
 
   statusInscription: any;
+
+  dateInscription: any;
 
   ELEMENT_DATA: IDataApplicantStatus[] = [
     {
@@ -65,6 +68,7 @@ export class StatusTableDialogComponent implements OnInit {
   ) {}
 
   dataApplicants: any;
+  newFormatDateInscription: any;
 
   ngOnInit(): void {
     this.dataApplicantDialog.applicant.filter((item: any) => {
@@ -72,6 +76,10 @@ export class StatusTableDialogComponent implements OnInit {
         this.dataApplicants = item;
         this.academicProgram = item.inscriptions[0].program.faculty;
         this.statusInscription = item.inscriptions[0].status;
+        this.dateInscription = item.inscriptions[0].createdAt;
+        this.newFormatDateInscription = moment(this.dateInscription).format(
+          'DD/MM/YYYY'
+        );
         console.log('dialog data: ', this.dataApplicants);
       }
     });

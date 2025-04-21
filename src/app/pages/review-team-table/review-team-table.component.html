@@ -238,8 +238,12 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #agreementsMenu="matMenu" xPosition="before">
-                <ng-container>
-                  <button mat-menu-item routerLink="calendar">
+                <ng-container *ngFor="let action of element.actions">
+                  <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick, user)">
+                    <mat-icon [ngClass]="action.class">{{ action.icon }}</mat-icon>
+                    {{ action.label }}
+                  </button>
+                  <!-- <button mat-menu-item routerLink="calendar">
                     <mat-icon>calendar_month</mat-icon>
                     Calendario
                   </button>
@@ -250,7 +254,7 @@
                   <button *ngIf="user.rol === 'Administrador'" mat-menu-item (click)="deleteUser(element.id)" style="color: #d90000;">
                     <mat-icon style="color: #d90000;">delete</mat-icon>
                     Borrar usuario
-                  </button>
+                  </button> -->
                 </ng-container>
               </mat-menu>
             </td>

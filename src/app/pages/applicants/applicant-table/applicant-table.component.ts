@@ -82,46 +82,6 @@ export class ApplicantTableComponent implements OnInit {
     'actions',
   ];
 
-  // dialogStatusTable() {
-  //   this.dialog.open(StatusTableDialogComponent, {
-  //     maxWidth: '500vw',
-  //     maxHeight: '90vh',
-  //     width: '70%',
-  //     data: {},
-  //   });
-  // }
-
-  // dialogUpdateUser() {
-  //   this.dialog.open(DialogApplicantComponent, {
-  //     maxWidth: '500vw',
-  //     maxHeight: '90vh',
-  //     width: '70%',
-  //     data: {},
-  //   });
-  // }
-
-  // registerCall() {
-  //   this.dialog.open(RegisterCallComponent, {
-  //     maxWidth: '500vw',
-  //     maxHeight: '90vh',
-  //     width: '50%',
-  //     data: {},
-  //   });
-  // }
-
-  // checkHistory(aspirante: any) {
-  //   this.dialog.open(DialogCallHistoryComponent, {
-  //     maxWidth: '500vw',
-  //     maxHeight: '90vh',
-  //     width: '70%',
-  //     data: {
-  //       id: aspirante.id,
-  //       aspirante: aspirante,
-  //     },
-  //   });
-  //   console.log("id aspirante: ", aspirante.id)
-  // }
-
   constructor(
     public dialog: MatDialog,
     public formBuilder: FormBuilder,
