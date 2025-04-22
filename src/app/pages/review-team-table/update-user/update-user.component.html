@@ -1,7 +1,85 @@
 <div class="container">
-    <div class="row center-xs">
-        <div class="col-xs-12">
-            <h4>!update user</h4>
-        </div>
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-12">
+      <h1>Editar usuario</h1>
+      <hr class="line-separator" />
     </div>
+  </div>
+
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-10">
+      <mat-icon
+        class="profile-photo-40r-default"
+        style="width: 150px !important; height: 150px !important"
+      >
+      </mat-icon>
+    </div>
+    <div class="col-xs-11 col-md-4">
+      <input type="file" />
+    </div>
+  </div>
+  <form action="">
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <p>Ingrese a continuación su <b>información personal</b></p>
+      </div>
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Primer nombre</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+      </div>
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Segundo nombre</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+      </div>
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Primer apellido</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+      </div>
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Segundo apellido</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Celular</mat-label>
+          <input matInput type="number" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs-10 col-md-3">
+        <mat-form-field class="width-inputs" appearance="fill">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input type="date" matInput />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="col-xs-12">
+        <button
+          mat-raised-button
+          class="button-hover"
+          style="background-color: #0c3859; color: #fff"
+        >
+          <mat-icon>update</mat-icon> Guardar cambios
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
