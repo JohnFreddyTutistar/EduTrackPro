@@ -9,6 +9,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import Swal from 'sweetalert2';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @Component({
   selector: 'app-review-team-table',
@@ -190,6 +191,12 @@ export class ReviewTeamTableComponent implements OnInit {
   clickButton(option: any, data: any, user: any) {
     switch (option) {
       case 0:
+        const calendarUser = this.dialog.open(CalendarComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '70%',
+          data: {},
+        });
         break;
       case 1:
         const upateUser = this.dialog.open(UpdateUserComponent, {
