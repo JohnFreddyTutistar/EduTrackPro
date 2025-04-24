@@ -8,7 +8,12 @@
         <b style="color: #910e04">Unicesmag</b> registrados por el administrador
       </p>
       <br />
-      <button *ngIf="user.rol === 'Administrador'" mat-raised-button style="background-color: #0c3859; color: #fff" [routerLink]="['/auth/register']">
+      <button
+        *ngIf="user.rol === 'Administrador'"
+        mat-raised-button
+        style="background-color: #0c3859; color: #fff"
+        [routerLink]="['/auth/register']"
+      >
         <mat-icon>add_circle</mat-icon> Agregar empleado al equipo de revisión
       </button>
     </div>
@@ -30,7 +35,11 @@
                 <mat-option selected disabled value=""
                   >Seleccione una opción</mat-option
                 >
-                <mat-option *ngFor="let filter of filterOptions" [value]="filter.filterValue">{{ filter.filterName }}</mat-option>
+                <mat-option
+                  *ngFor="let filter of filterOptions"
+                  [value]="filter.filterValue"
+                  >{{ filter.filterName }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
           </div>
@@ -104,7 +113,12 @@
       <!-- Busqueda rapida por frontend -->
       <mat-form-field class="width-inputs" appearance="fill">
         <mat-label>Busqueda rapida por</mat-label>
-        <input matInput appUpperCase placeholder="" (keyup)="applyFilters($event)"/>
+        <input
+          matInput
+          appUpperCase
+          placeholder=""
+          (keyup)="applyFilters($event)"
+        />
       </mat-form-field>
 
       <div class="row spacer">
@@ -113,7 +127,6 @@
 
       <mat-card-content class="table-with-overflow">
         <table mat-table [dataSource]="dataTable" matSort>
-          
           <ng-container matColumnDef="index">
             <th mat-header-cell *matHeaderCellDef>#</th>
             <td mat-cell *matCellDef="let element">{{ element.index }}</td>
@@ -208,10 +221,10 @@
             <td mat-cell *matCellDef="let element">{{ element.faculty }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="position">
+          <ng-container matColumnDef="possition">
             <th mat-header-cell *matHeaderCellDef>Cargo</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.position }}
+              {{ element.possition }}
             </td>
           </ng-container>
 
@@ -239,8 +252,15 @@
               </button>
               <mat-menu #agreementsMenu="matMenu" xPosition="before">
                 <ng-container *ngFor="let action of element.actions">
-                  <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick, user)">
-                    <mat-icon [ngClass]="action.class">{{ action.icon }}</mat-icon>
+                  <button
+                    mat-menu-item
+                    (click)="
+                      clickButton(action.optionClick, action.dataClick, user)
+                    "
+                  >
+                    <mat-icon [ngClass]="action.class">{{
+                      action.icon
+                    }}</mat-icon>
                     {{ action.label }}
                   </button>
                   <!-- <button mat-menu-item routerLink="calendar">
@@ -265,9 +285,13 @@
 
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="12">
-              <div class="center-xs" style="padding: 30px;">
+              <div class="center-xs" style="padding: 30px">
                 <h3>No encontramos resultados</h3>
-                <img src="assets/images/NoData.svg" alt="Imagen sin resultado" style="max-width: 60%; max-height: 40vh">
+                <img
+                  src="assets/images/NoData.svg"
+                  alt="Imagen sin resultado"
+                  style="max-width: 60%; max-height: 40vh"
+                />
               </div>
             </td>
           </tr>

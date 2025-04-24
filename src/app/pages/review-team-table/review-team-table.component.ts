@@ -62,7 +62,7 @@ export class ReviewTeamTableComponent implements OnInit {
     'email',
     'phoneNumber',
     'faculty',
-    'position',
+    'possition',
     'rol',
     'settings',
   ];
@@ -152,7 +152,7 @@ export class ReviewTeamTableComponent implements OnInit {
             optionClick: 0,
             dataClick: item.id,
             icon: 'calendar_month',
-            class: 'givenUp',
+            class: 'primaryColor',
           },
           {
             label: 'Editar',

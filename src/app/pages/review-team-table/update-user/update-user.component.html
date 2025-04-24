@@ -18,7 +18,7 @@
       <input type="file" />
     </div>
   </div>
-  <form action="">
+  <form [formGroup]="updateForm" (ngSubmit)="sendForm()">
     <div class="row center-xs">
       <div class="col-xs-12">
         <p>Ingrese a continuación su <b>información personal</b></p>
@@ -26,25 +26,25 @@
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Primer nombre</mat-label>
-          <input type="text" matInput />
+          <input type="text" matInput formControlName="firstName" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Segundo nombre</mat-label>
-          <input type="text" matInput />
+          <input type="text" matInput formControlName="secondName" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Primer apellido</mat-label>
-          <input type="text" matInput />
+          <input type="text" matInput formControlName="firstLastName" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Segundo apellido</mat-label>
-          <input type="text" matInput />
+          <input type="text" matInput formControlName="secondLastName" />
         </mat-form-field>
       </div>
     </div>
@@ -53,19 +53,19 @@
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Celular</mat-label>
-          <input matInput type="number" />
+          <input matInput type="number" formControlName="phoneNumber" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput type="email" />
+          <input matInput type="email" formControlName="email" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input type="date" matInput />
+          <input type="date" matInput formControlName="birthDate" />
         </mat-form-field>
       </div>
     </div>
@@ -73,6 +73,7 @@
     <div class="row center-xs">
       <div class="col-xs-12">
         <button
+          type="submit"
           mat-raised-button
           class="button-hover"
           style="background-color: #0c3859; color: #fff"
