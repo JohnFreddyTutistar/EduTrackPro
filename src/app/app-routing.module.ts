@@ -9,50 +9,55 @@ import { DialogApplicantComponent } from './pages/applicants/dialog-applicant/di
 import { DialogCallHistoryComponent } from './pages/applicants/dialog-call-history/dialog-call-history.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CalendarComponent } from './pages/review-team-table/calendar/calendar.component';
+import { InscriptionsComponent } from './pages/inscriptions/inscriptions.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( (m) => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
     // loadChildren: () => import('./search/search.module').then( (m) => m.SearchModule)
   },
   {
     path: 'applicants',
-    component: ApplicantTableComponent
+    component: ApplicantTableComponent,
   },
   {
     path: 'reviewerTeam',
-    component: ReviewTeamTableComponent
+    component: ReviewTeamTableComponent,
   },
   {
     path: 'help',
-    component: HelpComponent
+    component: HelpComponent,
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'calendar',
-    component: CalendarComponent
+    component: CalendarComponent,
+  },
+  {
+    path: 'inscriptions',
+    component: InscriptionsComponent,
   },
 
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'home',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

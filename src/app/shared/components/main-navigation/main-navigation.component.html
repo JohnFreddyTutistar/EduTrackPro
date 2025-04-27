@@ -1,32 +1,44 @@
-<div *ngIf="user" class="center-xs" style="margin-top: 10px;">
-  <p style="color: #fff;">{{ greetings }}</p>
-  <span style="font-weight: bold; font-size: 1.5em; text-transform: capitalize; color: #fff;">{{ user.firstName }} {{ user.firstLastName }}</span>
-  <hr style="color: #fff; margin: 10px !important;">
+<div *ngIf="user" class="center-xs" style="margin-top: 10px">
+  <p style="color: #fff">{{ greetings }}</p>
+  <span
+    style="
+      font-weight: bold;
+      font-size: 1.5em;
+      text-transform: capitalize;
+      color: #fff;
+    "
+    >{{ user.firstName }} {{ user.firstLastName }}</span
+  >
+  <hr style="color: #fff; margin: 10px !important" />
 </div>
 
 <mat-selection-list *ngIf="user" [multiple]="false" style="width: 300px">
-
   <!-- *ngIf="userData[0].rol === 'reviwer'" -->
-  <mat-list-option style="color: #fff;" *ngFor="let item of reactiveMenu">
-    <a [routerLink]="[ item.route ]" class="navItem">
-        <mat-icon>{{ item.icon }}</mat-icon>
-        <span style="margin-left: 10px;">{{ item.title }}</span>
+  <mat-list-option style="color: #fff" *ngFor="let item of reactiveMenu">
+    <a [routerLink]="[item.route]" class="navItem">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span style="margin-left: 10px">{{ item.title }}</span>
     </a>
   </mat-list-option>
-
 </mat-selection-list>
 
 <mat-selection-list *ngIf="!user" [multiple]="false" style="width: 300px">
-  <mat-list-option style="color: #fff;">
-    <a class="navItem" routerLink="search">
-      <mat-icon>content_paste_search</mat-icon>
-      <span style="margin-left: 10px;">Estado del aspirante</span>
+  <mat-list-option style="color: #fff">
+    <a class="navItem" routerLink="inscriptions">
+      <mat-icon>assignment</mat-icon>
+      <span style="margin-left: 10px">Inscripciones</span>
     </a>
   </mat-list-option>
-  <mat-list-option style="color: #fff;">
+  <mat-list-option style="color: #fff">
+    <a class="navItem" routerLink="search">
+      <mat-icon>content_paste_search</mat-icon>
+      <span style="margin-left: 10px">Estado del aspirante</span>
+    </a>
+  </mat-list-option>
+  <mat-list-option style="color: #fff">
     <a class="navItem" routerLink="help">
       <mat-icon>help</mat-icon>
-      <span style="margin-left: 10px;">Ayuda</span>
+      <span style="margin-left: 10px">Ayuda</span>
     </a>
   </mat-list-option>
 </mat-selection-list>

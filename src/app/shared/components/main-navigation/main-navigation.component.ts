@@ -43,6 +43,13 @@ export class MainNavigationComponent implements OnInit {
       rol: 'Administrador',
     },
     {
+      title: 'Inscripciones',
+      icon: 'assignment',
+      route: 'inscription',
+      // rol: ['reviwer', 'guest'],
+      rol: '',
+    },
+    {
       title: 'Estado del aspirante',
       icon: 'content_paste_search',
       route: 'search',

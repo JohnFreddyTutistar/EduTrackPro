@@ -40,6 +40,7 @@ import { RegisterCallComponent } from './pages/applicants/register-call/register
 import { CalendarComponent } from './pages/review-team-table/calendar/calendar.component';
 import { ContactFormComponent } from './pages/help/contact-form/contact-form.component';
 import { UpdateUserComponent } from './pages/review-team-table/update-user/update-user.component';
+import { InscriptionsComponent } from './pages/inscriptions/inscriptions.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { UpdateUserComponent } from './pages/review-team-table/update-user/updat
     CalendarComponent,
     ContactFormComponent,
     UpdateUserComponent,
+    InscriptionsComponent,
   ],
   imports: [
     BrowserModule,
