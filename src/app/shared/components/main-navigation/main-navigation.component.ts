@@ -45,7 +45,7 @@ export class MainNavigationComponent implements OnInit {
     {
       title: 'Inscripciones',
       icon: 'assignment',
-      route: 'inscription',
+      route: 'inscriptions',
       // rol: ['reviwer', 'guest'],
       rol: '',
     },
