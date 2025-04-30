@@ -9,20 +9,26 @@
             border-radius: 10px 10px 0 0;
             background-color: #006364;
           "
-          ><h1 class="principal-title" style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+          ><h1
+            class="principal-title"
+            style="margin-bottom: 0px; font-size: 1.1rem; color: #fff"
+          >
             <b>REGISTRO DE USUARIO</b>
           </h1></mat-card-title
         >
         <mat-card-subtitle>
           <div class="row center-xs">
             <div class="col-xs-11 col-md-8">
-              <p style="margin-top: 10px;">
-                <b>A continuación, encontrarás un formulario de registro donde podrás crear
-                un nuevo usuario. Completa los campos requeridos marcados con un (*),
-                elige una contraseña segura y selecciona el <b style="color: #006364;">rol</b> que desempeñará dentro
-                del sitio.</b>
+              <p style="margin-top: 10px">
+                <b
+                  >A continuación, encontrarás un formulario de registro donde
+                  podrás crear un nuevo usuario. Completa los campos requeridos
+                  marcados con un (*), elige una contraseña segura y selecciona
+                  el <b style="color: #006364">rol</b> que desempeñará dentro
+                  del sitio.</b
+                >
               </p>
-              <hr class="line-separator">
+              <hr class="line-separator" />
             </div>
           </div>
         </mat-card-subtitle>
@@ -32,10 +38,18 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Primer nombre</mat-label>
-                <input matInput type="text" required formControlName="firstName"/>
-                <mat-error *ngIf="
-                  registerForm.controls['firstName'].touched &&
-                  registerForm.controls['firstName'].hasError('required')">
+                <input
+                  matInput
+                  type="text"
+                  required
+                  formControlName="firstName"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['firstName'].touched &&
+                    registerForm.controls['firstName'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -43,16 +57,29 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Segundo nombre</mat-label>
-                <input placeholder="opcional" matInput type="text" formControlName="secondName"/>
+                <input
+                  placeholder="opcional"
+                  matInput
+                  type="text"
+                  formControlName="secondName"
+                />
               </mat-form-field>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Primer apellido</mat-label>
-                <input matInput type="text" required formControlName="firstLastName"/>
-                <mat-error *ngIf="
-                  registerForm.controls['firstLastName'].touched &&
-                  registerForm.controls['firstLastName'].hasError('required')">
+                <input
+                  matInput
+                  type="text"
+                  required
+                  formControlName="firstLastName"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['firstLastName'].touched &&
+                    registerForm.controls['firstLastName'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -60,42 +87,63 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Segundo apellido</mat-label>
-                <input matInput type="text" formControlName="secondLastName"/>
+                <input matInput type="text" formControlName="secondLastName" />
               </mat-form-field>
             </div>
 
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Fecha de nacimiento</mat-label>
-                <input matInput type="date" id="birthday" required formControlName="birthDate"/>
-                <mat-error *ngIf="
-                  registerForm.controls['birthDate'].touched &&
-                  registerForm.controls['birthDate'].hasError('required')">
+                <input
+                  matInput
+                  type="date"
+                  id="birthday"
+                  required
+                  formControlName="birthDate"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['birthDate'].touched &&
+                    registerForm.controls['birthDate'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
             </div>
 
             <div class="col-xs-12 col-md-6 col-lg-3">
-              <div style="
-                border-radius: 0.5em 0.5em 0 0 !important;
-                background-color: rgba(100, 120, 150, 0.03) !important;
-                border: solid 1px rgba(100, 120, 150, 0.035) !important;
-                height: min-content;
-                border-bottom: 1px solid rgba(100, 120, 150, 0.8) !important;
-              ">
-                <p style="font-size: 15px;">Su edad es</p>
-                <h3 style="line-height: 0.5em; color: #009da8;"><b>{{ age }}</b></h3>
+              <div
+                style="
+                  border-radius: 0.5em 0.5em 0 0 !important;
+                  background-color: rgba(100, 120, 150, 0.03) !important;
+                  border: solid 1px rgba(100, 120, 150, 0.035) !important;
+                  height: min-content;
+                  border-bottom: 1px solid rgba(100, 120, 150, 0.8) !important;
+                "
+              >
+                <p style="font-size: 15px">Su edad es</p>
+                <h3 style="line-height: 0.5em; color: #009da8">
+                  <b>{{ age }}</b>
+                </h3>
               </div>
             </div>
 
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Teléfono o Celular</mat-label>
-                <input matInput type="text" required formControlName="phoneNumber"/>
-                <mat-error *ngIf="
-                  registerForm.controls['phoneNumber'].touched &&
-                  registerForm.controls['phoneNumber'].hasError('required')">
+                <input
+                  matInput
+                  type="text"
+                  required
+                  formControlName="phoneNumber"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['phoneNumber'].touched &&
+                    registerForm.controls['phoneNumber'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -104,13 +152,19 @@
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Departamento o facultad</mat-label>
                 <mat-select formControlName="faculty">
-                  <mat-option *ngFor="let idType of facultyType" [value]="idType.value">
+                  <mat-option
+                    *ngFor="let idType of facultyType"
+                    [value]="idType.value"
+                  >
                     {{ idType.viewValue }}
                   </mat-option>
                 </mat-select>
-                <mat-error *ngIf="
-                  registerForm.controls['faculty'].touched &&
-                  registerForm.controls['faculty'].hasError('required')">
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['faculty'].touched &&
+                    registerForm.controls['faculty'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -119,10 +173,18 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Cargo o posición</mat-label>
-                <input matInput type="text" required formControlName="possition"/>
-                <mat-error *ngIf="
-                  registerForm.controls['possition'].touched &&
-                  registerForm.controls['possition'].hasError('required')">
+                <input
+                  matInput
+                  type="text"
+                  required
+                  formControlName="possition"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['possition'].touched &&
+                    registerForm.controls['possition'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -132,14 +194,19 @@
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Rol</mat-label>
                 <mat-select required formControlName="rol">
-                  <mat-option *ngFor="let rol of userRol" [value]="rol.value">{{ rol.viewValue }}</mat-option>
+                  <mat-option *ngFor="let rol of userRol" [value]="rol.value">{{
+                    rol.viewValue
+                  }}</mat-option>
                 </mat-select>
                 <mat-icon matSuffix style="color: #006363"
                   >manage_accounts</mat-icon
                 >
-                <mat-error *ngIf="
-                  registerForm.controls['rol'].touched &&
-                  registerForm.controls['rol'].hasError('required')">
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['rol'].touched &&
+                    registerForm.controls['rol'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -148,11 +215,14 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
               <mat-form-field class="width-inputs" appearance="fill">
                 <mat-label>Correo electrónico</mat-label>
-                <input matInput type="email" required formControlName="email"/>
+                <input matInput type="email" required formControlName="email" />
                 <mat-icon matSuffix style="color: #006363">mail</mat-icon>
-                <mat-error *ngIf="
-                  registerForm.controls['email'].touched &&
-                  registerForm.controls['email'].hasError('required')">
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['email'].touched &&
+                    registerForm.controls['email'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
               </mat-form-field>
@@ -179,27 +249,33 @@
                     hide ? "visibility_off" : "visibility"
                   }}</mat-icon>
                 </a>
-                <mat-error *ngIf="
-                  registerForm.controls['password'].touched &&
-                  registerForm.controls['password'].hasError('required')">
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['password'].touched &&
+                    registerForm.controls['password'].hasError('required')
+                  "
+                >
                   Este campo es requerido
                 </mat-error>
-                <mat-error *ngIf="
-                  registerForm.controls['password'].hasError('minlength')">
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['password'].hasError('minlength')
+                  "
+                >
                   La contraseña es demasiado corta
                 </mat-error>
               </mat-form-field>
             </div>
           </div>
           <div class="row center-xs">
-            <div class="col-xs-12 col-md-12"></div>
-            <button type="submit" mat-raised-button class="register-button">
-              <mat-icon>save</mat-icon>
-              Crear usuario
-            </button>
+            <div class="col-xs-12 col-md-12">
+              <button type="submit" mat-raised-button class="register-button">
+                <mat-icon>save</mat-icon>
+                Crear usuario
+              </button>
+            </div>
           </div>
         </mat-card-content>
-
       </mat-card>
     </form>
   </div>

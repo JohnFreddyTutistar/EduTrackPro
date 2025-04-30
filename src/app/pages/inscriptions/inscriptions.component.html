@@ -5,4 +5,153 @@
       <hr class="line-separator" />
     </div>
   </div>
+
+  <form action="">
+    <div class="row center-xs">
+      <div class="col-xs-12 col-md-11">
+        <mat-card class="table-with-header" style="padding: 0 !important">
+          <mat-card-title
+            class="principal-title"
+            style="
+              padding: 10px;
+              border-radius: 10px 10px 0 0;
+              background-color: #0c3859;
+            "
+          >
+            <h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+              <mat-icon>badge</mat-icon>
+              DOCUMENTO DE IDENTIFICACIÓN
+            </h4>
+          </mat-card-title>
+          <mat-card-content class="hide-on-small-only">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Tipo de documento</mat-label>
+                  <mat-select>
+                    <mat-option
+                      *ngFor="let type of identificationType"
+                      [value]="type.value"
+                      >{{ type.viewValue }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Numero de documento</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="col-xs-12 col-md-11">
+        <mat-card class="table-with-header" style="padding: 0 !important">
+          <mat-card-title
+            class="principal-title"
+            style="
+              padding: 10px;
+              border-radius: 10px 10px 0 0;
+              background-color: #006363;
+            "
+          >
+            <h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+              <mat-icon>person</mat-icon> DATOS BÁSICOS
+            </h4>
+          </mat-card-title>
+          <mat-card-content class="hide-on-small-only">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Programa académico</mat-label>
+                  <mat-select>
+                    <mat-option>Ingeniería de sistemas</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Jornada</mat-label>
+                  <mat-select>
+                    <mat-option value="diurna">Diurna</mat-option>
+                    <mat-option value="nocturna">Nocturna</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Primer nombre</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Segundo nombre</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Primer apellido</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Segundo apellido</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Genero</mat-label>
+                  <mat-select>
+                    <mat-option>Masculino</mat-option>
+                    <mat-option>Femenino</mat-option>
+                    <mat-option>No binario</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Numero de celular</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Coreo electrónico</mat-label>
+                  <input type="email" matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-xs-12 col-lg-3 col-md-6">
+                <mat-form-field class="width-inputs" appearance="fill">
+                  <mat-label>Dirección residencial</mat-label>
+                  <input type="text" matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row center-xs">
+      <div class="col-xs-6">
+        <button type="submit" mat-raised-button class="register-button">
+          <mat-icon>save</mat-icon>
+          Guardar inscripción
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
