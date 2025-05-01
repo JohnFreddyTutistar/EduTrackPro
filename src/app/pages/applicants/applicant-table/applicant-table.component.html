@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row center-xs">
     <div class="col-xs-12 col-md-8">
-      <h1 class="principal-title"><b>Lista de Aspirantes ({{ dataApplicants.length }})</b></h1>
+      <h1 class="principal-title">
+        <b>Lista de Aspirantes ({{ dataApplicants.length }})</b>
+      </h1>
       <hr class="line-separator" />
       <p style="max-width: 800px; margin: auto">
         A continuación encuentra el listado de todos los aspirantes y su
@@ -14,7 +16,7 @@
   <div class="row center-xs">
     <div class="col-xs-12 col-md-2" *ngFor="let count of statusCounts">
       <ng-container>
-        <div style="padding: 10px" >
+        <div style="padding: 10px">
           <button
             class="counter"
             [ngClass]="count.class"
@@ -25,7 +27,9 @@
             (click)="filterByStatus(count.name)"
           >
             <br />
-            <span class="salient"> <b>{{ count.amount }}</b> </span>
+            <span class="salient">
+              <b>{{ count.amount }}</b>
+            </span>
             <span class="description"> Aplicante(s) </span>
             <b>{{ count.name }}</b>
           </button>
@@ -35,15 +39,15 @@
     <!-- Boton para resetear los filtros -->
     <div class="col-xs-12">
       <a
-        (click)="reset()"     
+        (click)="reset()"
         mat-stroked-button
         color="primary"
-        style="line-height: 1.7em; padding: 0;"
+        style="line-height: 1.7em; padding: 0"
         aria-label="Resetear filtro"
         matTooltip="Resetear filtro"
-        >
+      >
         <mat-icon>restart_alt</mat-icon>
-        </a>
+      </a>
     </div>
   </div>
 
@@ -65,7 +69,11 @@
                 <mat-option selected disabled value=""
                   >Seleccione una opción</mat-option
                 >
-                <mat-option *ngFor="let filter of filterOptions" [value]="filter.filterValue">{{ filter.filterName }}</mat-option>
+                <mat-option
+                  *ngFor="let filter of filterOptions"
+                  [value]="filter.filterValue"
+                  >{{ filter.filterName }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
           </div>
@@ -185,7 +193,12 @@
       <!-- Busqueda rapida por frontend -->
       <mat-form-field class="width-inputs" appearance="fill">
         <mat-label>Busqueda rapida por</mat-label>
-        <input matInput appUpperCase placeholder="" (keyup)="applyFilterFast($event)"/>
+        <input
+          matInput
+          appUpperCase
+          placeholder=""
+          (keyup)="applyFilterFast($event)"
+        />
       </mat-form-field>
 
       <div class="row spacer">
@@ -194,7 +207,6 @@
 
       <mat-card-content class="table-with-overflow">
         <table mat-table [dataSource]="dataSource" matSort>
-
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef>#</th>
             <td mat-cell *matCellDef="let element">{{ element.position }}</td>
@@ -348,12 +360,13 @@
                 "
               >
                 <mat-icon
-
-                  matBadge="{{element.callHistory.length}}" matBadgeSize="small" matBadgeColor="accent"
+                  matBadge="{{ element.callHistory.length }}"
+                  matBadgeSize="small"
+                  matBadgeColor="accent"
                   style="color: #008dd5; margin: auto"
                   matTooltip="Contactado"
                 >
-                call</mat-icon
+                  call</mat-icon
                 >
               </span>
               <span
@@ -368,7 +381,12 @@
                   align-items: center;
                 "
               >
-                <img src="assets/images/456112.png" alt="" width="23" matTooltip="No contactado">
+                <img
+                  src="assets/images/456112.png"
+                  alt=""
+                  width="23"
+                  matTooltip="No contactado"
+                />
               </span>
             </td>
           </ng-container>
@@ -391,8 +409,17 @@
               <!-- displayed user menu -->
               <mat-menu #agreementsMenu="matMenu" xPosition="before">
                 <ng-container *ngFor="let action of element.actions">
-                  <button mat-menu-item (click)="clickButton(action.optionClick, action.dataClick, applicants)">
-                    <mat-icon>{{action.icon}}</mat-icon>
+                  <button
+                    mat-menu-item
+                    (click)="
+                      clickButton(
+                        action.optionClick,
+                        action.dataClick,
+                        applicants
+                      )
+                    "
+                  >
+                    <mat-icon>{{ action.icon }}</mat-icon>
                     {{ action.label }}
                   </button>
                 </ng-container>
@@ -405,9 +432,13 @@
 
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="12">
-              <div class="center-xs" style="padding: 30px;">
+              <div class="center-xs" style="padding: 30px">
                 <h3>No encontramos resultados</h3>
-                <img src="assets/images/NoData.svg" alt="Imagen sin resultado" style="max-width: 60%; max-height: 40vh">
+                <img
+                  src="assets/images/NoData.svg"
+                  alt="Imagen sin resultado"
+                  style="max-width: 60%; max-height: 40vh"
+                />
               </div>
             </td>
           </tr>

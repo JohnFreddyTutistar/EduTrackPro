@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EnumsService {
+  constructor() {}
 
-  constructor() { }
-
-  public getIdentificationType(){
+  public getIdentificationType() {
     return [
       {
         value: 'CC / CÉDULA DE CIUDADANÍA',
@@ -16,56 +15,60 @@ export class EnumsService {
       {
         value: 'TI / TARJETA DE IDENTIDAD',
         viewValue: 'TI / TARJETA DE IDENTIDAD',
-      }
-    ]
+      },
+      {
+        value: 'CE / CÉDULA DE EXTRANJERÍA',
+        viewValue: 'CE / CÉDULA DE EXTRANJERÍA',
+      },
+    ];
   }
 
-  public getFacultyType(){
+  public getFacultyType() {
     return [
       {
         value: 'Ingeniería',
-        viewValue: 'INGENIERÍA'
+        viewValue: 'INGENIERÍA',
       },
       {
         value: 'Arquitectura y Bellas Artes',
-        viewValue: 'ARQUITECTURA Y BELLAS ARTES'
+        viewValue: 'ARQUITECTURA Y BELLAS ARTES',
       },
       {
         value: 'Administrativas y Contables',
-        viewValue: 'ADMINISTRATIVAS Y CONTABLES'
+        viewValue: 'ADMINISTRATIVAS Y CONTABLES',
       },
       {
         value: 'Sociales y Humanas',
-        viewValue: 'SOCIALES Y HUMANAS'
-      }
-    ]
+        viewValue: 'SOCIALES Y HUMANAS',
+      },
+    ];
   }
 
-  public getResults(){
+  public getResults() {
     return [
       {
         value: 'CONTACTADO',
         viewValue: 'CONTACTADO',
-        icon: 'call_made'
+        icon: 'call_made',
       },
       {
         value: 'NO CONTACTADO',
         viewValue: 'NO CONTACTADO',
-        icon: 'call_missed'
-      }
-    ]
+        icon: 'call_missed',
+      },
+    ];
   }
 
   public getUserRol() {
     return [
       {
         value: 'Administrador',
-        viewValue: 'ADMINISTRADOR(A)'
+        viewValue: 'ADMINISTRADOR(A)',
       },
       {
         value: 'Revisor',
-        viewValue: 'REVISOR(A)'
-      }
-    ]
+        viewValue: 'REVISOR(A)',
+      },
+    ];
   }
 }
