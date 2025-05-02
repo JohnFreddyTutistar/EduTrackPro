@@ -71,7 +71,10 @@
   <div class="userMobile" style="text-align: center; padding: 0 20px">
     <h3 style="margin-bottom: 0; font-weight: 500">Hola</h3>
     <h3 *ngIf="user" style="margin-bottom: 10px; font-weight: 500">
-      <b>{{ user.firstName.toUpperCase() }} {{ user.firstLastName.toUpperCase() }}</b>
+      <b
+        >{{ user.firstName.toUpperCase() }}
+        {{ user.firstLastName.toUpperCase() }}</b
+      >
     </h3>
     <h3 *ngIf="user" style="margin-bottom: 10px; font-weight: 500">
       <!-- {{ userData[0].firstName }} {{ userData[0].firstLastName }} -->
@@ -89,7 +92,7 @@
     <span>Iniciar sesión</span>
   </button>
 
-  <button *ngIf="user" mat-menu-item [routerLink]="['auth/account/:id']">
+  <button *ngIf="user" mat-menu-item [routerLink]="['auth/account/', user.id]">
     <mat-icon class="icons">account_circle</mat-icon>
     <span>Mi perfil</span>
   </button>

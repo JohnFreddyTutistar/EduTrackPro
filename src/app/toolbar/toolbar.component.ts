@@ -15,6 +15,7 @@ export class ToolbarComponent implements OnInit {
 
   constructor(public authService: AuthService, public router: Router) {
     this.user = this.authService.getUser();
+    this.userId = this.user.id;
   }
 
   userLoginOn: boolean = false;

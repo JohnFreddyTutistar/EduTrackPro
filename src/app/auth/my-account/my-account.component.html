@@ -29,15 +29,7 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
             <mat-label>Primer nombre</mat-label>
-            <input matInput type="text" required formControlName="firstName" />
-            <mat-error
-              *ngIf="
-                updateProfileUser.controls['firstName'].touched &&
-                updateProfileUser.controls['firstName'].hasError('required')
-              "
-            >
-              Este campo es requerido
-            </mat-error>
+            <input matInput type="text" formControlName="firstName" />
           </mat-form-field>
         </div>
         <div class="col-xs-12 col-md-6 col-lg-3">
@@ -91,12 +83,12 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
             <mat-label>Celular</mat-label>
-            <input matInput type="number" formControlName="phone" />
+            <input matInput type="number" formControlName="phoneNumber" />
             <mat-hint>digite solo <b>numeros</b></mat-hint>
             <mat-error
               *ngIf="
-                updateProfileUser.controls['phone'].touched &&
-                updateProfileUser.controls['phone'].hasError('required')
+                updateProfileUser.controls['phoneNumber'].touched &&
+                updateProfileUser.controls['phoneNumber'].hasError('required')
               "
             >
               Este campo es requerido
@@ -120,11 +112,11 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
             <mat-label>Cargo o posición</mat-label>
-            <input matInput type="text" formControlName="position" />
+            <input matInput type="text" formControlName="possition" />
             <mat-error
               *ngIf="
-                updateProfileUser.controls['position'].touched &&
-                updateProfileUser.controls['position'].hasError('required')
+                updateProfileUser.controls['possition'].touched &&
+                updateProfileUser.controls['possition'].hasError('required')
               "
             >
               Este campo es requerido
