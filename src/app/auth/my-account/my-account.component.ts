@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
 
@@ -18,14 +18,14 @@ export class MyAccountComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.updateProfileUser = this.formBiulder.group({
-      firstName: [''],
+      firstName: ['', [Validators.required]],
       secondName: [''],
-      firstLastName: [''],
+      firstLastName: ['', [Validators.required]],
       secondLastName: [''],
-      birthday: [''],
-      phoneNumber: [''],
-      faculty: [''],
-      possition: [''],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
+      faculty: ['', [Validators.required]],
+      possition: ['', [Validators.required]],
     });
   }
 
@@ -45,7 +45,7 @@ export class MyAccountComponent implements OnInit {
         firstLastName: user.firstLastName,
         secondLastName: user.secondLastName,
         phoneNumber: user.phoneNumber,
-        birthday: user.birthday,
+        email: user.email,
         faculty: user.faculty,
         possition: user.possition,
       });

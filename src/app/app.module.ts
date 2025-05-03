@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { MatSliderModule } from '@angular/material/slider'
+import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,7 +25,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
@@ -39,7 +39,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterCallComponent } from './pages/applicants/register-call/register-call.component';
 import { CalendarComponent } from './pages/review-team-table/calendar/calendar.component';
 import { ContactFormComponent } from './pages/help/contact-form/contact-form.component';
-import { UpdateUserComponent } from './pages/review-team-table/update-user/update-user.component';
 import { InscriptionsComponent } from './pages/inscriptions/inscriptions.component';
 
 @NgModule({
@@ -55,7 +54,6 @@ import { InscriptionsComponent } from './pages/inscriptions/inscriptions.compone
     RegisterCallComponent,
     CalendarComponent,
     ContactFormComponent,
-    UpdateUserComponent,
     InscriptionsComponent,
   ],
   imports: [
@@ -90,9 +88,9 @@ import { InscriptionsComponent } from './pages/inscriptions/inscriptions.compone
   ],
   exports: [
     // TimelineHComponent
-    ReviewTeamTableComponent
+    ReviewTeamTableComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

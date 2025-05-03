@@ -42,12 +42,16 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'calendar',
+    path: 'calendar/:id',
     component: CalendarComponent,
   },
   {
     path: 'inscriptions',
     component: InscriptionsComponent,
+  },
+  {
+    path: 'profileApplicant/:id',
+    component: DialogApplicantComponent,
   },
 
   {

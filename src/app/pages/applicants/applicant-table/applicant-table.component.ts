@@ -18,6 +18,7 @@ import { RegisterCallComponent } from '../register-call/register-call.component'
 import { DialogCallHistoryComponent } from '../dialog-call-history/dialog-call-history.component';
 import { SharedService } from 'src/app/services/shared.service';
 import { count, filter } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-applicant-table',
@@ -85,7 +86,8 @@ export class ApplicantTableComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public formBuilder: FormBuilder,
-    public sharedService: SharedService
+    public sharedService: SharedService,
+    public router: Router
   ) {
     this.filterForm();
   }
@@ -279,12 +281,7 @@ export class ApplicantTableComponent implements OnInit {
         });
         break;
       case 1:
-        const dialogApplicant = this.dialog.open(DialogApplicantComponent, {
-          maxWidth: '500vw',
-          maxHeight: '90vh',
-          width: '70%',
-          data: {},
-        });
+        this.router.navigate(['profileApplicant', data]);
         break;
       case 2:
         const registerCall = this.dialog.open(RegisterCallComponent, {

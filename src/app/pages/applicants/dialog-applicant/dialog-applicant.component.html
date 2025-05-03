@@ -2,19 +2,19 @@
   <div class="row center-xs">
     <div class="col-xs-12 col-md-12">
       <h1 class="principal-title">Editar</h1>
-      <hr class="line-separator">
+      <hr class="line-separator" />
     </div>
   </div>
   <div class="row center-xs">
     <div class="col-xs-12 col-md-10">
       <mat-icon
         class="profile-photo-40r-default"
-        style="width: 150px !important;
-               height: 150px !important;">
+        style="width: 150px !important; height: 150px !important"
+      >
       </mat-icon>
     </div>
     <div class="col-xs-11 col-md-4">
-      <input type="file">
+      <input type="file" />
     </div>
   </div>
   <form [formGroup]="updateUser" autocomplete="off" (ngSubmit)="update()">
@@ -59,25 +59,25 @@
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Primer nombre</mat-label>
-          <input type="text" matInput formControlName="firstName">
+          <input type="text" matInput formControlName="firstName" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Segundo nombre</mat-label>
-          <input type="text" matInput formControlName="secondName">
+          <input type="text" matInput formControlName="secondName" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Primer apellido</mat-label>
-          <input type="text" matInput formControlName="firstSurname">
+          <input type="text" matInput formControlName="firstLastName" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Segundo apellido</mat-label>
-          <input type="text" matInput formControlName="secondSurname">
+          <input type="text" matInput formControlName="secondLastName" />
         </mat-form-field>
       </div>
     </div>
@@ -85,25 +85,25 @@
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Genero</mat-label>
-          <input matInput type="text" formControlName="gender">
+          <input matInput type="text" formControlName="gender" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Celular</mat-label>
-          <input matInput type="number" formControlName="phone">
+          <input matInput type="number" formControlName="phoneNumber" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Dirección de residencia</mat-label>
-          <input matInput type="text" formControlName="adress">
+          <input matInput type="text" formControlName="address" />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-3">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email">
+          <input matInput type="email" formControlName="email" />
         </mat-form-field>
       </div>
     </div>
@@ -112,27 +112,37 @@
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Tipo de identificación</mat-label>
           <mat-select matNativeControl formControlName="identificationType">
-            <mat-option value="cc">Cédula de ciudadanía</mat-option>
-            <mat-option value="ti">Tarjeta de identidad</mat-option>
+            <mat-option value="CC">Cédula de ciudadanía</mat-option>
+            <mat-option value="TI">Tarjeta de identidad</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-4">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Numero de identificación</mat-label>
-          <input type="number" matInput formControlName="identificationNumber">
+          <input
+            type="number"
+            matInput
+            formControlName="identificationNumber"
+          />
         </mat-form-field>
       </div>
       <div class="col-xs-10 col-md-4">
         <mat-form-field class="width-inputs" appearance="fill">
           <mat-label>Fecha de nacimiento</mat-label>
-          <input type="date" matInput formControlName="birthdate">
+          <input type="date" matInput formControlName="birthDate" />
         </mat-form-field>
       </div>
     </div>
     <div class="row center-xs">
       <div class="col-xs-12">
-        <button mat-raised-button class="button-hover" style="background-color: #0c3859; color: #fff;"><mat-icon>update</mat-icon> Guardar cambios</button>
+        <button
+          mat-raised-button
+          class="button-hover"
+          style="background-color: #0c3859; color: #fff"
+        >
+          <mat-icon>update</mat-icon> Guardar cambios
+        </button>
       </div>
     </div>
   </form>

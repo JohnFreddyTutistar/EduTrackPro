@@ -29,7 +29,20 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
             <mat-label>Primer nombre</mat-label>
-            <input matInput type="text" formControlName="firstName" />
+            <input
+              matInput
+              required=""
+              type="text"
+              formControlName="firstName"
+            />
+            <mat-error
+              *ngIf="
+                updateProfileUser.controls['firstName'].touched &&
+                updateProfileUser.controls['firstName'].hasError('required')
+              "
+            >
+              Este campo es requerido
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-xs-12 col-md-6 col-lg-3">
@@ -68,12 +81,12 @@
       <div class="row center-xs">
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
-            <mat-label>Fecha de nacimiento</mat-label>
-            <input matInput type="date" required formControlName="birthday" />
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput type="text" required formControlName="email" />
             <mat-error
               *ngIf="
-                updateProfileUser.controls['birthday'].touched &&
-                updateProfileUser.controls['birthday'].hasError('required')
+                updateProfileUser.controls['email'].touched &&
+                updateProfileUser.controls['email'].hasError('required')
               "
             >
               Este campo es requerido
@@ -83,7 +96,12 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
             <mat-label>Celular</mat-label>
-            <input matInput type="number" formControlName="phoneNumber" />
+            <input
+              matInput
+              required
+              type="number"
+              formControlName="phoneNumber"
+            />
             <mat-hint>digite solo <b>numeros</b></mat-hint>
             <mat-error
               *ngIf="
@@ -112,7 +130,7 @@
         <div class="col-xs-12 col-md-6 col-lg-3">
           <mat-form-field class="width-inputs" appearance="fill">
             <mat-label>Cargo o posición</mat-label>
-            <input matInput type="text" formControlName="possition" />
+            <input matInput required type="text" formControlName="possition" />
             <mat-error
               *ngIf="
                 updateProfileUser.controls['possition'].touched &&

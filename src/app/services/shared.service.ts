@@ -67,6 +67,10 @@ export class SharedService {
     return this.http.get<IApplicant[]>(this.url + '/api/v1/applicant');
   }
 
+  getDataApplicantsById(id: string): Observable<any> {
+    return this.http.get<any>(this.url + '/api/v1/applicant/' + id);
+  }
+
   getDataReviwers(): Observable<IReviwer[]> {
     return this.http.get<IReviwer[]>(this.url + '/api/v1/users');
   }

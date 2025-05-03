@@ -7,9 +7,9 @@ import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
 import Swal from 'sweetalert2';
-import { UpdateUserComponent } from './update-user/update-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarComponent } from './calendar/calendar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-review-team-table',
@@ -80,7 +80,8 @@ export class ReviewTeamTableComponent implements OnInit {
     public formBuilder: FormBuilder,
     public sharedService: SharedService,
     public authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router
   ) {
     this.filterForm();
   }
@@ -191,20 +192,10 @@ export class ReviewTeamTableComponent implements OnInit {
   clickButton(option: any, data: any, user: any) {
     switch (option) {
       case 0:
-        const calendarUser = this.dialog.open(CalendarComponent, {
-          maxWidth: '500vw',
-          maxHeight: '90vh',
-          width: '70%',
-          data: {},
-        });
+        this.router.navigate(['calendar', data]);
         break;
       case 1:
-        const upateUser = this.dialog.open(UpdateUserComponent, {
-          maxWidth: '500vw',
-          maxHeight: '90vh',
-          width: '70%',
-          data: {},
-        });
+        this.router.navigate(['auth/account', data]);
         break;
       case 2:
         Swal.fire({
