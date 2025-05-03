@@ -15,7 +15,13 @@ export class ToolbarComponent implements OnInit {
 
   constructor(public authService: AuthService, public router: Router) {
     this.user = this.authService.getUser();
-    this.userId = this.user.id;
+
+    if (this.user) {
+      this.userId = this.user.id;
+    } else {
+      console.log('No hay usuario logueado');
+      this.router.navigate(['/login']);
+    }
   }
 
   userLoginOn: boolean = false;
