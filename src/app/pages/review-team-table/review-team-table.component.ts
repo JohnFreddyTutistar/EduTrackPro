@@ -148,14 +148,14 @@ export class ReviewTeamTableComponent implements OnInit {
         item.index = this.countItems;
 
         item.actions = [
-          {
-            label: 'Calendario',
-            permissions: '',
-            optionClick: 0,
-            dataClick: item.id,
-            icon: 'calendar_month',
-            class: 'primaryColor',
-          },
+          // {
+          //   label: 'Calendario',
+          //   permissions: '',
+          //   optionClick: 0,
+          //   dataClick: item.id,
+          //   icon: 'calendar_month',
+          //   class: 'primaryColor',
+          // },
           {
             label: 'Editar',
             permissions: '',

@@ -152,10 +152,18 @@
               </mat-expansion-panel-header>
               <p>
                 Puedes verificar el estado de tu solicitud dando click
-                <a routerLink="search">aquí</a> o dirigiendose en el menú
-                izquierdo en Estado del aspirante y con su tipo y numero de
-                documento Podrás ver el estado actual y cualquier actualización
-                sobre tu proceso de admisión
+                <a
+                  style="
+                    color: #0d6efd;
+                    cursor: pointer;
+                    text-decoration: underline;
+                  "
+                  (click)="search()"
+                  >aquí</a
+                >
+                o dirigiendose en el menú izquierdo en Estado del aspirante y
+                con su tipo y numero de documento Podrás ver el estado actual y
+                cualquier actualización sobre tu proceso de admisión
               </p>
             </mat-expansion-panel>
           </mat-accordion>

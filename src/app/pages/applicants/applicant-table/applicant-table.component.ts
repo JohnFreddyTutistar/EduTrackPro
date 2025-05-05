@@ -47,10 +47,6 @@ export class ApplicantTableComponent implements OnInit {
       filterName: 'Numero de identificación',
     },
     {
-      filterValue: 'datebirth',
-      filterName: 'Fecha de nacimiento',
-    },
-    {
       filterValue: 'status',
       filterName: 'Estado',
     },
