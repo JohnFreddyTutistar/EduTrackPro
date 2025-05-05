@@ -1,335 +1,351 @@
-<mat-card style="padding: 0 !important;">
-    <mat-card-title
-      class="principal-title"
-      style="
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
-        background-color: #1f5ba3;
-      "
-      ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
-        ¿Tienes dudas con tu proceso de admisión? <br>
-        <b>Contáctanos</b>
-      </h4>
-    </mat-card-title>
-    <mat-card-content>
-      <form
-        [formGroup]="digitalChanelForm"
-        autocomplete="off"
-        (ngSubmit)="sendForm()"
-      >
-        <mat-stepper linear #stepper>
-          <mat-step [editable]="isEditable">
-            <ng-template matStepLabel>
-              <span><b>General</b></span>
-            </ng-template>
-            <div class="row">
-              <div class="col-xs-12 center-xs">
-                <h2 class="principal-title">Información Importante</h2>
-                <hr class="line-separator">
-              </div>
-
-              <div class="col-xs-12 start-xs">
-                ¡Gracias por tu interes en hacer parte de la <b style="color: #0c3859;">Universidad CESMAG</b>!
-                Estamos aquí para ayudarte con cualquier duda o pregunta que puedas tener sobre el proceso de admisión. Antes
-                de que envies tu consulta, por favor ten en cuenta la siguiente información:
-              </div><br>
-
-              <div class="col-xs-12 start-xs">
-                <ul>
-                  <li>
-                    <p>
-                      <b>Tiempo de respuesta: </b> Nuestro equipo se esfuerza por responder a todas las consultas
-                      dentro de un plazo de <b style="color: #9a0805;">5 días hábiles</b> si no resibes una respuesta
-                      dentro de este periodo, por favor revisa tu carpeta de <b style="color: #1f5ba3;">spam</b> o <b style="color: #1f5ba3;">correo no deseado</b>, ya que nuestra respuesta se
-                      podría haberse dirigido allí por error
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <b>Información adicional: </b> Para asegurar una respuesta más rápida y precisa, te recomendamos
-                      proporcionar toda la información relevante en tu consulta. Esto incluye detalles específicos sobre
-                      tu pregunta o problema.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <b>Horarios de Atención:</b>  Nuestro horario de atención es de 7:00 a 12:00 y de 14:00 a 18:00 de lunes a viernes.
-                      Cualquier consulta enviada fuera de este horario será atendida el siguiente día hábil.
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <b>Privacidad y Seguridad:</b> Tus datos serán tratados con la máxima confidencialidad y utilizados exclusivamente para responder
-                      a tu consulta. Consulta nuestra <a href="https://www.unicesmag.edu.co/reglamentos/" target="_blank"> política de privacidad</a> para más detalles.
-                    </p>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-xs-12 start-xs">
-                <p>Agradecemos tu paciencia y comprensión mientras trabajamos para ofrecerte el mejor soporte posible. Si tienes alguna pregunta urgente, considera visitar nuestra sección de <b>preguntas frecuentes</b> para ver si ya hemos abordado tu consulta.</p>
-              </div>
+<mat-card style="padding: 0 !important">
+  <mat-card-title
+    style="
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+      background-color: #1f5ba3;
+    "
+    ><h4 style="margin-bottom: 0px; font-size: 1.1rem; color: #fff">
+      ¿Tienes dudas con tu proceso de admisión? <br />
+      <b>Contáctanos</b>
+    </h4>
+  </mat-card-title>
+  <mat-card-content>
+    <form
+      [formGroup]="digitalChanelForm"
+      autocomplete="off"
+      (ngSubmit)="sendForm()"
+    >
+      <mat-stepper linear #stepper>
+        <mat-step [editable]="isEditable">
+          <ng-template matStepLabel>
+            <span><b>General</b></span>
+          </ng-template>
+          <div class="row">
+            <div class="col-xs-12 center-xs">
+              <h2 class="principal-title"><b>Información Importante</b></h2>
+              <hr class="line-separator" />
             </div>
 
-            <div class="row between-xs">
-              <div class="col-xs" style="text-align: end">
-                <button
-                  mat-stroked-button
-                  matStepperNext
-                  type="button"
-                  style="color: #0c3859"
+            <div class="col-xs-12 start-xs">
+              ¡Gracias por tu interes en hacer parte de la
+              <b style="color: #0c3859">Universidad CESMAG</b>! Estamos aquí
+              para ayudarte con cualquier duda o pregunta que puedas tener sobre
+              el proceso de admisión. Antes de que envies tu consulta, por favor
+              ten en cuenta la siguiente información:
+            </div>
+            <br />
+
+            <div class="col-xs-12 start-xs">
+              <ul>
+                <li>
+                  <p>
+                    <b>Tiempo de respuesta: </b> Nuestro equipo se esfuerza por
+                    responder a todas las consultas dentro de un plazo de
+                    <b style="color: #9a0805">5 días hábiles</b> si no resibes
+                    una respuesta dentro de este periodo, por favor revisa tu
+                    carpeta de <b style="color: #1f5ba3">spam</b> o
+                    <b style="color: #1f5ba3">correo no deseado</b>, ya que
+                    nuestra respuesta se podría haberse dirigido allí por error
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <b>Información adicional: </b> Para asegurar una respuesta
+                    más rápida y precisa, te recomendamos proporcionar toda la
+                    información relevante en tu consulta. Esto incluye detalles
+                    específicos sobre tu pregunta o problema.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <b>Horarios de Atención:</b> Nuestro horario de atención es
+                    de 7:00 a 12:00 y de 14:00 a 18:00 de lunes a viernes.
+                    Cualquier consulta enviada fuera de este horario será
+                    atendida el siguiente día hábil.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <b>Privacidad y Seguridad:</b> Tus datos serán tratados con
+                    la máxima confidencialidad y utilizados exclusivamente para
+                    responder a tu consulta. Consulta nuestra
+                    <a
+                      href="https://www.unicesmag.edu.co/reglamentos/"
+                      target="_blank"
+                    >
+                      política de privacidad</a
+                    >
+                    para más detalles.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xs-12 start-xs">
+              <p>
+                Agradecemos tu paciencia y comprensión mientras trabajamos para
+                ofrecerte el mejor soporte posible. Si tienes alguna pregunta
+                urgente, considera visitar nuestra sección de
+                <b>preguntas frecuentes</b> para ver si ya hemos abordado tu
+                consulta.
+              </p>
+            </div>
+          </div>
+
+          <div class="row between-xs">
+            <div class="col-xs" style="text-align: end">
+              <button
+                mat-stroked-button
+                matStepperNext
+                type="button"
+                style="color: #0c3859"
+              >
+                Siguiente <mat-icon>arrow_forward_ios</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-step>
+
+        <!-- formulario -->
+        <mat-step [editable]="isEditable" [stepControl]="digitalChanelForm">
+          <ng-template matStepLabel>
+            <span matTooltip="Ingresa tus datos" aria-label="Ingresa tus datos"
+              ><b>Ingresa tus datos</b></span
+            >
+          </ng-template>
+          <div class="row center-xs">
+            <div class="col-xs-12 col-lg-4 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Tipo de identificación</mat-label>
+                <mat-select formControlName="identificationType">
+                  <mat-option
+                    *ngFor="let idType of identificationTypes"
+                    [value]="idType.value"
+                  >
+                    {{ idType.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['identificationType'].touched &&
+                    digitalChanelForm.controls['identificationType'].hasError(
+                      'required'
+                    )
+                  "
+                  >Este campo es requerido</mat-error
                 >
-                  Siguiente <mat-icon>arrow_forward_ios</mat-icon>
-                </button>
-              </div>
+              </mat-form-field>
             </div>
-          </mat-step>
 
-          <!-- formulario -->
-          <mat-step [editable]="isEditable" [stepControl]="digitalChanelForm">
-            <ng-template matStepLabel>
-              <span matTooltip="Ingresa tus datos" aria-label="Ingresa tus datos"><b>Ingresa tus datos</b></span>
-            </ng-template>
-            <div class="row center-xs">
-              <div class="col-xs-12 col-lg-4 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Tipo de identificación</mat-label>
-                  <mat-select formControlName="identificationType">
-                    <mat-option *ngFor="let idType of identificationTypes" [value]="idType.value">
-                        {{ idType.viewValue }}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['identificationType']
-                        .touched &&
-                      digitalChanelForm.controls['identificationType'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido</mat-error
-                  >
-                </mat-form-field>
-              </div>
-
-              <div class="col-xs-12 col-lg-4 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Numero de identificación</mat-label>
-                  <input
-                    type="number"
-                    matInput
-                    formControlName="identificationNumber"
-                  />
-                  <mat-hint>Digite solo <b>numeros</b></mat-hint>
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['identificationNumber']
-                        .touched &&
-                      digitalChanelForm.controls['identificationNumber'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido
-                  </mat-error>
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['identificationNumber'].hasError('maxLength')
-                    ">
-                    Supero la cantidad de caracteres
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="col-xs-12 col-lg-4 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Email</mat-label>
-                  <input type="email" matInput formControlName="email" />
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['email']
-                        .touched &&
-                      digitalChanelForm.controls['email'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido
-                  </mat-error>
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['email'].hasError('email')
-                    ">
-                    Este correo no es valido
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="col-xs-12 col-lg-4 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Nombres</mat-label>
-                  <input type="text" matInput formControlName="name" />
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['name']
-                        .touched &&
-                      digitalChanelForm.controls['name'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="col-xs-12 col-lg-4 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Apellidos</mat-label>
-                  <input type="text" matInput formControlName="lastname" />
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['lastname']
-                        .touched &&
-                      digitalChanelForm.controls['lastname'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="col-xs-12 col-lg-4 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Télefono fijo o celular</mat-label>
-                  <input type="number" matInput formControlName="phone" />
-                  <mat-hint>digite solo <b>numeros</b></mat-hint>
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['phone']
-                        .touched &&
-                      digitalChanelForm.controls['phone'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <div class="col-xs-12 col-md-6">
-                <mat-form-field class="width-inputs" appearance="fill">
-                  <mat-label>Describe tu solicitud</mat-label>
-                  <textarea matInput formControlName="request"></textarea>
-                  <mat-error
-                    *ngIf="
-                      digitalChanelForm.controls['request']
-                        .touched &&
-                      digitalChanelForm.controls['request'].hasError(
-                        'required'
-                      )
-                    "
-                    >Este campo es requerido
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="row between-xs">
-              <div class="col-xs" style="text-align: start;">
-                <button
-                  mat-stroked-button
-                  matStepperPrevious
-                  type="button"
-                  style="margin: 0, -3px"
+            <div class="col-xs-12 col-lg-4 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Numero de identificación</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="identificationNumber"
+                />
+                <mat-hint>Digite solo <b>numeros</b></mat-hint>
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['identificationNumber']
+                      .touched &&
+                    digitalChanelForm.controls['identificationNumber'].hasError(
+                      'required'
+                    )
+                  "
+                  >Este campo es requerido
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['identificationNumber'].hasError(
+                      'maxLength'
+                    )
+                  "
                 >
-                  <mat-icon aria-hidden="false" aria-label="volver"
-                    >arrow_back_ios</mat-icon
-                  >
-                  Volver
-                </button>
-              </div>
-              <div class="col-xs" style="text-align: end">
-                <button mat-stroked-button matStepperNext type="button">
-                  Siguiente
-                  <mat-icon aria-hidden="false" aria-label="siguiente"
-                    >arrow_forward_ios</mat-icon
-                  >
-                </button>
-              </div>
-            </div>
-          </mat-step>
-
-          <!-- data confirmation -->
-          <mat-step [editable]="isEditable">
-            <ng-template matStepLabel>
-              <span><b>Confirma tus datos</b></span>
-            </ng-template>
-
-            <div class="row center-xs">
-              <div class="col-xs-12 col-md-4">
-                <h3 class="principal-title"><b>Número de identificación</b></h3>
-                <p>{{ digitalChanelForm.controls['identificationNumber'].value }}</p>
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <h3 class="principal-title"><b>Nombre</b></h3>
-                <p>{{ digitalChanelForm.controls['name'].value }}</p>
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <h3 class="principal-title"><b>Apellido</b></h3>
-                <p>{{ digitalChanelForm.controls['lastname'].value }}</p>
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <h3 class="principal-title"><b>Email</b></h3>
-                <p>{{ digitalChanelForm.controls['email'].value }}</p>
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <h3 class="principal-title"><b>Telefono fijo o celular</b></h3>
-                <p>{{ digitalChanelForm.controls['phone'].value }}</p>
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <h3 class="principal-title"><b>Solicitud</b></h3>
-                <p>{{ digitalChanelForm.controls['request'].value }}</p>
-              </div>
+                  Supero la cantidad de caracteres
+                </mat-error>
+              </mat-form-field>
             </div>
 
-            <div class="row center-xs">
-              <div class="col-xs-12">
-                <button
-                  mat-raised-button
-                  type="submit"
-                  style="background: #0c3859; color: white; margin-top: 15px">
-                  <mat-icon>send</mat-icon>
-                  Enviar solicitud
-                </button>
-              </div>
-            </div>
-
-            <div class="row between-xs">
-              <div class="col-xs" style="text-align: start;">
-                <button
-                  mat-stroked-button
-                  matStepperPrevious
-                  type="button"
-                  style="margin: 0, -3px"
+            <div class="col-xs-12 col-lg-4 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" />
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['email'].touched &&
+                    digitalChanelForm.controls['email'].hasError('required')
+                  "
+                  >Este campo es requerido
+                </mat-error>
+                <mat-error
+                  *ngIf="digitalChanelForm.controls['email'].hasError('email')"
                 >
-                  <mat-icon aria-hidden="false" aria-label="volver"
-                    >arrow_back_ios</mat-icon
-                  >
-                  Volver
-                </button>
-              </div>
-              <div class="col-xs" style="text-align: end">
-                <button
-                  mat-stroked-button
-                  (click)="stepper.reset()"
-                  type="button"
-                >
-                  Resetear
-                  <mat-icon aria-hidden="false" aria-label="siguiente"
-                    >history</mat-icon
-                  >
-                </button>
-              </div>
+                  Este correo no es valido
+                </mat-error>
+              </mat-form-field>
             </div>
-          </mat-step>
-        </mat-stepper>
-      </form>
-    </mat-card-content>
-  </mat-card>
+
+            <div class="col-xs-12 col-lg-4 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Nombres</mat-label>
+                <input type="text" matInput formControlName="name" />
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['name'].touched &&
+                    digitalChanelForm.controls['name'].hasError('required')
+                  "
+                  >Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-lg-4 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Apellidos</mat-label>
+                <input type="text" matInput formControlName="lastname" />
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['lastname'].touched &&
+                    digitalChanelForm.controls['lastname'].hasError('required')
+                  "
+                  >Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-lg-4 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Télefono fijo o celular</mat-label>
+                <input type="number" matInput formControlName="phone" />
+                <mat-hint>digite solo <b>numeros</b></mat-hint>
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['phone'].touched &&
+                    digitalChanelForm.controls['phone'].hasError('required')
+                  "
+                  >Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+              <mat-form-field class="width-inputs" appearance="fill">
+                <mat-label>Describe tu solicitud</mat-label>
+                <textarea matInput formControlName="request"></textarea>
+                <mat-error
+                  *ngIf="
+                    digitalChanelForm.controls['request'].touched &&
+                    digitalChanelForm.controls['request'].hasError('required')
+                  "
+                  >Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row between-xs">
+            <div class="col-xs" style="text-align: start">
+              <button
+                mat-stroked-button
+                matStepperPrevious
+                type="button"
+                style="margin: 0, -3px"
+              >
+                <mat-icon aria-hidden="false" aria-label="volver"
+                  >arrow_back_ios</mat-icon
+                >
+                Volver
+              </button>
+            </div>
+            <div class="col-xs" style="text-align: end">
+              <button mat-stroked-button matStepperNext type="button">
+                Siguiente
+                <mat-icon aria-hidden="false" aria-label="siguiente"
+                  >arrow_forward_ios</mat-icon
+                >
+              </button>
+            </div>
+          </div>
+        </mat-step>
+
+        <!-- data confirmation -->
+        <mat-step [editable]="isEditable">
+          <ng-template matStepLabel>
+            <span><b>Confirma tus datos</b></span>
+          </ng-template>
+
+          <div class="row center-xs">
+            <div class="col-xs-12 col-md-4">
+              <h3 class="principal-title"><b>Número de identificación</b></h3>
+              <p>
+                {{ digitalChanelForm.controls["identificationNumber"].value }}
+              </p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <h3 class="principal-title"><b>Nombre</b></h3>
+              <p>{{ digitalChanelForm.controls["name"].value }}</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <h3 class="principal-title"><b>Apellido</b></h3>
+              <p>{{ digitalChanelForm.controls["lastname"].value }}</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <h3 class="principal-title"><b>Email</b></h3>
+              <p>{{ digitalChanelForm.controls["email"].value }}</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <h3 class="principal-title"><b>Telefono fijo o celular</b></h3>
+              <p>{{ digitalChanelForm.controls["phone"].value }}</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <h3 class="principal-title"><b>Solicitud</b></h3>
+              <p>{{ digitalChanelForm.controls["request"].value }}</p>
+            </div>
+          </div>
+
+          <div class="row center-xs">
+            <div class="col-xs-12">
+              <button
+                mat-raised-button
+                type="submit"
+                style="background: #0c3859; color: white; margin-top: 15px"
+              >
+                <mat-icon>send</mat-icon>
+                Enviar solicitud
+              </button>
+            </div>
+          </div>
+
+          <div class="row between-xs">
+            <div class="col-xs" style="text-align: start">
+              <button
+                mat-stroked-button
+                matStepperPrevious
+                type="button"
+                style="margin: 0, -3px"
+              >
+                <mat-icon aria-hidden="false" aria-label="volver"
+                  >arrow_back_ios</mat-icon
+                >
+                Volver
+              </button>
+            </div>
+            <div class="col-xs" style="text-align: end">
+              <button
+                mat-stroked-button
+                (click)="stepper.reset()"
+                type="button"
+              >
+                Resetear
+                <mat-icon aria-hidden="false" aria-label="siguiente"
+                  >history</mat-icon
+                >
+              </button>
+            </div>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </mat-card-content>
+</mat-card>

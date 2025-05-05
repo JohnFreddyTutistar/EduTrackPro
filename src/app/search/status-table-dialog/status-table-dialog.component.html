@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row center-xs">
     <div class="col-xs-12 col-md-11">
-      <h1><b style="color: #2c3967">Estado Actual de Admisión</b></h1>
+      <h1 class="principal-title"><b>Estado Actual de Admisión</b></h1>
       <hr class="line-separator" />
     </div>
   </div>
@@ -12,7 +12,6 @@
     <div class="col-xs-12 col-md-11">
       <mat-card class="table-with-header" style="padding: 0 !important">
         <mat-card-title
-          class="principal-title"
           style="
             padding: 10px;
             border-radius: 10px 10px 0 0;
@@ -62,10 +61,13 @@
                 <div
                   class="box-color small center-xs"
                   [ngClass]="{
-                    statusPending: statusInscription.toUpperCase() === 'EN REVISIÓN',
+                    statusPending:
+                      statusInscription.toUpperCase() === 'EN REVISIÓN',
                     statusOk: statusInscription.toUpperCase() === 'APROBADO',
-                    statusRejected: statusInscription.toUpperCase() === 'RECHAZADO',
-                    statusNotPresented: statusInscription.toUpperCase() === 'DESISTIDO'
+                    statusRejected:
+                      statusInscription.toUpperCase() === 'RECHAZADO',
+                    statusNotPresented:
+                      statusInscription.toUpperCase() === 'DESISTIDO'
                   }"
                 >
                   {{ statusInscription }}
@@ -84,7 +86,6 @@
     <div class="col-xs-12 col-md-11">
       <mat-card class="table-with-header" style="padding: 0 !important">
         <mat-card-title
-          class="principal-title"
           style="
             padding: 10px;
             border-radius: 10px 10px 0 0;
@@ -141,7 +142,7 @@
     <div class="col-xs-12 col-md-6">
       <mat-card style="padding: 0 !important">
         <mat-card-title
-          class="principal-title center-xs"
+          class="center-xs"
           style="
             padding: 10px;
             border-radius: 10px 10px 0 0;
@@ -235,7 +236,7 @@
     <div class="col-xs-12 col-md-5">
       <mat-card class="table-with-header" style="padding: 0 !important">
         <mat-card-title
-          class="principal-title center-xs"
+          class="center-xs"
           style="
             padding: 10px;
             border-radius: 10px 10px 0 0;
