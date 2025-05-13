@@ -96,7 +96,7 @@
           </h4></mat-card-title
         >
         <mat-card-content class="hide-on-small-only">
-          <div class="row center-xs" *ngFor="let data of ELEMENT_DATA">
+          <div class="row center-xs">
             <div class="col-xs-12 col-md-6">
               <div class="row">
                 <div class="col-xs-12">
@@ -107,7 +107,7 @@
                     cap="butt"
                     [append]="'%'"
                     [min]="0"
-                    [value]="80"
+                    [value]="20"
                     [max]="100"
                     [thick]="8"
                     [size]="130"
@@ -252,7 +252,12 @@
               <p style="margin: 0">Entrevista</p>
             </div>
             <div class="col-md-6 col-md-6">
-              <mat-icon style="color: #52be80">check_circle</mat-icon>
+              <mat-icon
+                style="color: #ffa621"
+                matTooltip="Pendiente"
+                aria-label="Pendiente"
+                >error</mat-icon
+              >
             </div>
           </div>
           <hr
@@ -269,7 +274,12 @@
               <p>Prueba de conocimientos</p>
             </div>
             <div class="col-md-6 col-md-6">
-              <mat-icon style="color: #ffa621">error</mat-icon>
+              <mat-icon
+                style="color: #ffa621"
+                matTooltip="Pendiente"
+                aria-label="Pendiente"
+                >error</mat-icon
+              >
             </div>
           </div>
         </mat-card-content>

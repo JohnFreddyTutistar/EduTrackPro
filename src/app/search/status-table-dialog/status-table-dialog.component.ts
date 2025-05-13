@@ -19,24 +19,10 @@ export class StatusTableDialogComponent implements OnInit {
 
   dateInscription: any;
 
-  ELEMENT_DATA: IDataApplicantStatus[] = [
-    {
-      identificationNumber: 1085310787,
-      fullName: 'Ivan Dario Delgado Calvache',
-      inscriptionDate: '05/09/2024',
-      academicProgram: 'Ingeniería de Sistemas',
-      status: 'EN REVISIÓN',
-      // pymentStatus: 'APROBADO',
-      // docsStatus: 'PENDIENTE',
-      // interviewStatus: 'PENDIENTE',
-      // testStatus: 'RECHAZADO'
-    },
-  ];
-
   documentsData = [
-    { documentName: 'Diploma/Acta', status: 'Aprobado' },
-    { documentName: 'Cédula/TI', status: 'Aprobado' },
-    { documentName: 'Pruebas saber 11 (4 paginas)', status: 'Aprobado' },
+    { documentName: 'Diploma/Acta', status: 'Pendiente' },
+    { documentName: 'Cédula/TI', status: 'Pendiente' },
+    { documentName: 'Pruebas saber 11 (4 paginas)', status: 'Pendiente' },
   ];
 
   stagesTimeLine: Array<any> = [
@@ -47,19 +33,19 @@ export class StatusTableDialogComponent implements OnInit {
     },
     {
       title: 'Docs',
-      date: '11/09/24',
-      Description: 'aprobado',
-    },
-    {
-      title: 'Entrevista',
-      date: '15/09/24',
-      Description: 'pendiente',
-    },
-    {
-      title: 'Prueba',
       date: 'pendiente',
       Description: 'pendiente',
     },
+    // {
+    //   title: 'Entrevista',
+    //   date: 'pendiente',
+    //   Description: 'pendiente',
+    // },
+    // {
+    //   title: 'Prueba',
+    //   date: 'pendiente',
+    //   Description: 'pendiente',
+    // },
   ];
 
   constructor(

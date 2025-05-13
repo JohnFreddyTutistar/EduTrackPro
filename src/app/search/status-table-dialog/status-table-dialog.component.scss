@@ -2,7 +2,7 @@
 .aproved {
     background-color: #b3dbb0;
     color: #378659;
-    font-size: 12px;
+    font-size: .8em;
     border-radius: 10px;
     margin: 0;
     padding: 2px;
@@ -10,17 +10,21 @@
 }
 // pendiente
 .pending {
-    background-color: #ffa621;
-    color: #000;
-    border-radius: 12px;
-    margin: 0;
-    padding: 2px;
-}
-// rechazado
-.rejected {
-    background-color: #d90000;
-    color: #fff;
+    background-color: #f7ed97;
+    color: #c38529;
+    font-size: .8em;
     border-radius: 10px;
     margin: 0;
     padding: 2px;
+    font-weight: bold;
+}
+// rechazado
+.rejected {
+    background-color: #eca69d;
+    color: #d90000;
+    font-size: .8em;
+    border-radius: 10px;
+    margin: 0;
+    padding: 2px;
+    font-weight: bold;
 }

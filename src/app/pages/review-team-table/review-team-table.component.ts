@@ -17,6 +17,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./review-team-table.component.scss'],
 })
 export class ReviewTeamTableComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator | undefined;
+  @ViewChild(MatSort) sort!: MatSort | undefined;
+
   dataTable: any = [];
 
   user: any;
@@ -51,9 +54,6 @@ export class ReviewTeamTableComponent implements OnInit {
       filterName: 'Email',
     },
   ];
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator | undefined;
-  @ViewChild(MatSort) sort!: MatSort | undefined;
 
   displayedColumns: string[] = [
     'index',
@@ -148,14 +148,14 @@ export class ReviewTeamTableComponent implements OnInit {
         item.index = this.countItems;
 
         item.actions = [
-          // {
-          //   label: 'Calendario',
-          //   permissions: '',
-          //   optionClick: 0,
-          //   dataClick: item.id,
-          //   icon: 'calendar_month',
-          //   class: 'primaryColor',
-          // },
+          {
+            label: 'Calendario',
+            permissions: '',
+            optionClick: 0,
+            dataClick: item.id,
+            icon: 'calendar_month',
+            class: 'primaryColor',
+          },
           {
             label: 'Editar',
             permissions: '',
@@ -175,6 +175,9 @@ export class ReviewTeamTableComponent implements OnInit {
         ];
       });
 
+      this.dataTable.paginator = this.paginator!;
+      this.dataTable.sort = this.sort!;
+
       const formattedData = data.map((item: any) => {
         return {
           ...item,
@@ -183,9 +186,6 @@ export class ReviewTeamTableComponent implements OnInit {
       });
 
       this.dataTable = new MatTableDataSource(formattedData);
-
-      this.dataTable.paginator = this.paginator!;
-      this.dataTable.sort = this.sort!;
     });
   }
 
