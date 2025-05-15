@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-evaluation',
@@ -9,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DialogEvaluationComponent implements OnInit {
   form!: FormGroup;
   resultado: any = null;
+  dataApplicant: any;
+  nameApplicant: string = '';
 
   // Comfiguración de ponderaciones
   readonly config = {
@@ -19,11 +22,25 @@ export class DialogEvaluationComponent implements OnInit {
     notaMinima: 3.2,
   };
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {
+    console.log('data applicant: ', this.data.applicant);
+
+    this.dataApplicant = this.data.applicant.filter((item: any) => {
+      if (item.id === this.data.id) {
+        this.nameApplicant = item.firstName + ' ' + item.firstLastName;
+      }
+    });
+
     this.form = this.formBuilder.group({
-      entrevista: [null, [Validators.required]],
+      entrevista: [
+        null,
+        [Validators.required, Validators.min(0), Validators.max(99)],
+      ],
       matematica: [null, [Validators.required]],
       lectoescritura: [null, [Validators.required]],
     });
@@ -41,19 +58,35 @@ export class DialogEvaluationComponent implements OnInit {
       return;
     }
 
+    const notaEntrevista = (entrevista * 5) / 100;
+
     const promPrueba =
       matematica * this.config.pesoMatematica +
       lectoescritura * this.config.pesoLectoEscritura;
-    const notaFinal =
-      entrevista * this.config.pesoEntrevista +
-      promPrueba * this.config.pesoPrueba;
+    const ponderadoEntrevista = notaEntrevista * this.config.pesoEntrevista;
+    const ponderadoPrueba = promPrueba * this.config.pesoPrueba;
+    const notaFinal = ponderadoEntrevista + ponderadoPrueba;
     const estado =
       notaFinal >= this.config.notaMinima ? 'Aprobado' : 'Reprobado';
 
     this.resultado = {
       promPrueba: promPrueba.toFixed(2),
-      noteFinal: notaFinal.toFixed(2),
+      notaFinal: notaFinal.toFixed(2),
+      notaEntrevista: notaEntrevista.toFixed(2),
+      ponderadoEntrevista: ponderadoEntrevista.toFixed(2),
+      ponderadoPrueba: ponderadoPrueba.toFixed(2),
       estado,
     };
+  }
+
+  sendForm() {
+    if (this.form.invalid) return;
+
+    const data = {
+      ...this.form.value,
+      ...this.resultado,
+    };
+
+    console.log('datos a guradar', data);
   }
 }
