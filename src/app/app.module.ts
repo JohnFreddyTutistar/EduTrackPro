@@ -40,6 +40,8 @@ import { RegisterCallComponent } from './pages/applicants/register-call/register
 import { CalendarComponent } from './pages/review-team-table/calendar/calendar.component';
 import { ContactFormComponent } from './pages/help/contact-form/contact-form.component';
 import { InscriptionsComponent } from './pages/inscriptions/inscriptions.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { DialogEvaluationComponent } from './pages/applicants/dialog-evaluation/dialog-evaluation.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { InscriptionsComponent } from './pages/inscriptions/inscriptions.compone
     CalendarComponent,
     ContactFormComponent,
     InscriptionsComponent,
+    DialogEvaluationComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +88,7 @@ import { InscriptionsComponent } from './pages/inscriptions/inscriptions.compone
     MatTooltipModule,
     MatExpansionModule,
     ReactiveFormsModule,
+    MatTableExporterModule,
   ],
   exports: [
     // TimelineHComponent

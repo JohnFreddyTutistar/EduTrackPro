@@ -206,7 +206,13 @@
       </div>
 
       <mat-card-content class="table-with-overflow">
-        <table mat-table [dataSource]="dataSource" matSort>
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          matTableExporter
+          #exporter="matTableExporter"
+        >
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef>#</th>
             <td mat-cell *matCellDef="let element">{{ element.position }}</td>
@@ -443,14 +449,36 @@
             </td>
           </tr>
         </table>
-
-        <mat-paginator
-          [length]="dataApplicants.length"
-          [pageSize]="10"
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Select page of users"
-        ></mat-paginator>
       </mat-card-content>
+
+      <mat-card-footer>
+        <div class="row middle-xs" style="padding: 0px 30px">
+          <div col-xs>
+            <button
+              mat-stroked-button
+              style="font-size: 0.85em; color: #004a4a"
+              (click)="
+                exporter.exportTable('xlsx', {
+                  fileName: 'Lista de aspirantes',
+                  sheet: 'Lista de aspirantes'
+                })
+              "
+            >
+              <mat-icon>save_alt</mat-icon>
+              Descargar como excel
+            </button>
+          </div>
+          <div class="col-xs">
+            <mat-paginator
+              [length]="dataApplicants.length"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page of users"
+            >
+            </mat-paginator>
+          </div>
+        </div>
+      </mat-card-footer>
     </mat-card>
   </div>
 </div>

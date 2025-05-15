@@ -19,6 +19,7 @@ import { DialogCallHistoryComponent } from '../dialog-call-history/dialog-call-h
 import { SharedService } from 'src/app/services/shared.service';
 import { count, filter } from 'rxjs';
 import { Router } from '@angular/router';
+import { DialogEvaluationComponent } from '../dialog-evaluation/dialog-evaluation.component';
 
 @Component({
   selector: 'app-applicant-table',
@@ -180,6 +181,14 @@ export class ApplicantTableComponent implements OnInit {
             class: '',
           },
           {
+            label: 'Evaluar',
+            permissions: '',
+            optionClick: 4,
+            dataClick: a.id,
+            icon: 'assignment',
+            class: '',
+          },
+          {
             label: 'Editar',
             permissions: '',
             optionClick: 1,
@@ -283,7 +292,7 @@ export class ApplicantTableComponent implements OnInit {
         const registerCall = this.dialog.open(RegisterCallComponent, {
           maxWidth: '500vw',
           maxHeight: '90vh',
-          width: '50%',
+          width: '70%',
           data: {
             id: data,
             applicant: applicants,
@@ -295,6 +304,17 @@ export class ApplicantTableComponent implements OnInit {
           maxWidth: '500vw',
           maxHeight: '90vh',
           width: '70%',
+          data: {
+            id: data,
+            applicant: applicants,
+          },
+        });
+        break;
+      case 4:
+        const evaluation = this.dialog.open(DialogEvaluationComponent, {
+          maxWidth: '500vw',
+          maxHeight: '90vh',
+          width: '80%',
           data: {
             id: data,
             applicant: applicants,

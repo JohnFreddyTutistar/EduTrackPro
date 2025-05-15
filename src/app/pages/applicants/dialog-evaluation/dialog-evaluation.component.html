@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row center-xs">
+    <div class="col-xs-12 col-md-12">
+      <h1>Calificar Aspirante <b>JOHN TUTISTAR</b></h1>
+    </div>
+  </div>
+  <div class="row center-xs">
+    <div class="col-xs-5 col-md-5">
+      <mat-card>
+        <mat-card-title>
+          <h2>Calificaciones</h2>
+        </mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-xs-12">
+                <mat-form-field appearance="outline" class="width-inputs">
+                  <mat-label>Entrevista</mat-label>
+                  <input
+                    required
+                    type="number"
+                    step="0.01"
+                    matInput
+                    formControlName="entrevista"
+                  />
+                  <mat-hint>Digite solo <b>numeros</b></mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <h2>Prueba de Conocimientos</h2>
+            <div class="row">
+              <div class="col-xs-12">
+                <mat-form-field appearance="outline" class="width-inputs">
+                  <mat-label>Aptitud Matemática</mat-label>
+                  <input
+                    required
+                    type="number"
+                    matInput
+                    step="0.01"
+                    formControlName="matematica"
+                  />
+                  <mat-hint>Digite solo <b>numeros</b></mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <mat-form-field appearance="outline" class="width-inputs">
+                  <mat-label>Lecto-Escritura</mat-label>
+                  <input
+                    required
+                    type="number"
+                    matInput
+                    step="0.01"
+                    formControlName="lectoescritura"
+                  />
+                  <mat-hint>Digite solo <b>numeros</b></mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="alert alert-info" role="alert">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6 start-xs">
+                      <p>
+                        Entrevista (60%):
+                        {{ form.controls["entrevista"].value }}
+                      </p>
+                      <p>
+                        Prueba (40%):
+                        {{
+                          (form.controls["matematica"].value *
+                            form.controls["lectoescritura"].value) /
+                            2
+                        }}
+                      </p>
+                    </div>
+                    <div class="col-xs-12 col-md-6 end-xs">
+                      <p>Prom. prueba: {{ resultado?.promPrueba }}</p>
+                      <p>Nota final: {{ resultado?.notaFinal }}</p>
+                      <p>
+                        Estado:
+                        <span
+                          [style.color]="
+                            resultado?.estado === 'Aprobado' ? 'green' : 'red'
+                          "
+                          ><b>{{ resultado?.estado }}</b></span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row center-xs">
+              <div class="col-xs-12">
+                <button mat-raised-button color="primary">
+                  <mat-icon>update</mat-icon> Guardar registro
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
