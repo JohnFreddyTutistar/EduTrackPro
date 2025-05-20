@@ -77,6 +77,7 @@ export class ApplicantTableComponent implements OnInit {
     'phoneNumber',
     'email',
     'callHistory',
+    'finalResults',
     'actions',
   ];
 
@@ -164,6 +165,7 @@ export class ApplicantTableComponent implements OnInit {
     this.sharedService.getDataApplicantsNew().subscribe((data) => {
       this.applicants = data;
       this.dataSource = new MatTableDataSource<IApplicant>(this.applicants);
+      console.log('data applicants: ', this.applicants);
 
       this.applicants.forEach((a: any) => {
         this.countItems++;

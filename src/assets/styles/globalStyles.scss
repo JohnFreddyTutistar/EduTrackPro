@@ -221,6 +221,12 @@ input[type=number] {
   color: #d90000;
   font-weight: bold;
 }
+
+.statusDocumentPending {
+  background-color: #d2dffb;
+  color: #2F80ED;
+  font-weight: bold;
+}
 .statusNotPresented {
   // background-color: #009da8;
   // color: #fff;
@@ -250,7 +256,7 @@ input[type=number] {
 }
 
 .revision {
-  color: #ffa621 !important;
+  color: #2F80ED !important;
 }
 
 .givenUp {
