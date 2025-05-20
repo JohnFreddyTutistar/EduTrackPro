@@ -2,7 +2,8 @@
   <div class="row center-xs">
     <div class="col-xs-12 col-md-12">
       <h1>
-        Calificar Aspirante <b>{{ nameApplicant.toUpperCase() }}</b>
+        Calificar Aspirante
+        <b style="color: #088ba1">{{ nameApplicant.toUpperCase() }}</b>
       </h1>
     </div>
   </div>
@@ -13,7 +14,7 @@
           <h2>Calificaciones</h2>
         </mat-card-title>
         <mat-card-content>
-          <form [formGroup]="form" (ngSubmit)="sendForm()">
+          <form [formGroup]="form" autocomplete="off" (ngSubmit)="sendForm()">
             <div class="row">
               <div class="col-xs-12">
                 <mat-form-field appearance="outline" class="width-inputs">
@@ -24,16 +25,20 @@
                     type="number"
                     step="0.01"
                     matInput
-                    formControlName="entrevista"
+                    placeholder="0 - 100"
+                    formControlName="interview"
                   />
                   <mat-hint>Digite solo <b>numeros</b></mat-hint>
                   <mat-error
                     *ngIf="
-                      form.controls['entrevista'].touched &&
-                      form.controls['entrevista'].hasError('required')
+                      form.controls['interview'].touched &&
+                      form.controls['interview'].hasError('required')
                     "
                   >
                     Este campo es requerido
+                  </mat-error>
+                  <mat-error *ngIf="form.controls['interview'].hasError('max')">
+                    El valor máximo es 100
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -49,13 +54,14 @@
                     type="number"
                     matInput
                     step="0.01"
-                    formControlName="matematica"
+                    placeholder="0 - 5"
+                    formControlName="math"
                   />
                   <mat-hint>Digite solo <b>numeros</b></mat-hint>
                   <mat-error
                     *ngIf="
-                      form.controls['matematica'].touched &&
-                      form.controls['matematica'].hasError('required')
+                      form.controls['math'].touched &&
+                      form.controls['math'].hasError('required')
                     "
                   >
                     Este campo es requerido
@@ -74,13 +80,14 @@
                     type="number"
                     matInput
                     step="0.01"
-                    formControlName="lectoescritura"
+                    placeholder="0 - 5"
+                    formControlName="readWrite"
                   />
                   <mat-hint>Digite solo <b>numeros</b></mat-hint>
                   <mat-error
                     *ngIf="
-                      form.controls['lectoescritura'].touched &&
-                      form.controls['lectoescritura'].hasError('required')
+                      form.controls['readWrite'].touched &&
+                      form.controls['readWrite'].hasError('required')
                     "
                   >
                     Este campo es requerido
@@ -90,34 +97,43 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-light" role="alert">
                   <div class="row">
                     <div class="col-xs-12 col-md-6 start-xs">
                       <p>
                         Entrevista (60%):
                         <!-- {{ form.controls["entrevista"].value }} -->
-                        {{ resultado?.ponderadoEntrevista }}
+                        <b style="color: #0e5093">{{
+                          resultado?.ponderadoEntrevista
+                        }}</b>
                       </p>
                       <p>
                         Prueba (40%):
-                        {{
-                          (form.controls["matematica"].value *
-                            form.controls["lectoescritura"].value) /
-                            2
-                        }}
+                        <b style="color: #0e5093">{{
+                          resultado?.ponderadoPrueba
+                        }}</b>
                       </p>
                     </div>
                     <div class="col-xs-12 col-md-6 end-xs">
-                      <p>Prom. prueba: {{ resultado?.ponderadoPrueba }}</p>
-                      <p>Nota final: {{ resultado?.notaFinal }}</p>
+                      <p>
+                        Prom. prueba:
+                        <b style="color: #0e5093">{{
+                          resultado?.promPrueba
+                        }}</b>
+                      </p>
+                      <p>
+                        Nota final:
+                        <b style="color: #0e5093">{{ resultado?.notaFinal }}</b>
+                      </p>
                       <p>
                         Estado:
                         <span
                           [style.color]="
-                            resultado?.estado === 'Aprobado' ? 'green' : 'red'
+                            resultado?.status === 'Aprobado' ? 'green' : 'red'
                           "
-                          ><b>{{ resultado?.estado }}</b></span
                         >
+                          <b>{{ resultado?.status }}</b>
+                        </span>
                       </p>
                     </div>
                   </div>

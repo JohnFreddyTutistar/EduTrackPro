@@ -12,6 +12,7 @@ export class DialogEvaluationComponent implements OnInit {
   resultado: any = null;
   dataApplicant: any;
   nameApplicant: string = '';
+  applicantId: string = '';
 
   // Comfiguración de ponderaciones
   readonly config = {
@@ -32,41 +33,42 @@ export class DialogEvaluationComponent implements OnInit {
 
     this.dataApplicant = this.data.applicant.filter((item: any) => {
       if (item.id === this.data.id) {
+        this.applicantId = item.id;
         this.nameApplicant = item.firstName + ' ' + item.firstLastName;
       }
     });
 
     this.form = this.formBuilder.group({
-      entrevista: [
+      interview: [
         null,
-        [Validators.required, Validators.min(0), Validators.max(99)],
+        [Validators.required, Validators.min(0), Validators.max(100)],
       ],
-      matematica: [null, [Validators.required]],
-      lectoescritura: [null, [Validators.required]],
+      math: [null, [Validators.required]],
+      readWrite: [null, [Validators.required]],
     });
 
     this.form.valueChanges.subscribe(() => this.calcResults());
   }
 
   calcResults() {
-    const entrevista = parseFloat(this.form.value.entrevista);
-    const matematica = parseFloat(this.form.value.matematica);
-    const lectoescritura = parseFloat(this.form.value.lectoescritura);
+    const interview = parseFloat(this.form.value.interview);
+    const math = parseFloat(this.form.value.math);
+    const readWrite = parseFloat(this.form.value.readWrite);
 
-    if (isNaN(entrevista) || isNaN(matematica) || isNaN(lectoescritura)) {
+    if (isNaN(interview) || isNaN(math) || isNaN(readWrite)) {
       this.resultado = null;
       return;
     }
 
-    const notaEntrevista = (entrevista * 5) / 100;
+    const notaEntrevista = (interview * 5) / 100;
 
     const promPrueba =
-      matematica * this.config.pesoMatematica +
-      lectoescritura * this.config.pesoLectoEscritura;
+      math * this.config.pesoMatematica +
+      readWrite * this.config.pesoLectoEscritura;
     const ponderadoEntrevista = notaEntrevista * this.config.pesoEntrevista;
     const ponderadoPrueba = promPrueba * this.config.pesoPrueba;
     const notaFinal = ponderadoEntrevista + ponderadoPrueba;
-    const estado =
+    const status =
       notaFinal >= this.config.notaMinima ? 'Aprobado' : 'Reprobado';
 
     this.resultado = {
@@ -75,18 +77,28 @@ export class DialogEvaluationComponent implements OnInit {
       notaEntrevista: notaEntrevista.toFixed(2),
       ponderadoEntrevista: ponderadoEntrevista.toFixed(2),
       ponderadoPrueba: ponderadoPrueba.toFixed(2),
-      estado,
+      status,
     };
   }
 
   sendForm() {
-    if (this.form.invalid) return;
+    this.form.markAllAsTouched();
 
-    const data = {
-      ...this.form.value,
-      ...this.resultado,
-    };
+    if (this.form.valid) {
+      const data = {
+        ...this.form.value,
+        applicantId: this.applicantId,
+      };
 
-    console.log('datos a guradar', data);
+      console.log('datos a guradar', data);
+    }
+
+    // if (this.form.invalid) return;
+
+    // const data = {
+    //   ...this.form.value,
+    // };
+
+    // console.log('datos a guradar', data);
   }
 }

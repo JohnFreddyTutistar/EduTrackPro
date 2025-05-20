@@ -48,7 +48,7 @@ export class RegisterCallComponent implements OnInit {
   sendData() {
     this.formGroupSend.markAllAsTouched();
 
-    if ((this, this.formGroupSend.valid)) {
+    if (this.formGroupSend.valid) {
       const dataHistoryApplicant = this.formGroupSend.value;
 
       // this.sendNewFormatDate = moment(dataHistoryApplicant.date).format(

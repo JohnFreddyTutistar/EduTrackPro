@@ -63,6 +63,10 @@ export class SharedService {
     );
   }
 
+  postEvaluationApplicant() {
+    return this.http.post<any>(this.url + '/api/v1/evaluation', {});
+  }
+
   getDataApplicantsNew(): Observable<IApplicant[]> {
     return this.http.get<IApplicant[]>(this.url + '/api/v1/applicant');
   }
