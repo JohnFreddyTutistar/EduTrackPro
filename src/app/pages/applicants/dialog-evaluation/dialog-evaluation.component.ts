@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SharedService } from 'src/app/services/shared.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dialog-evaluation',
@@ -13,6 +15,7 @@ export class DialogEvaluationComponent implements OnInit {
   dataApplicant: any;
   nameApplicant: string = '';
   applicantId: string = '';
+  dataApplicantById: any;
 
   // Comfiguración de ponderaciones
   readonly config = {
@@ -24,8 +27,9 @@ export class DialogEvaluationComponent implements OnInit {
   };
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +39,7 @@ export class DialogEvaluationComponent implements OnInit {
       if (item.id === this.data.id) {
         this.applicantId = item.id;
         this.nameApplicant = item.firstName + ' ' + item.firstLastName;
+        this.dataApplicantById = item;
       }
     });
 
@@ -43,8 +48,11 @@ export class DialogEvaluationComponent implements OnInit {
         null,
         [Validators.required, Validators.min(0), Validators.max(100)],
       ],
-      math: [null, [Validators.required]],
-      readWrite: [null, [Validators.required]],
+      math: [null, [Validators.required, Validators.min(0), Validators.max(5)]],
+      readWrite: [
+        null,
+        [Validators.required, Validators.min(0), Validators.max(5)],
+      ],
     });
 
     this.form.valueChanges.subscribe(() => this.calcResults());
@@ -85,12 +93,45 @@ export class DialogEvaluationComponent implements OnInit {
     this.form.markAllAsTouched();
 
     if (this.form.valid) {
+      Swal.fire({
+        title: 'Enviando ...',
+        icon: 'info',
+        html: 'Registro diligenciado correctamente',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+      });
+
+      Swal.showLoading();
+
       const data = {
         ...this.form.value,
         applicantId: this.applicantId,
       };
 
-      console.log('datos a guradar', data);
+      this.sharedService.postApplicantEvaluation(data).subscribe({
+        next: (res) => {
+          Swal.fire({
+            title: `Gracias por usar <b>EduTrack<span style="color: #980909">PRO</span></b>`,
+            icon: 'success',
+            html: ` <p>Registro guardado con éxito</p>`,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            timer: 3000,
+            timerProgressBar: true,
+            willClose: () => {
+              window.location.reload();
+            },
+          });
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: `No se pudo guardar la evaluación. ${err.message}`,
+            showConfirmButton: true,
+          });
+        },
+      });
     }
 
     // if (this.form.invalid) return;

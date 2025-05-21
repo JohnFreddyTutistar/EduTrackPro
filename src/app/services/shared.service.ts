@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IApplicant, IReviwer } from '../interfaces/users';
 import { GlobalService } from './global.service';
 import { ICallHistory } from '../interfaces/call-history.interface';
+import { IEvaluation } from '../interfaces/evaluation.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -63,8 +64,8 @@ export class SharedService {
     );
   }
 
-  postEvaluationApplicant() {
-    return this.http.post<any>(this.url + '/api/v1/evaluation', {});
+  postApplicantEvaluation(data: IEvaluation): Observable<any> {
+    return this.http.post<any>(this.url + '/api/v1/applicant/evaluation', data);
   }
 
   getDataApplicantsNew(): Observable<IApplicant[]> {

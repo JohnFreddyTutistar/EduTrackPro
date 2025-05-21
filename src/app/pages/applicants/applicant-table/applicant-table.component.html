@@ -343,61 +343,6 @@
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="callHistory">
-            <th mat-header-cell *matHeaderCellDef>Estado de contacto</th>
-            <td mat-cell *matCellDef="let element">
-              <!-- {{ element.result }}
-              <mat-icon *ngIf="element.result === 'Contactado'" style="color: #0990d6;">
-                done_all
-              </mat-icon>
-              <mat-icon *ngIf="element.result === 'No contactado'" style="color: #ec9719;">
-                lock
-              </mat-icon> -->
-              <span
-                *ngIf="element.callHistory.length >= 1"
-                style="
-                  border-radius: 50%;
-                  margin: 5px;
-                  width: 30px;
-                  height: 30px;
-                  display: flex;
-                  opacity: 0.8;
-                  align-items: center;
-                  background-color: #fff;
-                "
-              >
-                <mat-icon
-                  matBadge="{{ element.callHistory.length }}"
-                  matBadgeSize="small"
-                  matBadgeColor="accent"
-                  style="color: #008dd5; margin: auto"
-                  matTooltip="Contactado"
-                >
-                  call</mat-icon
-                >
-              </span>
-              <span
-                *ngIf="element.callHistory.length === 0"
-                style="
-                  border-radius: 50%;
-                  margin: 5px;
-                  width: 30px;
-                  height: 30px;
-                  display: flex;
-                  opacity: 0.8;
-                  align-items: center;
-                "
-              >
-                <img
-                  src="assets/images/456112.png"
-                  alt=""
-                  width="23"
-                  matTooltip="No contactado"
-                />
-              </span>
-            </td>
-          </ng-container>
-
           <ng-container matColumnDef="finalResults">
             <th mat-header-cell *matHeaderCellDef>Resultado final</th>
             <td mat-cell *matCellDef="let element">
@@ -405,10 +350,19 @@
                 *ngIf="element.evaluation.length === 0"
                 class="statusPending box-color small"
               >
-                Pendiente
+                <b>PENDIENTE</b>
               </div>
               <div *ngIf="element.evaluation.length >= 1">
-                <div class="statusOk box-color small">
+                <div
+                  *ngIf="element.evaluation[0].status === 'APROBADO'"
+                  class="statusOk box-color small"
+                >
+                  {{ element.evaluation[0].status }}
+                </div>
+                <div
+                  *ngIf="element.evaluation[0].status === 'RECHAZADO'"
+                  class="statusRejected box-color small"
+                >
                   {{ element.evaluation[0].status }}
                 </div>
               </div>
@@ -458,6 +412,61 @@
                   </button>
                 </ng-container>
               </mat-menu>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="callHistory">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <!-- {{ element.result }}
+              <mat-icon *ngIf="element.result === 'Contactado'" style="color: #0990d6;">
+                done_all
+              </mat-icon>
+              <mat-icon *ngIf="element.result === 'No contactado'" style="color: #ec9719;">
+                lock
+              </mat-icon> -->
+              <span
+                *ngIf="element.callHistory.length >= 1"
+                style="
+                  border-radius: 50%;
+                  margin: 5px;
+                  width: 30px;
+                  height: 30px;
+                  display: flex;
+                  opacity: 0.8;
+                  align-items: center;
+                  background-color: #fff;
+                "
+              >
+                <mat-icon
+                  matBadge="{{ element.callHistory.length }}"
+                  matBadgeSize="small"
+                  matBadgeColor="accent"
+                  style="color: #008dd5; margin: auto"
+                  matTooltip="Contactado"
+                >
+                  support_agent</mat-icon
+                >
+              </span>
+              <span
+                *ngIf="element.callHistory.length === 0"
+                style="
+                  border-radius: 50%;
+                  margin: 5px;
+                  width: 30px;
+                  height: 30px;
+                  display: flex;
+                  opacity: 0.8;
+                  align-items: center;
+                "
+              >
+                <img
+                  src="assets/images/456112.png"
+                  alt=""
+                  width="23"
+                  matTooltip="No contactado"
+                />
+              </span>
             </td>
           </ng-container>
 

@@ -79,7 +79,12 @@ export class RegisterCallComponent implements OnInit {
             });
           },
           error: (err) => {
-            console.log('Error al registrar usuario', err);
+            Swal.fire({
+              title: 'Error',
+              icon: 'error',
+              text: `No se pudo guardar el registro. ${err.message}`,
+              showConfirmButton: true,
+            });
           },
         });
     }

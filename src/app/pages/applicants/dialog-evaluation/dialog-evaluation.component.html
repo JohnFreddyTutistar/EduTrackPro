@@ -7,7 +7,7 @@
       </h1>
     </div>
   </div>
-  <div class="row center-xs">
+  <div class="row center-xs" *ngIf="dataApplicantById.evaluation.length === 0">
     <div class="col-xs-12 col-md-5">
       <mat-card>
         <mat-card-title>
@@ -25,7 +25,7 @@
                     type="number"
                     step="0.01"
                     matInput
-                    placeholder="0 - 100"
+                    placeholder="Entrevista 0 - 100"
                     formControlName="interview"
                   />
                   <mat-hint>Digite solo <b>numeros</b></mat-hint>
@@ -66,6 +66,9 @@
                   >
                     Este campo es requerido
                   </mat-error>
+                  <mat-error *ngIf="form.controls['math'].hasError('max')">
+                    El valor máximo es 5
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -92,12 +95,15 @@
                   >
                     Este campo es requerido
                   </mat-error>
+                  <mat-error *ngIf="form.controls['readWrite'].hasError('max')">
+                    El valor máximo es 5
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <div class="alert alert-light" role="alert">
+                <div class="alert alert-secondary" role="alert">
                   <div class="row">
                     <div class="col-xs-12 col-md-6 start-xs">
                       <p>
@@ -150,6 +156,59 @@
           </form>
         </mat-card-content>
       </mat-card>
+    </div>
+  </div>
+
+  <!-- Interfaz con los datos de los resultados -->
+  <div class="row center-xs" *ngIf="dataApplicantById.evaluation.length > 0">
+    <div class="col-xs-12">
+      <table class="table table-bordered center-xs">
+        <thead>
+          <tr class="table-secondary">
+            <th>Fecha y hora</th>
+            <th>Entrevista</th>
+            <th>Aptitud Matemática</th>
+            <th>Lecto-Escritura</th>
+            <th>Prom. prueba</th>
+            <th>Nota final</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of dataApplicantById.evaluation">
+            <td>{{ item.evaluationDate }}</td>
+            <td>{{ item.interview }}</td>
+            <td>{{ item.math }}</td>
+            <td>{{ item.readWrite }}</td>
+            <td>{{ item.averageTest }}</td>
+            <td>{{ item.finalNote }}</td>
+            <td [style.color]="item.status === 'APROBADO' ? 'green' : 'red'">
+              {{ item.status }}
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="8">
+              <div class="alert alert-light" role="alert">
+                <p>
+                  Promedio de la prueba:
+                  <b style="color: #0e5093">{{
+                    dataApplicantById.evaluation[0].promPrueba
+                  }}</b>
+                </p>
+                <p>
+                  Nota final:
+                  <b style="color: #0e5093">{{
+                    dataApplicantById.evaluation[0].notaFinal
+                  }}</b>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
 </div>

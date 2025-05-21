@@ -76,8 +76,8 @@ export class ApplicantTableComponent implements OnInit {
     'status',
     'phoneNumber',
     'email',
-    'callHistory',
     'finalResults',
+    'callHistory',
     'actions',
   ];
 
@@ -229,6 +229,8 @@ export class ApplicantTableComponent implements OnInit {
           statusCount[count.status]++;
         }
       });
+
+      console.log('para ver la data: ', data);
 
       this.statusCounts = [
         {

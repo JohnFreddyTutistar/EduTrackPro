@@ -30,12 +30,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.dataUserForm();
 
-    this.facultyType = this.enumService.getFacultyType()
+    this.facultyType = this.enumService.getFacultyType();
 
     this.userRol = this.enumService.getUserRol();
 
     // Escuchar cambios en el campo de fecha
-    this.registerForm.get('birthDate')?.valueChanges.subscribe(value => {
+    this.registerForm.get('birthDate')?.valueChanges.subscribe((value) => {
       this.calcularEdad(value);
     });
   }
@@ -58,10 +58,10 @@ export class RegisterComponent implements OnInit {
 
   age: string = '';
 
-  calcularEdad(birthDate: string){
-    if(birthDate){
+  calcularEdad(birthDate: string) {
+    if (birthDate) {
       const years = moment().diff(moment(birthDate), 'years');
-      this.age = `${years} año/s`
+      this.age = `${years} año/s`;
     } else {
       this.age = '';
     }
@@ -99,7 +99,12 @@ export class RegisterComponent implements OnInit {
           });
         },
         error: (err) => {
-          console.log('Error al registrar usuario', err);
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: `No se pudo registrar al usuario. ${err.message}`,
+            showConfirmButton: true,
+          });
         },
       });
     }
