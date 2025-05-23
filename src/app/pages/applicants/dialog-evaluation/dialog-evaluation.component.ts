@@ -38,7 +38,14 @@ export class DialogEvaluationComponent implements OnInit {
     this.dataApplicant = this.data.applicant.filter((item: any) => {
       if (item.id === this.data.id) {
         this.applicantId = item.id;
-        this.nameApplicant = item.firstName + ' ' + item.firstLastName;
+        this.nameApplicant =
+          item.firstName +
+          ' ' +
+          item.secondName +
+          ' ' +
+          item.firstLastName +
+          ' ' +
+          item.secondLastName;
         this.dataApplicantById = item;
       }
     });

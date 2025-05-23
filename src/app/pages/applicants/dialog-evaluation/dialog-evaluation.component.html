@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-md-12">
       <h1>
         Calificar Aspirante
-        <b style="color: #088ba1">{{ nameApplicant.toUpperCase() }}</b>
+        <b style="color: #009da8">{{ nameApplicant }}</b>
       </h1>
     </div>
   </div>
@@ -148,7 +148,11 @@
             </div>
             <div class="row center-xs">
               <div class="col-xs-12">
-                <button mat-raised-button color="primary">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="form.invalid"
+                >
                   <mat-icon>update</mat-icon> Guardar registro
                 </button>
               </div>
@@ -170,8 +174,6 @@
             <th>Aptitud Matemática</th>
             <th>Lecto-Escritura</th>
             <th>Prom. prueba</th>
-            <th>Nota final</th>
-            <th>Estado</th>
           </tr>
         </thead>
 
@@ -182,27 +184,24 @@
             <td>{{ item.math }}</td>
             <td>{{ item.readWrite }}</td>
             <td>{{ item.averageTest }}</td>
-            <td>{{ item.finalNote }}</td>
-            <td [style.color]="item.status === 'APROBADO' ? 'green' : 'red'">
-              {{ item.status }}
-            </td>
           </tr>
         </tbody>
         <tfoot>
-          <tr>
+          <tr *ngFor="let item of dataApplicantById.evaluation">
             <td colspan="8">
               <div class="alert alert-light" role="alert">
                 <p>
-                  Promedio de la prueba:
+                  Nota final:
                   <b style="color: #0e5093">{{
-                    dataApplicantById.evaluation[0].promPrueba
+                    dataApplicantById.evaluation[0].finalNote
                   }}</b>
                 </p>
                 <p>
-                  Nota final:
-                  <b style="color: #0e5093">{{
-                    dataApplicantById.evaluation[0].notaFinal
-                  }}</b>
+                  Estado:
+                  <b
+                    [style.color]="item.status === 'APROBADO' ? 'green' : 'red'"
+                    >{{ dataApplicantById.evaluation[0].status }}</b
+                  >
                 </p>
               </div>
             </td>
