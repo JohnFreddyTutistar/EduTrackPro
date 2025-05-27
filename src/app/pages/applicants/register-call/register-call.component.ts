@@ -33,7 +33,7 @@ export class RegisterCallComponent implements OnInit {
       results: ['', [Validators.required]],
       observation: [''],
       tracing: [''],
-      duration: [],
+      duration: [0],
     });
   }
 
