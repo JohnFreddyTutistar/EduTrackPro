@@ -199,12 +199,23 @@ export class DialogEvaluationComponent implements OnInit {
                     ' ' +
                     item.firstLastName +
                     ' ' +
-                    item.secondLastName +
-                    ' / CC: ' +
-                    item.identificationNumber,
+                    item.secondLastName,
+
                   bold: true,
-                  fontSize: 18,
+                  fontSize: 14,
                   alignment: 'center',
+                  color: '#009da8',
+                },
+                {
+                  text: '\n Doc. Ident: ',
+                  fontSize: 14,
+                  alignment: 'center',
+                },
+                {
+                  text: item.identificationNumber,
+                  fontSize: 14,
+                  alignment: 'center',
+                  bold: true,
                   color: '#009da8',
                 },
               ],
