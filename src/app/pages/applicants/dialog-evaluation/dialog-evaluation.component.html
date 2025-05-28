@@ -119,17 +119,21 @@
                           resultado?.ponderadoPrueba
                         }}</b>
                       </p>
-                    </div>
-                    <div class="col-xs-12 col-md-6 end-xs">
                       <p>
                         Prom. prueba:
                         <b style="color: #0e5093">{{
                           resultado?.promPrueba
                         }}</b>
                       </p>
+                    </div>
+                    <div class="col-xs-12 col-md-6 end-xs">
                       <p>
-                        Nota final:
+                        Total ponderado:
                         <b style="color: #0e5093">{{ resultado?.notaFinal }}</b>
+                      </p>
+                      <p>
+                        T. Admitir:
+                        <b style="color: #0e5093">{{ resultado?.totalAdmit }}</b>
                       </p>
                       <p>
                         Estado:
@@ -174,6 +178,7 @@
             <th>Aptitud Matemática</th>
             <th>Lecto-Escritura</th>
             <th>Prom. prueba</th>
+            <th>T. poderado</th>
           </tr>
         </thead>
 
@@ -184,18 +189,19 @@
             <td>{{ item.math }}</td>
             <td>{{ item.readWrite }}</td>
             <td>{{ item.averageTest }}</td>
+            <td>{{ item.finalNote }}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr *ngFor="let item of dataApplicantById.evaluation">
             <td colspan="8">
               <div class="alert alert-light" role="alert">
-                <p>
-                  Nota final:
+                <h3>
+                  Total Admitido:
                   <b style="color: #0e5093">{{
-                    dataApplicantById.evaluation[0].finalNote
+                    dataApplicantById.evaluation[0].totalAdmit
                   }}</b>
-                </p>
+                </h3>
                 <p>
                   Estado:
                   <b

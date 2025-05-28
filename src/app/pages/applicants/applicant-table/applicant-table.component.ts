@@ -21,6 +21,11 @@ import { count, filter } from 'rxjs';
 import { Router } from '@angular/router';
 import { DialogEvaluationComponent } from '../dialog-evaluation/dialog-evaluation.component';
 
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-applicant-table',
   templateUrl: './applicant-table.component.html',
@@ -214,6 +219,14 @@ export class ApplicantTableComponent implements OnInit {
             icon: 'history',
             class: '',
           },
+          {
+            label: 'Reporte evaluación',
+            permissions: '',
+            optionClick: 5,
+            dataClick: a.id,
+            icon: 'picture_as_pdf',
+            class: '',
+          },
         ];
       });
 
@@ -326,5 +339,40 @@ export class ApplicantTableComponent implements OnInit {
         });
         break;
     }
+  }
+
+  generar() {
+    const pdfDefinition = {
+      pageOrientation: 'landScape',
+      content: [
+        {
+          style: 'tableExample',
+          table: {
+            widths: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*',],
+            body: [
+              [
+                'width=100', 
+                'star-sized', 
+                'width=200', 
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+                'star-sized',
+              ],
+            ]
+          }
+        },
+      ],
+    };
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.open();
   }
 }

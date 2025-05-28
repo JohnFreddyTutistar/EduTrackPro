@@ -201,9 +201,38 @@
         />
       </mat-form-field>
 
-      <div class="row spacer">
-        <hr class="blue-lilisoft line-separator" />
+      <!-- Botones de reportes -->
+      <hr>
+      <div class="row center-xs middle-xs" style="margin-top: 0 !important;">
+        <div class="col-xs-12 col-md-3">
+          <button
+            class="report"
+            mat-stroked-button
+            style="font-size: 0.85em; color: #004a4a"
+            (click)="
+              exporter.exportTable('xlsx', {
+                fileName: 'Lista de aspirantes',
+                sheet: 'Lista de aspirantes'
+              })
+            "
+          >
+            <mat-icon>save_alt</mat-icon>
+            Descargar tabla de aspirantes
+          </button>
+        </div>
+        <div class="col-xs-12 col-md-3">
+          <button
+            class="report"
+            mat-stroked-button
+            style="font-size: 0.85em; color: #004a4a"
+            (click)="generar()"
+          >
+            <mat-icon>picture_as_pdf</mat-icon>
+            Descargar reporte de evaluaciones
+          </button>
+        </div>
       </div>
+      <hr>
 
       <mat-card-content class="table-with-overflow">
         <table

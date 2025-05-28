@@ -83,6 +83,7 @@ export class DialogEvaluationComponent implements OnInit {
     const ponderadoEntrevista = notaEntrevista * this.config.pesoEntrevista;
     const ponderadoPrueba = promPrueba * this.config.pesoPrueba;
     const notaFinal = ponderadoEntrevista + ponderadoPrueba;
+    const totalAdmit = (notaFinal * 100) / 5
     const status =
       notaFinal >= this.config.notaMinima ? 'Aprobado' : 'Reprobado';
 
@@ -92,6 +93,7 @@ export class DialogEvaluationComponent implements OnInit {
       notaEntrevista: notaEntrevista.toFixed(2),
       ponderadoEntrevista: ponderadoEntrevista.toFixed(2),
       ponderadoPrueba: ponderadoPrueba.toFixed(2),
+      totalAdmit: totalAdmit,
       status,
     };
   }
