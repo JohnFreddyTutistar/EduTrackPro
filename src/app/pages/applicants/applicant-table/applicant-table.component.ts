@@ -21,7 +21,7 @@ import { count, filter } from 'rxjs';
 import { Router } from '@angular/router';
 import { DialogEvaluationComponent } from '../dialog-evaluation/dialog-evaluation.component';
 
-import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -338,39 +338,108 @@ export class ApplicantTableComponent implements OnInit {
           },
         });
         break;
+      case 5:
+        this.generar();
+        break;
     }
   }
 
   generar() {
+    console.log('datos para pdfmake: ', this.dataApplicants);
+
+    const header = [
+      { text: 'N°', bold: true, fillColor: '#D9E2F3' },
+      { text: 'Fecha', bold: true, fillColor: '#D9E2F3' },
+      {
+        text: 'Nombres y apellidos',
+        bold: true,
+        fillColor: '#D9E2F3',
+      },
+      { text: 'Identificación', bold: true, fillColor: '#D9E2F3' },
+      { text: 'Entrevista', bold: true, fillColor: '#D9E2F3' },
+      { text: '60% entv', bold: true, fillColor: '#D9E2F3' },
+      { text: 'Ap.Mat', bold: true, fillColor: '#D9E2F3' },
+      { text: 'Lec-crit', bold: true, fillColor: '#D9E2F3' },
+      { text: 'Prom.prueba', bold: true, fillColor: '#D9E2F3' },
+      { text: 'T.pond', bold: true, fillColor: '#D9E2F3' },
+      { text: 'T.admitir', bold: true, fillColor: '#D9E2F3' },
+      { text: 'Estado', bold: true, fillColor: '#D9E2F3' },
+    ];
+
+    const body = [
+      header,
+      ...this.dataApplicants.map((applicant: any, index: number) => {
+        const evalData = applicant.evaluation?.[0] ?? {};
+
+        return [
+          index + 1,
+          moment(applicant.inscriptions[0].createdAt).format('DD/MM/YYYY'),
+          [
+            [
+              applicant.firstName,
+              applicant.secondName,
+              applicant.firstLastName,
+              applicant.secondLastName,
+            ]
+              .filter(Boolean)
+              .join(' ') || 'Pendiente',
+          ],
+          applicant.identificationNumber ?? '0',
+          evalData.interview ?? '0',
+          evalData.weightedInterview ?? '0',
+          evalData.math ?? '0',
+          evalData.readWrite ?? '0',
+          evalData.averageTest ?? '0',
+          evalData.weightedTest ?? '0',
+          evalData.finalNote ?? '0',
+          {
+            text: evalData.status ?? 'PENDIENTE',
+            fillColor:
+              (evalData.status ?? 'PENDIENTE') === 'PENDIENTE'
+                ? '#f7ed97'
+                : evalData.status === 'APROBADO'
+                ? '#b3dbb0'
+                : null,
+            bold: true,
+          },
+        ];
+      }),
+    ];
+
+    console.log('data body: ', body);
+
     const pdfDefinition = {
       pageOrientation: 'landScape',
       content: [
         {
           style: 'tableExample',
           table: {
-            widths: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*','*', '*', '*', '*', '*',],
-            body: [
-              [
-                'width=100', 
-                'star-sized', 
-                'width=200', 
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-                'star-sized',
-              ],
-            ]
-          }
+            widths: [
+              10,
+              45,
+              '*',
+              60,
+              // 45,
+              38, // entre
+              38,
+              38,
+              38,
+              38,
+              38,
+              38, // t. admitir
+              50,
+            ],
+            body: body,
+          },
         },
       ],
+      styles: {
+        tableExample: {
+          margin: [0, 5, 0, 15],
+          fontSize: 8,
+          alignment: 'center',
+        },
+      },
     };
     const pdf = pdfMake.createPdf(pdfDefinition);
     pdf.open();
