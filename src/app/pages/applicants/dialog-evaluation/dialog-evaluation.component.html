@@ -133,7 +133,9 @@
                       </p>
                       <p>
                         T. Admitir:
-                        <b style="color: #0e5093">{{ resultado?.totalAdmit }}</b>
+                        <b style="color: #0e5093">{{
+                          resultado?.totalAdmit
+                        }}</b>
                       </p>
                       <p>
                         Estado:
@@ -179,6 +181,7 @@
             <th>Lecto-Escritura</th>
             <th>Prom. prueba</th>
             <th>T. poderado</th>
+            <th><mat-icon>settings</mat-icon></th>
           </tr>
         </thead>
 
@@ -190,6 +193,13 @@
             <td>{{ item.readWrite }}</td>
             <td>{{ item.averageTest }}</td>
             <td>{{ item.finalNote }}</td>
+            <td (click)="downloadPDF()">
+              <div class="box-small iconDownload">
+                <mat-icon style="color: #0c3859; cursor: pointer"
+                  >cloud_download</mat-icon
+                >
+              </div>
+            </td>
           </tr>
         </tbody>
         <tfoot>
